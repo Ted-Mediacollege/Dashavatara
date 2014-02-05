@@ -1,7 +1,15 @@
 # Build and Release Folders
-bin/
-bin-debug/
-bin-release/
+
+ProjectMyth/bat/
+ProjectMyth/bin/
+ProjectMyth/cert/
+ProjectMyth/dist/
+ProjectMyth/obj/
+ProjectMyth/AIR_Android_readme.txt
+ProjectMyth/AIR_iOS_readme.txt
+ProjectMyth/PackageApp.bat
+ProjectMyth/Run.bat
+ProjectMyth/ProjectMyth.as3proj
 
 # Other files and folders
 .settings/
