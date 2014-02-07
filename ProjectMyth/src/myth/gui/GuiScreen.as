@@ -3,8 +3,9 @@ package myth.gui
 	import myth.input.TouchType;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
+	import starling.display.Sprite;
 	
-	public class GuiScreen 
+	public class GuiScreen extends Sprite
 	{
 		//called when gui contructed
 		public function init():void { }

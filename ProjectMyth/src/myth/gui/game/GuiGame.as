@@ -18,6 +18,7 @@ package myth.gui.game
 		{ 
 			world = new World();
 			world.build();
+			addChild(world);
 		}
 		
 		override public function tick():void 
