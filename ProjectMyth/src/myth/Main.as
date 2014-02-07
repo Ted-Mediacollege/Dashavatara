@@ -1,6 +1,7 @@
 package myth 
 {
 	import flash.events.Event;
+	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiMainMenu;
 	import myth.gui.GuiScreen;
 	import myth.input.KeyInput;
@@ -25,7 +26,7 @@ package myth
 			addEventListener(KeyboardEvent.KEY_DOWN, keyboard.onKeyDown);
 			addEventListener(KeyboardEvent.KEY_UP, keyboard.onKeyUp);
 			
-			switchGui(new GuiMainMenu());
+			switchGui(new GuiGame());
 		}
 		
 		public function switchGui(newgui:GuiScreen):void
