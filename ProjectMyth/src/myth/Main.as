@@ -8,6 +8,7 @@ package myth
 	import starling.display.Sprite;
 	import myth.input.TouchInput;
 	import myth.graphics.TextureList;
+	import starling.events.EnterFrameEvent;
 	import starling.events.KeyboardEvent;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
@@ -31,7 +32,21 @@ package myth
 			addEventListener(KeyboardEvent.KEY_DOWN, keyboard.onKeyDown);
 			addEventListener(KeyboardEvent.KEY_UP, keyboard.onKeyUp);
 			
+			addEventListener(EnterFrameEvent.ENTER_FRAME, tick);
+			
 			switchGui(new GuiMainMenu());
+		}
+		
+		public function tick(e:EnterFrameEvent):void
+		{
+			if (world != null)
+			{
+				world.tick();
+			}
+			else if (gui != null)
+			{
+				gui.tick();
+			}
 		}
 		
 		public function switchGui(newgui:GuiScreen):void
@@ -57,8 +72,9 @@ package myth
 				gui = null;
 			}
 			
-			world = new World();
+			world = new World(this);
 			addChild(world);
+			world.build();
 		}
 		
 		public function destroyWorld(newgui:GuiScreen):void

@@ -1,12 +1,15 @@
 package myth.world 
 {
+	import myth.Main;
 	import starling.display.Sprite;
 	
 	public class World extends Sprite
 	{
-		public function World() 
+		public var main:Main;
+		
+		public function World(m:Main) 
 		{
-			
+			main = m;
 		}
 		
 		//INIT
