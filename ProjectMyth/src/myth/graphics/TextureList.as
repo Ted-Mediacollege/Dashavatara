@@ -1,4 +1,4 @@
-package myth.textures 
+package myth.graphics 
 {
 	import starling.textures.TextureAtlas;
 	import starling.textures.Texture;

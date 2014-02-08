@@ -5,6 +5,7 @@ package myth.gui.components
 	import starling.display.Sprite;
 	import starling.text.TextField;
 	import starling.textures.Texture;
+	import myth.util.ScaleHelper;
 	
 	public class GuiButton extends Sprite
 	{
@@ -34,26 +35,28 @@ package myth.gui.components
 		
 		public function GuiButton(id:int, a:Texture, px:Number, py:Number, pw:Number, ph:Number, t:String, s:int = 15, c:uint = 0x000000, f:String = "Arial") 
 		{
-			x = px;
-			y = py;
+			x = ScaleHelper.tX(px);
+			y = ScaleHelper.tY(py);
+			scaleX = ScaleHelper.scaleX;
+			scaleY = ScaleHelper.scaleY;
 			
-			posX = px;
-			posY = py;
-			posWidth = pw;
-			posHeight = ph;
+			posX = ScaleHelper.tX(px);
+			posY = ScaleHelper.tY(py);
+			posWidth = ScaleHelper.tX(pw);
+			posHeight = ScaleHelper.tY(ph);
 			
 			image = new Image(a);
-			image.pivotX = image.width;
-			image.pivotY = image.height;
+			image.pivotX = image.width / 2;
+			image.pivotY = image.height / 2;
 			addChild(image);
 			buttonID = id;
 			
 			buttonText = new TextField(posWidth, posHeight, t, f, s, c);
 			buttonText.hAlign = "center";
 			buttonText.vAlign = "center";
+			buttonText.x = -(image.width / 2 * ScaleHelper.scaleX);
+			buttonText.y = -(image.height / 2 * ScaleHelper.scaleY);
 			addChild(buttonText);
-			
-			flatten();
 		}
 		
 		public function click():void

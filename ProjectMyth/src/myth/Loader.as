@@ -7,6 +7,7 @@ package myth
 	import flash.events.Event;
 	import flash.desktop.NativeApplication;
 	import flash.geom.Rectangle;
+	import myth.util.ScaleHelper;
 	
 	public class Loader extends Sprite
 	{
@@ -17,6 +18,8 @@ package myth
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
+			
+			ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
 			
 			starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			starling.start();

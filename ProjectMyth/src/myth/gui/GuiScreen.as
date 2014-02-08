@@ -20,9 +20,10 @@ package myth.gui
 		public function tick():void { }
 		
 		//called by touch input
-		public function input(type:TouchType, data:Vector.<Number>):void { }
-		
-		//called by key input
+		//type.click = startX, startY, endX, endY
+		//type.swipe = posX, posY, movedX, movedY
+		//type.zoom = zoom amount
+		public function input(type:int, data:Vector.<Number>):void { }
 		
 		//button click
 		public function action(id:GuiButton):void { }
@@ -35,6 +36,39 @@ package myth.gui
 		{
 			main = m;
 			buttonList = new Vector.<GuiButton>();
+		}
+		
+		public function addButton(b:GuiButton):GuiButton
+		{
+			addChild(b);
+			buttonList.push(b);
+			return b;
+		}
+		
+		//called by touch input
+		public function touch(type:int, data:Vector.<Number>):void
+		{
+			if (type == TouchType.CLICK)
+			{
+				for (var i:int = 0; i < buttonList.length; i++ )
+				{
+					if (data[0] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+						data[1] > buttonList[i].posY - buttonList[i].posHeight / 2 && 
+						data[2] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+						data[3] > buttonList[i].posY - buttonList[i].posHeight / 2 && 
+						data[0] < buttonList[i].posX + buttonList[i].posWidth / 2 && 
+						data[1] < buttonList[i].posY + buttonList[i].posHeight / 2 &&
+						data[2] < buttonList[i].posX + buttonList[i].posWidth / 2 && 
+						data[3] < buttonList[i].posY + buttonList[i].posHeight / 2
+						)
+					{
+						action(buttonList[i]);
+						break;
+					}
+				}
+			}
+			
+			input(type, data);
 		}
 	}
 }

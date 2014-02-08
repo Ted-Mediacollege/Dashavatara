@@ -1,5 +1,7 @@
 package myth.util 
 {
+	import myth.gui.GuiScreen;
+	
 	public class ScaleHelper 
 	{
 		public static var scaleX:Number;
@@ -7,17 +9,12 @@ package myth.util
 		
 		public static var screenX:int = 1280
 		public static var screenY:int = 720;
-		public static var centerX:int;
-		public static var centerY:int;
 		
 		public static var phoneX:int;
 		public static var phoneY:int;
 		
 		public static function init(width:int, height:int):void
 		{
-			centerX = int(screenX / 2);
-			centerY = int(screenY / 2);
-			
 			phoneX = width;
 			phoneY = height;
 			
@@ -25,12 +22,12 @@ package myth.util
 			scaleY = height / screenY;
 		}
 		
-		public static function sX(px:Number):Number
+		public static function tX(px:Number):Number
 		{
 			return px * scaleX;
 		}
 		
-		public static function sY(py:Number):Number
+		public static function tY(py:Number):Number
 		{
 			return py * scaleY;
 		}

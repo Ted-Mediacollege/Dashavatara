@@ -1,13 +1,13 @@
 package myth 
 {
 	import flash.events.Event;
-	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiMainMenu;
 	import myth.gui.GuiScreen;
 	import myth.input.KeyInput;
+	import myth.world.World;
 	import starling.display.Sprite;
 	import myth.input.TouchInput;
-	import myth.textures.TextureList;
+	import myth.graphics.TextureList;
 	import starling.events.KeyboardEvent;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
@@ -15,6 +15,7 @@ package myth
 	public class Main extends Sprite
 	{
 		public static var gui:GuiScreen;
+		public static var world:World;
 		
 		public var input:TouchInput;
 		public var keyboard:KeyInput;
@@ -47,8 +48,30 @@ package myth
 			gui.init();
 		}
 		
+		public function createWorld():void
+		{
+			if (gui != null)
+			{
+				gui.destroy();
+				removeChild(gui);
+				gui = null;
+			}
+			
+			world = new World();
+			addChild(world);
+		}
+		
+		public function destroyWorld(newgui:GuiScreen):void
+		{
+			removeChild(world);
+			world = null;
+			
+			switchGui(newgui);
+		}
+		
 		public static function onDeactivate(e:Event):void
 		{
+			//saving
 		}
 	}
 }
