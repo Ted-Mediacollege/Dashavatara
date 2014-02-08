@@ -3,6 +3,7 @@ package myth.input
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import myth.Main;
+	import flash.geom.Point;
 	
 	public class TouchInput 
 	{	
@@ -61,4 +62,4 @@ package myth.input
 			*/
 		}
 	}
-
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<TextureAtlas imagePath="gui.png">
+	<SubTexture name="button_small" x="5" y="5" width="450" height="100"/>;
+</TextureAtlas>

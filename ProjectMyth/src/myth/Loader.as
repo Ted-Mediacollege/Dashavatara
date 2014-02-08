@@ -1,12 +1,14 @@
 package myth 
 {
+	import flash.display.Sprite;
 	import starling.core.Starling;
 	import flash.display.StageScaleMode;
 	import flash.display.StageAlign;
 	import flash.events.Event;
 	import flash.desktop.NativeApplication;
+	import flash.geom.Rectangle;
 	
-	public class Loader 
+	public class Loader extends Sprite
 	{
 		private var starling:Starling;
 		

@@ -7,6 +7,12 @@ package myth.gui
 	
 	public class GuiScreen extends Sprite
 	{
+		public static var screenWidth:int = 1280;
+		public static var screenHeight:int = 720;
+		
+		public var main:Main;
+		public var buttonList:Vector.<GuiButton>;
+		
 		//called when gui contructed
 		public function init():void { }
 		

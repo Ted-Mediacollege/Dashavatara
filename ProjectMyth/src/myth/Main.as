@@ -6,19 +6,23 @@ package myth
 	import myth.gui.GuiScreen;
 	import myth.input.KeyInput;
 	import starling.display.Sprite;
-	import flash.events.TouchEvent;
 	import myth.input.TouchInput;
+	import myth.textures.TextureList;
 	import starling.events.KeyboardEvent;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
 	
 	public class Main extends Sprite
 	{
 		public static var gui:GuiScreen;
 		
-		public var mouse:TouchInput;
+		public var input:TouchInput;
 		public var keyboard:KeyInput;
 		
 		public function Main() 
 		{
+			TextureList.load();
+			
 			input = new TouchInput();
 			addEventListener(TouchEvent.TOUCH, input.onMouse);
 			
@@ -26,7 +30,7 @@ package myth
 			addEventListener(KeyboardEvent.KEY_DOWN, keyboard.onKeyDown);
 			addEventListener(KeyboardEvent.KEY_UP, keyboard.onKeyUp);
 			
-			switchGui(new GuiGame());
+			switchGui(new GuiMainMenu());
 		}
 		
 		public function switchGui(newgui:GuiScreen):void
