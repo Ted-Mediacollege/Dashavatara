@@ -1,5 +1,6 @@
 package myth.gui.game 
 {
+	import myth.gui.background.GuiBackground;
 	import myth.gui.components.GuiText;
 	import myth.gui.GuiScreen;
 	import myth.gui.components.GuiButton;
@@ -8,14 +9,15 @@ package myth.gui.game
 
 	public class GuiMainMenu extends GuiScreen
 	{
-		
 		public function GuiMainMenu() 
 		{
-			
 		}
 		
 		override public function init():void 
 		{ 
+			var bg:GuiBackground = new GuiBackground();
+			addChild(bg);
+			
 			var t:GuiText = new GuiText(20, 20, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);
 			

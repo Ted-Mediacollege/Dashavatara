@@ -8,7 +8,7 @@ package myth.util
 		public static var scaleY:Number;
 		
 		public static var screenX:int = 1280
-		public static var screenY:int = 720;
+		public static var screenY:int = 768;
 		
 		public static var phoneX:int;
 		public static var phoneY:int;

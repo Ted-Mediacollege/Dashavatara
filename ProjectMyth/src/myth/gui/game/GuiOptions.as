@@ -5,6 +5,7 @@ package myth.gui.game
 	import myth.input.TouchType;
 	import myth.gui.components.GuiText;
 	import myth.graphics.TextureList;
+	import myth.gui.background.GuiBackground;
 
 	public class GuiOptions extends GuiScreen
 	{
@@ -16,6 +17,9 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
+			var bg:GuiBackground = new GuiBackground();
+			addChild(bg);
+			
 			var t:GuiText = new GuiText(20, 20, 400, 60, "left", "top", "GuiOptions", 25, 0x000000);
 			addChild(t);			
 			
