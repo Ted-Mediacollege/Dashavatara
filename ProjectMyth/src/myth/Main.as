@@ -12,6 +12,7 @@ package myth
 	import starling.events.KeyboardEvent;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
+	import myth.util.TimeHelper;
 	
 	public class Main extends Sprite
 	{
@@ -47,6 +48,7 @@ package myth
 			{
 				gui.tick();
 			}
+			TimeHelper.tick();
 		}
 		
 		public function switchGui(newgui:GuiScreen):void

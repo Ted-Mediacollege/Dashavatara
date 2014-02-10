@@ -10,6 +10,7 @@ package myth.world
 	import starling.display.Sprite;
 	import myth.graphics.TextureList;
 	import starling.text.TextField;
+	import myth.util.TimeHelper;
 	
 	public class World extends Sprite
 	{
@@ -73,6 +74,7 @@ package myth.world
 		//LOOP
 		public function tick():void
 		{
+			trace(TimeHelper.deltatime);
 		}
 	}
 }
