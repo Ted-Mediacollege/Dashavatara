@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<TextureAtlas imagePath="gui.png">
+	<SubTexture name="player_1" x="0" y="0" width="80" height="80"/>;
+</TextureAtlas>

@@ -1,0 +1,17 @@
+
+{"levels":
+	[
+	{
+		"name":"level_1",
+		"id":0
+	},
+	{
+		"name":"level_2",
+		"id":3
+	},
+	{
+		"name":"level_3",
+		"id":2
+	}
+	]
+}

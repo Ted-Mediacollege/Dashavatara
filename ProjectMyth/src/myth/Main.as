@@ -74,7 +74,7 @@ package myth
 			
 			world = new World(this);
 			addChild(world);
-			world.build();
+			//world.build();
 		}
 		
 		public function destroyWorld(newgui:GuiScreen):void
