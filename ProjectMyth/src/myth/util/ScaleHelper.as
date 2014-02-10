@@ -22,14 +22,28 @@ package myth.util
 			scaleY = height / screenY;
 		}
 		
+		//translate X (game resolution to phone resolution)
 		public static function tX(px:Number):Number
 		{
 			return px * scaleX;
 		}
 		
+		//translate Y (game resolution to phone resolution)
 		public static function tY(py:Number):Number
 		{
 			return py * scaleY;
+		}
+		
+		//revert X (phone resolution to game resolution)
+		public static function rX(px:Number):Number
+		{
+			return px / scaleX;
+		}
+		
+		//revert Y (phone resolution to game resolution)
+		public static function rY(py:Number):Number
+		{
+			return py / scaleY;
 		}
 	}
 }
