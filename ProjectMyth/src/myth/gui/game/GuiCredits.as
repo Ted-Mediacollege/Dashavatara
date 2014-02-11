@@ -6,7 +6,8 @@ package myth.gui.game
 	import myth.gui.components.GuiText;
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
-
+	import myth.util.ScaleHelper;
+	
 	public class GuiCredits extends GuiScreen
 	{
 		
@@ -22,6 +23,9 @@ package myth.gui.game
 			
 			var t:GuiText = new GuiText(20, 20, 400, 60, "left", "top", "GuiCredits", 25, 0x000000);
 			addChild(t);
+			
+			var lol:GuiText = new GuiText(ScaleHelper.phoneX / 2, ScaleHelper.phoneY / 2, 800, 300, "center", "center", "Dit spel is gemaakt door de oppermachtige programmeur ted.", 45, 0x000000);
+			addChild(lol);
 			
 			var b:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 		}

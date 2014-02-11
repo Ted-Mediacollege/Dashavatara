@@ -15,11 +15,9 @@ package myth.world
 		public function build(camX:Number):void
 		{
 			/*
-			
 			var l:BackgroundLayer = new BackgroundLayer();
 			LAYERS.push(l);
 			addChild(l);
-			
 			*/
 		}
 		
