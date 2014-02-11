@@ -13,6 +13,7 @@ package myth.world
 	import myth.graphics.TextureList;
 	import starling.text.TextField;
 	import myth.util.TimeHelper;
+	import myth.util.ScaleHelper;
 	
 	public class World extends Sprite
 	{
@@ -31,13 +32,20 @@ package myth.world
 		
 		private var player1:EntityPlayerBase;
 		
+		private var distance:Number = 0;
+		
+		private var speed:Number = 1;
+		
 		public function World(m:Main ,levelName:String = "level_1") 
 		{
 			lvlName = levelName;
 			loadJSON();
 			loadXML();
 			player1 = new EntityPlayer01();
+			player1.x = 100*ScaleHelper.scaleX;
+			player1.y = 600*ScaleHelper.scaleY;
 			addChild(player1);
+			speed = speed * ScaleHelper.scaleY;
 		}
 		
 		private function loadJSON():void {
@@ -79,7 +87,9 @@ package myth.world
 		//LOOP
 		public function tick():void
 		{
-			//trace(TimeHelper.deltatime);
+			distance += speed;
+			//player1.x += speed;
+			trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
 		}
 	}
 }
