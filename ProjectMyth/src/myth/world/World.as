@@ -5,6 +5,8 @@ package myth.world
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.utils.ByteArray;
+	import myth.entity.player.EntityPlayer01;
+	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
 	import starling.display.Sprite;
@@ -25,14 +27,17 @@ package myth.world
 		
 		private var jsonLevel:Object;
 		private var json:URLLoader;
-		
 		private var lvlName:String;
+		
+		private var player1:EntityPlayerBase;
 		
 		public function World(m:Main ,levelName:String = "level_1") 
 		{
 			lvlName = levelName;
 			loadJSON();
 			loadXML();
+			player1 = new EntityPlayer01();
+			addChild(player1);
 		}
 		
 		private function loadJSON():void {
@@ -74,7 +79,7 @@ package myth.world
 		//LOOP
 		public function tick():void
 		{
-			trace(TimeHelper.deltatime);
+			//trace(TimeHelper.deltatime);
 		}
 	}
 }
