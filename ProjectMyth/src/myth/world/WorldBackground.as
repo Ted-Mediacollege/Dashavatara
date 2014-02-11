@@ -1,29 +1,12 @@
 package myth.world 
 {
 	import myth.background.Background;
+	import starling.display.Sprite;
 	
-	public class WorldBackground 
+	public class WorldBackground extends Sprite
 	{
-		public var BACKGROUNDS:Vector.<Background>;
-		
 		public function WorldBackground() 
 		{
-			BACKGROUNDS = new Vector.<Background>();
-		}
-		
-		public function build():void
-		{
-			
-		}
-		
-		public function tick():void
-		{
-			
-		}
-		
-		public function addBackground():void
-		{
-			
 		}
 	}
 }

@@ -7,17 +7,18 @@ package myth.background
 	public class Background extends Sprite
 	{	
 		public var image:Image;
+		public var z:Number;
+		public var id:int;
 		
-		public var posX:Number;
-		public var posY:Number;
-		public var posZ:Number;
-		
-		public function Background(t:Texture, px:Number, py:Number, pz:Number) 
+		public function Background(t:Texture, px:Number, py:Number, pz:Number, i:int) 
 		{
 			image = new Image(t);
 			image.x = px;
 			image.y = py;
 			addChild(image);
+			
+			z = pz;
+			id = i;
 			
 			flatten();
 		}	
