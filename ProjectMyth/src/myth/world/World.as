@@ -14,6 +14,7 @@ package myth.world
 	import starling.text.TextField;
 	import myth.util.TimeHelper;
 	import myth.util.ScaleHelper;
+	import myth.input.TouchType;
 	
 	public class World extends Sprite
 	{
@@ -90,6 +91,22 @@ package myth.world
 			distance += speed;
 			//player1.x += speed;
 			trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
+		}
+		
+		public function input(type:int, data:Vector.<Number>):void
+		{		
+			if (type == TouchType.CLICK)
+			{
+				//data vector = startX, startY, endX, endY
+			}
+			else if (type == TouchType.SWIPE)
+			{
+				//data vector = posX, posY, movedX, movedY
+			}
+			else if (type == TouchType.ZOOM)
+			{
+				//data vector = zoom
+			}
 		}
 	}
 }

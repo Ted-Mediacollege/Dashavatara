@@ -16,7 +16,7 @@ package myth.input
 		{
 			var touches:Vector.<Touch> = e.getTouches(Main.gui);
 			
-			if (touches.length > 1)
+			if (touches.length > 1) 
 			{
 				zooming = true;
 				
@@ -29,9 +29,9 @@ package myth.input
 				
 				var v1:Vector.<Number> = new Vector.<Number>(1);
 				v1[0] = MathHelper.dis2(positions[0].x, positions[0].y, positions[2].x, positions[2].y) - MathHelper.dis2(positions[1].x, positions[1].y, positions[3].x, positions[3].y); 
-				Main.gui.touch(TouchType.ZOOM, v1);
+				Main.input(TouchType.ZOOM, v1);
 			}
-			else if (touches.length == 1)
+			else if (touches.length == 1) 
 			{
 				if(touches[0].phase == TouchPhase.BEGAN)
 				{
@@ -53,7 +53,7 @@ package myth.input
 						v2[1] = touchStart.y; 
 						v2[2] = touchEnd.x; 
 						v2[3] = touchEnd.y;
-						Main.gui.touch(TouchType.CLICK, v2);
+						Main.input(TouchType.CLICK, v2);
 					}
 				}
 				else if(touches[0].phase == TouchPhase.MOVED)
@@ -66,11 +66,7 @@ package myth.input
 					v3[1] = touchPos.y; 
 					v3[2] = touchMovement.x; 
 					v3[3] = touchMovement.y;
-					Main.gui.touch(TouchType.SWIPE, v3);
-				}
-				else if(touches[0].phase == TouchPhase.HOVER)
-				{
-					
+					Main.input(TouchType.SWIPE, v3);
 				}
 			}
 		}

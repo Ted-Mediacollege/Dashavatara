@@ -87,9 +87,20 @@ package myth
 			switchGui(newgui);
 		}
 		
+		public static function input(type:int, data:Vector.<Number>):void
+		{
+			if (world != null)
+			{
+				world.input(type, data);
+			}
+			else if (gui != null)
+			{
+				gui.input(type, data);
+			}
+		}
+		
 		public static function onDeactivate(e:Event):void
 		{
-			//saving
 		}
 	}
 }
