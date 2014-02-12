@@ -84,6 +84,7 @@ package myth
 		
 		public function destroyWorld(newgui:GuiScreen):void
 		{
+			world.onRemove();
 			removeChild(world);
 			world = null;
 			

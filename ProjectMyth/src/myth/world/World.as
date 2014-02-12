@@ -10,12 +10,16 @@ package myth.world
 	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
+	import starling.display.Shape;
 	import starling.display.Sprite;
 	import myth.graphics.TextureList;
+	import starling.events.TouchEvent;
 	import starling.text.TextField;
 	import myth.util.TimeHelper;
 	import myth.util.ScaleHelper;
 	import myth.input.TouchType;
+	import myth.util.Debug;
+	import starling.events.TouchPhase;
 	
 	public class World extends Sprite
 	{
@@ -38,8 +42,13 @@ package myth.world
 		private var speed:Number = 0.2;
 		private var enemyManager:WorldEntityManager;
 		
+		private var debugShape:Shape = new Shape();
+		private var touchZone:Shape = new Shape();
+		
 		public function World(m:Main ,levelName:String = "level_1") 
 		{
+			main = m;
+			
 			lvlName = levelName;
 			loadJSON();
 			loadXML();
@@ -52,6 +61,19 @@ package myth.world
 			//enemies
 			enemyManager = new WorldEntityManager(enemyData);
 			addChild(enemyManager);
+			//debug
+			addChild(debugShape);
+			//touch
+			addEventListener(TouchEvent.TOUCH,touch);
+			touchZone.graphics.clear();
+			touchZone.graphics.lineStyle(5, 0x00ff00, 0.7);
+			touchZone.graphics.drawRect(0,0,ScaleHelper.screenX,ScaleHelper.screenY);
+			touchZone.graphics.endFill();
+			addChild(touchZone);
+		}
+		
+		public function onRemove():void {
+			removeEventListener(TouchEvent.TOUCH,touch);
 		}
 		
 		private function loadJSON():void {
@@ -110,8 +132,27 @@ package myth.world
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
 		}
 		
+		public function touch(t:TouchEvent):void {
+			var touchCount:int =  t.touches.length;
+			//draw point
+			Debug.test(function():void { 
+				debugShape.graphics.clear();
+				debugShape.graphics.beginFill(0x000000, 0.2);
+				debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
+				debugShape.graphics.drawCircle(t.touches[0].getLocation(Main.world).x,t.touches[0].getLocation(Main.world).y,5);
+				debugShape.graphics.endFill();
+			}, Debug.DrawArracks);
+			for (var i:int = 0; i < touchCount; i++) 
+			{
+				if (t.touches[i].phase == TouchPhase.BEGAN) {
+					//trace("b");
+				}
+			}
+		}
+		
 		public function input(type:int, data:Vector.<Number>):void
-		{		
+		{	
+			trace("touch");
 			if (type == TouchType.CLICK)
 			{
 				//data vector = startX, startY, endX, endY
@@ -119,6 +160,7 @@ package myth.world
 			else if (type == TouchType.SWIPE)
 			{
 				//data vector = posX, posY, movedX, movedY
+				trace("swipe  posX" + data[0] + " posY" + data[1] + " - moveX" + data[2] + " moveY" + data[3]);
 			}
 			else if (type == TouchType.ZOOM)
 			{

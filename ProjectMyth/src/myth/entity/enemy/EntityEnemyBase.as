@@ -8,9 +8,10 @@ package myth.entity.enemy
 	public class EntityEnemyBase extends Entity
 	{
 		public var damage:int  = 10;
-		public function EntityEnemyBase() 
+		public var enemyType:int;
+		public function EntityEnemyBase(_enemyType:int) 
 		{
-			
+			enemyType = _enemyType;
 		}
 		
 	}
