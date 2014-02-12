@@ -41,7 +41,7 @@ package myth.background
 				
 				if (!f)
 				{
-					addBackground(j);
+					//addBackground(j);
 				}
 			}
 		}
