@@ -5,7 +5,7 @@ package myth.world
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.utils.ByteArray;
-	import myth.entity.enemy.EnemyManager;
+	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
 	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
@@ -37,7 +37,7 @@ package myth.world
 		private var distance:Number = 0;
 		
 		private var speed:Number = 0.2;
-		private var enemyManager:EnemyManager;
+		private var enemyManager:WorldEntityManager;
 		
 		public function World(m:Main ,levelName:String = "level_1") 
 		{
@@ -51,7 +51,7 @@ package myth.world
 			player1.y = 600;
 			addChild(player1);
 			//enemies
-			enemyManager = new EnemyManager();
+			enemyManager = new WorldEntityManager();
 			addChild(enemyManager);
 		}
 		

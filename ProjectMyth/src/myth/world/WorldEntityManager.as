@@ -1,5 +1,8 @@
 package myth.world 
 {
+	import myth.entity.enemy.EntityEnemyBase;
+	import myth.entity.enemy.EnemyType;
+	import myth.entity.enemy.EntityEnemyWalking;
 	import starling.display.Sprite;
 	import myth.util.ScaleHelper;
 	import myth.util.MathHelper;
