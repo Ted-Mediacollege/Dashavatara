@@ -31,11 +31,10 @@ package myth.world
 		private var jsonLevel:Object;
 		private var json:URLLoader;
 		private var lvlName:String;
+		private var enemyData:Vector.<Vector.<int>>;
 		
 		private var player1:EntityPlayerBase;
-		
 		private var distance:Number = 0;
-		
 		private var speed:Number = 0.2;
 		private var enemyManager:WorldEntityManager;
 		
@@ -51,7 +50,7 @@ package myth.world
 			player1.y = 600;
 			addChild(player1);
 			//enemies
-			enemyManager = new WorldEntityManager();
+			enemyManager = new WorldEntityManager(enemyData);
 			addChild(enemyManager);
 		}
 		
@@ -67,6 +66,15 @@ package myth.world
 			}
 			var levelNameDisplay:TextField = new TextField(200, 400, "json: " + levelData.name, "Verdana", 20, 0xffffff);
 			addChild(levelNameDisplay);
+			//set enemy data in array
+			trace(levelData.enemies.length);
+			enemyData = new Vector.<Vector.<int>>(levelData.enemies.length);
+			for (var i:int = 0; i < levelData.enemies.length; i++) 
+			{
+				enemyData[i] = new <int>[ levelData.enemies[i].type, levelData.enemies[i].spawnX, levelData.enemies[i].spawnY ]
+			}
+			//enemyData = 
+			
 		}
 		
 		private function loadXML():void {
@@ -95,7 +103,7 @@ package myth.world
 		public function tick():void
 		{
 			distance += speed;
-			enemyManager.move(speed);
+			enemyManager.move(speed,distance);
 			var damage:int = enemyManager.checkHit(player1.x, player1.y);
 			///trace("damage "+damage);
 			//player1.x += speed;

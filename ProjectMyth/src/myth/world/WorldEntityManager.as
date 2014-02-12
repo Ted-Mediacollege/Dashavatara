@@ -12,7 +12,32 @@ package myth.world
 	 */
 	public class WorldEntityManager extends Sprite
 	{
+		private var data:Vector.<Vector.<int>>;
 		public var enemyList:Vector.<EntityEnemyBase> = new Vector.<EntityEnemyBase>;
+		
+		public function WorldEntityManager(_data:Vector.<Vector.<int>> = null):void {
+			/*_data = new < Vector.<int> > [ 
+			new <int>[ 0, 20, 300 ],
+			new <int>[ 0, 200, 400 ],
+			new <int>[ 0, 270, 350 ],
+			new <int>[ 0, 480, 400 ],
+			new <int>[ 0, 1020, 330 ],
+			new <int>[ 0, 1200, 430 ],
+			new <int>[ 0, 1270, 150 ],
+			new <int>[ 0, 1480, 100 ],
+			new <int>[ 0, 2020, 240 ],
+			new <int>[ 0, 2200, 360 ],
+			new <int>[ 0, 2270, 470 ],
+			new <int>[ 0, 2480, 360 ],
+			new <int>[ 0, 2620, 380 ],
+			new <int>[ 0, 2800, 230 ],
+			new <int>[ 0, 3270, 240 ],
+			new <int>[ 0, 3480, 280 ],
+			new <int>[ 0, 3680, 220 ]
+			];*/
+			data = _data;
+		}
+		
 		public function makeEnemy( type :int, xPos:int,yPos:int) :void
 		{
 			var enemy : EntityEnemyBase;
@@ -37,8 +62,14 @@ package myth.world
 			enemyList.splice(number , 1);
 		}
 		
-		public function move(speed:int):void {
-			makeEnemy(EnemyType.Walking_01, 1000,600);
+		public function move(speed:int , dist:Number):void {
+			if (data.length > 0) {
+				if (data[0][1] < dist) {
+					makeEnemy(data[0][0], 1000, data[0][2]);
+					data.splice(0, 1);
+				}
+			}
+			//makeEnemy(EnemyType.Walking_01, 1000,600);
 			for (var i:int = 0; i < enemyList.length; i++) {
 				enemyList[i].x -= speed;
 			}

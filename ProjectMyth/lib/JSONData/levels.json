@@ -3,7 +3,24 @@
 	[
 	{
 		"name":"level_1",
-		"id":0
+		"id":0,
+		"enemies":[
+			{"type":"walking_01","spawnX":0,"spawnY":600},
+			{"type":"walking_01","spawnX":220,"spawnY":100},
+			{"type":"walking_01","spawnX":500,"spawnY":200},
+			{"type":"walking_01","spawnX":800,"spawnY":300},
+			{"type":"walking_01","spawnX":920,"spawnY":550},
+			{"type":"walking_01","spawnX":1060,"spawnY":200}
+		],
+		"tiles":[
+			{"type":"01"},
+			{"type":"01"},
+			{"type":"03"},
+			{"type":"05"},
+			{"type":"01"},
+			{"type":"08"}
+		]
+		
 	},
 	{
 		"name":"level_2",
