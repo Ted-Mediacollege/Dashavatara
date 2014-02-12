@@ -44,11 +44,11 @@ package myth.world
 			lvlName = levelName;
 			loadJSON();
 			loadXML();
-			speed = speed * ScaleHelper.scaleY*60;
+			speed = speed * 60;
 			//player
 			player1 = new EntityPlayer01();
-			player1.x = 100*ScaleHelper.scaleX;
-			player1.y = 600*ScaleHelper.scaleY;
+			player1.x = 100;
+			player1.y = 600;
 			addChild(player1);
 			//enemies
 			enemyManager = new EnemyManager();

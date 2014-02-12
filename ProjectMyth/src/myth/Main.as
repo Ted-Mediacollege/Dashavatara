@@ -13,6 +13,7 @@ package myth
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import myth.util.TimeHelper;
+	import myth.util.ScaleHelper;
 	
 	public class Main extends Sprite
 	{
@@ -75,6 +76,8 @@ package myth
 			}
 			
 			world = new World(this);
+			world.scaleX = ScaleHelper.scaleX;
+			world.scaleY = ScaleHelper.scaleY;
 			addChild(world);
 			//world.build();
 		}

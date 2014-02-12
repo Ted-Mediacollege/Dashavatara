@@ -1,4 +1,4 @@
-package myth.entity.enemy 
+package myth.world 
 {
 	import starling.display.Sprite;
 	import myth.util.ScaleHelper;
@@ -7,7 +7,7 @@ package myth.entity.enemy
 	 * ...
 	 * @author Kit van de Bunt
 	 */
-	public class EnemyManager extends Sprite
+	public class WorldEntityManager extends Sprite
 	{
 		public var enemyList:Vector.<EntityEnemyBase> = new Vector.<EntityEnemyBase>;
 		public function makeEnemy( type :int, xPos:int,yPos:int) :void
@@ -35,7 +35,7 @@ package myth.entity.enemy
 		}
 		
 		public function move(speed:int):void {
-			makeEnemy(EnemyType.Walking_01, 1000*ScaleHelper.scaleY,600*ScaleHelper.scaleY);
+			makeEnemy(EnemyType.Walking_01, 1000,600);
 			for (var i:int = 0; i < enemyList.length; i++) {
 				enemyList[i].x -= speed;
 			}
