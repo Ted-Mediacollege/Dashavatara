@@ -95,7 +95,7 @@ package myth
 			}
 			else if (gui != null)
 			{
-				gui.input(type, data);
+				gui.touch(type, data);
 			}
 		}
 		

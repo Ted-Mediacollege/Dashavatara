@@ -1,6 +1,7 @@
 package myth.entity 
 {
-	public class Entity 
+	import starling.display.Sprite;
+	public class Entity extends Sprite
 	{
 		public function Entity() 
 		{

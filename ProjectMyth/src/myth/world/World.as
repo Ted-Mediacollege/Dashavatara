@@ -5,6 +5,7 @@ package myth.world
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.utils.ByteArray;
+	import myth.entity.enemy.EnemyManager;
 	import myth.entity.player.EntityPlayer01;
 	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
@@ -35,18 +36,23 @@ package myth.world
 		
 		private var distance:Number = 0;
 		
-		private var speed:Number = 1;
+		private var speed:Number = 0.2;
+		private var enemyManager:EnemyManager;
 		
 		public function World(m:Main ,levelName:String = "level_1") 
 		{
 			lvlName = levelName;
 			loadJSON();
 			loadXML();
+			speed = speed * ScaleHelper.scaleY*60;
+			//player
 			player1 = new EntityPlayer01();
 			player1.x = 100*ScaleHelper.scaleX;
 			player1.y = 600*ScaleHelper.scaleY;
 			addChild(player1);
-			speed = speed * ScaleHelper.scaleY;
+			//enemies
+			enemyManager = new EnemyManager();
+			addChild(enemyManager);
 		}
 		
 		private function loadJSON():void {
@@ -89,8 +95,11 @@ package myth.world
 		public function tick():void
 		{
 			distance += speed;
+			enemyManager.move(speed);
+			var damage:int = enemyManager.checkHit(player1.x, player1.y);
+			///trace("damage "+damage);
 			//player1.x += speed;
-			trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
+			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
 		}
 		
 		public function input(type:int, data:Vector.<Number>):void

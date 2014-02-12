@@ -1,12 +1,12 @@
 package myth.entity.player 
 {
-	import starling.display.Sprite;
+	import myth.entity.Entity;
 	import starling.display.Image;
 	/**
 	 * ...
 	 * @author Kit van de bunt
 	 */
-	public class EntityPlayerBase extends Sprite
+	public class EntityPlayerBase extends Entity
 	{
 		private var canAttack:Boolean;
 		private var canSwim:Boolean;
