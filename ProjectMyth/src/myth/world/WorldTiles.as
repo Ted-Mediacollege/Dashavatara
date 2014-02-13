@@ -4,6 +4,7 @@ package myth.world
 	import starling.textures.Texture;
 	import myth.util.ScaleHelper;
 	import myth.tile.Tile;
+	import myth.graphics.TextureList;
 
 	public class WorldTiles extends Sprite
 	{		
@@ -14,11 +15,11 @@ package myth.world
 		public var data:Vector.<int>;
 		public var textureSize:Number = 127;
 		
-		public function WorldTiles(t:Vector.<Texture>, d:Vector.<int>) 
+		public function WorldTiles(d:Vector.<int>) 
 		{
 			TILES = new Vector.<Tile>();
 			
-			textures = t;
+			textures = TextureList.atlas_background.getTextures("water");
 			data = d;
 		}
 		

@@ -4,6 +4,7 @@ package myth.gui.game
 	import myth.Main;
 	import myth.world.World;
 	import starling.events.TouchEvent;
+	import myth.gui.background.GuiBackground;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -14,6 +15,9 @@ package myth.gui.game
 		
 		override public function init():void
 		{
+			var bg:GuiBackground = new GuiBackground();
+			addChild(bg);
+			
 			Main.world = new World(this, "level_1");
 			addChild(Main.world);
 		}

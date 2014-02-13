@@ -26,6 +26,8 @@ package myth.world
 	{
 		public var gui:GuiScreen;
 		
+		public var tiles:WorldTiles;
+		
 		[Embed(source = "../../../lib/JSONData/levels.json", mimeType = "application/octet-stream")]
 		private var levelData2:Class;
 		
@@ -47,6 +49,12 @@ package myth.world
 		{
 			gui = g;
 			
+			var v:Vector.<int> = new Vector.<int>();
+			v.push(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+			tiles = new WorldTiles(v);
+			addChild(tiles);
+			tiles.build(0);
+			
 			lvlName = levelName;
 			loadJSON();
 			speed = speed * 60;
@@ -65,11 +73,11 @@ package myth.world
 			
 			//touch
 			addEventListener(TouchEvent.TOUCH,touch);
-			touchZone.graphics.clear();
+			/*touchZone.graphics.clear();
 			touchZone.graphics.lineStyle(5, 0x00ff00, 0.7);
 			touchZone.graphics.drawRect(0,0,ScaleHelper.screenX,ScaleHelper.screenY);
 			touchZone.graphics.endFill();
-			addChild(touchZone);
+			addChild(touchZone);*/
 			
 			touchZone.graphics.lineStyle(5, 0x00ff00, 0.7);
 			touchZone.graphics.drawRect(0, 0, 600, 600);
@@ -106,6 +114,7 @@ package myth.world
 		public function tick():void
 		{
 			distance += speed;
+			tiles.tick(distance);
 			enemyManager.move(speed,distance);
 			var damage:int = enemyManager.checkHit(player.x, player.y);
 			///trace("damage "+damage);
