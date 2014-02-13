@@ -5,6 +5,7 @@ package myth.world
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.utils.ByteArray;
+	import myth.gui.GuiScreen;
 	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
 	import myth.entity.player.EntityPlayerBase;
@@ -23,7 +24,7 @@ package myth.world
 	
 	public class World extends Sprite
 	{
-		public var main:Main;
+		public var gui:GuiScreen;
 		
 		//[Embed(source = "../../../lib/XMLData/levels.xml" , mimeType="application/octet-stream")]
 		[Embed(source="../../../lib/XMLData/levels.xml" , mimeType="application/octet-stream")]
@@ -45,9 +46,9 @@ package myth.world
 		private var debugShape:Shape = new Shape();
 		private var touchZone:Shape = new Shape();
 		
-		public function World(m:Main ,levelName:String = "level_1") 
+		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
-			main = m;
+			gui = g;
 			
 			lvlName = levelName;
 			loadJSON();
@@ -113,12 +114,6 @@ package myth.world
 				var levelNameDisplay:TextField = new TextField(200, 200, "xml: "+levelData.attribute("name"),"Verdana", 20, 0xffffff);
 				addChild(levelNameDisplay);
 			}
-		}
-		
-		//INIT
-		public function build(levelsXML:XML):void
-		{
-			
 		}
 		
 		//LOOP

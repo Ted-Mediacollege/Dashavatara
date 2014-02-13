@@ -41,7 +41,7 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.createWorld();
+				main.switchGui(new GuiGame());
 			}
 			else if (b.buttonID == 1)
 			{

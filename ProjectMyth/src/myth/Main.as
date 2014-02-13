@@ -25,6 +25,9 @@ package myth
 		
 		public function Main() 
 		{
+			this.scaleX = ScaleHelper.scaleX;
+			this.scaleY = ScaleHelper.scaleY;
+			
 			TextureList.load();
 			
 			input = new TouchInput();
@@ -41,11 +44,7 @@ package myth
 		
 		public function tick(e:EnterFrameEvent):void
 		{
-			if (world != null)
-			{
-				world.tick();
-			}
-			else if (gui != null)
+			if (gui != null)
 			{
 				gui.tick();
 			}
@@ -66,38 +65,9 @@ package myth
 			gui.init();
 		}
 		
-		public function createWorld():void
-		{
-			if (gui != null)
-			{
-				gui.destroy();
-				removeChild(gui);
-				gui = null;
-			}
-			
-			world = new World(this);
-			world.scaleX = ScaleHelper.scaleX;
-			world.scaleY = ScaleHelper.scaleY;
-			addChild(world);
-			//world.build();
-		}
-		
-		public function destroyWorld(newgui:GuiScreen):void
-		{
-			world.onRemove();
-			removeChild(world);
-			world = null;
-			
-			switchGui(newgui);
-		}
-		
 		public static function input(type:int, data:Vector.<Number>):void
 		{
-			if (world != null)
-			{
-				world.input(type, data);
-			}
-			else if (gui != null)
+			if (gui != null)
 			{
 				gui.touch(type, data);
 			}

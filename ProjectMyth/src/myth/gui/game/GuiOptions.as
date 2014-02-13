@@ -7,6 +7,7 @@ package myth.gui.game
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
 	import myth.world.WorldBackground;
+	import myth.util.ScaleHelper;
 
 	public class GuiOptions extends GuiScreen
 	{
@@ -29,6 +30,9 @@ package myth.gui.game
 			
 			test = new WorldBackground();
 			addChild(test);
+			test.build(5);
+			test.scaleX = ScaleHelper.scaleX;
+			test.scaleY = ScaleHelper.scaleY;
 			
 			
 			
@@ -37,7 +41,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			
+			test.tick(5);
 		}
 		
 		override public function input(type:int, data:Vector.<Number>):void 

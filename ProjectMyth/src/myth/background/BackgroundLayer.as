@@ -15,6 +15,8 @@ package myth.background
 		
 		public function BackgroundLayer(t:Vector.<Texture>, d:Vector.<int>, depth:Number, s:Number) 
 		{
+			TILES = new Vector.<Background>();
+			
 			textures = t;
 			data = d;
 			layerdepth = depth;
@@ -23,10 +25,10 @@ package myth.background
 		
 		public function build(camX:Number):void
 		{
-			TILES = new Vector.<Background>();
+			var lowestID:int = int(Math.floor(camX / textureSize));
+			var highestID:int = int(Math.ceil((camX + 1280) / textureSize));
 			
-			var lowestID:int = int(Math.floor(ScaleHelper.tX(camX / textureSize)));
-			var highestID:int = int(Math.ceil(ScaleHelper.tX((camX + ScaleHelper.phoneX) / textureSize)));
+			trace(lowestID, highestID);
 			
 			for (var j:int = lowestID; j < highestID + 1; j++)
 			{
@@ -42,6 +44,7 @@ package myth.background
 				if (!f)
 				{
 					addBackground(j, camX);
+					trace(1);
 				}
 			}
 		}
@@ -52,7 +55,8 @@ package myth.background
 			{
 				if (isInside(TILES[i].id))
 				{
-					TILES[i].x = camX - TILES[i].id * textureSize;
+					//TILES[i].x = -camX + TILES[i].id * textureSize;
+					TILES[i].x = TILES[i].id * textureSize;
 				}
 				else
 				{
@@ -61,8 +65,8 @@ package myth.background
 				}
 			}
 			
-			var lowestID:int = int(Math.floor(ScaleHelper.tX(camX / textureSize)));
-			var highestID:int = int(Math.ceil(ScaleHelper.tX((camX + ScaleHelper.phoneX) / textureSize)));
+			var lowestID:int = int(Math.floor(camX / textureSize));
+			var highestID:int = int(Math.ceil((camX + 1280) / textureSize));
 			
 			for (var j:int = lowestID; j < highestID + 1; j++)
 			{
@@ -88,7 +92,7 @@ package myth.background
 			{
 				if (data[id] < textures.length)
 				{
-					var b:Background = new Background(textures[data[id]], camX - id * textureSize, 0, 1, id);
+					var b:Background = new Background(textures[data[id]], -camX + id * textureSize, 0, 1, id);
 					TILES.push(b);
 					addChild(b);
 				}
@@ -97,7 +101,7 @@ package myth.background
 		
 		public function isInside(i:int):Boolean
 		{
-			if (ScaleHelper.tX(i * textureSize + textureSize) > -1 && ScaleHelper.tX(i * textureSize) < ScaleHelper.phoneX + 1 )
+			if (i * textureSize + textureSize > -1 && i * textureSize < 1281 )
 			{
 				return true;
 			}
