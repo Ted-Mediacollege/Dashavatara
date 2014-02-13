@@ -145,7 +145,7 @@ package myth.world
 			}
 		}
 		
-		public function input(type:int, data:Vector.<Number>):void
+		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{	
 			trace("touch");
 			if (type == TouchType.CLICK)

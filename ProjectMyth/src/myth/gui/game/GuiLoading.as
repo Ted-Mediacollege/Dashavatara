@@ -28,11 +28,6 @@ package myth.gui.game
 			
 		}
 		
-		override public function input(type:int, data:Vector.<Number>):void 
-		{ 
-			
-		}
-		
 		override public function action(b:GuiButton):void 
 		{ 
 			

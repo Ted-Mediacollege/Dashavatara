@@ -44,11 +44,6 @@ package myth.gui.game
 			test.tick(5);
 		}
 		
-		override public function input(type:int, data:Vector.<Number>):void 
-		{ 
-			
-		}
-		
 		override public function action(b:GuiButton):void 
 		{ 
 			main.switchGui(new GuiMainMenu());

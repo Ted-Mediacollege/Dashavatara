@@ -4,6 +4,7 @@ package myth.gui
 	import myth.gui.components.GuiButton;
 	import myth.Main;
 	import starling.display.Sprite;
+	import starling.events.TouchEvent;
 	
 	public class GuiScreen extends Sprite
 	{
@@ -23,7 +24,7 @@ package myth.gui
 		//type.click = startX, startY, endX, endY
 		//type.swipe = posX, posY, movedX, movedY
 		//type.zoom = zoom amount
-		public function input(type:int, data:Vector.<Number>):void { }
+		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void { }
 		
 		//button click
 		public function action(id:GuiButton):void { }

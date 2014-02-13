@@ -29,7 +29,7 @@ package myth.input
 				
 				var v1:Vector.<Number> = new Vector.<Number>(1);
 				v1[0] = MathHelper.dis2(positions[0].x, positions[0].y, positions[2].x, positions[2].y) - MathHelper.dis2(positions[1].x, positions[1].y, positions[3].x, positions[3].y); 
-				Main.input(TouchType.ZOOM, v1);
+				Main.input(TouchType.ZOOM, v1, e);
 			}
 			else if (touches.length == 1) 
 			{

@@ -3,6 +3,7 @@ package myth.gui.game
 	import myth.gui.GuiScreen;
 	import myth.Main;
 	import myth.world.World;
+	import starling.events.TouchEvent;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -22,9 +23,9 @@ package myth.gui.game
 			Main.world.tick();
 		}
 		
-		override public function input(type:int, data:Vector.<Number>):void 
+		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
-			Main.world.input(type, data);
+			Main.world.input(type, data, e);
 		}
 		
 		override public function destroy():void

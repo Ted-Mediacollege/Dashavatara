@@ -28,8 +28,6 @@ package myth.background
 			var lowestID:int = int(Math.floor(camX / textureSize));
 			var highestID:int = int(Math.ceil((camX + 1280) / textureSize));
 			
-			trace(lowestID, highestID);
-			
 			for (var j:int = lowestID; j < highestID + 1; j++)
 			{
 				var f:Boolean = false;
@@ -44,7 +42,6 @@ package myth.background
 				if (!f)
 				{
 					addBackground(j, camX);
-					trace(1);
 				}
 			}
 		}
