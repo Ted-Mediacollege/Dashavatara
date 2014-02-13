@@ -65,14 +65,6 @@ package myth
 			gui.init();
 		}
 		
-		public static function input(type:int, data:Vector.<Number>):void
-		{
-			if (gui != null)
-			{
-				gui.touch(type, data);
-			}
-		}
-		
 		public static function onDeactivate(e:Event):void
 		{
 		}

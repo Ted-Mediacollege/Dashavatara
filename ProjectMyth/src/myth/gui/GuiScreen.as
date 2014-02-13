@@ -47,7 +47,7 @@ package myth.gui
 		}
 		
 		//called by touch input
-		public function touch(type:int, data:Vector.<Number>):void
+		public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{
 			if (type == TouchType.CLICK)
 			{
@@ -69,7 +69,7 @@ package myth.gui
 				}
 			}
 			
-			input(type, data);
+			input(type, data, e);
 		}
 	}
 }

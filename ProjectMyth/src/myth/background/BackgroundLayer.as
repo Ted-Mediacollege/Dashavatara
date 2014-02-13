@@ -48,11 +48,11 @@ package myth.background
 		
 		public function tick(camX:Number):void
 		{
+			/*
 			for (var i:int = TILES.length - 1; i > -1; i-- )
 			{
 				if (isInside(TILES[i].id))
 				{
-					//TILES[i].x = -camX + TILES[i].id * textureSize;
 					TILES[i].x = TILES[i].id * textureSize;
 				}
 				else
@@ -81,6 +81,7 @@ package myth.background
 					addBackground(j, camX);
 				}
 			}
+			*/
 		}
 		
 		public function addBackground(id:int, camX:Number):void
