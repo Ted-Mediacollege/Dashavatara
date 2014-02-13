@@ -8,10 +8,13 @@ package myth.gui.game
 	import myth.gui.background.GuiBackground;
 	import myth.world.WorldBackground;
 	import myth.util.ScaleHelper;
+	import myth.world.WorldTiles;
 
 	public class GuiOptions extends GuiScreen
 	{
-		public var test:WorldBackground;
+		//public var test:WorldBackground;
+		public var test:WorldTiles;
+		public var pos:Number = 0;
 		
 		public function GuiOptions() 
 		{
@@ -28,10 +31,16 @@ package myth.gui.game
 			
 			
 			
-			test = new WorldBackground();
+			//test = new WorldBackground();
+			//addChild(test);
+			//test.build(0);
+			
+			
+			var v:Vector.<int> = new Vector.<int>();
+			v.push(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+			test = new WorldTiles(TextureList.atlas_background.getTextures("water"), v);
 			addChild(test);
 			test.build(0);
-			
 			
 			
 			var b:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
@@ -39,7 +48,8 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			test.tick(0);
+			pos += 1;
+			test.tick(pos);
 		}
 		
 		override public function action(b:GuiButton):void 
