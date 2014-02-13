@@ -12,8 +12,6 @@ package myth.background
 		
 		public function Background(t:Texture, px:Number, py:Number, pz:Number, i:int) 
 		{
-			trace(px);
-			
 			image = new Image(t);
 			image.x = px;
 			image.y = py;

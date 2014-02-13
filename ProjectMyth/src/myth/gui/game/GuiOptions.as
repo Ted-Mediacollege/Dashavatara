@@ -30,9 +30,7 @@ package myth.gui.game
 			
 			test = new WorldBackground();
 			addChild(test);
-			test.build(5);
-			test.scaleX = ScaleHelper.scaleX;
-			test.scaleY = ScaleHelper.scaleY;
+			test.build(0);
 			
 			
 			
@@ -41,7 +39,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			test.tick(5);
+			test.tick(0);
 		}
 		
 		override public function action(b:GuiButton):void 
