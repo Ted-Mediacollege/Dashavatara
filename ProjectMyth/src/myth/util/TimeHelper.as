@@ -6,7 +6,8 @@ package myth.util
 	 */
 	public class TimeHelper
 	{
-		public static var deltatime:Number = 1/60;
+		public static var deltaTime:Number = 1/60;
+		public static var deltaTimeScale:Number = 1;
 		private static var oldTime:Number = 0;
 		private static var newTime:Number = 0;
 		private static var CurrentDateTime:Date;
@@ -16,7 +17,8 @@ package myth.util
 			CurrentDateTime = new Date();
 			oldTime = newTime;
 			newTime = CurrentDateTime.time;
-			deltatime = (newTime -oldTime)/1000;
+			deltaTime = (newTime -oldTime)/1000;
+			deltaTimeScale = (newTime -oldTime)*0.06;
 		}
 		
 	}

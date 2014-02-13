@@ -1,11 +1,14 @@
 package myth.world 
 {
+	import myth.entity.bullet.EntityBulletBase;
+	import myth.entity.bullet.EntityBulletClaw;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.enemy.EnemyType;
 	import myth.entity.enemy.EntityEnemyWalking;
 	import starling.display.Sprite;
 	import myth.util.ScaleHelper;
 	import myth.util.MathHelper;
+	import myth.entity.bullet.BulletType;
 	/**
 	 * ...
 	 * @author Kit van de Bunt
@@ -14,12 +17,13 @@ package myth.world
 	{
 		private var data:Vector.<Vector.<int>>;
 		public var enemyList:Vector.<EntityEnemyBase> = new Vector.<EntityEnemyBase>;
+		public var bulletList:Vector.<EntityBulletBase> = new Vector.<EntityBulletBase>;
 		
 		public function WorldEntityManager(_data:Vector.<Vector.<int>> = null):void {
 			data = _data;
 		}
 		
-		public function makeEnemy( type :int, xPos:int,yPos:int) :void
+		public function makeEnemy( type:int,xPos:int,yPos:int) :void
 		{
 			var enemy : EntityEnemyBase;
 			if(type == EnemyType.Walking_01){
@@ -31,12 +35,25 @@ package myth.world
 			}
 			enemy.x = xPos;
 			enemy.y = yPos;
-			addToList(enemy);
+			enemyList.push(enemy);
 			addChild(enemy);
 		}
 		
-		private function addToList(e:EntityEnemyBase):void {
-			enemyList.push(e);
+		public function makeBullet( type :Number, xPos:Number,yPos:Number, xDest:Number, yDest:Number) :void
+		{
+			var angle:Number;
+			angle = MathHelper.pointToRadian(xPos, xDest, yPos, yDest);
+			var newBullet : EntityBulletBase;
+			if(type == BulletType.Claw){
+				newBullet = new EntityBulletClaw();
+			}else if(type == BulletType.Arrow){
+				newBullet = new EntityBulletClaw();
+			}
+			newBullet.x = xPos;
+			newBullet.y = yPos;
+			newBullet.rotation = angle;
+			bulletList.push(newBullet);
+			addChild(newBullet);
 		}
 		
 		private function removeEnemy(e:EntityEnemyBase, number:int):void {
@@ -54,6 +71,11 @@ package myth.world
 			//makeEnemy(EnemyType.Walking_01, 1000,600);
 			for (var i:int = 0; i < enemyList.length; i++) {
 				enemyList[i].x -= speed;
+				enemyList[i].tick();
+			}
+			for (var j:int = 0; j < bulletList.length; j++) {
+				bulletList[j].x -= speed;
+				bulletList[j].tick();
 			}
 		}
 		

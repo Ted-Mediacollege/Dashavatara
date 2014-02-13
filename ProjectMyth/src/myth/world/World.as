@@ -1,7 +1,6 @@
 package myth.world 
 {
 	import flash.events.Event;
-	import flash.filesystem.File;
 	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.player.EntityPlayer02;
@@ -36,14 +35,13 @@ package myth.world
 		private var enemyData:Vector.<Vector.<int>>;
 		
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
-		private var player:EntityPlayerBase;
+		public var player:EntityPlayerBase;
 		private var distance:Number = 0;
-		private var speed:Number = 0.2;
-		private var enemyManager:WorldEntityManager;
+		private var speed:Number = 1;
+		public var enemyManager:WorldEntityManager;
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();
-		public var touchZone:Shape = new Shape();
 		
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
@@ -57,7 +55,7 @@ package myth.world
 			
 			lvlName = levelName;
 			loadJSON();
-			speed = speed * 60;
+			speed = speed;
 			//player
 			players[0] = new EntityPlayer01();
 			players[1] = new EntityPlayer02();
@@ -71,22 +69,11 @@ package myth.world
 			//debug
 			addChild(debugShape);
 			
-			//touch
-			addEventListener(TouchEvent.TOUCH,touch);
-			/*touchZone.graphics.clear();
-			touchZone.graphics.lineStyle(5, 0x00ff00, 0.7);
-			touchZone.graphics.drawRect(0,0,ScaleHelper.screenX,ScaleHelper.screenY);
-			touchZone.graphics.endFill();
-			addChild(touchZone);*/
-			
-			touchZone.graphics.lineStyle(5, 0x00ff00, 0.7);
-			touchZone.graphics.drawRect(0, 0, 600, 600);
-			touchZone.graphics.endFill();
-			//addChild(debugShape2);
+			addChild(debugShape2);
 		}
 		
 		public function onRemove():void {
-			removeEventListener(TouchEvent.TOUCH,touch);
+			
 		}
 		
 		private function loadJSON():void {
@@ -113,31 +100,13 @@ package myth.world
 		//LOOP
 		public function tick():void
 		{
-			distance += speed;
+			distance += speed*TimeHelper.deltaTimeScale;
 			tiles.tick(distance);
 			enemyManager.move(speed,distance);
 			var damage:int = enemyManager.checkHit(player.x, player.y);
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
-		}
-		
-		public function touch(e:TouchEvent):void {
-			var touchCount:int =  e.touches.length;
-			//draw point
-			Debug.test(function():void { 
-				debugShape.graphics.clear();
-				debugShape.graphics.beginFill(0x000000, 0.2);
-				debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
-				debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.world).x,e.touches[0].getLocation(Main.world).y,20);
-				debugShape.graphics.endFill();
-			}, Debug.DrawArracks);
-			for (var i:int = 0; i < touchCount; i++) 
-			{
-				if (e.touches[i].phase == TouchPhase.BEGAN) {
-					//trace("b");
-				}
-			}
 		}
 		
 		private var currentPlayer:int = 0;
@@ -158,22 +127,17 @@ package myth.world
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{	
-			//trace("touch");
 			player.input(type, data, e);
-			if (type == TouchType.CLICK)
-			{
-				//switchAvatar();
-				//data vector = startX, startY, endX, endY
-			}
-			else if (type == TouchType.SWIPE)
-			{
-				//data vector = posX, posY, movedX, movedY
-				//trace("swipe  posX" + data[0] + " posY" + data[1] + " - moveX" + data[2] + " moveY" + data[3]);
-			}
-			else if (type == TouchType.ZOOM)
-			{
-				//data vector = zoom
-			}
+			
+			var touchCount:int =  e.touches.length;
+			//draw point
+			Debug.test(function():void { 
+				debugShape.graphics.clear();
+				debugShape.graphics.beginFill(0x000000, 0.2);
+				debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
+				debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.world).x,e.touches[0].getLocation(Main.world).y,20);
+				debugShape.graphics.endFill();
+			}, Debug.DrawArracks);
 		}
 	}
 }

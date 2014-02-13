@@ -7,5 +7,9 @@ package myth.entity
 		{
 			
 		}
+		
+		public function tick():void {
+			
+		}
 	}
 }

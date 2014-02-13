@@ -1,5 +1,6 @@
 package myth.util
 {
+	import flash.geom.Point;
 	public class MathHelper 
 	{
 		public static function nextInt(max:int):int 
@@ -51,5 +52,18 @@ package myth.util
 		{
    			return Math.atan2((y2 - y1), (x2 - x1)) * 180 / Math.PI;
   		}
+		
+		public static function pointToRadian(orginX:Number, PointX:Number, orginY:Number, PointY:Number):Number 
+		{
+   			return (Math.atan2((orginX - PointX), (PointY - orginY))+Math.PI);
+  		}
+		
+		public static function RadianToDirection(angle:Number, length:Number):Point
+		{
+			var direction:Point = new Point(0, 0);
+			direction.x = Math.cos(angle-(Math.PI/2)) * length;
+			direction.y = Math.sin(angle-(Math.PI/2)) * length;
+			return direction;
+		}
 	}
 }
