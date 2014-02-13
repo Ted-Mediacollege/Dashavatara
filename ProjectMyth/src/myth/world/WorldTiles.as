@@ -26,7 +26,7 @@ package myth.world
 			TILES = new Vector.<Tile>();
 			
 			waterTiles = TextureList.atlas_background.getTextures("water");
-			textures = TextureList.atlas_background.getTextures("water");
+			textures = TextureList.atlas_background.getTextures("ground");
 			data = d;
 			datalength = data.length;
 		}
@@ -110,9 +110,9 @@ package myth.world
 		{
 			switch(id)
 			{
-				//case 0: return new Tile(textures[0], px, py, pos);
-				case 0: return new TileWater(px, py, pos);
-				case 1: return new TileWater(px, py, pos);
+				case 0: return new TileDefault(textures[0], px, py, pos);
+				//case 0: return new TileWater(px, py, pos);
+				//case 1: return new TileWater(px, py, pos);
 				default: return new TileDefault(textures[0], px, py, pos);
 			}
 		}
