@@ -5,4 +5,6 @@
 	<SubTexture name="tiles02" x="512" y="0" width="512" height="390"/>;
 	<SubTexture name="tiles03" x="1024" y="0" width="512" height="390"/>;
 	<SubTexture name="tiles04" x="1536" y="0" width="512" height="390"/>;
+	
+	<SubTexture name="water" x="0" y="0" width="128" height="128"/>;
 </TextureAtlas>

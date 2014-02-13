@@ -75,7 +75,7 @@ package myth.background
 			{
 				//flatten();
 				changed = false;
-				trace("FLATTEN");
+				//trace("FLATTEN");
 			}
 		}
 		
@@ -89,7 +89,7 @@ package myth.background
 					{
 						//unflatten();
 						changed = true;
-						trace("UNFLATTEN");
+						//trace("UNFLATTEN");
 					}
 					
 					var b:Background = new Background(textures[data[id]], id * textureSize, 0, 1, id);
