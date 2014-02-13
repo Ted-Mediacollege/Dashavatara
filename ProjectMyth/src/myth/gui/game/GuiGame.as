@@ -3,8 +3,10 @@ package myth.gui.game
 	import myth.gui.GuiScreen;
 	import myth.Main;
 	import myth.world.World;
+	import starling.display.Image;
 	import starling.events.TouchEvent;
 	import myth.gui.background.GuiBackground;
+	import myth.graphics.TextureList;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -15,7 +17,7 @@ package myth.gui.game
 		
 		override public function init():void
 		{
-			var bg:GuiBackground = new GuiBackground();
+			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
 			addChild(bg);
 			
 			Main.world = new World(this, "level_1");
