@@ -35,15 +35,13 @@ package myth.gui.components
 		
 		public function GuiButton(id:int, a:Texture, px:Number, py:Number, pw:Number, ph:Number, t:String, s:int = 15, c:uint = 0x000000, f:String = "Arial") 
 		{
-			x = ScaleHelper.tX(px);
-			y = ScaleHelper.tY(py);
-			scaleX = ScaleHelper.scaleX;
-			scaleY = ScaleHelper.scaleY;
+			x = px;
+			y = py;
 			
-			posX = ScaleHelper.tX(px);
-			posY = ScaleHelper.tY(py);
-			posWidth = ScaleHelper.tX(pw);
-			posHeight = ScaleHelper.tY(ph);
+			posX = px;
+			posY = py;
+			posWidth = pw;
+			posHeight = ph;
 			
 			image = new Image(a);
 			image.pivotX = image.width / 2;
@@ -54,8 +52,8 @@ package myth.gui.components
 			buttonText = new TextField(posWidth, posHeight, t, f, s, c);
 			buttonText.hAlign = "center";
 			buttonText.vAlign = "center";
-			buttonText.x = -(image.width / 2 * ScaleHelper.scaleX);
-			buttonText.y = -(image.height / 2 * ScaleHelper.scaleY);
+			buttonText.x = -(image.width / 2);
+			buttonText.y = -(image.height / 2);
 			addChild(buttonText);
 		}
 		

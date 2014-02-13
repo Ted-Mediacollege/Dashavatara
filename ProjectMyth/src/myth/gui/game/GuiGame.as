@@ -22,6 +22,11 @@ package myth.gui.game
 			Main.world.tick();
 		}
 		
+		override public function input(type:int, data:Vector.<Number>):void 
+		{
+			Main.world.input(type, data);
+		}
+		
 		override public function destroy():void
 		{
 			removeChild(Main.world);

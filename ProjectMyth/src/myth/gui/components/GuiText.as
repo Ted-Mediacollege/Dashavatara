@@ -22,10 +22,8 @@ package myth.gui.components
 		
 		public function GuiText(px:Number, py:Number, w:Number, h:Number, aH:String, aV:String, t:String, s:int = 15, c:uint = 0x000000, f:String = "Arial") 
 		{
-			x = ScaleHelper.tX(px);
-			y = ScaleHelper.tY(py);
-			scaleX = ScaleHelper.scaleX;
-			scaleY = ScaleHelper.scaleY;
+			x = px;
+			y = py;
 			
 			text = new TextField(w, h, t, f, s, c);
 			text.hAlign = aH;

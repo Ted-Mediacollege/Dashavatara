@@ -10,8 +10,6 @@ package myth.gui.background
 		public function GuiBackground() 
 		{
 			var bg:Image = new Image(TextureList.atlas_gui_background.getTexture("background"));
-			bg.scaleX = ScaleHelper.scaleX;
-			bg.scaleY = ScaleHelper.scaleY;
 			addChild(bg);
 		}	
 	}
