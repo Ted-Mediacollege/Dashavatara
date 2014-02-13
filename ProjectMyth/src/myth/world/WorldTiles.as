@@ -1,9 +1,12 @@
 package myth.world 
 {
+	import flash.events.TimerEvent;
+	import myth.tile.TileWater;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 	import myth.util.ScaleHelper;
 	import myth.tile.Tile;
+	import myth.tile.TileDefault;
 	import myth.graphics.TextureList;
 
 	public class WorldTiles extends Sprite
@@ -13,14 +16,19 @@ package myth.world
 		
 		public var textures:Vector.<Texture>;
 		public var data:Vector.<int>;
+		public var datalength:int;
 		public var textureSize:Number = 127;
+		
+		public static var waterTiles:Vector.<Texture>;
 		
 		public function WorldTiles(d:Vector.<int>) 
 		{
 			TILES = new Vector.<Tile>();
 			
-			textures = TextureList.atlas_background.getTextures("water");
+			waterTiles = TextureList.atlas_background.getTextures("water");
+			textures = TextureList.atlas_background.getTextures("ground");
 			data = d;
+			datalength = data.length;
 		}
 		
 		public function build(camX:Number):void
@@ -72,7 +80,7 @@ package myth.world
 			
 			if (changed)
 			{
-				//flatten();
+				flatten();
 				changed = false;
 				//trace("FLATTEN");
 			}
@@ -86,16 +94,37 @@ package myth.world
 				{
 					if (!changed)
 					{
-						//unflatten();
+						unflatten();
 						changed = true;
 						//trace("UNFLATTEN");
 					}
 					
-					var t:Tile = new Tile(textures[data[id]], id * textureSize, 768 - 128, id);
+					var t:Tile = getTileFromData(data[id], id * textureSize, 768 - 128, id);
 					TILES.push(t);
 					addChild(t);
 				}
 			}
+		}
+		
+		public function getTileFromData(id:int, px:Number, py:Number, pos:int):Tile
+		{
+			switch(id)
+			{
+				case 0: return new TileDefault(textures[0], px, py, pos);
+				//case 0: return new TileWater(px, py, pos);
+				//case 1: return new TileWater(px, py, pos);
+				default: return new TileDefault(textures[0], px, py, pos);
+			}
+		}
+		
+		public function getTileAt(distance:Number):int
+		{
+			var pos:int = int(distance / textureSize);
+			if (pos > -1 && pos < datalength)
+			{
+				return data[pos];
+			}
+			return 0;
 		}
 	}
 }

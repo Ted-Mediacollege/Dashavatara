@@ -6,6 +6,7 @@ package myth.gui.game
 	import myth.gui.components.GuiButton;
 	import myth.input.TouchType;
 	import myth.graphics.TextureList;
+	import starling.display.Image;
 
 	public class GuiMainMenu extends GuiScreen
 	{
@@ -17,6 +18,11 @@ package myth.gui.game
 		{ 
 			var bg:GuiBackground = new GuiBackground();
 			addChild(bg);
+			
+			var logo:Image = new Image(TextureList.atlas_gui.getTexture("logo_menu"));
+			logo.pivotX = 250;
+			logo.x = 640;
+			addChild(logo);
 			
 			var t:GuiText = new GuiText(20, 20, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);

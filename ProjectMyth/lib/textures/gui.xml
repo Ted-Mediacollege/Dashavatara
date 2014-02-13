@@ -2,4 +2,5 @@
 
 <TextureAtlas imagePath="gui.png">
 	<SubTexture name="button_small" x="5" y="5" width="450" height="100"/>;
+	<SubTexture name="logo_menu" x="8" y="109" width="496" height="179"/>;
 </TextureAtlas>
