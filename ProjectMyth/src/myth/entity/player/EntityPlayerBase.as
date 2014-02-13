@@ -2,6 +2,8 @@ package myth.entity.player
 {
 	import myth.entity.Entity;
 	import starling.display.Image;
+	import starling.events.TouchEvent;
+	import myth.input.TouchType;
 	/**
 	 * ...
 	 * @author Kit van de bunt
@@ -14,6 +16,10 @@ package myth.entity.player
 		
 		
 		public function EntityPlayerBase(_canAttack:Boolean,_canSwim:Boolean,_canJump:Boolean) {
+			
+		}
+		
+		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
 			
 		}
 		

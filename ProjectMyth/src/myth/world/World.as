@@ -2,9 +2,9 @@ package myth.world
 {
 	import flash.events.Event;
 	import flash.filesystem.File;
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
 	import flash.utils.ByteArray;
+	import myth.entity.enemy.EntityEnemyBase;
+	import myth.entity.player.EntityPlayer02;
 	import myth.gui.GuiScreen;
 	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
@@ -26,25 +26,22 @@ package myth.world
 	{
 		public var gui:GuiScreen;
 		
-		//[Embed(source = "../../../lib/XMLData/levels.xml" , mimeType="application/octet-stream")]
-		[Embed(source="../../../lib/XMLData/levels.xml" , mimeType="application/octet-stream")]
-		private var levelData:Class;
-		
 		[Embed(source = "../../../lib/JSONData/levels.json", mimeType = "application/octet-stream")]
 		private var levelData2:Class;
 		
 		private var jsonLevel:Object;
-		private var json:URLLoader;
 		private var lvlName:String;
 		private var enemyData:Vector.<Vector.<int>>;
 		
-		private var player1:EntityPlayerBase;
+		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
+		private var player:EntityPlayerBase;
 		private var distance:Number = 0;
 		private var speed:Number = 0.2;
 		private var enemyManager:WorldEntityManager;
 		
 		private var debugShape:Shape = new Shape();
-		private var touchZone:Shape = new Shape();
+		public var debugShape2:Shape = new Shape();
+		public var touchZone:Shape = new Shape();
 		
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
@@ -52,18 +49,20 @@ package myth.world
 			
 			lvlName = levelName;
 			loadJSON();
-			loadXML();
 			speed = speed * 60;
 			//player
-			player1 = new EntityPlayer01();
-			player1.x = 100;
-			player1.y = 600;
-			addChild(player1);
+			players[0] = new EntityPlayer01();
+			players[1] = new EntityPlayer02();
+			player = players[0];
+			player.x = 100;
+			player.y = 600;
+			addChild(player);
 			//enemies
 			enemyManager = new WorldEntityManager(enemyData);
 			addChild(enemyManager);
 			//debug
 			addChild(debugShape);
+			
 			//touch
 			addEventListener(TouchEvent.TOUCH,touch);
 			touchZone.graphics.clear();
@@ -71,6 +70,11 @@ package myth.world
 			touchZone.graphics.drawRect(0,0,ScaleHelper.screenX,ScaleHelper.screenY);
 			touchZone.graphics.endFill();
 			addChild(touchZone);
+			
+			touchZone.graphics.lineStyle(5, 0x00ff00, 0.7);
+			touchZone.graphics.drawRect(0, 0, 600, 600);
+			touchZone.graphics.endFill();
+			//addChild(debugShape2);
 		}
 		
 		public function onRemove():void {
@@ -96,24 +100,6 @@ package myth.world
 			{
 				enemyData[i] = new <int>[ levelData.enemies[i].type, levelData.enemies[i].spawnX, levelData.enemies[i].spawnY ]
 			}
-			//enemyData = 
-			
-		}
-		
-		private function loadXML():void {
-			var xml:ByteArray = new levelData();
-			var xmlString:String = xml.readUTFBytes(xml.length);
-			var levelsXML:XML = new XML(xmlString);
-			if (levelsXML){
-				var levelData:XML;
-				for each (var level:XML in levelsXML.Level){
-					if (level.attribute("name") == lvlName) {
-						levelData=level;
-					}
-				}
-				var levelNameDisplay:TextField = new TextField(200, 200, "xml: "+levelData.attribute("name"),"Verdana", 20, 0xffffff);
-				addChild(levelNameDisplay);
-			}
 		}
 		
 		//LOOP
@@ -121,41 +107,59 @@ package myth.world
 		{
 			distance += speed;
 			enemyManager.move(speed,distance);
-			var damage:int = enemyManager.checkHit(player1.x, player1.y);
+			var damage:int = enemyManager.checkHit(player.x, player.y);
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
 		}
 		
-		public function touch(t:TouchEvent):void {
-			var touchCount:int =  t.touches.length;
+		public function touch(e:TouchEvent):void {
+			var touchCount:int =  e.touches.length;
 			//draw point
 			Debug.test(function():void { 
 				debugShape.graphics.clear();
 				debugShape.graphics.beginFill(0x000000, 0.2);
 				debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
-				debugShape.graphics.drawCircle(t.touches[0].getLocation(Main.world).x,t.touches[0].getLocation(Main.world).y,5);
+				debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.world).x,e.touches[0].getLocation(Main.world).y,20);
 				debugShape.graphics.endFill();
 			}, Debug.DrawArracks);
 			for (var i:int = 0; i < touchCount; i++) 
 			{
-				if (t.touches[i].phase == TouchPhase.BEGAN) {
+				if (e.touches[i].phase == TouchPhase.BEGAN) {
 					//trace("b");
 				}
 			}
 		}
 		
+		private var currentPlayer:int = 0;
+		private function switchAvatar():void {
+			removeChild(player);
+			if (currentPlayer==1) {
+				player = players[0];
+				currentPlayer = 0;
+			}else {
+				player = players[1];
+				currentPlayer = 1;
+			}
+			trace("switch "+currentPlayer+" "+distance);
+			player.x = 100;
+			player.y = 600;
+			addChild(player);
+		}
+		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{	
-			trace("touch");
+			//trace("touch");
+			player.input(type, data, e);
 			if (type == TouchType.CLICK)
 			{
+				//switchAvatar();
 				//data vector = startX, startY, endX, endY
 			}
 			else if (type == TouchType.SWIPE)
 			{
 				//data vector = posX, posY, movedX, movedY
-				trace("swipe  posX" + data[0] + " posY" + data[1] + " - moveX" + data[2] + " moveY" + data[3]);
+				//trace("swipe  posX" + data[0] + " posY" + data[1] + " - moveX" + data[2] + " moveY" + data[3]);
 			}
 			else if (type == TouchType.ZOOM)
 			{
