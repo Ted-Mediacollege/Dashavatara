@@ -55,7 +55,7 @@ package myth.entity.player
 				var distDraw:Number = MathHelper.dis2(data[2], data[3], data[0], data[1]);
 				if (distPlayer < 50 && distDraw > 100) {
 					//Main.world.enemyManager.makeBullet(0,data[0], data[1],data[2],data[3]);
-					Main.world.enemyManager.makeBullet(0,Main.world.player.x, Main.world.player.y,data[2],data[3]);
+					Main.world.entityManager.makeBullet(0,Main.world.player.x, Main.world.player.y,data[2],data[3]);
 				}
 			}
 		}

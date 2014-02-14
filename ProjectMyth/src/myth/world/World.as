@@ -33,12 +33,13 @@ package myth.world
 		private var jsonLevel:Object;
 		private var lvlName:String;
 		private var enemyData:Vector.<Vector.<int>>;
+		private var tileData:Vector.<int>;
 		
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
 		private var distance:Number = 0;
 		private var speed:Number = 1;
-		public var enemyManager:WorldEntityManager;
+		public var entityManager:WorldEntityManager;
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();
@@ -46,12 +47,6 @@ package myth.world
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
 			gui = g;
-			
-			var v:Vector.<int> = new Vector.<int>();
-			v.push(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-			tiles = new WorldTiles(v);
-			addChild(tiles);
-			tiles.build(0);
 			
 			lvlName = levelName;
 			loadJSON();
@@ -62,13 +57,18 @@ package myth.world
 			player = players[0];
 			player.x = 100;
 			player.y = 600;
+			//entityManager
+			entityManager = new WorldEntityManager(enemyData);
+			//tiles
+			tiles = new WorldTiles(tileData);
+			tiles.build(0);
+			
+			//add childs
 			addChild(player);
-			//enemies
-			enemyManager = new WorldEntityManager(enemyData);
-			addChild(enemyManager);
+			addChild(tiles);
+			addChild(entityManager);
 			//debug
 			addChild(debugShape);
-			
 			addChild(debugShape2);
 		}
 		
@@ -77,6 +77,7 @@ package myth.world
 		}
 		
 		private function loadJSON():void {
+			var i:int;
 			var json:ByteArray = new levelData2();
 			var jsonString:String = json.readUTFBytes(json.length);
 			jsonLevel = JSON.parse(jsonString);
@@ -88,12 +89,18 @@ package myth.world
 			}
 			var levelNameDisplay:TextField = new TextField(200, 400, "json: " + levelData.name, "Verdana", 20, 0xffffff);
 			addChild(levelNameDisplay);
-			//set enemy data in array
+			//set enemy data in vector
 			trace(levelData.enemies.length);
 			enemyData = new Vector.<Vector.<int>>(levelData.enemies.length);
-			for (var i:int = 0; i < levelData.enemies.length; i++) 
+			for (i = 0; i < levelData.enemies.length; i++) 
 			{
-				enemyData[i] = new <int>[ levelData.enemies[i].type, levelData.enemies[i].spawnX, levelData.enemies[i].spawnY ]
+				enemyData[i] = new <int>[ levelData.enemies[i].type, levelData.enemies[i].spawnX, levelData.enemies[i].spawnY ];
+			}
+			//set tile data in vector
+			tileData = new Vector.<int>(levelData.tiles.length);
+			for (i = 0; i < levelData.tiles.length; i++) 
+			{
+				tileData[i] = levelData.tiles[i].type as int;
 			}
 		}
 		
@@ -102,8 +109,8 @@ package myth.world
 		{
 			distance += speed*TimeHelper.deltaTimeScale;
 			tiles.tick(distance);
-			enemyManager.move(speed,distance);
-			var damage:int = enemyManager.checkHit(player.x, player.y);
+			entityManager.move(speed,distance);
+			var damage:int = entityManager.checkHit(player.x, player.y);
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
