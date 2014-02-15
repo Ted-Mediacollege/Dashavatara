@@ -38,7 +38,7 @@ package myth.world
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
 		private var distance:Number = 0;
-		private var speed:Number = 1;
+		private var speed:Number;
 		public var entityManager:WorldEntityManager;
 		
 		private var debugShape:Shape = new Shape();
@@ -50,13 +50,12 @@ package myth.world
 			
 			lvlName = levelName;
 			loadJSON();
-			speed = speed;
 			//player
 			players[0] = new EntityPlayer01();
 			players[1] = new EntityPlayer02();
 			player = players[0];
-			player.x = 100;
-			player.y = 600;
+			player.x = 200;
+			player.y = 552;
 			//entityManager
 			entityManager = new WorldEntityManager(enemyData);
 			//tiles
@@ -89,8 +88,10 @@ package myth.world
 			}
 			var levelNameDisplay:TextField = new TextField(200, 400, "json: " + levelData.name, "Verdana", 20, 0xffffff);
 			addChild(levelNameDisplay);
+			//set level speed
+			speed = levelData.speed;
 			//set enemy data in vector
-			trace(levelData.enemies.length);
+			//trace(levelData.enemies.length);
 			enemyData = new Vector.<Vector.<int>>(levelData.enemies.length);
 			for (i = 0; i < levelData.enemies.length; i++) 
 			{
@@ -118,6 +119,8 @@ package myth.world
 		
 		private var currentPlayer:int = 0;
 		private function switchAvatar():void {
+			var playerPosX:int = player.x;
+			var playerPosY:int = player.y;
 			removeChild(player);
 			if (currentPlayer==1) {
 				player = players[0];
@@ -127,8 +130,8 @@ package myth.world
 				currentPlayer = 1;
 			}
 			trace("switch "+currentPlayer+" "+distance);
-			player.x = 100;
-			player.y = 600;
+			player.x = playerPosX;
+			player.y = playerPosY;
 			addChild(player);
 		}
 		

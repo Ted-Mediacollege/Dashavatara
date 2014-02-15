@@ -13,7 +13,7 @@ package myth.entity.bullet
 		public var image:Image;
 		public function EntityBulletClaw() 
 		{
-			super(30);
+			super(25);
 			image = new Image(TextureList.atlas_player.getTexture("bullet_1"));
 			addChild(image);
 		}

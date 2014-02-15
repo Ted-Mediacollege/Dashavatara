@@ -18,15 +18,23 @@ package myth.entity.player
 	public class EntityPlayer01 extends EntityPlayerBase
 	{
 		public var image:Image;
+		public var startShootRadius:int = 150;
+		public var startShootXDisplace:int = -50;
+		public var startShootYDisplace:int = 0;
 		private var debugShape:Shape = new Shape();
 		public function EntityPlayer01() 
 		{
 			super(true, false, true );
-			image = new Image(TextureList.atlas_player.getTexture("player_1"));
+			image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;
 			addChild(image);
 			addChild(debugShape);
+			Debug.test(function():void { 
+				//draw start attack circle
+				debugShape.graphics.lineStyle(10, 0x00ff00, 0.3);
+				debugShape.graphics.drawCircle(startShootXDisplace, startShootYDisplace, startShootRadius);
+			}, Debug.DrawArracks);
 		}
 		
 		private var beginX:int;
@@ -51,11 +59,12 @@ package myth.entity.player
 					Main.world.debugShape2.graphics.endFill();
 				}, Debug.DrawArracks);
 				//spawn bullet
-				var distPlayer:Number = MathHelper.dis2(Main.world.player.x, Main.world.player.y, data[0], data[1]);
+				var distPlayerStart:Number = MathHelper.dis2(Main.world.player.x+startShootXDisplace, Main.world.player.y+startShootYDisplace, data[0], data[1]);
+				var distPlayerEnd:Number = MathHelper.dis2(Main.world.player.x+startShootXDisplace, Main.world.player.y+startShootYDisplace, data[2], data[3]);
 				var distDraw:Number = MathHelper.dis2(data[2], data[3], data[0], data[1]);
-				if (distPlayer < 50 && distDraw > 100) {
+				if (distPlayerStart < startShootRadius && distDraw > 100 && distPlayerEnd > startShootRadius) {
 					//Main.world.enemyManager.makeBullet(0,data[0], data[1],data[2],data[3]);
-					Main.world.entityManager.makeBullet(0,Main.world.player.x, Main.world.player.y,data[2],data[3]);
+					Main.world.entityManager.makeBullet(0,Main.world.player.x, Main.world.player.y-40,data[2],data[3]);
 				}
 			}
 		}

@@ -6,6 +6,7 @@ package myth.world
 	import myth.entity.bullet.EntityBulletClaw;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.enemy.EnemyType;
+	import myth.entity.enemy.EntityEnemyFlying;
 	import myth.entity.enemy.EntityEnemyWalking;
 	import starling.display.Sprite;
 	import myth.util.ScaleHelper;
@@ -33,7 +34,7 @@ package myth.world
 			}else if(type == EnemyType.Walking_02){
 				enemy = new EntityEnemyWalking();
 			}else if(type == EnemyType.Flying_01){
-				enemy = new EntityEnemyWalking();
+				enemy = new EntityEnemyFlying();
 			}
 			enemy.x = xPos;
 			enemy.y = yPos;
@@ -71,9 +72,12 @@ package myth.world
 		//tick
 		public function move(speed:int , dist:Number):void {
 			if (data.length > 0) {
-				if (data[0][1] < dist) {
-					makeEnemy(data[0][0], 1000, data[0][2]);
+				while(data[0][1] < dist) {
+					makeEnemy(data[0][0], 1400, data[0][2]);
 					data.splice(0, 1);
+					if (data.length < 1) {
+						break;
+					}
 				}
 			}
 			//makeEnemy(EnemyType.Walking_01, 1000,600);
@@ -117,7 +121,7 @@ package myth.world
 			for (i = 0; i < enemyList.length; i++) {
 				for (j = 0; j < bulletList.length; j++) {
 					rectBullet = new Rectangle(bulletList[j].x, bulletList[j].y, bulletList[j].width, bulletList[j].height);
-					rectEnemy = new Rectangle(enemyList[i].x, enemyList[i].y, enemyList[i].width, enemyList[i].height);
+					rectEnemy = enemyList[i].getRect();
 					var hit:Boolean = rectBullet.intersects(rectEnemy);
 					if (hit) {
 						removeBullet(bulletList[j], j);
