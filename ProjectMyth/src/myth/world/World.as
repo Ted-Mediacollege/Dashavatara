@@ -25,7 +25,7 @@ package myth.world
 	{
 		public var gui:GuiScreen;
 		
-		public var tiles:WorldTiles;
+		public var tiles:WorldTiles2;
 		
 		[Embed(source = "../../../lib/JSONData/levels.json", mimeType = "application/octet-stream")]
 		private var levelData2:Class;
@@ -59,7 +59,7 @@ package myth.world
 			//entityManager
 			entityManager = new WorldEntityManager(enemyData);
 			//tiles
-			tiles = new WorldTiles(tileData);
+			tiles = new WorldTiles2(tileData);
 			tiles.build(0);
 			
 			//add childs

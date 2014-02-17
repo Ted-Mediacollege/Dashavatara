@@ -1,7 +1,8 @@
 package myth.tile 
 {
 	import starling.display.MovieClip;
-	import myth.world.WorldTiles;
+	import myth.world.WorldTiles2;
+	import starling.core.Starling;
 	
 	public class TileWater extends Tile
 	{		
@@ -11,11 +12,14 @@ package myth.tile
 		{
 			super(i);
 			
-			movieclip = new MovieClip(WorldTiles.waterTiles);
+			movieclip = new MovieClip(WorldTiles2.waterTiles);
 			movieclip.x = px;
 			movieclip.y = py;
-			//movieclip.fps = 5;
+			movieclip.fps = 10;
+			movieclip.play();
 			addChild(movieclip);
+			
+			//Starling.juggler.add(movieclip);
 			
 			id = i;
 		}	
