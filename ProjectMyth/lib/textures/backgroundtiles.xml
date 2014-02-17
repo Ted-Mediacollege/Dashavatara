@@ -6,9 +6,12 @@
 	<SubTexture name="tiles03" x="1024" y="0" width="512" height="390"/>;
 	<SubTexture name="tiles04" x="1536" y="0" width="512" height="390"/>;
 	
-	<SubTexture name="water1" x="0" y="0" width="128" height="128"/>;
-	<SubTexture name="water2" x="128" y="0" width="128" height="128"/>;
+	<!--
+	<SubTexture name="water1" x="384" y="0" width="128" height="128"/>;
+	<SubTexture name="water2" x="256" y="0" width="128" height="128"/>;
+	<SubTexture name="water3" x="128" y="0" width="128" height="128"/>;
+	<SubTexture name="water4" x="0" y="0" width="128" height="128"/>;-->
 	<SubTexture name="water3" x="256" y="0" width="128" height="128"/>;
-	<SubTexture name="water4" x="384" y="0" width="128" height="128"/>;
+	
 	<SubTexture name="ground" x="512" y="0" width="128" height="128"/>;
 </TextureAtlas>

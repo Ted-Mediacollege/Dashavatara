@@ -22,6 +22,7 @@ package myth
 			ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
 			
 			starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+			starling.showStats = true;
 			starling.start();
 		}
 		
