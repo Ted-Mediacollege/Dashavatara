@@ -12,10 +12,11 @@ package myth.entity.enemy
 		public function EntityEnemyFlying() 
 		{
 			var img:Image = new Image(TextureList.atlas_player.getTexture("player_1"));
-			super(EnemyType.Walking_01,img);
+			super(EnemyType.Flying_01,img);
 		}
 		
 		override public function tick():void {
+			super.tick();
 			rotateToPlayer();
 			moveToPlayer();
 		}
@@ -25,8 +26,8 @@ package myth.entity.enemy
 		}
 		
 		private function moveToPlayer():void {
-			this.x += MathHelper.RadianToDirection(this.rotation, 2).x;
-			this.y += MathHelper.RadianToDirection(this.rotation, 2).y;
+			this.x += MathHelper.RadianToDirection(this.rotation, 3).x;
+			this.y += MathHelper.RadianToDirection(this.rotation, 3).y;
 		}
 	}
 

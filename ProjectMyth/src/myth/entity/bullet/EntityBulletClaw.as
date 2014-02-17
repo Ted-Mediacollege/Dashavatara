@@ -15,10 +15,13 @@ package myth.entity.bullet
 		{
 			super(25);
 			image = new Image(TextureList.atlas_player.getTexture("bullet_1"));
-			addChild(image);
+			image.pivotX = 15;
+			image.pivotY = 15;
+			artLayer.addChild(image);
 		}
 		
 		override public function tick():void {
+			super.tick();
 			//trace(MathHelper.RadianToDirection(this.rotation, speed).x);
 			this.x += MathHelper.RadianToDirection(this.rotation,speed).x*TimeHelper.deltaTimeScale;
 			this.y += MathHelper.RadianToDirection(this.rotation,speed).y*TimeHelper.deltaTimeScale;

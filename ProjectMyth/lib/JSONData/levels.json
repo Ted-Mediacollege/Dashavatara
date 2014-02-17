@@ -61,7 +61,17 @@
 	},
 	{
 		"name":"level_2",
-		"id":3
+		"id":0,
+		"speed":2,
+		"enemies":[
+			{"type":0,"spawnX":-400,"spawnY":550},
+			{"type":0,"spawnX":1200,"spawnY":550}
+		],
+		"tiles":[
+			{"type":"01"},{"type":"01"},{"type":"00"},{"type":"00"},{"type":"00"},{"type":"00"},
+			{"type":"01"},
+			{"type":"00"}
+		]
 	},
 	{
 		"name":"level_3",

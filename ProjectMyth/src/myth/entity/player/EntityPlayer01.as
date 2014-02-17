@@ -1,5 +1,6 @@
 package myth.entity.player 
 {
+	import flash.geom.Point;
 	import myth.graphics.TextureList;
 	import starling.display.Image;
 	import starling.display.Shape;
@@ -25,11 +26,12 @@ package myth.entity.player
 		public function EntityPlayer01() 
 		{
 			super(true, false, true );
+			
 			image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;
-			addChild(image);
-			addChild(debugShape);
+			artLayer.addChild(image);
+			artLayer.addChild(debugShape);
 			Debug.test(function():void { 
 				//draw start attack circle
 				debugShape.graphics.lineStyle(10, 0x00ff00, 0.3);
@@ -40,6 +42,7 @@ package myth.entity.player
 		private var beginX:int;
 		private var beginY:int;
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
+			
 			//data vector = posX, posY, movedX, movedY
 			if (e.touches[0].phase == TouchPhase.BEGAN) {
 				

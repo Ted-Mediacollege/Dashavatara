@@ -8,10 +8,12 @@ package myth.world
 	import myth.entity.enemy.EnemyType;
 	import myth.entity.enemy.EntityEnemyFlying;
 	import myth.entity.enemy.EntityEnemyWalking;
+	import myth.entity.player.EntityPlayerBase;
 	import starling.display.Sprite;
 	import myth.util.ScaleHelper;
 	import myth.util.MathHelper;
 	import myth.entity.bullet.BulletType;
+	import myth.Main;
 	/**
 	 * ...
 	 * @author Kit van de Bunt
@@ -69,18 +71,18 @@ package myth.world
 			bulletList.splice(number , 1);
 		}
 		
-		//tick
-		public function move(speed:int , dist:Number):void {
+		public function tick(speed:int , dist:Number):void {
+			//spawn enemies
 			if (data.length > 0) {
 				while(data[0][1] < dist) {
-					makeEnemy(data[0][0], 1400, data[0][2]);
+					makeEnemy(data[0][0], 1000, data[0][2]);
 					data.splice(0, 1);
 					if (data.length < 1) {
 						break;
 					}
 				}
 			}
-			//makeEnemy(EnemyType.Walking_01, 1000,600);
+			//move enemies at speed off level
 			for (var i:int = 0; i < enemyList.length; i++) {
 				enemyList[i].x -= speed;
 				enemyList[i].tick();
@@ -89,13 +91,15 @@ package myth.world
 				bulletList[j].x -= speed;
 				bulletList[j].tick();
 			}
+			
+			checkHit();
 		}
 		
 		//tick
-		public function checkHit(playerX:Number, playerY:Number):int {
+		public function checkHit():int {
 			RemoveBulletExitScreen();
-			checkBulletHitEnemy(playerX, playerY);
-			var damage:int = checkPlayerEnemyHit(playerX, playerY);
+			checkBulletHitEnemy();
+			var damage:int = checkPlayerEnemyHit();
 			return damage;
 		}
 		
@@ -113,16 +117,12 @@ package myth.world
 			}
 		}
 		
-		private function checkBulletHitEnemy(playerX:Number, playerY:Number):void {
+		private function checkBulletHitEnemy():void {
 			var i:int;
 			var j:int;
-			var rectBullet:Rectangle;
-			var rectEnemy:Rectangle;
 			for (i = 0; i < enemyList.length; i++) {
 				for (j = 0; j < bulletList.length; j++) {
-					rectBullet = new Rectangle(bulletList[j].x, bulletList[j].y, bulletList[j].width, bulletList[j].height);
-					rectEnemy = enemyList[i].getRect();
-					var hit:Boolean = rectBullet.intersects(rectEnemy);
+					var hit:Boolean = enemyList[i].collider.intersect(bulletList[j].collider);
 					if (hit) {
 						removeBullet(bulletList[j], j);
 						removeEnemy(enemyList[i], i);
@@ -132,26 +132,26 @@ package myth.world
 			}
 		}
 		
-		private function checkPlayerEnemyHit(playerX:Number, playerY:Number):int {
+		private function checkPlayerEnemyHit():int {
+			var i:int;
+			var player:EntityPlayerBase = Main.world.player;
 			var damage:int;
-			for (var i:int = 0; i < enemyList.length; i++) 
+			
+			for (i = 0; i < enemyList.length; i++) 
 			{
-				var dist:Number;
-				switch(enemyList[i].enemyType) {
-				case EnemyType.Flying_01:
-						dist = MathHelper.dis2(playerX, playerY, enemyList[i].x, enemyList[i].y);
-						if (dist < 50) {
+				var hit:Boolean = enemyList[i].collider.intersect(player.collider);
+				if (hit) {
+					var dist:Number;
+					switch(enemyList[i].enemyType) {
+					case EnemyType.Flying_01:
 							damage += enemyList[i].damage;
 							removeEnemy(enemyList[i], i);
-						}
-					break;
-				case EnemyType.Walking_01:
-						dist = MathHelper.dis(playerX,enemyList[i].x);
-						if (dist < 50) {
+						break;
+					case EnemyType.Walking_01:
 							damage += enemyList[i].damage;
 							removeEnemy(enemyList[i], i);
-						}
-					break;
+						break;
+					}
 				}
 			}
 			return damage;

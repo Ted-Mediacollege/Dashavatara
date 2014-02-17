@@ -1,5 +1,6 @@
 package myth.entity.player 
 {
+	import flash.geom.Point;
 	import myth.entity.Entity;
 	import starling.display.Image;
 	import starling.events.TouchEvent;
@@ -15,8 +16,8 @@ package myth.entity.player
 		private var canJump:Boolean;
 		
 		
-		public function EntityPlayerBase(_canAttack:Boolean,_canSwim:Boolean,_canJump:Boolean) {
-			
+		public function EntityPlayerBase(_canAttack:Boolean,_canSwim:Boolean,_canJump:Boolean,_colWidth:int=128,_colHeight:int=200,_pivotX:int=-64,_pivotY:int=-100) {
+			super(_colWidth, _colHeight, _pivotX, _pivotY);
 		}
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {

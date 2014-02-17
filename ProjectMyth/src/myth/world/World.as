@@ -108,10 +108,10 @@ package myth.world
 		//LOOP
 		public function tick():void
 		{
+			player.tick();
 			distance += speed*TimeHelper.deltaTimeScale;
 			tiles.tick(distance);
-			entityManager.move(speed,distance);
-			var damage:int = entityManager.checkHit(player.x, player.y);
+			entityManager.tick(speed,distance);
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
