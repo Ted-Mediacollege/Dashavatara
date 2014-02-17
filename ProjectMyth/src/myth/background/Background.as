@@ -8,9 +8,8 @@ package myth.background
 	{	
 		public var image:Image;
 		public var z:Number;
-		public var id:int;
 		
-		public function Background(t:Texture, px:Number, py:Number, pz:Number, i:int) 
+		public function Background(t:Texture, px:Number, py:Number, pz:Number) 
 		{
 			image = new Image(t);
 			image.x = px;
@@ -18,7 +17,6 @@ package myth.background
 			addChild(image);
 			
 			z = pz;
-			id = i;
 			
 			flatten();
 		}	
