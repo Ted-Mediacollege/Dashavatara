@@ -7,9 +7,12 @@ package myth.gui.game
 	import starling.events.TouchEvent;
 	import myth.gui.background.GuiBackground;
 	import myth.graphics.TextureList;
+	import starling.display.BlendMode;
 	
 	public class GuiGame extends GuiScreen 
 	{
+		private var bg:Image;
+		
 		public function GuiGame() 
 		{
 			
@@ -18,6 +21,8 @@ package myth.gui.game
 		override public function init():void
 		{
 			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
+			bg.blendMode = BlendMode.NONE;
+			bg.touchable = false;
 			addChild(bg);
 			
 			Main.world = new World(this, "level_1");
