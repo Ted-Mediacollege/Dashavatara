@@ -33,6 +33,7 @@ package myth.world
 		{
 			data = d;
 			datalength = data.length;
+			
 			x = -camX;
 			
 			var lowestID:int = 0;
