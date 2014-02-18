@@ -21,18 +21,18 @@ package myth.world
 		
 		public static var waterTiles:Vector.<Texture>;
 		
-		public function WorldTiles2(d:Vector.<int>) 
+		public function WorldTiles2() 
 		{
 			TILES = new Vector.<Tile>();
 			
 			waterTiles = TextureList.atlas_background.getTextures("water");
-			textures = TextureList.atlas_background.getTextures("ground");
-			data = d;
-			datalength = data.length;
+			textures = TextureList.atlas_background.getTextures("tiles");
 		}
 		
-		public function build(camX:Number):void
+		public function build(camX:Number, d:Vector.<int>):void
 		{
+			data = d;
+			datalength = data.length;
 			x = -camX;
 			
 			var lowestID:int = 0;
@@ -114,7 +114,8 @@ package myth.world
 		{
 			switch(id)
 			{
-				//case 0: return new TileDefault(textures[0], px, py, pos);
+				case 0: return new TileDefault(textures[0], px, py, pos);
+				case 1: return new TileDefault(textures[1], px, py, pos);
 				//case 0: return new TileWater(px, py, pos);
 				//default: return new TileWater(px, py, pos);
 				default: return new TileDefault(textures[0], px, py, pos);

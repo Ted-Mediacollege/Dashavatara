@@ -62,8 +62,7 @@ package myth.world
 			//entityManager
 			entityManager = new WorldEntityManager(enemyData);
 			//tiles
-			tiles = new WorldTiles2(tileData);
-			tiles.build(0);
+			tiles = new WorldTiles2();
 			//background asser manager
 			//backgroundAssetData
 			
@@ -112,6 +111,8 @@ package myth.world
 			{
 				tileData[i] = levelData.tiles[i].type as int;
 			}
+			trace(tiles);
+			//tiles.build(0, tileData);
 			//set layer data in vector
 			backgroundAssetData = new Vector.<Vector.<int>> (levelData.background_props.length);
 			for (i = 0; i < levelData.background_props.length; i++) 
