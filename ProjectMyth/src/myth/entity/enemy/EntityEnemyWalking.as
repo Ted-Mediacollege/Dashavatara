@@ -14,7 +14,6 @@ package myth.entity.enemy
 	{
 		public function EntityEnemyWalking() 
 		{
-			
 			var img:Image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			super(EnemyType.Walking_01,img,128,200,-64,-100);
 		}

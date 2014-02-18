@@ -35,12 +35,14 @@ package myth.world
 		private var enemyData:Vector.<Vector.<int>>;
 		private var tileData:Vector.<int>;
 		private var backgroundAssetData:Vector.<Vector.<int>>;
+		private var ObjectData:Vector.<Vector.<int>>;
 		
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
 		private var distance:Number = 0;
 		private var speed:Number;
 		public var entityManager:WorldEntityManager;
+		private var objectManager:WorldObjectManager;
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();
@@ -65,10 +67,14 @@ package myth.world
 			//background asser manager
 			//backgroundAssetData
 			
+			//object manager
+			objectManager = new WorldObjectManager(ObjectData);
+			
 			//add childs
 			addChild(player);
 			addChild(tiles);
 			addChild(entityManager);
+			addChild(objectManager);
 			//debug
 			addChild(debugShape);
 			addChild(debugShape2);
@@ -112,6 +118,12 @@ package myth.world
 			{
 				backgroundAssetData[i] = new <int>[ levelData.background_props[i].type, levelData.background_props[i].depth, levelData.background_props[i].x, levelData.background_props[i].y];
 			}
+			//set object data in vector
+			ObjectData = new Vector.<Vector.<int>> (levelData.objects.length);
+			for (i = 0; i < levelData.objects.length; i++) 
+			{
+				ObjectData[i] = new <int>[ levelData.objects[i].type, levelData.objects[i].x, levelData.objects[i].y];
+			}
 		}
 		
 		//LOOP
@@ -121,6 +133,7 @@ package myth.world
 			distance += speed*TimeHelper.deltaTimeScale;
 			tiles.tick(distance);
 			entityManager.tick(speed,distance);
+			objectManager.tick(speed,distance);
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);

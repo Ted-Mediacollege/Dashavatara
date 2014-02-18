@@ -16,6 +16,8 @@ package myth.graphics
 		public static var background_textures:Class;
 		[Embed(source="../../../lib/textures/background_sky.png")]
 		public static var background2_textures:Class;
+		[Embed(source="../../../lib/textures/level.png")]
+		public static var level_textures:Class;
 		
 		//xml files
 		[Embed(source = "../../../lib/textures/gui.xml", mimeType = "application/octet-stream")]
@@ -28,6 +30,8 @@ package myth.graphics
 		public static var background_xml:Class;
 		[Embed(source="../../../lib/textures/background_sky.xml", mimeType = "application/octet-stream")]
 		public static var background2_xml:Class;
+		[Embed(source="../../../lib/textures/level.xml", mimeType = "application/octet-stream")]
+		public static var level_xml:Class;
 		
 		//texture atlas
 		public static var atlas_gui:TextureAtlas;
@@ -35,6 +39,7 @@ package myth.graphics
 		public static var atlas_player:TextureAtlas;
 		public static var atlas_background:TextureAtlas;
 		public static var atlas_background2:TextureAtlas;
+		public static var atlas_level:TextureAtlas;
 		
 		public static function load():void
 		{
@@ -43,6 +48,7 @@ package myth.graphics
 			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
 			atlas_background = new TextureAtlas(Texture.fromBitmap(new background_textures()), XML(new background_xml()));
 			atlas_background2 = new TextureAtlas(Texture.fromBitmap(new background2_textures()), XML(new background2_xml()));
+			atlas_level = new TextureAtlas(Texture.fromBitmap(new level_textures()), XML(new level_xml()));
 		}
 	}
 }

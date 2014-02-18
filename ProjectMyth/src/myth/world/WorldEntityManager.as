@@ -18,7 +18,7 @@ package myth.world
 	 * ...
 	 * @author Kit van de Bunt
 	 */
-	public class WorldEntityManager extends Sprite
+	public class WorldEntityManager extends WorldManagerBase
 	{
 		private var data:Vector.<Vector.<int>>;
 		public var enemyList:Vector.<EntityEnemyBase> = new Vector.<EntityEnemyBase>;
@@ -71,11 +71,11 @@ package myth.world
 			bulletList.splice(number , 1);
 		}
 		
-		public function tick(speed:int , dist:Number):void {
+		override public function tick(speed:int , dist:Number):void {
 			//spawn enemies
 			if (data.length > 0) {
 				while(data[0][1] < dist) {
-					makeEnemy(data[0][0], 1000, data[0][2]);
+					makeEnemy(data[0][0], 1400, data[0][2]);
 					data.splice(0, 1);
 					if (data.length < 1) {
 						break;
