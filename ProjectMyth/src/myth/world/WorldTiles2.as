@@ -116,8 +116,8 @@ package myth.world
 			{
 				//case 0: return new TileDefault(textures[0], px, py, pos);
 				//case 0: return new TileWater(px, py, pos);
-				default: return new TileWater(px, py, pos);
-				//default: return new TileDefault(textures[0], px, py, pos);
+				//default: return new TileWater(px, py, pos);
+				default: return new TileDefault(textures[0], px, py, pos);
 			}
 		}
 		

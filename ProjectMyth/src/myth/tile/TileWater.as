@@ -17,6 +17,7 @@ package myth.tile
 			movieclip.y = py;
 			movieclip.fps = 10;
 			movieclip.play();
+			movieclip.touchable = false;
 			addChild(movieclip);
 			
 			//Starling.juggler.add(movieclip);
