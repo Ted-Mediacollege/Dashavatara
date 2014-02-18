@@ -34,6 +34,7 @@ package myth.world
 		private var lvlName:String;
 		private var enemyData:Vector.<Vector.<int>>;
 		private var tileData:Vector.<int>;
+		private var backgroundAssetData:Vector.<Vector.<int>>;
 		
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
@@ -61,6 +62,8 @@ package myth.world
 			//tiles
 			tiles = new WorldTiles2(tileData);
 			tiles.build(0);
+			//background asser manager
+			//backgroundAssetData
 			
 			//add childs
 			addChild(player);
@@ -102,6 +105,12 @@ package myth.world
 			for (i = 0; i < levelData.tiles.length; i++) 
 			{
 				tileData[i] = levelData.tiles[i].type as int;
+			}
+			//set layer data in vector
+			backgroundAssetData = new Vector.<Vector.<int>> (levelData.background_props.length);
+			for (i = 0; i < levelData.background_props.length; i++) 
+			{
+				backgroundAssetData[i] = new <int>[ levelData.background_props[i].type, levelData.background_props[i].depth, levelData.background_props[i].x, levelData.background_props[i].y];
 			}
 		}
 		
