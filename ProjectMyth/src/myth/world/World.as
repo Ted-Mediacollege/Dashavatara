@@ -143,7 +143,7 @@ package myth.world
 		}
 		
 		private var currentPlayer:int = 0;
-		private function switchAvatar():void {
+		public function switchAvatar():void {
 			var playerPosX:int = player.x;
 			var playerPosY:int = player.y;
 			removeChild(player);

@@ -1,5 +1,6 @@
 package myth.gui.game 
 {
+	import myth.gui.components.GuiButton;
 	import myth.gui.GuiScreen;
 	import myth.Main;
 	import myth.world.World;
@@ -20,6 +21,8 @@ package myth.gui.game
 		
 		override public function init():void
 		{
+			background = null;
+			
 			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
 			bg.blendMode = BlendMode.NONE;
 			bg.touchable = false;
@@ -27,6 +30,19 @@ package myth.gui.game
 			
 			Main.world = new World(this, "level_1");
 			addChild(Main.world);
+			
+			addButton(new GuiButton(10, TextureList.atlas_gui.getTexture("icon1"), 100, 80, 194, 142, ""));
+			addButton(new GuiButton(11, TextureList.atlas_gui.getTexture("icon2"), 300, 80, 194, 142, ""));
+			addButton(new GuiButton(12, TextureList.atlas_gui.getTexture("icon3"), 500, 80, 194, 142, ""));
+		}
+		
+		override public function action(button:GuiButton):void
+		{
+			if (button.buttonID > 9)
+			{
+				//id - 10 = icon number
+				Main.world.switchAvatar();
+			}
 		}
 		
 		override public function tick():void

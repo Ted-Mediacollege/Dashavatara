@@ -29,7 +29,7 @@ package myth.gui
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void { }
 		
 		//button click
-		public function action(id:GuiButton):void { }
+		public function action(button:GuiButton):void { }
 		
 		//called when gui gets destroyed
 		public function destroy():void { }
