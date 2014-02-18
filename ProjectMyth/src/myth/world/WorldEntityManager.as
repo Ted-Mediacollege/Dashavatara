@@ -71,7 +71,7 @@ package myth.world
 			bulletList.splice(number , 1);
 		}
 		
-		override public function tick(speed:int , dist:Number):void {
+		override public function tick(speed:Number , dist:Number):void {
 			//spawn enemies
 			if (data.length > 0) {
 				while(data[0][1] < dist) {

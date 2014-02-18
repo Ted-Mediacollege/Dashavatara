@@ -13,7 +13,7 @@ package myth.world
 			
 		}
 		
-		public function tick(speed:int , dist:Number):void
+		public function tick(speed:Number , dist:Number):void
 		{
 			
 		}

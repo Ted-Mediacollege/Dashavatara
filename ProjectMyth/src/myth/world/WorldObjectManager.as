@@ -56,7 +56,7 @@ package myth.world
 			objectList.splice(number , 1);
 		}
 		
-		override public function tick(speed:int , dist:Number):void {
+		override public function tick(speed:Number , dist:Number):void {
 			//spawn objects
 			if (data.length > 0) {
 				while(data[0][1] < dist+spawnPos) {
