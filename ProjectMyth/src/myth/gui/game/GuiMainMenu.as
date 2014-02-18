@@ -16,15 +16,14 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			var bg:GuiBackground = new GuiBackground();
-			addChild(bg);
+			addChild(background);
 			
 			var logo:Image = new Image(TextureList.atlas_gui.getTexture("logo_menu"));
 			logo.pivotX = 250;
 			logo.x = 640;
 			addChild(logo);
 			
-			var t:GuiText = new GuiText(20, 20, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
+			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);
 			
 			var b1:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 - 110, 450, 100, "Play", 25, 0x000000));
@@ -36,7 +35,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			
+			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 
@@ -65,7 +64,6 @@ package myth.gui.game
 		
 		override public function destroy():void 
 		{ 
-			
 		}
 	}
 }

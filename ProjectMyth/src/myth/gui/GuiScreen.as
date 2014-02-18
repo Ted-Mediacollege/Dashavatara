@@ -1,5 +1,6 @@
 package myth.gui 
 {
+	import myth.gui.background.GuiBackground;
 	import myth.input.TouchType;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
@@ -13,6 +14,7 @@ package myth.gui
 		
 		public var main:Main;
 		public var buttonList:Vector.<GuiButton>;
+		public static var background:GuiBackground;
 		
 		//called when gui contructed
 		public function init():void { }
@@ -37,6 +39,11 @@ package myth.gui
 		{
 			main = m;
 			buttonList = new Vector.<GuiButton>();
+			
+			if (background == null)
+			{
+				background = new GuiBackground();
+			}
 		}
 		
 		public function addButton(b:GuiButton):GuiButton

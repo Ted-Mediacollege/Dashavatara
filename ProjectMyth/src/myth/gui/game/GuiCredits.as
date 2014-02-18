@@ -18,10 +18,9 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			var bg:GuiBackground = new GuiBackground();
-			addChild(bg);
+			addChild(background);
 			
-			var t:GuiText = new GuiText(20, 20, 400, 60, "left", "top", "GuiCredits", 25, 0x000000);
+			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiCredits", 25, 0x000000);
 			addChild(t);
 			
 			var lol:GuiText = new GuiText(ScaleHelper.phoneX / 2, ScaleHelper.phoneY / 2, 800, 300, "center", "center", "Dit spel is gemaakt door de oppermachtige programmeur ted.", 45, 0x000000);
@@ -32,7 +31,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			
+			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 

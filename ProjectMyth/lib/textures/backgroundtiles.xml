@@ -10,4 +10,9 @@
 	
 	<SubTexture name="tiles01" x="0" y="128" width="128" height="128"/>;
 	<SubTexture name="tiles02" x="128" y="128" width="128" height="128"/>;
+	
+	<SubTexture name="background01" x="9" y="471" width="382" height="108"/>; <!-- WOLK 1 -->
+	<SubTexture name="background02" x="454" y="431" width="396" height="145"/>; <!-- WOLK 2 -->
+	<SubTexture name="background03" x="922" y="491" width="390" height="71"/>; <!-- WOLK 3 -->
+	<SubTexture name="background04" x="3" y="361" width="392" height="107"/>; <!-- REGENBOOG -->
 </TextureAtlas>
