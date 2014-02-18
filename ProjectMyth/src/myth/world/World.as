@@ -41,6 +41,7 @@ package myth.world
 		public var player:EntityPlayerBase;
 		private var distance:Number = 0;
 		private var speed:Number;
+		private var deltaSpeed:Number;
 		public var entityManager:WorldEntityManager;
 		private var objectManager:WorldObjectManager;
 		
@@ -130,10 +131,11 @@ package myth.world
 		public function tick():void
 		{
 			player.tick();
-			distance += speed*TimeHelper.deltaTimeScale;
+			deltaSpeed = speed*TimeHelper.deltaTimeScale;
+			distance += deltaSpeed;
 			tiles.tick(distance);
-			entityManager.tick(speed,distance);
-			objectManager.tick(speed,distance);
+			entityManager.tick(deltaSpeed,distance);
+			objectManager.tick(deltaSpeed,distance);
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
