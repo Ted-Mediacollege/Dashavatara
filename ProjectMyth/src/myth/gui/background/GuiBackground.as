@@ -32,7 +32,7 @@ package myth.gui.background
 			r.scaleY = 4.5;
 			addChild(r);
 			
-			for (var i:int = 0; i < 20; i++ )
+			for (var i:int = 0; i < 15; i++ )
 			{
 				var c:Image = new Image(textures[MathHelper.nextInt(3)]);
 				c.x = -200 + MathHelper.nextInt(1700);

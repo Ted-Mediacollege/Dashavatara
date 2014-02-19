@@ -26,6 +26,7 @@ package myth.world
 		public var gui:GuiScreen;
 		
 		public var tiles:WorldTiles2;
+		public var background:WorldBackground;
 		
 		[Embed(source = "../../../lib/JSONData/levels.json", mimeType = "application/octet-stream")]
 		private var levelData2:Class;
@@ -67,15 +68,17 @@ package myth.world
 			tiles.build(0, tileData);
 			//background asser manager
 			//backgroundAssetData
+			background = new WorldBackground();
 			
 			//object manager
 			objectManager = new WorldObjectManager(ObjectData);
 			
 			//add childs
+			addChild(background);
 			addChild(player);
-			addChild(tiles);
 			addChild(entityManager);
 			addChild(objectManager);
+			addChild(tiles);
 			//debug
 			addChild(debugShape);
 			addChild(debugShape2);
@@ -135,6 +138,7 @@ package myth.world
 			deltaSpeed = speed*TimeHelper.deltaTimeScale;
 			distance += deltaSpeed;
 			tiles.tick(distance);
+			background.tick(distance);
 			entityManager.tick(deltaSpeed,distance);
 			objectManager.tick(deltaSpeed,distance);
 			///trace("damage "+damage);
