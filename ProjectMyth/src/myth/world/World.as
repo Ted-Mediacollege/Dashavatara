@@ -59,7 +59,7 @@ package myth.world
 			players[1] = new EntityPlayer02();
 			player = players[0];
 			player.x = 200;
-			player.y = 552;
+			player.y = 640;
 			//entityManager
 			entityManager = new WorldEntityManager(enemyData);
 			//tiles
