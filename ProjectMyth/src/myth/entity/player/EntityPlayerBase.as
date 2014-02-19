@@ -1,5 +1,117 @@
 package myth.entity.player 
 {
+	import starling.display.Sprite;
+	import starling.events.TouchEvent;
+	import myth.util.collision.RectCollider;
+	
+	public class EntityPlayerBase extends Sprite
+	{
+		public var collider:RectCollider;
+		
+		public var art:Sprite;
+		public var velX:Number;
+		public var velY:Number;
+		public var onfeet:Boolean;
+		
+		public function EntityPlayerBase()
+		{
+			art = new Sprite();
+			addChild(art);
+			
+			velX = 0;
+			velY = 0;
+			
+			onfeet = false;
+			
+			collider = new RectCollider(art.x, art.y, art.width, art.height, art.rotation, art.pivotX, art.pivotY);
+		}
+		
+		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
+		{
+		}
+		
+		public function tick():void 
+		{
+			if (velY < 2)
+			{
+				velY += 0.5;
+			}
+				
+			if (fixPos())
+			{
+				velY = 0;
+				velX = 0;
+			}
+			
+			art.x += velX;
+			art.y += velY;
+		}
+		
+		public function fixPos():Boolean
+		{
+			var fixed:Boolean = false;
+			
+			while (isSideColliding(2) || isSideColliding(1))
+			{
+				art.x -= velX / 10;
+				art.y -= velY / 10;
+				fixed = true;
+			}
+			
+			return fixed;
+		}
+		
+		public function isOnFeet():Boolean
+		{
+			if ((isCollidingAt(art.x - art.width / 2, art.y + 2) && isCollidingAt(art.x - art.width / 2 + 5, art.y + 2)) || (isCollidingAt(art.x + art.width / 2 - 5, art.y + 2) && isCollidingAt(art.x + art.width / 2, art.y + 2)))
+			{
+				onfeet = true;
+			}
+			else
+			{
+				onfeet = false;
+			}
+			
+			return onfeet;
+		}
+		
+		public function isSideColliding(side:int):Boolean
+		{
+			if (side == 0) //TOP 
+			{
+				//not used?
+			}
+			else if (side == 1) //RIGHT
+			{			
+				if ((isCollidingAt(art.x + art.width / 2, art.y - art.height) && isCollidingAt(art.x + art.width / 2, art.y - art.height + 5)) || (isCollidingAt(art.x + art.width / 2, art.y - 5) && isCollidingAt(art.x + art.width / 2, art.y)))
+				{
+					return true;
+				}
+				return false;
+			}
+			else if (side == 2) //DOWN
+			{
+				if ((isCollidingAt(art.x - art.width / 2, art.y) && isCollidingAt(art.x - art.width / 2 + 5, art.y)) || (isCollidingAt(art.x + art.width / 2 - 5, art.y) && isCollidingAt(art.x + art.width / 2, art.y)))
+				{
+					return true;
+				}
+				return false;
+			}
+			else if (side == 3) //LEFT
+			{
+				//not used?
+			}
+
+			return false;
+		}
+		
+		public function isCollidingAt(px:Number, py:Number):Boolean
+		{
+			return false;
+		}
+	}
+	
+	/*
 	import flash.geom.Point;
 	import myth.entity.Entity;
 	import starling.display.Image;
@@ -7,10 +119,7 @@ package myth.entity.player
 	import myth.input.TouchType;
 	import myth.Main;
 	import myth.util.MathHelper;
-	/**
-	 * ...
-	 * @author Kit van de bunt
-	 */
+
 	public class EntityPlayerBase extends Entity
 	{
 		private var canAttack:Boolean;
@@ -140,5 +249,6 @@ package myth.entity.player
 		}
 		
 	}
+	*/
 
 }

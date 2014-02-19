@@ -6,6 +6,7 @@ package myth.entity
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import myth.util.Debug;
+	
 	public class Entity extends Sprite
 	{
 		public var artLayer:Sprite = new Sprite();

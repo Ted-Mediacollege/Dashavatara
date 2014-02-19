@@ -3,7 +3,7 @@ package myth.world
 	import flash.events.Event;
 	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
-	import myth.entity.player.EntityPlayer02;
+	import myth.entity.player.EntityPlayerTest;
 	import myth.gui.game.GuiLose;
 	import myth.gui.GuiScreen;
 	import myth.world.WorldEntityManager;
@@ -57,8 +57,8 @@ package myth.world
 			lvlName = levelName;
 			loadJSON();
 			//player
-			players[0] = new EntityPlayer01();
-			players[1] = new EntityPlayer02();
+			players[0] = new EntityPlayerTest(); //new EntityPlayer01();
+			players[1] = new EntityPlayerTest(); //new EntityPlayer02();
 			player = players[0];
 			player.x = 200;
 			player.y = 640;
