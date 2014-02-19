@@ -67,13 +67,15 @@ package myth.world
 					}
 				}
 			}
-			for (var i:int = 0; i < objectList.length; i++) {
+			
+			for (var i:int = objectList.length-1; i >= 0; i--) {
 				
 				//remove objects on exit screen
 				if (objectList[i].x < -200) {
 					removeObject(i);
 				}else{//move objects
 					objectList[i].x -= speed;
+					objectList[i].tick();
 				}
 			}
 		};

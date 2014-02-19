@@ -41,9 +41,9 @@ package myth.world
 		public var player:EntityPlayerBase;
 		private var distance:Number = 0;
 		private var speed:Number;
-		private var deltaSpeed:Number;
+		public var deltaSpeed:Number;
 		public var entityManager:WorldEntityManager;
-		private var objectManager:WorldObjectManager;
+		public var objectManager:WorldObjectManager;
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();

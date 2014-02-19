@@ -4,6 +4,9 @@ package myth.entity.player
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
+	import myth.input.TouchType;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 	/**
 	 * ...
 	 * @author Kit van de Bunt
@@ -14,7 +17,7 @@ package myth.entity.player
 		public var animationWalk:MovieClip;
 		public function EntityPlayer02() 
 		{
-			super(true, false, true,255,378,-127,-378 );
+			super(true, false, true,128,200,-64,-200 );
 			image = new Image(TextureList.atlas_player.getTexture("player_2"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;
@@ -27,6 +30,16 @@ package myth.entity.player
 			animationWalk.play();
 			Starling.juggler.add(animationWalk);
 			addChild(animationWalk);
+		}
+		
+		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
+			
+			//data vector = posX, posY, movedX, movedY
+			if (e.touches[0].phase == TouchPhase.BEGAN) {
+				
+			}else if (e.touches[0].phase == TouchPhase.ENDED) {
+				TriggerJump();
+			}
 		}
 		
 	}
