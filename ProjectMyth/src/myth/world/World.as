@@ -4,6 +4,7 @@ package myth.world
 	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.player.EntityPlayer02;
+	import myth.gui.game.GuiLose;
 	import myth.gui.GuiScreen;
 	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
@@ -144,6 +145,11 @@ package myth.world
 			///trace("damage "+damage);
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
+			
+			if (player.x < -200)
+			{
+				gui.main.switchGui(new GuiLose());
+			}
 		}
 		
 		private var currentPlayer:int = 0;
