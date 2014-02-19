@@ -97,10 +97,30 @@ package myth.world
 		
 		//tick
 		public function checkHit():int {
+			pointTest();
 			RemoveBulletExitScreen();
 			checkBulletHitEnemy();
 			var damage:int = checkPlayerEnemyHit();
 			return damage;
+		}
+		
+		
+		private function pointTest():void {
+			var point:Point = new Point(800, 550);
+			Main.world.debugShape2.graphics.clear();
+			var hit:Boolean = false;
+			for (var i:int = 0; i < enemyList.length; i++) {
+				if(enemyList[i].collider.intersectPoint(point)){
+					hit = true;
+				}
+			}
+			if (hit) {
+				Main.world.debugShape2.graphics.lineStyle(10, 0x00ff00, 0.7);
+				Main.world.debugShape2.graphics.drawCircle(point.x, point.y, 10);
+			}else {
+				Main.world.debugShape2.graphics.lineStyle(10, 0xff0000, 0.7);
+				Main.world.debugShape2.graphics.drawCircle(point.x, point.y, 10);
+			}
 		}
 		
 		private function RemoveBulletExitScreen():void {

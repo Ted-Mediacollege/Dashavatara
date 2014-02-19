@@ -100,6 +100,37 @@ package myth.util.collision
 			return inter;
 		}
 		
+		public function intersectPoint(point:Point):Boolean {
+			var inter:Boolean = false;
+			var minCheckDist:Number = this.radius;
+			var dist:Number = this.rectCenter().subtract(point).length;
+			if (dist < minCheckDist) {
+				var c:Number;
+				var s:Number;
+				var rotatedX:Number;
+				var rotatedY:Number;
+				var leftX:Number;
+				var rightX:Number;
+				var topY:Number;
+				var bottomY:Number;
+				var i:int
+				
+				c = Math.cos( -this.rotation );
+				s = Math.sin( -this.rotation );
+				
+				leftX = this.x +this.pivotX;
+				rightX = this.x + this.width +this.pivotX;
+				topY = this.y +this.pivotY;
+				bottomY = this.y + this.height +this.pivotY;
+				
+				rotatedX = this.x + c * (point.x - this.x) - s * (point.y - this.y);
+				rotatedY = this.y + s * (point.x - this.x) + c * (point.y - this.y);
+				
+				inter = leftX <= rotatedX && rotatedX <= rightX && topY <= rotatedY && rotatedY <= bottomY;
+			}
+			return inter;
+		}
+		
 		public function rectPoints():Vector.< Point > {
 			var mat:Matrix = new Matrix;
 			mat.rotate(rotation);
