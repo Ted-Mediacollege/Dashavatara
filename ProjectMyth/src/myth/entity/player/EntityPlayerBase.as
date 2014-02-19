@@ -43,7 +43,7 @@ package myth.entity.player
 				}
 			}
 			
-			trace(yVelocity);
+			//trace(yVelocity);
 			yVelocity += gravity;
 			this.y += yVelocity;
 			
