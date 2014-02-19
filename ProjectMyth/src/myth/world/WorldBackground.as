@@ -4,6 +4,8 @@ package myth.world
 	import starling.display.Sprite;
 	import myth.graphics.TextureList;
 	import myth.util.TimeHelper;
+	import starling.textures.Texture;
+	import myth.util.MathHelper;
 	
 	public class WorldBackground extends Sprite
 	{
@@ -12,28 +14,45 @@ package myth.world
 		public function WorldBackground() 
 		{
 			Backgrounds = new Vector.<Background>();
+			build(0);
 		}
 		
 		public function build(camX:Number):void
 		{
-			x = -camX;
+			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
 			
-			for (var i:int = 0; i < 0; i++ )
+			for (var i:int = 0; i < 1; i++ )
 			{
-				var b:Background = new Background(null, 0, 0, 0);
+				var b:Background = new Background(textures[3], i * 500, 120, 7, 5, 8);
+				b.x = (b.posX + -camX) /b.z;
 				b.visible = false;
 				Backgrounds.push(b);
 				addChild(b);
+			}
+			
+			for (var j:int = 0; j < 20; j++ )
+			{
+				var b2:Background = new Background(textures[MathHelper.nextInt(3)], MathHelper.nextInt(15000), MathHelper.nextInt(500), 4, 1, 1);
+				b2.x = (b2.posX + -camX) /b2.z;
+				b2.visible = false;
+				Backgrounds.push(b2);
+				addChild(b2);
 			}
 		}
 		
 		public function tick(camX:Number):void
 		{
-			x = -camX;
-			
 			for (var i:int = Backgrounds.length - 1; i > -1; i-- )
 			{
-				Backgrounds[i].visible = false;
+				Backgrounds[i].x = (Backgrounds[i].posX + -camX) / Backgrounds[i].z;
+				if (Backgrounds[i].x < -Backgrounds[i].width || Backgrounds[i].x > 1280)
+				{
+					Backgrounds[i].visible = false;
+				}
+				else
+				{
+					Backgrounds[i].visible = true;
+				}
 			}
 		}
 	}
