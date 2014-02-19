@@ -19,9 +19,9 @@ package myth.entity.player
 	public class EntityPlayer01 extends EntityPlayerBase
 	{
 		public var image:Image;
-		public var startShootRadius:int = 150;
-		public var startShootXDisplace:int = -50;
-		public var startShootYDisplace:int = 0;
+		public var startShootRadius:int = 100;
+		public var startShootXDisplace:int = -20;
+		public var startShootYDisplace:int = -90;
 		private var debugShape:Shape = new Shape();
 		public function EntityPlayer01() 
 		{
@@ -65,9 +65,9 @@ package myth.entity.player
 				var distPlayerStart:Number = MathHelper.dis2(Main.world.player.x+startShootXDisplace, Main.world.player.y+startShootYDisplace, data[0], data[1]);
 				var distPlayerEnd:Number = MathHelper.dis2(Main.world.player.x+startShootXDisplace, Main.world.player.y+startShootYDisplace, data[2], data[3]);
 				var distDraw:Number = MathHelper.dis2(data[2], data[3], data[0], data[1]);
-				if (distPlayerStart < startShootRadius && distDraw > 100 && distPlayerEnd > startShootRadius) {
+				if (distPlayerStart < startShootRadius && distDraw > 50 && distPlayerEnd > startShootRadius) {
 					//Main.world.enemyManager.makeBullet(0,data[0], data[1],data[2],data[3]);
-					Main.world.entityManager.makeBullet(0,Main.world.player.x, Main.world.player.y-40,data[2],data[3]);
+					Main.world.entityManager.makeBullet(0,Main.world.player.x, Main.world.player.y-120,data[2],data[3]);
 				}
 			}
 		}
