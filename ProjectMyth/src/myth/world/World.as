@@ -68,7 +68,7 @@ package myth.world
 			tiles.build(0, tileData);
 			//background asser manager
 			//backgroundAssetData
-			background = new WorldBackground();
+			background = new WorldBackground(tileData.length); //MOET ACHTER TILES GELADEN WORDEN
 			
 			//object manager
 			objectManager = new WorldObjectManager(ObjectData);

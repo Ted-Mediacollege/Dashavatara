@@ -35,7 +35,7 @@ package myth.gui.background
 			for (var i:int = 0; i < 15; i++ )
 			{
 				var c:Image = new Image(textures[MathHelper.nextInt(3)]);
-				c.x = -200 + MathHelper.nextInt(1700);
+				c.x = MathHelper.nextInt(1700);
 				c.y = MathHelper.nextInt(600);
 				addChild(c);
 				clouds.push(c);

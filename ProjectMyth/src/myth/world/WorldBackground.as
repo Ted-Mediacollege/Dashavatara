@@ -6,18 +6,19 @@ package myth.world
 	import myth.util.TimeHelper;
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
+	import myth.Main;
 	
 	public class WorldBackground extends Sprite
 	{
 		public var Backgrounds:Vector.<Background>;
 		
-		public function WorldBackground() 
+		public function WorldBackground(length:int) 
 		{
 			Backgrounds = new Vector.<Background>();
-			build(0);
+			build(0, length);
 		}
 		
-		public function build(camX:Number):void
+		public function build(camX:Number, length:int):void
 		{
 			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
 			
@@ -30,9 +31,9 @@ package myth.world
 				addChild(b);
 			}
 			
-			for (var j:int = 0; j < 20; j++ )
+			for (var j:int = 0; j < 50; j++ )
 			{
-				var b2:Background = new Background(textures[MathHelper.nextInt(3)], MathHelper.nextInt(15000), MathHelper.nextInt(500), 4, 1, 1);
+				var b2:Background = new Background(textures[MathHelper.nextInt(3)], MathHelper.nextInt(34000), MathHelper.nextInt(370), 4, 1, 1);
 				b2.x = (b2.posX + -camX) /b2.z;
 				b2.visible = false;
 				Backgrounds.push(b2);
