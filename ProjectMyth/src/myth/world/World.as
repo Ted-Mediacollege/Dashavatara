@@ -40,7 +40,7 @@ package myth.world
 		
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
-		private var distance:Number = 0;
+		public var distance:Number = 0;
 		private var speed:Number;
 		public var deltaSpeed:Number;
 		public var entityManager:WorldEntityManager;
