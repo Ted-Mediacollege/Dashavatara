@@ -4,6 +4,7 @@ package myth.world
 	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.player.EntityPlayerTest;
+	import myth.entity.player.EntityPlayerTest2;
 	import myth.gui.game.GuiLose;
 	import myth.gui.GuiScreen;
 	import myth.world.WorldEntityManager;
@@ -58,10 +59,10 @@ package myth.world
 			loadJSON();
 			//player
 			players[0] = new EntityPlayerTest(); //new EntityPlayer01();
-			players[1] = new EntityPlayerTest(); //new EntityPlayer02();
+			players[1] = new EntityPlayerTest2(); //new EntityPlayer02();
 			player = players[0];
-			player.x = 200;
-			player.y = 640;
+			//player.x = 200;
+			//player.y = 640;
 			//entityManager
 			entityManager = new WorldEntityManager(enemyData);
 			//tiles
@@ -146,7 +147,7 @@ package myth.world
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
 			
-			if (player.x < -200)
+			if (player.art.x < -200)
 			{
 				gui.main.switchGui(new GuiLose());
 			}

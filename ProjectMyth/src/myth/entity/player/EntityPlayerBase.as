@@ -1,8 +1,10 @@
 package myth.entity.player 
 {
+	import flash.geom.Point;
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
 	import myth.util.collision.RectCollider;
+	import myth.Main;
 	
 	public class EntityPlayerBase extends Sprite
 	{
@@ -16,6 +18,8 @@ package myth.entity.player
 		public function EntityPlayerBase()
 		{
 			art = new Sprite();
+			art.x = 200;
+			art.y = 640;
 			addChild(art);
 			
 			velX = 0;
@@ -32,38 +36,56 @@ package myth.entity.player
 		
 		public function tick():void 
 		{
-			if (velY < 2)
+			if (velY < 10)
 			{
 				velY += 0.5;
 			}
 				
-			if (fixPos())
+			if (isSideColliding(1))
 			{
-				velY = 0;
+				art.x -= Main.world.deltaSpeed / 10;
+				while (isSideColliding(1))
+				{
+					art.x -= Main.world.deltaSpeed / 10;
+				}
 				velX = 0;
+			}
+			else
+			{
+				if (art.x < 200)
+				{
+					velX = 1;
+				}
+				else
+				{
+					velX = 0;
+				}
+				
+				if (isSideColliding(2))
+				{
+					art.y -= velY / 10;
+					while (isSideColliding(2))
+					{
+						art.y -= velY / 10;
+					}
+					velY = 0;
+				}
 			}
 			
 			art.x += velX;
 			art.y += velY;
-		}
-		
-		public function fixPos():Boolean
-		{
-			var fixed:Boolean = false;
 			
-			while (isSideColliding(2) || isSideColliding(1))
+			if (art.y > 640)
 			{
-				art.x -= velX / 10;
-				art.y -= velY / 10;
-				fixed = true;
+				art.y = 640;
+				velY = 0;
+				onfeet = true;
 			}
-			
-			return fixed;
 		}
 		
 		public function isOnFeet():Boolean
 		{
-			if ((isCollidingAt(art.x - art.width / 2, art.y + 2) && isCollidingAt(art.x - art.width / 2 + 5, art.y + 2)) || (isCollidingAt(art.x + art.width / 2 - 5, art.y + 2) && isCollidingAt(art.x + art.width / 2, art.y + 2)))
+			if (isCollidingAt(art.x, art.y + 2) || art.y > 638)
 			{
 				onfeet = true;
 			}
@@ -83,7 +105,7 @@ package myth.entity.player
 			}
 			else if (side == 1) //RIGHT
 			{			
-				if ((isCollidingAt(art.x + art.width / 2, art.y - art.height) && isCollidingAt(art.x + art.width / 2, art.y - art.height + 5)) || (isCollidingAt(art.x + art.width / 2, art.y - 5) && isCollidingAt(art.x + art.width / 2, art.y)))
+				if ((isCollidingAt(art.x + art.width / 2, art.y - art.height) && isCollidingAt(art.x + art.width / 2, art.y - art.height + 5)) || (isCollidingAt(art.x + art.width / 2 + 1, art.y - 5) && isCollidingAt(art.x + art.width / 2 + 1, art.y)))
 				{
 					return true;
 				}
@@ -91,9 +113,17 @@ package myth.entity.player
 			}
 			else if (side == 2) //DOWN
 			{
-				if ((isCollidingAt(art.x - art.width / 2, art.y) && isCollidingAt(art.x - art.width / 2 + 5, art.y)) || (isCollidingAt(art.x + art.width / 2 - 5, art.y) && isCollidingAt(art.x + art.width / 2, art.y)))
+				var amount:int = 0;
+				for (var i:Number = art.x + art.width / 2; i > art.x - art.width / 2; i-= 30 )
 				{
-					return true;
+					if (isCollidingAt(i, art.y))
+					{
+						amount++;
+						if (amount > 1)
+						{
+							return true;
+						}
+					}
 				}
 				return false;
 			}
@@ -107,6 +137,14 @@ package myth.entity.player
 		
 		public function isCollidingAt(px:Number, py:Number):Boolean
 		{
+			for (var i:int = Main.world.objectManager.objectList.length - 1; i > -1; i--) 
+			{
+				if (Main.world.objectManager.objectList[i].collider.intersectPoint(new Point(px, py)))
+				{
+					return true;
+				}
+			}
+			
 			return false;
 		}
 	}
