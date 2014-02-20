@@ -1,6 +1,164 @@
 package myth.entity.player 
 {
 	import flash.geom.Point;
+	import myth.entity.Entity;
+	import starling.display.Sprite;
+	import starling.events.TouchEvent;
+	import myth.util.collision.RectCollider;
+	import myth.Main;
+	
+	public class EntityPlayerBase extends Entity
+	{
+		//public var collider:RectCollider;
+		
+		public var art:Sprite;
+		public var velX:Number;
+		public var velY:Number;
+		public var onfeet:Boolean;
+		
+		public function EntityPlayerBase()
+		{
+			super(100, 180, -50, -180);
+			art = new Sprite();
+			this.x = 200;
+			this.y = 640;
+			addChild(art);
+			
+			velX = 0;
+			velY = 0;
+			
+			onfeet = false;
+			
+			
+			//collider = new RectCollider(art.x, art.y, art.width, art.height, art.rotation, art.pivotX, art.pivotY);
+		}
+		
+		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
+		{
+		}
+		
+		override public function tick():void 
+		{
+			super.tick();
+			if (velY < 10)
+			{
+				velY += 0.5;
+			}
+				
+			if (isSideColliding(1))
+			{
+				this.x -= Main.world.deltaSpeed / 10;
+				while (isSideColliding(1))
+				{
+					this.x -= Main.world.deltaSpeed / 10;
+				}
+				velX = 0;
+			}
+			else
+			{
+				if (this.x < 200)
+				{
+					velX = 1;
+				}
+				else
+				{
+					velX = 0;
+				}
+				
+				if (isSideColliding(2))
+				{
+					this.y -= velY / 10;
+					while (isSideColliding(2))
+					{
+						this.y -= velY / 10;
+					}
+					velY = 0;
+				}
+			}
+			
+			this.x += velX;
+			this.y += velY;
+			
+			if (this.y > 640)
+			{
+				this.y = 640;
+				velY = 0;
+				onfeet = true;
+			}
+		}
+		
+		public function isOnFeet():Boolean
+		{
+			if (isCollidingAt(this.x, this.y + 2) || this.y > 638)
+			{
+				onfeet = true;
+			}
+			else
+			{
+				onfeet = false;
+			}
+			
+			return onfeet;
+		}
+		
+		public function isSideColliding(side:int):Boolean
+		{
+			if (side == 0) //TOP 
+			{
+				//not used?
+			}
+			else if (side == 1) //RIGHT
+			{			
+				if ((isCollidingAt(this.x + collider.width / 2, this.y - collider.height) && isCollidingAt(this.x + collider.width / 2, this.y - collider.height + 5)) || (isCollidingAt(this.x + collider.width / 2 + 1, this.y - 5) && isCollidingAt(this.x + collider.width / 2 + 1, this.y)))
+				{
+					return true;
+				}
+				return false;
+			}
+			else if (side == 2) //DOWN
+			{
+				var amount:int = 0;
+				for (var i:Number = this.x + collider.width / 2; i > this.x - collider.width / 2; i-= 30 )
+				{
+					if (isCollidingAt(i, this.y))
+					{
+						amount++;
+						if (amount > 1)
+						{
+							return true;
+						}
+					}
+				}
+				return false;
+			}
+			else if (side == 3) //LEFT
+			{
+				//not used?
+			}
+
+			return false;
+		}
+		
+		public function isCollidingAt(px:Number, py:Number):Boolean
+		{
+			for (var i:int = Main.world.objectManager.objectList.length - 1; i > -1; i--) 
+			{
+				if (Main.world.objectManager.objectList[i].collider.intersectPoint(new Point(px, py)))
+				{
+					return true;
+				}
+			}
+			
+			return false;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	/*import flash.geom.Point;
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
 	import myth.util.collision.RectCollider;
@@ -147,8 +305,9 @@ package myth.entity.player
 			
 			return false;
 		}
-	}
+	}*/
 	
+	/////////////////////////////////////////
 	/*
 	import flash.geom.Point;
 	import myth.entity.Entity;

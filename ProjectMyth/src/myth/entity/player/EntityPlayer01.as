@@ -10,12 +10,7 @@ package myth.entity.player
 	import myth.Main;
 	import myth.util.Debug;
 	import myth.util.MathHelper;
-	/**
-	 * ...
-	 * @author Kit van de bunt
-	 * 
-	 * Lion
-	 */
+	//lion
 	public class EntityPlayer01 extends EntityPlayerBase
 	{
 		public var image:Image;

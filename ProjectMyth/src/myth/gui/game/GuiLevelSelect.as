@@ -22,8 +22,9 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiLevelSelect", 25, 0x000000);
 			addChild(t);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 - 120, 450, 100, "Test Level", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
+			var b1:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 - 120, 450, 100, "Test Level 1", 25, 0x000000));
+			var b2:GuiButton = addButton(new GuiButton(1, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 -  10, 450, 100, "Test Level 2", 25, 0x000000));
+			var b2:GuiButton = addButton(new GuiButton(2, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 		}
 		
 		override public function tick():void 
@@ -35,9 +36,13 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiLevelInfo());
+				main.switchGui(new GuiLevelInfo("level_1"));
 			}
 			else if (b.buttonID == 1)
+			{
+				main.switchGui(new GuiLevelInfo("level_2"));
+			}
+			else if (b.buttonID == 2)
 			{
 				main.switchGui(new GuiMainMenu());
 			}

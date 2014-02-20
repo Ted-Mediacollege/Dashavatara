@@ -13,10 +13,10 @@ package myth.gui.game
 	public class GuiGame extends GuiScreen 
 	{
 		private var bg:Image;
-		
-		public function GuiGame() 
+		private var levelName:String;
+		public function GuiGame(_levelName:String) 
 		{
-			
+			levelName = _levelName;
 		}	
 		
 		override public function init():void
@@ -28,7 +28,7 @@ package myth.gui.game
 			bg.touchable = false;
 			addChild(bg);
 			
-			Main.world = new World(this, "level_1");
+			Main.world = new World(this, levelName);
 			addChild(Main.world);
 			
 			addButton(new GuiButton(10, TextureList.atlas_gui.getTexture("icon1"), 100, 80, 194, 142, ""));
@@ -41,7 +41,7 @@ package myth.gui.game
 			if (button.buttonID > 9)
 			{
 				//id - 10 = icon number
-				Main.world.switchAvatar();
+				Main.world.switchAvatar(button.buttonID-10);
 			}
 		}
 		

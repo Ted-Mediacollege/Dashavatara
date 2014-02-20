@@ -3,6 +3,7 @@ package myth.world
 	import flash.events.Event;
 	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
+	import myth.entity.player.EntityPlayer03;
 	import myth.entity.player.EntityPlayerTest;
 	import myth.entity.player.EntityPlayerTest2;
 	import myth.gui.game.GuiLose;
@@ -58,9 +59,10 @@ package myth.world
 			lvlName = levelName;
 			loadJSON();
 			//player
-			players[0] = new EntityPlayerTest(); //new EntityPlayer01();
-			players[1] = new EntityPlayerTest2(); //new EntityPlayer02();
-			player = players[0];
+			players[0] = new EntityPlayer03(); 
+			players[1] = new EntityPlayerTest(); 
+			players[2] = new EntityPlayerTest2(); 
+			player = players[1];
 			//player.x = 200;
 			//player.y = 640;
 			//entityManager
@@ -147,28 +149,33 @@ package myth.world
 			//player1.x += speed;
 			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
 			
-			if (player.art.x < -200)
+			if (player.x < -200)
 			{
-				gui.main.switchGui(new GuiLose());
+				gui.main.switchGui(new GuiLose(lvlName));
 			}
 		}
 		
-		private var currentPlayer:int = 0;
-		public function switchAvatar():void {
-			var playerPosX:int = player.x;
-			var playerPosY:int = player.y;
-			removeChild(player);
-			if (currentPlayer==1) {
-				player = players[0];
-				currentPlayer = 0;
-			}else {
-				player = players[1];
-				currentPlayer = 1;
+		private var currentPlayer:int = 1;
+		public function switchAvatar(id:int):void {
+			if(id !=currentPlayer){
+				var playerPosX:int = player.x;
+				var playerPosY:int = player.y;
+				removeChild(player);
+				if (id==0) {
+					player = players[0];
+					currentPlayer = 0;
+				}else if (id==1) {
+					player = players[1];
+					currentPlayer = 1;
+				}else {
+					player = players[2];
+					currentPlayer = 2;
+				}
+				trace("switch "+currentPlayer+" "+distance);
+				player.x = playerPosX;
+				player.y = playerPosY;
+				addChild(player);
 			}
-			trace("switch "+currentPlayer+" "+distance);
-			player.x = playerPosX;
-			player.y = playerPosY;
-			addChild(player);
 		}
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void

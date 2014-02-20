@@ -10,9 +10,10 @@ package myth.gui.game
 	public class GuiLose extends GuiScreen
 	{
 		
-		public function GuiLose() 
+		private var levelName:String;
+		public function GuiLose(_levelName:String) 
 		{
-			
+			levelName = _levelName;
 		}
 		
 		override public function init():void 
@@ -35,7 +36,7 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiGame());
+				main.switchGui(new GuiGame(levelName));
 			}
 			else
 			{
