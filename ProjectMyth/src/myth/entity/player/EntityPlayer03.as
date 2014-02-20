@@ -42,7 +42,7 @@ package myth.entity.player
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
 				if (isOnFeet())
 				{
-					velY = -27;
+					velY = -17;
 					onfeet = false;
 				}
 			}

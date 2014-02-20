@@ -44,17 +44,17 @@ package myth.entity.player
 		override public function tick():void 
 		{
 			super.tick();
-			if (velY < 14)
+			if (velY < 10)
 			{
-				velY += 0.8;
+				velY += 0.5;
 			}
 				
 			if (isSideColliding(1))
 			{
-				this.x -= Main.world.deltaSpeed / 10;
+				this.x -= Main.world.deltaSpeed / 20;
 				while (isSideColliding(1))
 				{
-					this.x -= Main.world.deltaSpeed / 10;
+					this.x -= Main.world.deltaSpeed / 20;
 				}
 				velX = 0;
 			}
@@ -62,11 +62,11 @@ package myth.entity.player
 			{	
 				if (isOnFeet())
 				{
-					if (this.x < 200 && velX < 1 && !swimmer)
+					if (this.x < 250 && velX < 1)// && !swimmer)
 					{
 						velX += 0.1;
 					}
-					else if (!swimmer)
+					else //if (!swimmer)
 					{
 						velX = 0;
 					}
@@ -74,19 +74,19 @@ package myth.entity.player
 				
 				if (isSideColliding(2))
 				{
-					this.y -= velY / 10;
+					this.y -= velY / 20;
 					while (isSideColliding(2))
 					{
-						this.y -= velY / 10;
+						this.y -= velY / 20;
 					}
 					velY = 0;
 				}
 			}
 			
-			if (swimmer && velX > -(Main.world.deltaSpeed / 2))
-			{
-				velX = -(Main.world.deltaSpeed / 2);
-			}
+			//if (swimmer && velX > -(Main.world.deltaSpeed / 2))
+			//{
+			//	velX = -(Main.world.deltaSpeed / 2);
+			//}
 			
 			this.x += velX;
 			this.y += velY;

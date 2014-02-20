@@ -22,9 +22,9 @@ package myth.world
 		{
 			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
 			
-			for (var i:int = 0; i < 1; i++ )
+			for (var i:int = 0; i < 2; i++ )
 			{
-				var b:Background = new Background(textures[3], i * 500, 120, 7, 5, 8);
+				var b:Background = new Background(textures[3], i * 8000, 120, 7, 5, 8);
 				b.x = (b.posX + -camX) /b.z;
 				b.visible = false;
 				Backgrounds.push(b);
@@ -38,6 +38,15 @@ package myth.world
 				b2.visible = false;
 				Backgrounds.push(b2);
 				addChild(b2);
+			}
+			
+			for (var k:int = 0; k < 5; k++ )
+			{
+				var b3:Background = new Background(textures[4], 800 + 2800 * k - 800 + MathHelper.nextInt(1600), 265, 2, 1, 1);
+				b3.x = (b3.posX + -camX) /b3.z;
+				b3.visible = false;
+				Backgrounds.push(b3);
+				addChild(b3);
 			}
 		}
 		
