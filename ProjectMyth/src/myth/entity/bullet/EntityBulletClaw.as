@@ -16,6 +16,7 @@ package myth.entity.bullet
 			super(25);
 			image = new Image(TextureList.atlas_player.getTexture("bullet_1"));
 			image.pivotX = 15;
+			image.rotation = -Math.PI/2;
 			image.pivotY = 15;
 			artLayer.addChild(image);
 		}

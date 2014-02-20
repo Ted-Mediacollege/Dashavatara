@@ -3,7 +3,7 @@
 <TextureAtlas imagePath="gui.png">
 	<SubTexture name="player_1" x="0" y="0" width="80" height="80"/>;
 	<SubTexture name="player_2" x="80" y="0" width="80" height="80"/>;
-	<SubTexture name="bullet_1" x="0" y="80" width="30" height="30"/>;
+	<SubTexture name="bullet_1" x="80" y="80" width="70" height="114"/>;
 	<SubTexture name="player_3" x="160" y="0" width="128" height="200"/>;
 	<SubTexture name="player_4" x="0" y="200" width="128" height="200"/>;
 </TextureAtlas>
