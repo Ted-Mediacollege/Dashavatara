@@ -10,7 +10,7 @@ package myth.entity.objects
 		
 		public function EntityObjectBase() 
 		{
-			super(125, 425, 0, -425);
+			super(171, 425, 0, -425);
 		}
 		
 	}

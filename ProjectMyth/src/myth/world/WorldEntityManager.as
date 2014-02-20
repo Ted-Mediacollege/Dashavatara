@@ -97,7 +97,7 @@ package myth.world
 		
 		//tick
 		public function checkHit():int {
-			pointTest();
+			//pointTest();
 			RemoveBulletExitScreen();
 			checkBulletHitEnemy();
 			var damage:int = checkPlayerEnemyHit();
