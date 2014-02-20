@@ -17,7 +17,9 @@ package myth.entity.player
 		public var animationWalk:MovieClip;
 		public function EntityPlayer02() 
 		{
-			super(true, false, true,128,200,-64,-200 );
+			//super(true, false, true,128,200,-64,-200 );
+			super(false);
+			
 			image = new Image(TextureList.atlas_player.getTexture("player_2"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;

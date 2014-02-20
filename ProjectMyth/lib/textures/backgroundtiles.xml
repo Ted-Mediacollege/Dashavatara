@@ -15,4 +15,5 @@
 	<SubTexture name="background02" x="454" y="431" width="396" height="145"/>; <!-- WOLK 2 -->
 	<SubTexture name="background03" x="922" y="491" width="390" height="71"/>; <!-- WOLK 3 -->
 	<SubTexture name="background04" x="3" y="361" width="392" height="107"/>; <!-- REGENBOOG -->
+	<SubTexture name="background05" x="1597" y="21" width="371" height="384"/>; <!-- Tree -->
 </TextureAtlas>

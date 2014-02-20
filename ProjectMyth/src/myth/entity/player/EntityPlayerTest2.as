@@ -12,7 +12,7 @@ package myth.entity.player
 		
 		public function EntityPlayerTest2() 
 		{
-			super();
+			super(true);
 			
 			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
 			animationWalk.x = 0;
@@ -30,11 +30,6 @@ package myth.entity.player
 		{
 			if (type == TouchType.CLICK)
 			{
-				if (isOnFeet())
-				{
-					velY = -17;
-					onfeet = false;
-				}
 			}
 		}
 	}
