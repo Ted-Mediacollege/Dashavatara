@@ -20,7 +20,7 @@ package myth.entity.player
 		{
 			super(100, 180, -50, -180);
 			art = new Sprite();
-			this.x = 200;
+			this.x = 250;
 			this.y = 640;
 			addChild(art);
 			
@@ -85,6 +85,12 @@ package myth.entity.player
 				velY = 0;
 				onfeet = true;
 			}
+		}
+		
+		public function pushBack():void
+		{
+			velX = -Main.world.deltaSpeed;
+			velY = -10;
 		}
 		
 		public function isOnFeet():Boolean
