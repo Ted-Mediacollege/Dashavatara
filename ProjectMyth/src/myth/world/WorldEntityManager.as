@@ -166,10 +166,12 @@ package myth.world
 					case EnemyType.Flying_01:
 							damage += enemyList[i].damage;
 							removeEnemy(enemyList[i], i);
+							Main.world.player.pushBack();
 						break;
 					case EnemyType.Walking_01:
 							damage += enemyList[i].damage;
 							removeEnemy(enemyList[i], i);
+							Main.world.player.pushBack();
 						break;
 					}
 				}

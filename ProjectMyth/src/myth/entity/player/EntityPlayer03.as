@@ -19,17 +19,18 @@ package myth.entity.player
 		{
 			super();
 			image = new Image(TextureList.atlas_player.getTexture("player_4"));
+			image.scaleX = -1;
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height;
 			art.addChild(image);
 			
-			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
-			animationWalk.pivotY = 378;
-			animationWalk.pivotX = 127;
-			animationWalk.loop = true;
-			animationWalk.play();
-			Starling.juggler.add(animationWalk);
-			addChild(animationWalk);
+			//animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
+			//animationWalk.pivotY = 378;
+			//animationWalk.pivotX = 127;
+			//animationWalk.loop = true;
+			//animationWalk.play();
+			//Starling.juggler.add(animationWalk);
+			//addChild(animationWalk);
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {

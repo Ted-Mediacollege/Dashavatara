@@ -23,6 +23,7 @@ package myth.entity.player
 			//super(true, false, true,128,200,-64,-200 );
 			
 			image = new Image(TextureList.atlas_player.getTexture("player_3"));
+			image.scaleX = -1;
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height;
 			artLayer.addChild(image);
