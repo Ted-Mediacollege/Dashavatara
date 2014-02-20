@@ -62,13 +62,17 @@ package myth.entity.player
 			{	
 				if (isOnFeet())
 				{
-					if (this.x < 250 && velX < 1)// && !swimmer)
+					if (this.x < 250 && velX < 1 && !swimmer)
 					{
 						velX += 0.1;
 					}
-					else //if (!swimmer)
+					else if (!swimmer)
 					{
 						velX = 0;
+					}
+					else
+					{
+						velX = -(Main.world.deltaSpeed / 2)
 					}
 				}
 				
@@ -83,10 +87,10 @@ package myth.entity.player
 				}
 			}
 			
-			//if (swimmer && velX > -(Main.world.deltaSpeed / 2))
-			//{
-			//	velX = -(Main.world.deltaSpeed / 2);
-			//}
+			if (swimmer && velX > -(Main.world.deltaSpeed / 2))
+			{
+				velX = -(Main.world.deltaSpeed / 2);
+			}
 			
 			this.x += velX;
 			this.y += velY;
