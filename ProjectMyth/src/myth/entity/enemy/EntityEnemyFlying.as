@@ -10,10 +10,14 @@ package myth.entity.enemy
 	
 	public class EntityEnemyFlying extends EntityEnemyBase
 	{
+		private var image:Image;
 		public function EntityEnemyFlying() 
 		{
-			var img:Image = new Image(TextureList.atlas_player.getTexture("player_1"));
-			super(EnemyType.Flying_01, img);
+			super(EnemyType.Flying_01);
+			var image:Image = new Image(TextureList.atlas_player.getTexture("player_1"));
+			artLayer.addChild(image);
+			image.pivotX = image.width / 2;
+			image.pivotY = image.height / 2;
 		}
 		
 		override public function tick():void {

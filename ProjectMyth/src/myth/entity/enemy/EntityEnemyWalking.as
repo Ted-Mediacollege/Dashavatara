@@ -12,10 +12,15 @@ package myth.entity.enemy
 	 */
 	public class EntityEnemyWalking extends EntityEnemyBase
 	{
+		
+		private var image:Image;
 		public function EntityEnemyWalking() 
 		{
-			var img:Image = new Image(TextureList.atlas_player.getTexture("player_3"));
-			super(EnemyType.Walking_01,img,128,200,-64,-100);
+			super(EnemyType.Walking_01,128,200,-64,-200);
+			var image:Image = new Image(TextureList.atlas_player.getTexture("player_3"));
+			artLayer.addChild(image);
+			image.pivotX = image.width / 2;
+			image.pivotY = image.height;
 		}
 	}
 
