@@ -14,7 +14,7 @@ package myth.entity.player
 		{
 			super();
 			
-			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
+			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("FishAvatar"), 30);
 			animationWalk.x = 0;
 			animationWalk.y = 0;
 			animationWalk.loop = true;

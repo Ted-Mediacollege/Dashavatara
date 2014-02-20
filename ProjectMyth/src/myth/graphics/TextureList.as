@@ -20,6 +20,8 @@ package myth.graphics
 		public static var level_textures:Class;
 		[Embed(source="../../../lib/textures/fish.png")]
 		public static var fish_textures:Class;
+		[Embed(source="../../../lib/textures/RunningEnemy.png")]
+		public static var enemyRunning_textures:Class;
 		
 		//xml files
 		[Embed(source = "../../../lib/textures/gui.xml", mimeType = "application/octet-stream")]
@@ -36,6 +38,8 @@ package myth.graphics
 		public static var level_xml:Class;
 		[Embed(source="../../../lib/textures/fish.xml", mimeType = "application/octet-stream")]
 		public static var fish_xml:Class;
+		[Embed(source="../../../lib/textures/RunningEnemy.xml", mimeType = "application/octet-stream")]
+		public static var enemyRunning_xml:Class;
 		
 		//texture atlas
 		public static var atlas_gui:TextureAtlas;
@@ -45,6 +49,7 @@ package myth.graphics
 		public static var atlas_background2:TextureAtlas;
 		public static var atlas_level:TextureAtlas;
 		public static var atlas_fish:TextureAtlas;
+		public static var atlas_enemyRunning:TextureAtlas;
 		
 		public static function load():void
 		{
@@ -55,6 +60,7 @@ package myth.graphics
 			atlas_background2 = new TextureAtlas(Texture.fromBitmap(new background2_textures()), XML(new background2_xml()));
 			atlas_level = new TextureAtlas(Texture.fromBitmap(new level_textures()), XML(new level_xml()));
 			atlas_fish = new TextureAtlas(Texture.fromBitmap(new fish_textures()), XML(new fish_xml()));
+			atlas_enemyRunning = new TextureAtlas(Texture.fromBitmap(new enemyRunning_textures()), XML(new enemyRunning_xml()));
 		}
 	}
 }

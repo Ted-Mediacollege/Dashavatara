@@ -4,30 +4,30 @@
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="vis bouncing and jumping0001"	x="498"	y="0"	width="238"	height="320" frameX="-16" frameY="-50" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0002"	x="253"	y="334"	width="235"	height="310" frameX="-20" frameY="-64" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0003"	x="498"	y="691"	width="233"	height="294" frameX="-22" frameY="-77" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0004"	x="732"	y="691"	width="229"	height="283" frameX="-26" frameY="-92" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0005"	x="737"	y="373"	width="227"	height="272" frameX="-28" frameY="-103" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0006"	x="737"	y="373"	width="227"	height="272" frameX="-28" frameY="-103" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0007"	x="0"	y="0"	width="255"	height="331" frameX="-0" frameY="-46" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0008"	x="0"	y="0"	width="255"	height="331" frameX="-0" frameY="-46" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0009"	x="0"	y="646"	width="251"	height="359" frameX="-4" frameY="-17" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0010"	x="0"	y="646"	width="251"	height="359" frameX="-4" frameY="-17" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0011"	x="498"	y="321"	width="238"	height="369" frameX="-11" frameY="-0" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0012"	x="498"	y="321"	width="238"	height="369" frameX="-11" frameY="-0" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0013"	x="737"	y="0"	width="229"	height="372" frameX="-19" frameY="-0" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0014"	x="737"	y="0"	width="229"	height="372" frameX="-19" frameY="-0" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0015"	x="256"	y="0"	width="241"	height="333" frameX="-9" frameY="-5" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0016"	x="256"	y="0"	width="241"	height="333" frameX="-9" frameY="-5" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0017"	x="252"	y="646"	width="245"	height="327" frameX="-6" frameY="-20" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0018"	x="252"	y="646"	width="245"	height="327" frameX="-6" frameY="-20" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0019"	x="0"	y="332"	width="252"	height="313" frameX="-3" frameY="-52" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0020"	x="0"	y="332"	width="252"	height="313" frameX="-3" frameY="-52" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0021"	x="962"	y="646"	width="223"	height="268" frameX="-32" frameY="-109" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0022"	x="962"	y="646"	width="223"	height="268" frameX="-32" frameY="-109" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0023"	x="253"	y="334"	width="235"	height="310" frameX="-20" frameY="-64" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0024"	x="253"	y="334"	width="235"	height="310" frameX="-20" frameY="-64" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0025"	x="498"	y="0"	width="238"	height="320" frameX="-16" frameY="-50" frameWidth="255" frameHeight="378"/>
-	<SubTexture name="vis bouncing and jumping0026"	x="498"	y="0"	width="238"	height="320" frameX="-16" frameY="-50" frameWidth="255" frameHeight="378"/>
+	<SubTexture name="FishAvatar0001.png"	x="146"	y="830"	width="144"	height="192" frameX="-9" frameY="-30" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0002.png"	x="152"	y="201"	width="141"	height="187" frameX="-12" frameY="-38" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0003.png"	x="152"	y="389"	width="140"	height="177" frameX="-13" frameY="-46" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0004.png"	x="291"	y="0"	width="136"	height="170" frameX="-17" frameY="-55" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0005.png"	x="154"	y="0"	width="136"	height="163" frameX="-17" frameY="-62" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0006.png"	x="154"	y="0"	width="136"	height="163" frameX="-17" frameY="-62" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0007.png"	x="0"	y="0"	width="153"	height="200" frameX="-0" frameY="-27" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0008.png"	x="0"	y="0"	width="153"	height="200" frameX="-0" frameY="-27" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0009.png"	x="0"	y="390"	width="151"	height="216" frameX="-2" frameY="-10" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0010.png"	x="0"	y="390"	width="151"	height="216" frameX="-2" frameY="-10" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0011.png"	x="148"	y="607"	width="144"	height="222" frameX="-6" frameY="-0" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0012.png"	x="148"	y="607"	width="144"	height="222" frameX="-6" frameY="-0" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0013.png"	x="293"	y="389"	width="138"	height="223" frameX="-11" frameY="-0" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0014.png"	x="293"	y="389"	width="138"	height="223" frameX="-11" frameY="-0" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0015.png"	x="0"	y="805"	width="145"	height="200" frameX="-5" frameY="-3" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0016.png"	x="0"	y="805"	width="145"	height="200" frameX="-5" frameY="-3" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0017.png"	x="0"	y="607"	width="147"	height="197" frameX="-3" frameY="-12" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0018.png"	x="0"	y="607"	width="147"	height="197" frameX="-3" frameY="-12" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0019.png"	x="0"	y="201"	width="151"	height="188" frameX="-2" frameY="-31" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0020.png"	x="0"	y="201"	width="151"	height="188" frameX="-2" frameY="-31" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0021.png"	x="291"	y="830"	width="134"	height="162" frameX="-19" frameY="-65" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0022.png"	x="291"	y="830"	width="134"	height="162" frameX="-19" frameY="-65" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0023.png"	x="152"	y="201"	width="141"	height="187" frameX="-12" frameY="-38" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0024.png"	x="152"	y="201"	width="141"	height="187" frameX="-12" frameY="-38" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0025.png"	x="146"	y="830"	width="144"	height="192" frameX="-9" frameY="-30" frameWidth="153" frameHeight="227"/>
+	<SubTexture name="FishAvatar0026.png"	x="146"	y="830"	width="144"	height="192" frameX="-9" frameY="-30" frameWidth="153" frameHeight="227"/>
 </TextureAtlas>
