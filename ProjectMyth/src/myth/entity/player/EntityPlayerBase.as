@@ -55,14 +55,17 @@ package myth.entity.player
 				velX = 0;
 			}
 			else
-			{
-				if (this.x < 200)
+			{	
+				if (isOnFeet())
 				{
-					velX = 1;
-				}
-				else
-				{
-					velX = 0;
+					if (this.x < 200 && velX < 1)
+					{
+						velX += 0.1;
+					}
+					else
+					{
+						velX = 0;
+					}
 				}
 				
 				if (isSideColliding(2))
