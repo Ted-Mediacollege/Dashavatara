@@ -20,7 +20,8 @@ package myth.entity.player
 		private var debugShape:Shape = new Shape();
 		public function EntityPlayer01() 
 		{
-			super(true, false, true,128,200,-64,-200 );
+			//super(true, false, true,128,200,-64,-200 );
+			super(false);
 			
 			image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			image.pivotX = image.width / 2;

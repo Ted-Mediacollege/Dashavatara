@@ -16,13 +16,17 @@ package myth.entity.player
 		public var velY:Number;
 		public var onfeet:Boolean;
 		
-		public function EntityPlayerBase()
+		public var swimmer:Boolean;
+		
+		public function EntityPlayerBase(_swimmer:Boolean)
 		{
 			super(100, 180, -50, -180);
 			art = new Sprite();
 			this.x = 250;
 			this.y = 640;
 			addChild(art);
+			
+			swimmer = _swimmer;
 			
 			velX = 0;
 			velY = 0;
@@ -40,9 +44,9 @@ package myth.entity.player
 		override public function tick():void 
 		{
 			super.tick();
-			if (velY < 10)
+			if (velY < 14)
 			{
-				velY += 0.5;
+				velY += 0.8;
 			}
 				
 			if (isSideColliding(1))
@@ -58,11 +62,11 @@ package myth.entity.player
 			{	
 				if (isOnFeet())
 				{
-					if (this.x < 200 && velX < 1)
+					if (this.x < 200 && velX < 1 && !swimmer)
 					{
 						velX += 0.1;
 					}
-					else
+					else if (!swimmer)
 					{
 						velX = 0;
 					}
@@ -77,6 +81,11 @@ package myth.entity.player
 					}
 					velY = 0;
 				}
+			}
+			
+			if (swimmer && velX > -(Main.world.deltaSpeed / 2))
+			{
+				velX = -(Main.world.deltaSpeed / 2);
 			}
 			
 			this.x += velX;

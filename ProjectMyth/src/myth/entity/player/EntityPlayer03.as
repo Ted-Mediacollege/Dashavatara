@@ -17,7 +17,8 @@ package myth.entity.player
 		public var animationWalk:MovieClip;
 		public function EntityPlayer03() 
 		{
-			super();
+			super(false);
+			
 			image = new Image(TextureList.atlas_player.getTexture("player_4"));
 			image.scaleX = -1;
 			image.pivotX = image.width / 2;
@@ -41,7 +42,7 @@ package myth.entity.player
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
 				if (isOnFeet())
 				{
-					velY = -17;
+					velY = -27;
 					onfeet = false;
 				}
 			}
