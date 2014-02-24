@@ -1,4 +1,7 @@
 ProjectMyth
 ===========
 
-ted doet alles en kit ook
+Sprint 2:
+
+redo collision
+swimming
