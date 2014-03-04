@@ -2,8 +2,14 @@ package myth.world
 {
 	import myth.entity.objects.EntityObjectBase;
 	import myth.entity.objects.EntityObjectPillar;
+	import nape.geom.Vec2;
+	import nape.phys.Body;
+	import nape.phys.Material;
+	import nape.shape.Polygon;
 	import starling.display.Sprite;
 	import myth.entity.objects.ObjectType;
+	import nape.phys.BodyType;
+	import myth.Main;
 	/**
 	 * XML File
 	 * "objects":[
@@ -17,12 +23,15 @@ package myth.world
 	public class WorldObjectManager extends WorldManagerBase
 	{
 		private var data:Vector.<Vector.<int>>;
-		public var objectList:Vector.<EntityObjectBase> = new Vector.<EntityObjectBase>;
+		public var objectList:Vector.<Body> = new Vector.<Body>;
 		private var spawnPos:int = 1400;
+		private var groundMaterial:Material;
+		
 		public function WorldObjectManager(_data:Vector.<Vector.<int>> = null):void 
 		{
 			data = _data;
 			build();
+			groundMaterial = new Material(0, 0, 0, 1, 0);
 		}
 		
 		private function build():void {
@@ -45,14 +54,23 @@ package myth.world
 			}else if(type == ObjectType.pillar2){
 				object = new EntityObjectPillar();
 			}
-			object.x = xPos;
-			object.y = yPos;
-			objectList.push(object);
+			
+			var platform:Body = new Body(BodyType.KINEMATIC);
+			platform.position.setxy(xPos, yPos);
+			platform.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
+			platform.velocity.x = -Main.world.speed*60;
+			platform.space =  Main.world.physicsSpace;
+			//platform.userData.Pivot = new Vec2(0, -90);
+			platform.userData.graphic = object;
+			platform.userData.Pivot = new Vec2(object.width / 2, 0);
+			platform.setShapeMaterials(groundMaterial);
+			
+			objectList.push(platform);
 			addChild(object);
 		}
 		
 		private function removeObject(number:int):void {
-			removeChild(objectList[number]);
+			removeChild(objectList[number].userData.graphic);
 			objectList.splice(number , 1);
 		}
 		
@@ -67,7 +85,11 @@ package myth.world
 					}
 				}
 			}
-			
+			//trace("l:"+objectList.length);
+			//for (var i:int = objectList.length - 1; i >= 0; i--) {
+				//trace(" Y: "+objectList[i].userData.graphic.x+" X: "+objectList[i].userData.graphic.y);
+			//}
+			/*
 			for (var i:int = objectList.length-1; i >= 0; i--) {
 				
 				//remove objects on exit screen
@@ -78,6 +100,7 @@ package myth.world
 					objectList[i].tick();
 				}
 			}
+			*/
 		};
 		
 	}

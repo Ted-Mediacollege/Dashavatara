@@ -40,7 +40,7 @@ package myth.entity.player
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
 		}
-		
+		/*
 		override public function tick():void 
 		{
 			super.tick();
@@ -102,6 +102,7 @@ package myth.entity.player
 				onfeet = true;
 			}
 		}
+		*/
 		
 		public function pushBack():void
 		{
@@ -165,7 +166,7 @@ package myth.entity.player
 		{
 			for (var i:int = Main.world.objectManager.objectList.length - 1; i > -1; i--) 
 			{
-				if (Main.world.objectManager.objectList[i].collider.intersectPoint(new Point(px, py)))
+				if (Main.world.objectManager.objectList[i].userData.graphic.collider.intersectPoint(new Point(px, py)))
 				{
 					return true;
 				}

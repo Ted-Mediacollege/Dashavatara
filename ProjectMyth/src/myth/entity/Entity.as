@@ -25,7 +25,7 @@ package myth.entity
 				colShape.graphics.drawRect(0, 0, collider.width, collider.height);
 				colShape.graphics.drawCircle(-colPivotX, -colPivotY, 5);
 				debugLayer.addChild(colShape);
-			},Debug.DrawArracks);
+			},Debug.DrawRectsColliders);
 		}
 		
 		public function tick():void {

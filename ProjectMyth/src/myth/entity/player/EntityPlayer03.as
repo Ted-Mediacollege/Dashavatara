@@ -1,12 +1,14 @@
 package myth.entity.player 
 {
 	import myth.graphics.TextureList;
+	import nape.geom.Vec2;
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
 	import myth.input.TouchType;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import myth.Main;
 	/**
 	 * ...
 	 * @author Kit van de Bunt
@@ -40,6 +42,9 @@ package myth.entity.player
 			if (e.touches[0].phase == TouchPhase.BEGAN) {
 				
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
+				trace("jump");
+				Main.world.playerBody.applyImpulse(new Vec2(0, -10000));
+				
 				if (isOnFeet())
 				{
 					velY = -17;

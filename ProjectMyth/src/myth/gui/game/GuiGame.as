@@ -29,6 +29,7 @@ package myth.gui.game
 			addChild(bg);
 			
 			Main.world = new World(this, levelName);
+			Main.world.build();
 			addChild(Main.world);
 			
 			addButton(new GuiButton(10, TextureList.atlas_gui.getTexture("icon1"), 100, 80, 194, 142, ""));
