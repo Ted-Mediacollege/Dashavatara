@@ -57,9 +57,11 @@ package myth.graphics
 		
 		public static function load():void
 		{
+			var f:File = File.applicationDirectory;
+			
 			assetmanager = new AssetManager();
 			assetmanager.verbose = true;
-			//assetmanager.enqueue("assets");
+			assetmanager.enqueue(f.resolvePath("assets"));
 			
 			atlas_gui = new TextureAtlas(Texture.fromBitmap(new gui_textures()), XML(new gui_xml()));
 			atlas_gui_background = new TextureAtlas(Texture.fromBitmap(new gui_background_textures()), XML(new gui_background_xml()));
