@@ -9,11 +9,11 @@ package myth
 	import flash.geom.Rectangle;
 	import myth.util.ScaleHelper;
 	
-	public class Loader extends Sprite
+	public class PreLoader extends Sprite
 	{
 		private var starling:Starling;
 		
-		public function Loader() 
+		public function PreLoader() 
 		{
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
