@@ -22,8 +22,10 @@ package myth.entity.player
 		public var onfeet:Boolean;
 		
 		public var swimmer:Boolean;
+		private var maxBreakSpeed:Number = 5;
+		private var Xpos:Number;
 		
-		public function EntityPlayerBase(_swimmer:Boolean)
+		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int)
 		{
 			super(100, 180, -50, -180);
 			art = new Sprite();
@@ -32,6 +34,7 @@ package myth.entity.player
 			addChild(art);
 			
 			swimmer = _swimmer;
+			Xpos = _XPos;
 			
 			velX = 0;
 			velY = 0;
@@ -45,8 +48,7 @@ package myth.entity.player
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
 		}
-		private var maxBreakSpeed:Number = 5;
-		private var Xpos:Number = 200;
+		
 		override public function tick():void {
 			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
 			//trace("X: "+this.x+" remkracht:"+Main.world.playerBody.velocity.x);
@@ -57,6 +59,14 @@ package myth.entity.player
 				}else { 
 					Main.world.playerBody.applyImpulse(new Vec2((18 * 10), 0));
 				}
+			}else if (this.x > Xpos)  {
+				if(this.x+Main.world.playerBody.velocity.x<Xpos){
+				}else { 
+					Main.world.playerBody.applyImpulse(new Vec2((18 * -10), 0));
+				}
+			}
+			if (swimmer) {
+				Main.world.playerBody.applyImpulse(new Vec2((18 * -17), 0));
 			}
 			//apply break
 			if (Main.world.playerBody.velocity.x != 0) {

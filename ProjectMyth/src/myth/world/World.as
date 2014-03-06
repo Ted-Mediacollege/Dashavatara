@@ -47,6 +47,7 @@ package myth.world
 		
 		private var jsonLevel:Object;
 		private var lvlName:String;
+		private var nextLvlName:String;
 		private var enemyData:Vector.<Vector.<int>>;
 		private var tileData:Vector.<int>;
 		private var backgroundAssetData:Vector.<Vector.<int>>;
@@ -176,8 +177,8 @@ package myth.world
 			addChild(levelNameDisplay);
 			//set level speed
 			speed = levelData.speed;
+			nextLvlName = levelData.next_level_name;
 			//set enemy data in vector
-			//trace(levelData.enemies.length);
 			enemyData = new Vector.<Vector.<int>>(levelData.enemies.length);
 			for (i = 0; i < levelData.enemies.length; i++) 
 			{
@@ -189,7 +190,6 @@ package myth.world
 			{
 				tileData[i] = levelData.tiles[i].type as int;
 			}
-			//tiles.build(0, tileData);
 			//set layer data in vector
 			backgroundAssetData = new Vector.<Vector.<int>> (levelData.background_props.length);
 			for (i = 0; i < levelData.background_props.length; i++) 

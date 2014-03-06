@@ -7,4 +7,5 @@
 	<SubTexture name="icon1" x="6" y="306" width="194" height="142"/>;
 	<SubTexture name="icon2" x="212" y="306" width="194" height="142"/>;
 	<SubTexture name="icon3" x="411" y="305" width="194" height="142"/>;
+	<SubTexture name="pause" x="7" y="463" width="114" height="114"/>;
 </TextureAtlas>

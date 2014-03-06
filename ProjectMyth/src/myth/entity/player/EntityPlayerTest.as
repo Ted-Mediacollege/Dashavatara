@@ -21,7 +21,7 @@ package myth.entity.player
 		public function EntityPlayerTest() 
 		{
 			//super(true, false, true,128,200,-64,-200 );
-			super(false);
+			super(false,300);
 			
 			image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			image.scaleX = -1;

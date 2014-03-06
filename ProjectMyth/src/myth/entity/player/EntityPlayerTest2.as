@@ -5,14 +5,14 @@ package myth.entity.player
 	import myth.graphics.TextureList;
 	import myth.input.TouchType;
 	import starling.events.TouchEvent;
-	
+	//fish
 	public class EntityPlayerTest2 extends EntityPlayerBase
 	{
 		public var animationWalk:MovieClip;
 		
 		public function EntityPlayerTest2() 
 		{
-			super(true);
+			super(true,200);
 			
 			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("FishAvatar"), 30);
 			animationWalk.x = 0;

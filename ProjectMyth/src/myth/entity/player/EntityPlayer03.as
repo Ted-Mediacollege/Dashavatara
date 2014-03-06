@@ -9,17 +9,14 @@ package myth.entity.player
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import myth.Main;
-	/**
-	 * ...
-	 * @author Kit van de Bunt
-	 */
+	//fluit
 	public class EntityPlayer03 extends EntityPlayerBase
 	{
 		public var image:Image;
 		public var animationWalk:MovieClip;
 		public function EntityPlayer03() 
 		{
-			super(false);
+			super(false,200);
 			
 			image = new Image(TextureList.atlas_player.getTexture("player_4"));
 			image.scaleX = -1;

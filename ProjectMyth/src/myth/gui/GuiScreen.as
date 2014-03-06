@@ -53,9 +53,22 @@ package myth.gui
 			return b;
 		}
 		
+		public function removeButton(b:GuiButton):void
+		{
+			removeChild(b);
+			for (var i:int = 0; i < buttonList.length; i++) 
+			{
+				if(b==buttonList[i]){
+					buttonList.splice(i, 1);
+					break;
+				}
+			}
+		}
+		
 		//called by touch input
 		public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{
+			var buttonTouched:Boolean = false;
 			if (type == TouchType.CLICK)
 			{
 				for (var i:int = 0; i < buttonList.length; i++ )
@@ -71,12 +84,15 @@ package myth.gui
 						)
 					{
 						action(buttonList[i]);
+						buttonTouched = true;
 						break;
 					}
 				}
 			}
-			
-			input(type, data, e);
+			if (!buttonTouched)
+			{
+				input(type, data, e);
+			}
 		}
 	}
 }
