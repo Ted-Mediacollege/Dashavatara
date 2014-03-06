@@ -16,6 +16,7 @@ package myth.world
 	import myth.Main;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
+	import nape.phys.Material;
 	import nape.shape.Polygon;
 	import nape.space.Space;
 	import nape.util.BitmapDebug;
@@ -54,9 +55,13 @@ package myth.world
 		public var playerBody:Body;
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
+		
+		private var groundMaterial:Material;
+		
 		public var distance:Number = 0;
 		public var speed:Number;
 		public var deltaSpeed:Number;
+		
 		public var entityManager:WorldEntityManager;
 		public var objectManager:WorldObjectManager;
 		
@@ -64,14 +69,11 @@ package myth.world
 		public var debugShape2:Shape = new Shape();
 		
 		public var physicsSpace:Space;
-		private var debug:Debug;
-		var shape:flash.display.Sprite;
+		public var debug:Debug;
+		private var shape:flash.display.Sprite;
 		
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
-			
-			
-			
 			gui = g;
 			
 			lvlName = levelName;
@@ -80,11 +82,12 @@ package myth.world
 		}
 		
 		public function build():void {
+			groundMaterial = new Material(0, 0, 0, 1, 0);
 			//create space
-			physicsSpace = new Space(new Vec2(0, 600));
+			physicsSpace = new Space(new Vec2(0, 2200));
 			//debug
 			myth.util.Debug.test(function():void { 
-				debug = new ShapeDebug(ScaleHelper.phoneX, ScaleHelper.phoneY,0x666666);
+				debug = new ShapeDebug(1280, 768, 0x666666);
 				//debug = new BitmapDebug(1280, 768, 3355443, false);
 				debug.drawShapeDetail = true;
 				shape = new flash.display.Sprite();
@@ -98,16 +101,19 @@ package myth.world
 			
 			//ground physics body
 			var floor:Body = new Body(BodyType.STATIC);
-			floor.shapes.add(new Polygon(Polygon.rect(0, 600, 1200, 10)));
+			floor.shapes.add(new Polygon(Polygon.rect(0-200, 640, 1280+400, 100)));
 			floor.space = physicsSpace; 
-			floor.userData.Pivot = new Vec2(0,0);
+			floor.userData.Pivot = new Vec2(0, 0);
+			floor.userData.name = "ground";
+			floor.setShapeMaterials(groundMaterial);
 			
 			//player physics body
 			playerBody = new Body(BodyType.DYNAMIC,new Vec2(200,200) );
 			playerBody.shapes.add(new Polygon(Polygon.box(100,180)));
-			playerBody.position.setxy(200+Math.random(),200+Math.random());
+			playerBody.position.setxy(200,639);
 			playerBody.space = physicsSpace;
 			playerBody.userData.Pivot = new Vec2(0, -90);
+			playerBody.userData.name = "player";
 			playerBody.allowRotation = false;
 			
 			for (var i:int = 0; i < 0; i++) 
@@ -150,7 +156,9 @@ package myth.world
 		}
 		
 		public function onRemove():void {
-			Starling.current.nativeOverlay.removeChild(shape);
+			myth.util.Debug.test(function():void { 
+				Starling.current.nativeOverlay.removeChild(shape);
+			}, myth.util.Debug.DrawArracks);
 		}
 		
 		private function loadJSON():void {
@@ -221,18 +229,15 @@ package myth.world
 			{
 				gui.main.switchGui(new GuiLose(lvlName));
 			}
-			leng = 0;
 			//physicsSpace.bodies.foreach( move );
 			move();
 		}
-		private var leng:int = 0;
 		private var graphic:Sprite;
 		private function move():void 
 		{
 			for (var i:int = 0; i < physicsSpace.bodies.length; i++) 
 			{
 				var body:Body = physicsSpace.bodies.at(i);
-				leng++;
 				graphic = body.userData.graphic;
 				if(body.userData.Pivot!=null && graphic!=null){
 					graphic.x = body.position.x - body.userData.Pivot.x ;

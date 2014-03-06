@@ -42,11 +42,10 @@ package myth.entity.player
 			if (e.touches[0].phase == TouchPhase.BEGAN) {
 				
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
-				trace("jump");
-				Main.world.playerBody.applyImpulse(new Vec2(0, -10000));
-				
 				if (isOnFeet())
 				{
+					//trace("jump");
+					Main.world.playerBody.applyImpulse(new Vec2(0, -18000));
 					velY = -17;
 					onfeet = false;
 				}

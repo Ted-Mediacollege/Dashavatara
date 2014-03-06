@@ -30,8 +30,8 @@ package myth.world
 		public function WorldObjectManager(_data:Vector.<Vector.<int>> = null):void 
 		{
 			data = _data;
-			build();
 			groundMaterial = new Material(0, 0, 0, 1, 0);
+			build();
 		}
 		
 		private function build():void {
@@ -63,6 +63,7 @@ package myth.world
 			//platform.userData.Pivot = new Vec2(0, -90);
 			platform.userData.graphic = object;
 			platform.userData.Pivot = new Vec2(object.width / 2, 0);
+			platform.userData.name = "pillar";
 			platform.setShapeMaterials(groundMaterial);
 			
 			objectList.push(platform);

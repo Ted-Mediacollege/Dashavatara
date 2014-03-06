@@ -2,10 +2,15 @@ package myth.entity.player
 {
 	import flash.geom.Point;
 	import myth.entity.Entity;
+	import nape.callbacks.InteractionType;
+	import nape.geom.Vec2;
+	import nape.phys.Body;
+	import nape.phys.BodyList;
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
 	import myth.util.collision.RectCollider;
 	import myth.Main;
+	import myth.util.TimeHelper;
 	
 	public class EntityPlayerBase extends Entity
 	{
@@ -40,146 +45,92 @@ package myth.entity.player
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
 		}
-		/*
-		override public function tick():void 
-		{
+		private var maxBreakSpeed:Number = 5;
+		private var Xpos:Number = 200;
+		override public function tick():void {
+			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
+			//trace("X: "+this.x+" remkracht:"+Main.world.playerBody.velocity.x);
 			super.tick();
-			if (velY < 10)
-			{
-				velY += 0.5;
-			}
-				
-			if (isSideColliding(1))
-			{
-				this.x -= Main.world.deltaSpeed / 20;
-				while (isSideColliding(1))
-				{
-					this.x -= Main.world.deltaSpeed / 20;
+			//move
+			if (this.x < Xpos) {
+				if(Main.world.playerBody.velocity.x+this.x>Xpos){
+				}else { 
+					Main.world.playerBody.applyImpulse(new Vec2((18 * 10), 0));
 				}
-				velX = 0;
 			}
-			else
-			{	
-				if (isOnFeet())
-				{
-					if (this.x < 250 && velX < 1 && !swimmer)
-					{
-						velX += 0.1;
+			//apply break
+			if (Main.world.playerBody.velocity.x != 0) {
+				if (Main.world.playerBody.velocity.x > 0) {
+					if(Main.world.playerBody.velocity.x<maxBreakSpeed){
+						Main.world.playerBody.applyImpulse(new Vec2(18 * -(Main.world.playerBody.velocity.x), 0));
+					}else {
+						Main.world.playerBody.applyImpulse(new Vec2(18 * -maxBreakSpeed, 0));
 					}
-					else if (!swimmer)
-					{
-						velX = 0;
+				}else {
+					if(Main.world.playerBody.velocity.x>-maxBreakSpeed){
+						Main.world.playerBody.applyImpulse(new Vec2(18 * Main.world.playerBody.velocity.x, 0));
+					}else {
+						Main.world.playerBody.applyImpulse(new Vec2(18 * maxBreakSpeed, 0));
 					}
-					else
-					{
-						velX = -(Main.world.deltaSpeed / 2)
-					}
-				}
-				
-				if (isSideColliding(2))
-				{
-					this.y -= velY / 20;
-					while (isSideColliding(2))
-					{
-						this.y -= velY / 20;
-					}
-					velY = 0;
 				}
 			}
 			
-			if (swimmer && velX > -(Main.world.deltaSpeed / 2))
+			var colliders:BodyList = Main.world.playerBody.interactingBodies(InteractionType.COLLISION);
+			var colLength:int = colliders.length;
+			for (var j:int = 0; j < colLength; j++) 
 			{
-				velX = -(Main.world.deltaSpeed / 2);
-			}
-			
-			this.x += velX;
-			this.y += velY;
-			
-			if (this.y > 640)
-			{
-				this.y = 640;
-				velY = 0;
-				onfeet = true;
+				var l:int = colliders.at(j).arbiters.length;
+				for (var i:int = 0; i < l; i++) 
+				{
+					if (colliders.at(j).arbiters.at(i).isCollisionArbiter()) {
+						//draw
+						/*var thisPos:Vec2 = new Vec2(this.x, this.y);
+						if (colliders.at(j).arbiters.at(i).body1.userData.name != null) {
+							trace("b1:"+colliders.at(j).arbiters.at(i).body1.userData.name);
+						}
+						if (colliders.at(j).arbiters.at(i).body2.userData.name != null) {
+							trace("b2:"+colliders.at(j).arbiters.at(i).body2.userData.name);
+						}*/
+						Main.world.debug.drawLine( colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position
+						,colliders.at(j).arbiters.at(i).collisionArbiter.normal.mul(100).add(colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position, false
+						), 0x000000);
+					}
+				}
 			}
 		}
-		*/
 		
 		public function pushBack():void
 		{
-			velX = -Main.world.deltaSpeed;
-			velY = -10;
+			Main.world.playerBody.applyImpulse(new Vec2(-130*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
 		}
 		
 		public function isOnFeet():Boolean
 		{
-			if (isCollidingAt(this.x, this.y + 2) || this.y > 638)
+			var onFeet:Boolean = false;
+			var colliders:BodyList = Main.world.playerBody.interactingBodies(InteractionType.COLLISION);
+			var colLength:int = colliders.length;
+			var playerBodyId:int = Main.world.playerBody.id;
+			for (var j:int = 0; j < colLength; j++) 
 			{
-				onfeet = true;
-			}
-			else
-			{
-				onfeet = false;
-			}
-			
-			return onfeet;
-		}
-		
-		public function isSideColliding(side:int):Boolean
-		{
-			if (side == 0) //TOP 
-			{
-				//not used?
-			}
-			else if (side == 1) //RIGHT
-			{			
-				if ((isCollidingAt(this.x + collider.width / 2, this.y - collider.height) && isCollidingAt(this.x + collider.width / 2, this.y - collider.height + 5)) || (isCollidingAt(this.x + collider.width / 2 + 1, this.y - 5) && isCollidingAt(this.x + collider.width / 2 + 1, this.y)))
+				var l:int = colliders.at(j).arbiters.length;
+				for (var i:int = 0; i < l; i++) 
 				{
-					return true;
-				}
-				return false;
-			}
-			else if (side == 2) //DOWN
-			{
-				var amount:int = 0;
-				for (var i:Number = this.x + collider.width / 2; i > this.x - collider.width / 2; i-= 30 )
-				{
-					if (isCollidingAt(i, this.y))
-					{
-						amount++;
-						if (amount > 1)
-						{
+					if (colliders.at(j).arbiters.at(i).isCollisionArbiter()) {
+						var colAngle:Number;
+						if(playerBodyId==colliders.at(j).arbiters.at(i).body1.id){
+							colAngle = colliders.at(j).arbiters.at(i).collisionArbiter.normal.mul(-1).angle;
+						}else {
+							colAngle = colliders.at(j).arbiters.at(i).collisionArbiter.normal.angle;
+						}
+						if (colAngle > -Math.PI / 2 - 0.2 && colAngle < -Math.PI / 2 + 0.2) {
 							return true;
 						}
 					}
 				}
-				return false;
 			}
-			else if (side == 3) //LEFT
-			{
-				//not used?
-			}
-
-			return false;
-		}
-		
-		public function isCollidingAt(px:Number, py:Number):Boolean
-		{
-			for (var i:int = Main.world.objectManager.objectList.length - 1; i > -1; i--) 
-			{
-				if (Main.world.objectManager.objectList[i].userData.graphic.collider.intersectPoint(new Point(px, py)))
-				{
-					return true;
-				}
-			}
-			
 			return false;
 		}
 	}
-	
-	
-	
-	
-	
 	
 	/*import flash.geom.Point;
 	import starling.display.Sprite;

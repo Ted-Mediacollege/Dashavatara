@@ -19,9 +19,13 @@
 			{"type":0,"depth":2,"x":0,"y":0}
 		],
 		"objects":[
+			{"type":0,"x":2800,"y":950},
 			{"type":0,"x":3000,"y":850},
-			{"type":0,"x":3700,"y":850},
-			{"type":0,"x":4400,"y":850}
+			{"type":0,"x":3700,"y":950},
+			{"type":0,"x":3850,"y":870},
+			{"type":0,"x":4000,"y":790},
+			{"type":0,"x":4600,"y":950},
+			{"type":0,"x":4800,"y":850}
 		],
 		"tiles":[
 			{"type":0}, {"type":1}, {"type":0}, {"type":1},
@@ -177,6 +181,32 @@
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}
+		]
+	},
+	{
+		"name":"level_3",
+		"id":0,
+		"speed":1.5,
+		"enemies":[
+			{"type":0,"spawnX":-400,"spawnY":550},
+			{"type":0,"spawnX":1200,"spawnY":550}
+		],
+		"background_props":[
+			{"type":0,"depth":1,"x":0,"y":0},
+			{"type":0,"depth":2,"x":0,"y":0}
+		],
+		"objects":[
+			{"type":0,"x":680,"y":1000},
+			{"type":0,"x":800,"y":950},
+			{"type":0,"x":980,"y":850},
+			{"type":0,"x":1280,"y":1050},
+			{"type":0,"x":1400,"y":900},
+			{"type":0,"x":2000,"y":1280},
+			{"type":0,"x":2200,"y":0}
+		],
+		"tiles":[
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}
 		]
