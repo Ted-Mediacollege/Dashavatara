@@ -2,6 +2,8 @@ package myth.graphics
 {
 	import starling.textures.TextureAtlas;
 	import starling.textures.Texture;
+	import starling.utils.AssetManager;
+	import flash.filesystem.File;
 	
 	public class TextureList 
 	{
@@ -51,8 +53,14 @@ package myth.graphics
 		public static var atlas_fish:TextureAtlas;
 		public static var atlas_enemyRunning:TextureAtlas;
 		
+		public static var assetmanager:AssetManager;
+		
 		public static function load():void
 		{
+			assetmanager = new AssetManager();
+			assetmanager.verbose = true;
+			//assetmanager.enqueue("assets");
+			
 			atlas_gui = new TextureAtlas(Texture.fromBitmap(new gui_textures()), XML(new gui_xml()));
 			atlas_gui_background = new TextureAtlas(Texture.fromBitmap(new gui_background_textures()), XML(new gui_background_xml()));
 			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
