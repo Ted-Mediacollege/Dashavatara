@@ -8,6 +8,8 @@
 	
 	<SubTexture name="tiles01" x="0" y="128" width="128" height="128"/>;
 	<SubTexture name="tiles02" x="128" y="128" width="128" height="128"/>;
+	<SubTexture name="tiles03" x="256" y="128" width="128" height="128"/>;
+	<SubTexture name="tiles04" x="384" y="128" width="128" height="128"/>;
 	
 	<SubTexture name="background01" x="9" y="471" width="382" height="108"/>; <!-- WOLK 1 -->
 	<SubTexture name="background02" x="454" y="431" width="396" height="145"/>; <!-- WOLK 2 -->
