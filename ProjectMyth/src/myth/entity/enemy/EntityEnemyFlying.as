@@ -1,5 +1,6 @@
 package myth.entity.enemy 
 {
+	import starling.display.MovieClip;
 	import starling.display.Shape;
 	import flash.geom.Rectangle;
 	import myth.graphics.TextureList;
@@ -7,17 +8,26 @@ package myth.entity.enemy
 	import myth.Main;
 	import myth.util.MathHelper;
 	import myth.util.TimeHelper;
+	import starling.core.Starling;
 	
 	public class EntityEnemyFlying extends EntityEnemyBase
 	{
-		private var image:Image;
+		private var flyAnimation:MovieClip;
 		public function EntityEnemyFlying() 
 		{
 			super(EnemyType.Flying_01);
-			var image:Image = new Image(TextureList.atlas_player.getTexture("player_1"));
-			artLayer.addChild(image);
-			image.pivotX = image.width / 2;
-			image.pivotY = image.height / 2;
+			
+			flyAnimation = new MovieClip(TextureList.atlas_enemy.getTextures("FlyingEnemy"), 30);
+			flyAnimation.x = 0;
+			flyAnimation.y = 0;
+			flyAnimation.loop = true;
+			flyAnimation.play();
+			Starling.juggler.add(flyAnimation);
+			artLayer.addChild(flyAnimation);
+			
+			flyAnimation.pivotX = flyAnimation.width / 2;
+			flyAnimation.pivotY = flyAnimation.height / 2;
+			flyAnimation.rotation = Math.PI / 2;
 		}
 		
 		override public function tick():void {

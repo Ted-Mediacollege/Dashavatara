@@ -91,9 +91,11 @@ package myth.entity.player
 						if (colliders.at(j).arbiters.at(i).body2.userData.name != null) {
 							trace("b2:"+colliders.at(j).arbiters.at(i).body2.userData.name);
 						}*/
-						Main.world.debug.drawLine( colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position
-						,colliders.at(j).arbiters.at(i).collisionArbiter.normal.mul(100).add(colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position, false
-						), 0x000000);
+						myth.util.Debug.test(function():void { 
+							Main.world.debug.drawLine( colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position
+							,colliders.at(j).arbiters.at(i).collisionArbiter.normal.mul(100).add(colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position, false
+							), 0x000000);
+						}, myth.util.Debug.DrawArracks);
 					}
 				}
 			}
@@ -101,7 +103,7 @@ package myth.entity.player
 		
 		public function pushBack():void
 		{
-			Main.world.playerBody.applyImpulse(new Vec2(-130*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
+			Main.world.playerBody.applyImpulse(new Vec2(-160*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
 		}
 		
 		public function isOnFeet():Boolean
