@@ -1,9 +1,11 @@
 package myth.graphics 
 {
+	import myth.entity.player.PlayerType;
 	import starling.textures.TextureAtlas;
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 	import flash.filesystem.File;
+	import myth.Main;
 	
 	public class TextureList 
 	{
@@ -58,15 +60,15 @@ package myth.graphics
 		public static var atlas_enemyRunning:TextureAtlas;
 		public static var atlas_enemy:TextureAtlas;
 		
-		public static var assetmanager:AssetManager;
+		//public static var assetmanager:AssetManager;
 		
 		public static function load():void
 		{
-			var f:File = File.applicationDirectory;
+			//var f:File = File.applicationDirectory;
 			
-			assetmanager = new AssetManager();
-			assetmanager.verbose = true;
-			assetmanager.enqueue(f.resolvePath("assets"));
+			//assetmanager = new AssetManager();
+			//assetmanager.verbose = true;
+			//assetmanager.enqueue(f.resolvePath("assets"));
 			
 			atlas_gui = new TextureAtlas(Texture.fromBitmap(new gui_textures()), XML(new gui_xml()));
 			atlas_gui_background = new TextureAtlas(Texture.fromBitmap(new gui_background_textures()), XML(new gui_background_xml()));
@@ -77,6 +79,55 @@ package myth.graphics
 			atlas_fish = new TextureAtlas(Texture.fromBitmap(new fish_textures()), XML(new fish_xml()));
 			atlas_enemyRunning = new TextureAtlas(Texture.fromBitmap(new enemyRunning_textures()), XML(new enemyRunning_xml()));
 			atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
+		}
+		
+		public static var assetMngr:AssetManager;
+		public static var currentWorldType:int = -1;
+		public static var currentPlayers:Vector.<PlayerType> = new Vector.<PlayerType>;
+		//private static var tileData:Vector.<int>;
+		
+		public static function loadLevelAssets(worldType:int,player1Type:PlayerType,player2Type:PlayerType,player3Type:PlayerType):void
+		{
+			var load:Boolean = false;
+			var appDir:File = File.applicationDirectory;
+			assetMngr = new AssetManager();
+			//assetMngr.verbose = true;
+			
+			if (currentWorldType != worldType) {
+				load = true;
+			}
+			trace("currentPlayers L:"+currentPlayers.length)
+			for (var i:int = 0; i < 3; i++) 
+			{
+				if(currentPlayers.length > 0){
+					if (currentPlayers[i]==player1Type||currentPlayers[i]==player2Type||currentPlayers[i]==player3Type) {
+						
+					}else {
+						load = true;
+						break;
+					}
+				}
+			}
+			currentWorldType = worldType;
+			currentPlayers[0] = player1Type;
+			currentPlayers[1] = player2Type;
+			currentPlayers[2] = player3Type;
+			
+			if (load) {
+				//hier moeten alleen de assets voor een level geladen worden
+				assetMngr.enqueue(appDir.resolvePath("tex"));
+				
+				assetMngr.loadQueue(function(ratio:Number):void{
+					trace("Loading assets, progress:", ratio);
+					if (ratio == 1.0) {
+						trace("Loading assets done");
+						Main.world.build();
+					}
+				});
+			}else {
+				Main.world.build();
+				trace("no reload needed");
+			}
 		}
 	}
 }

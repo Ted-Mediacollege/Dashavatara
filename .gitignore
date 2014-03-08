@@ -1,7 +1,7 @@
 # Build and Release Folders
 
 ProjectMyth/bat/
-ProjectMyth/bin/
+ProjectMyth/bin/ProjectMyth.swf
 ProjectMyth/cert/
 ProjectMyth/dist/
 ProjectMyth/obj/

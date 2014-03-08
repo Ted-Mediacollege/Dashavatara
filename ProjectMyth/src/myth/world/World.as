@@ -34,9 +34,11 @@ package myth.world
 	import starling.events.TouchPhase;
 	import starling.core.Starling;
 	import nape.phys.BodyType;
+	import myth.entity.player.PlayerType;
 	
 	public class World extends Sprite
 	{
+		private var worldBuild:Boolean;
 		public var gui:GuiScreen;
 		
 		public var tiles:WorldTiles2;
@@ -79,7 +81,10 @@ package myth.world
 			
 			lvlName = levelName;
 			loadJSON();
-			
+		}
+		
+		public function init():void {
+			TextureList.loadLevelAssets(0,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
 		}
 		
 		public function build():void {
@@ -154,6 +159,8 @@ package myth.world
 			//debug
 			addChild(debugShape);
 			addChild(debugShape2);
+			
+			worldBuild = true;
 		}
 		
 		public function onRemove():void {
@@ -207,33 +214,35 @@ package myth.world
 		//LOOP
 		public function tick():void
 		{
-			physicsSpace.step(TimeHelper.deltaTime);
-			
-			myth.util.Debug.test(function():void { 
-				debug.clear();
-				debug.draw(physicsSpace);
-				debug.flush();
-			}, myth.util.Debug.DrawArracks);
-			player.tick();
-			deltaSpeed = speed*TimeHelper.deltaTimeScale;
-			distance += deltaSpeed;
-			tiles.tick(distance);
-			background.tick(distance);
-			entityManager.tick(deltaSpeed,distance);
-			objectManager.tick(deltaSpeed,distance);
-			///trace("damage "+damage);
-			//player1.x += speed;
-			//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
-			
-			if (player.x < -200)
-			{
-				gui.main.switchGui(new GuiLose(lvlName));
+			if(worldBuild){
+				physicsSpace.step(TimeHelper.deltaTime);
+				
+				myth.util.Debug.test(function():void { 
+					debug.clear();
+					debug.draw(physicsSpace);
+					debug.flush();
+				}, myth.util.Debug.DrawArracks);
+				player.tick();
+				deltaSpeed = speed*TimeHelper.deltaTimeScale;
+				distance += deltaSpeed;
+				tiles.tick(distance);
+				background.tick(distance);
+				entityManager.tick(deltaSpeed,distance);
+				objectManager.tick(deltaSpeed,distance);
+				///trace("damage "+damage);
+				//player1.x += speed;
+				//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
+				
+				if (player.x < -200)
+				{
+					gui.main.switchGui(new GuiLose(lvlName));
+				}
+				//physicsSpace.bodies.foreach( move );
+				moveGraphics();
 			}
-			//physicsSpace.bodies.foreach( move );
-			move();
 		}
 		private var graphic:Sprite;
-		private function move():void 
+		private function moveGraphics():void 
 		{
 			for (var i:int = 0; i < physicsSpace.bodies.length; i++) 
 			{
