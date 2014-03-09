@@ -24,23 +24,19 @@ package myth.entity.player
 		public var swimmer:Boolean;
 		private var maxBreakSpeed:Number = 5;
 		private var Xpos:Number;
+		private var playerBody:Body;
+		private var playerMass:Number;
 		
 		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int)
 		{
 			super(100, 180, -50, -180);
 			art = new Sprite();
-			this.x = 250;
-			this.y = 640;
 			addChild(art);
 			
 			swimmer = _swimmer;
 			Xpos = _XPos;
-			
-			velX = 0;
-			velY = 0;
-			
-			onfeet = false;
-			
+			playerBody = Main.world.playerBody;
+			playerMass = Main.world.playerBody.mass;
 			
 			//collider = new RectCollider(art.x, art.y, art.width, art.height, art.rotation, art.pivotX, art.pivotY);
 		}
@@ -51,61 +47,38 @@ package myth.entity.player
 		
 		override public function tick():void {
 			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
-			//trace("X: "+this.x+" remkracht:"+Main.world.playerBody.velocity.x);
+			//trace("X: "+this.x);
 			super.tick();
+			
 			//move
-			if (this.x < Xpos) {
-				if(Main.world.playerBody.velocity.x+this.x>Xpos){
-				}else { 
-					Main.world.playerBody.applyImpulse(new Vec2((18 * 10), 0));
-				}
-			}else if (this.x > Xpos)  {
-				if(this.x+Main.world.playerBody.velocity.x<Xpos){
-				}else { 
-					Main.world.playerBody.applyImpulse(new Vec2((18 * -10), 0));
-				}
-			}
 			if (swimmer) {
-				Main.world.playerBody.applyImpulse(new Vec2((18 * -17), 0));
+				playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
+			}else{
+				if (this.x < Xpos) {
+					if(playerBody.velocity.x+this.x>Xpos){
+					}else { 
+						playerBody.applyImpulse(new Vec2((playerMass * 10), 0));
+					}
+				}else if (this.x > Xpos)  {
+					if(this.x+playerBody.velocity.x<Xpos){
+					}else { 
+						playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
+					}
+				}
 			}
 			//apply break
-			if (Main.world.playerBody.velocity.x != 0) {
-				if (Main.world.playerBody.velocity.x > 0) {
-					if(Main.world.playerBody.velocity.x<maxBreakSpeed){
-						Main.world.playerBody.applyImpulse(new Vec2(18 * -(Main.world.playerBody.velocity.x), 0));
+			if (playerBody.velocity.x != 0) {
+				if (playerBody.velocity.x > 0) {
+					if(playerBody.velocity.x<maxBreakSpeed){
+						playerBody.applyImpulse(new Vec2(playerMass * -(playerBody.velocity.x), 0));
 					}else {
-						Main.world.playerBody.applyImpulse(new Vec2(18 * -maxBreakSpeed, 0));
+						playerBody.applyImpulse(new Vec2(playerMass * -maxBreakSpeed, 0));
 					}
 				}else {
-					if(Main.world.playerBody.velocity.x>-maxBreakSpeed){
-						Main.world.playerBody.applyImpulse(new Vec2(18 * Main.world.playerBody.velocity.x, 0));
+					if(playerBody.velocity.x>-maxBreakSpeed){
+						playerBody.applyImpulse(new Vec2(playerMass * playerBody.velocity.x, 0));
 					}else {
-						Main.world.playerBody.applyImpulse(new Vec2(18 * maxBreakSpeed, 0));
-					}
-				}
-			}
-			
-			var colliders:BodyList = Main.world.playerBody.interactingBodies(InteractionType.COLLISION);
-			var colLength:int = colliders.length;
-			for (var j:int = 0; j < colLength; j++) 
-			{
-				var l:int = colliders.at(j).arbiters.length;
-				for (var i:int = 0; i < l; i++) 
-				{
-					if (colliders.at(j).arbiters.at(i).isCollisionArbiter()) {
-						//draw
-						/*var thisPos:Vec2 = new Vec2(this.x, this.y);
-						if (colliders.at(j).arbiters.at(i).body1.userData.name != null) {
-							trace("b1:"+colliders.at(j).arbiters.at(i).body1.userData.name);
-						}
-						if (colliders.at(j).arbiters.at(i).body2.userData.name != null) {
-							trace("b2:"+colliders.at(j).arbiters.at(i).body2.userData.name);
-						}*/
-						myth.util.Debug.test(function():void { 
-							Main.world.debug.drawLine( colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position
-							,colliders.at(j).arbiters.at(i).collisionArbiter.normal.mul(100).add(colliders.at(j).arbiters.at(i).collisionArbiter.contacts.at(0).position, false
-							), 0x000000);
-						}, myth.util.Debug.DrawArracks);
+						playerBody.applyImpulse(new Vec2(playerMass * maxBreakSpeed, 0));
 					}
 				}
 			}
@@ -119,9 +92,9 @@ package myth.entity.player
 		public function isOnFeet():Boolean
 		{
 			var onFeet:Boolean = false;
-			var colliders:BodyList = Main.world.playerBody.interactingBodies(InteractionType.COLLISION);
+			var colliders:BodyList = playerBody.interactingBodies(InteractionType.COLLISION);
 			var colLength:int = colliders.length;
-			var playerBodyId:int = Main.world.playerBody.id;
+			var playerBodyId:int = playerBody.id;
 			for (var j:int = 0; j < colLength; j++) 
 			{
 				var l:int = colliders.at(j).arbiters.length;
