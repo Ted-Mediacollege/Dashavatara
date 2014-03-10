@@ -50,8 +50,9 @@ package myth.entity.player
 			trace("X: "+this.x);
 			super.tick();
 			var speed:Number = Main.world.speed;
-			var force:Number = speed*5;
-			var XposT:Number = Xpos+ (force*playerMass)
+			var force:Number = speed * 5;
+			var maxBreakSpeed:Number = speed * 2;
+			var XposT:Number = Xpos+ (maxBreakSpeed*playerMass)
 			//move
 			if (swimmer) {
 				playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
