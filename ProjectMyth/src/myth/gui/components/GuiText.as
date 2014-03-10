@@ -28,6 +28,10 @@ package myth.gui.components
 			text = new TextField(w, h, t, f, s, c);
 			text.hAlign = aH;
 			text.vAlign = aV;
+			if (aH == "center")
+			{
+				text.pivotX = text.width / 2;
+			}
 			addChild(text);
 		}
 	}

@@ -23,8 +23,20 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiCredits", 25, 0x000000);
 			addChild(t);
 			
-			var lol:GuiText = new GuiText(ScaleHelper.phoneX / 2, ScaleHelper.phoneY / 2, 800, 300, "center", "center", "Dit spel is gemaakt door de oppermachtige programmeur ted.", 45, 0x000000);
+			var lol:GuiText = new GuiText(screenWidth / 2, screenHeight / 2 - 200, 800, 250, "center", "center", "Dit spel is gemaakt door de oppermachtige programmeur ted.", 45, 0x000000);
 			addChild(lol);
+			
+			var lolbb2:GuiText = new GuiText(screenWidth / 2 + 295, screenHeight / 2 - 148, 900, 200, "center", "center", "===", 40, 0xFF0000);
+			addChild(lolbb2);
+			
+			var lol2:GuiText = new GuiText(screenWidth / 2 + 220, screenHeight / 2 - 105, 900, 200, "center", "center", "EDIT: kit heeft alles gedaan.", 40, 0xFF0000);
+			addChild(lol2);
+			
+			var lol3:GuiText = new GuiText(screenWidth / 2 + 20, screenHeight / 2 + 45, 600, 200, "center", "center", "Met dank aan: kevin \"vampier\" krol, Djarno, faberjan, kewim dusdat en jeriMAYA. voor totaal niks doen en ons van het werk afhouden. Coen en rick zijn hele b0ze jongens OEHEHOEHOHE", 25, 0x000000);
+			addChild(lol3);
+			
+			var lol4:GuiText = new GuiText(screenWidth / 2 + 20, screenHeight / 2 - 300, 600, 200, "center", "center", "De ARTISTS hebben art gemaakt enzo maar de programmeurs zijn het koelsts", 25, 0x000000);
+			addChild(lol4);
 			
 			var b:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 		}

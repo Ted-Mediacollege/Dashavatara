@@ -12,6 +12,7 @@ package myth.gui.components
 		public var image:Image;
 		public var buttonID:int;
 		public var value:Number; //Voor sliders of andere settings buttons (wordt nog niet gebruikt)
+		public var enabled:Boolean = true;
 		
 		public var posX:Number;
 		public var posY:Number;
@@ -59,6 +60,16 @@ package myth.gui.components
 		
 		public function click():void
 		{
+		}
+		
+		public function setEnabled(e:Boolean):void
+		{
+			enabled = e;
+			
+			if (!e)
+			{
+				image.color = 0x000000;
+			}
 		}
 	}
 }

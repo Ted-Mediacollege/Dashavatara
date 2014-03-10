@@ -60,16 +60,19 @@ package myth.graphics
 		public static var atlas_enemyRunning:TextureAtlas;
 		public static var atlas_enemy:TextureAtlas;
 		
-		//public static var assetmanager:AssetManager;
+		public static var assetMngr:AssetManager;
+		public static var currentWorldType:int = -1;
+		public static var currentPlayers:Vector.<PlayerType> = new Vector.<PlayerType>;
+		//private static var tileData:Vector.<int>;
+		
+		public static function preLoad():void
+		{
+			assetMngr = new AssetManager();
+			//assetMngr.verbose = true;
+		}
 		
 		public static function load():void
 		{
-			//var f:File = File.applicationDirectory;
-			
-			//assetmanager = new AssetManager();
-			//assetmanager.verbose = true;
-			//assetmanager.enqueue(f.resolvePath("assets"));
-			
 			atlas_gui = new TextureAtlas(Texture.fromBitmap(new gui_textures()), XML(new gui_xml()));
 			atlas_gui_background = new TextureAtlas(Texture.fromBitmap(new gui_background_textures()), XML(new gui_background_xml()));
 			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
@@ -81,17 +84,10 @@ package myth.graphics
 			atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
 		}
 		
-		public static var assetMngr:AssetManager;
-		public static var currentWorldType:int = -1;
-		public static var currentPlayers:Vector.<PlayerType> = new Vector.<PlayerType>;
-		//private static var tileData:Vector.<int>;
-		
 		public static function loadLevelAssets(worldType:int,player1Type:PlayerType,player2Type:PlayerType,player3Type:PlayerType):void
 		{
 			var load:Boolean = false;
 			var appDir:File = File.applicationDirectory;
-			assetMngr = new AssetManager();
-			//assetMngr.verbose = true;
 			
 			if (currentWorldType != worldType) {
 				load = true;
