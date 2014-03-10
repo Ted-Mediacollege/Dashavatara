@@ -47,22 +47,24 @@ package myth.entity.player
 		
 		override public function tick():void {
 			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
-			//trace("X: "+this.x);
+			trace("X: "+this.x);
 			super.tick();
-			
+			var speed:Number = Main.world.speed;
+			var force:Number = speed*5;
+			var XposT:Number = Xpos+ (force*playerMass)
 			//move
 			if (swimmer) {
 				playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
 			}else{
-				if (this.x < Xpos) {
-					if(playerBody.velocity.x+this.x>Xpos){
+				if (this.x < XposT) {
+					if(playerBody.velocity.x+this.x>XposT){
 					}else { 
-						playerBody.applyImpulse(new Vec2((playerMass * 10), 0));
+						playerBody.applyImpulse(new Vec2((playerMass * force), 0));
 					}
-				}else if (this.x > Xpos)  {
-					if(this.x+playerBody.velocity.x<Xpos){
+				}else if (this.x > XposT)  {
+					if(this.x+playerBody.velocity.x<XposT){
 					}else { 
-						playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
+						playerBody.applyImpulse(new Vec2((playerMass * -force), 0));
 					}
 				}
 			}

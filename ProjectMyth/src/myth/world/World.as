@@ -107,7 +107,7 @@ package myth.world
 			
 			//ground physics body
 			var floor:Body = new Body(BodyType.STATIC);
-			floor.shapes.add(new Polygon(Polygon.rect(0-200, 640, 1280+400, 100)));
+			floor.shapes.add(new Polygon(Polygon.rect(0-200, 640, 1280+400 +100000, 100)));
 			floor.space = physicsSpace; 
 			floor.userData.Pivot = new Vec2(0, 0);
 			floor.userData.name = "ground";
@@ -212,9 +212,26 @@ package myth.world
 		}
 		
 		//LOOP
+		private var sps:Boolean = true;
 		public function tick():void
 		{
-			if(worldBuild){
+			/*
+			if(sps){
+				speed -= 0.05;
+				if (speed < -1) {
+					sps = false;
+				}
+			}else {
+				speed += 0.1;
+				if (speed > 6) {
+					sps = true;
+				}
+			}
+			trace(speed);*/
+			if (worldBuild) {
+				
+				
+				
 				physicsSpace.step(TimeHelper.deltaTime);
 				
 				myth.util.Debug.test(function():void { 
@@ -249,11 +266,10 @@ package myth.world
 				var body:Body = physicsSpace.bodies.at(i);
 				graphic = body.userData.graphic;
 				if(body.userData.Pivot!=null && graphic!=null){
-					graphic.x = body.position.x - body.userData.Pivot.x ;
+					graphic.x = body.position.x - body.userData.Pivot.x - distance;
 					graphic.y = body.position.y - body.userData.Pivot.y ;
 					graphic.rotation = body.rotation;
 				}
-				
 			}
 		}
 		

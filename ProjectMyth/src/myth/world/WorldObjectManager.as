@@ -58,7 +58,8 @@ package myth.world
 			var platform:Body = new Body(BodyType.KINEMATIC);
 			platform.position.setxy(xPos, yPos);
 			platform.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
-			platform.velocity.x = -Main.world.speed*60;
+			//platform.velocity.x = -Main.world.speed*60;
+			//platform.velocity.x = Main.world.distance;
 			platform.space =  Main.world.physicsSpace;
 			//platform.userData.Pivot = new Vec2(0, -90);
 			platform.userData.graphic = object;
