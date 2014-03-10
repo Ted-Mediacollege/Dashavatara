@@ -80,7 +80,7 @@ package myth.world
 			//spawn objects
 			if (data.length > 0) {
 				while(data[0][1] < dist+spawnPos) {
-					makeObject(data[0][0], spawnPos, data[0][2]);
+					makeObject(data[0][0], spawnPos+dist, data[0][2]);
 					data.splice(0, 1);
 					if (data.length < 1) {
 						break;

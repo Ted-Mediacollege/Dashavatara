@@ -35,6 +35,7 @@ package myth.world
 	import starling.core.Starling;
 	import nape.phys.BodyType;
 	import myth.entity.player.PlayerType;
+	import nape.geom.Mat23;
 	
 	public class World extends Sprite
 	{
@@ -91,6 +92,7 @@ package myth.world
 			groundMaterial = new Material(0, 0, 0, 1, 0);
 			//create space
 			physicsSpace = new Space(new Vec2(0, 2200));
+			//physicsSpace.worldLinearDrag = 0.5;
 			//debug
 			myth.util.Debug.test(function():void { 
 				debug = new ShapeDebug(1280, 768, 0x666666);
@@ -215,6 +217,7 @@ package myth.world
 		private var sps:Boolean = true;
 		public function tick():void
 		{
+			
 			/*
 			if(sps){
 				speed -= 0.05;
@@ -234,7 +237,10 @@ package myth.world
 				
 				physicsSpace.step(TimeHelper.deltaTime);
 				
-				myth.util.Debug.test(function():void { 
+				myth.util.Debug.test(function():void {
+					var debugMatrix:Mat23 = new Mat23();
+					debugMatrix.tx = -distance;
+					debug.transform = debugMatrix;
 					debug.clear();
 					debug.draw(physicsSpace);
 					debug.flush();
