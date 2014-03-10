@@ -1,6 +1,7 @@
 package myth.world 
 {
 	import myth.entity.objects.EntityObjectBase;
+	import myth.entity.objects.EntityObjectEndPort;
 	import myth.entity.objects.EntityObjectPillar;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
@@ -48,24 +49,34 @@ package myth.world
 		
 		public function makeObject( type:int,xPos:int,yPos:int) :void
 		{
+			var platform:Body = new Body(BodyType.KINEMATIC);
 			var object :EntityObjectBase;
+			
 			if(type == ObjectType.Pillar){
 				object = new EntityObjectPillar();
 			}else if(type == ObjectType.pillar2){
 				object = new EntityObjectPillar();
+			}else if (type == ObjectType.endPort1) {
+				object = new EntityObjectEndPort();
 			}
-			
-			var platform:Body = new Body(BodyType.KINEMATIC);
-			platform.position.setxy(xPos, yPos);
-			platform.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
-			//platform.velocity.x = -Main.world.speed*60;
-			//platform.velocity.x = Main.world.distance;
-			platform.space =  Main.world.physicsSpace;
-			//platform.userData.Pivot = new Vec2(0, -90);
-			platform.userData.graphic = object;
-			platform.userData.Pivot = new Vec2(object.width / 2, 0);
-			platform.userData.name = "pillar";
-			platform.setShapeMaterials(groundMaterial);
+			if (type == ObjectType.Pillar || type == ObjectType.pillar2) {
+				platform.position.setxy(xPos, yPos);
+				platform.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
+				//platform.velocity.x = -Main.world.speed*60;
+				//platform.velocity.x = Main.world.distance;
+				platform.space =  Main.world.physicsSpace;
+				//platform.userData.Pivot = new Vec2(0, -90);
+				platform.userData.graphic = object;
+				platform.userData.Pivot = new Vec2(object.width / 2, 0);
+				platform.userData.name = "pillar";
+				platform.setShapeMaterials(groundMaterial);
+			}else {
+				platform.position.setxy(xPos, yPos);
+				platform.space =  Main.world.physicsSpace;
+				platform.userData.graphic = object;
+				platform.userData.Pivot = new Vec2(object.width / 2, 0);
+				platform.userData.name = "pillar";
+			}
 			
 			objectList.push(platform);
 			addChild(object);

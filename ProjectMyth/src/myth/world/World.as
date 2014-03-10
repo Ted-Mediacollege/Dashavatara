@@ -8,6 +8,7 @@ package myth.world
 	import myth.entity.player.EntityPlayerTest;
 	import myth.entity.player.EntityPlayerTest2;
 	import myth.gui.game.GuiLose;
+	import myth.gui.game.GuiWin;
 	import myth.gui.GuiScreen;
 	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
@@ -36,6 +37,7 @@ package myth.world
 	import nape.phys.BodyType;
 	import myth.entity.player.PlayerType;
 	import nape.geom.Mat23;
+	import myth.entity.objects.ObjectType;
 	
 	public class World extends Sprite
 	{
@@ -65,6 +67,8 @@ package myth.world
 		public var distance:Number = 0;
 		public var speed:Number;
 		public var deltaSpeed:Number;
+		public var endPointPosition:Number;
+		private var levelComplete:Boolean = false;
 		
 		public var entityManager:WorldEntityManager;
 		public var objectManager:WorldObjectManager;
@@ -78,8 +82,8 @@ package myth.world
 		
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
+			EntityPlayerBase.levelStart();
 			gui = g;
-			
 			lvlName = levelName;
 			loadJSON();
 		}
@@ -184,6 +188,13 @@ package myth.world
 			}
 			var levelNameDisplay:TextField = new TextField(200, 400, "json: " + levelData.name, "Verdana", 20, 0xffffff);
 			addChild(levelNameDisplay);
+			//set end point position
+			for (i = 0; i < levelData.objects.length; i++) 
+			{
+				if(levelData.objects[i].type == ObjectType.endPort1){
+					endPointPosition = levelData.objects[i].x;
+				}
+			}
 			//set level speed
 			speed = levelData.speed;
 			nextLvlName = levelData.next_level_name;
@@ -232,8 +243,14 @@ package myth.world
 			}
 			trace(speed);*/
 			if (worldBuild) {
-				
-				
+				if(!levelComplete){
+					if (distance > endPointPosition-500) {
+						player.levelDone();
+					}else {
+						deltaSpeed = speed*TimeHelper.deltaTimeScale;
+						distance += deltaSpeed;
+					}
+				}
 				
 				physicsSpace.step(TimeHelper.deltaTime);
 				
@@ -246,8 +263,7 @@ package myth.world
 					debug.flush();
 				}, myth.util.Debug.DrawArracks);
 				player.tick();
-				deltaSpeed = speed*TimeHelper.deltaTimeScale;
-				distance += deltaSpeed;
+				
 				tiles.tick(distance);
 				background.tick(distance);
 				entityManager.tick(deltaSpeed,distance);
@@ -259,6 +275,8 @@ package myth.world
 				if (player.x < -200)
 				{
 					gui.main.switchGui(new GuiLose(lvlName));
+				}else if(player.x > 1480 || levelComplete) {
+					gui.main.switchGui(new GuiWin(lvlName,nextLvlName));
 				}
 				//physicsSpace.bodies.foreach( move );
 				moveGraphics();

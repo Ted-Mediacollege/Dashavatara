@@ -8,9 +8,9 @@ package myth.entity.objects
 	public class EntityObjectBase extends Entity
 	{
 		
-		public function EntityObjectBase() 
+		public function EntityObjectBase(colWidth:Number = 171,colHeight:Number = 425,colPivotX:Number = 0,colPivotY:Number = -425) 
 		{
-			super(171, 425, 0, -425);
+			super(colWidth, colHeight, colPivotX, colPivotY);
 		}
 		
 	}

@@ -43,16 +43,30 @@ package myth.entity.player
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
+			
+		}
+		
+		private static var levelComplete:Boolean = false;
+		
+		public function levelDone():void {
+			levelComplete = true;
+		}
+		
+		public static function levelStart():void {
+			levelComplete = false;
 		}
 		
 		override public function tick():void {
-			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
-			//trace("X: "+this.x);
 			super.tick();
 			var speed:Number = Main.world.speed;
 			var force:Number = speed * 5;
 			var maxBreakSpeed:Number = speed * 2;
-			var XposT:Number = Xpos+ (maxBreakSpeed*playerMass)
+			var XposT:Number = Xpos + (maxBreakSpeed * playerMass);
+			if (levelComplete) {
+				Xpos += speed;
+			}
+			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
+			//trace("X: "+this.x);
 			//move
 			if (swimmer) {
 				playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
@@ -89,7 +103,7 @@ package myth.entity.player
 		
 		public function pushBack():void
 		{
-			Main.world.playerBody.applyImpulse(new Vec2(-160*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
+			Main.world.playerBody.applyImpulse(new Vec2(-240*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
 		}
 		
 		public function isOnFeet():Boolean
