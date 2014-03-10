@@ -47,7 +47,7 @@ package myth.entity.player
 		
 		override public function tick():void {
 			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
-			trace("X: "+this.x);
+			//trace("X: "+this.x);
 			super.tick();
 			var speed:Number = Main.world.speed;
 			var force:Number = speed * 5;
