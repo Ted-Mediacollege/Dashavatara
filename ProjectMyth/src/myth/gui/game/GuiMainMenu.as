@@ -26,11 +26,11 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 - 110, 450, 100, "Play", 25, 0x31407F));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2, 450, 100, "Customize", 25, 0x000000));
-			var b3:GuiButton = addButton(new GuiButton(2, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, "Editor", 25, 0x000000));
-			var b4:GuiButton = addButton(new GuiButton(3, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 220, 450, 100, "Options", 25, 0x000000));
-			var b5:GuiButton = addButton(new GuiButton(4, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Credits", 25, 0x000000));
+			var b1:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Play", 25, 0x31407F));
+			//var b2:GuiButton = addButton(new GuiButton(1, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Customize", 25, 0x000000));
+			//var b3:GuiButton = addButton(new GuiButton(2, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, "Editor", 25, 0x000000));
+			var b4:GuiButton = addButton(new GuiButton(3, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 70, 450, 100, "Options", 25, 0x000000));
+			var b5:GuiButton = addButton(new GuiButton(4, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 200, 450, 100, "Credits", 25, 0x000000));
 		}
 		
 		override public function tick():void 

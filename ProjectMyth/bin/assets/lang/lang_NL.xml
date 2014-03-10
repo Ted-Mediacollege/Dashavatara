@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<data>
+	<data>
+		<name>Nederlands</name>
+	</data>
+	
+	<menu>
+		<t id="button_start">Spelen</t>
+	</menu>
+		
+	<ingame>
+		<t id="score">Punten</t>
+	</ingame>
+</data>

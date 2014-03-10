@@ -1,6 +1,7 @@
 package myth 
 {
 	import flash.events.Event;
+	import myth.gui.game.GuiLoading;
 	import myth.gui.game.GuiMainMenu;
 	import myth.gui.GuiScreen;
 	import myth.input.KeyInput;
@@ -39,7 +40,7 @@ package myth
 			
 			addEventListener(EnterFrameEvent.ENTER_FRAME, tick);
 			
-			switchGui(new GuiMainMenu());
+			switchGui(new GuiLoading());
 		}
 		
 		public function tick(e:EnterFrameEvent):void
