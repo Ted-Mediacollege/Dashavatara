@@ -10,24 +10,35 @@ package myth.entity.player
 	import myth.Main;
 	import myth.util.Debug;
 	import myth.util.MathHelper;
+	import treefortress.spriter.SpriterClip;
+	import starling.core.Starling;
 	//lion
 	public class EntityPlayer01v2 extends EntityPlayerBase
 	{
-		public var image:Image;
+		public var image:SpriterClip;
 		public var startShootRadius:int = 100;
 		public var startShootXDisplace:int = -20;
 		public var startShootYDisplace:int = -90;
 		private var debugShape:Shape = new Shape();
+		
 		public function EntityPlayer01v2() 
 		{
 			//super(true, false, true,128,200,-64,-200 );
 			super(false,300);
 			
-			image = new Image(TextureList.atlas_player.getTexture("player_3"));
-			image.scaleX = -1;
-			image.pivotX = image.width / 2;
-			image.pivotY = image.height;
-			artLayer.addChild(image);
+			image = TextureList.spriterLoader.getSpriterClip("animLion");
+			image.playbackSpeed = 1;
+			image.scaleX = 0.7;
+			image.scaleY = 0.7;
+			image.play("ren animatie");
+			addChild(image);
+			Starling.juggler.add(image);
+			
+			//image = new Image(TextureList.atlas_player.getTexture("player_3"));
+			//image.scaleX = -1;
+			//image.pivotX = image.width / 2;
+			//image.pivotY = image.height;
+			//artLayer.addChild(image);
 			artLayer.addChild(debugShape);
 			Debug.test(function():void { 
 				//draw start attack circle

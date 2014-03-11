@@ -10,7 +10,7 @@ package myth.gui.game
 	
 	public class GuiLoading extends GuiScreen
 	{
-		public var ready:Boolean = false;
+		public static var ready:int = 0;
 		public static var progress:Number = 0;
 		public static var KevinIsEenRareEngeVampier:GuiText;
 		
@@ -22,6 +22,9 @@ package myth.gui.game
 		override public function init():void 
 		{ 
 			addChild(background);
+			
+			ready = 0;
+			progress = 0;
 			
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiLoading", 25, 0x000000);
 			addChild(t);
@@ -36,24 +39,19 @@ package myth.gui.game
 		{ 
 			background.tick();
 			
-			if (!ready)
+			if (ready < 2)
 			{
 				KevinIsEenRareEngeVampier.text.text = "Loading " + Math.floor(progress * 100) + "%";
 			}
-		}
-		
-		override public function action(b:GuiButton):void
-		{
-			if (b == null && !ready)
+			else
 			{
-				ready = true;
 				KevinIsEenRareEngeVampier.text.text = "Tap to continue";
 			}
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
-			if (ready)
+			if (ready > 1)
 			{
 				main.switchGui(new GuiMainMenu());
 			}
