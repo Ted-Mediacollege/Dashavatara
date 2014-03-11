@@ -21,7 +21,7 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiOptions", 25, 0x000000);
 			addChild(t);			
 
-			var b:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
+			var b:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 		}
 		
 		override public function tick():void 

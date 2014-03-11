@@ -37,16 +37,16 @@ package myth.gui.game
 			Main.world.init();
 			addChild(Main.world);
 			
-			addButton(new GuiButton(10, TextureList.atlas_gui.getTexture("icon1"), 100, 80, 194, 142, ""));
-			addButton(new GuiButton(11, TextureList.atlas_gui.getTexture("icon2"), 300, 80, 194, 142, ""));
-			addButton(new GuiButton(12, TextureList.atlas_gui.getTexture("icon3"), 500, 80, 194, 142, ""));
-			addButton(new GuiButton(13, TextureList.atlas_gui.getTexture("pause"), 1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, ""));
+			addButton(new GuiButton(10, TextureList.assets.getTexture("gui_icon1"), 100, 80, 194, 142, ""));
+			addButton(new GuiButton(11, TextureList.assets.getTexture("gui_icon2"), 300, 80, 194, 142, ""));
+			addButton(new GuiButton(12, TextureList.assets.getTexture("gui_icon3"), 500, 80, 194, 142, ""));
+			addButton(new GuiButton(13, TextureList.assets.getTexture("gui_button_pause"), 1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, ""));
 		}
 		
 		private function createPauseButtons():void 
 		{
-			b1 = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
-			b2 = addButton(new GuiButton(1, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
+			b1 = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
+			b2 = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
 		}
 		
 		private function removePauseButtons():void 

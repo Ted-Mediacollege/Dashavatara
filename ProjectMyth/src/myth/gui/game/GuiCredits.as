@@ -38,7 +38,7 @@ package myth.gui.game
 			var lol4:GuiText = new GuiText(screenWidth / 2 + 20, screenHeight / 2 - 300, 600, 200, "center", "center", "De ARTISTS hebben art gemaakt enzo maar de programmeurs zijn het koelsts", 25, 0x000000);
 			addChild(lol4);
 			
-			var b:GuiButton = addButton(new GuiButton(0, TextureList.atlas_gui.getTexture("button_small"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
+			var b:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 		}
 		
 		override public function tick():void 

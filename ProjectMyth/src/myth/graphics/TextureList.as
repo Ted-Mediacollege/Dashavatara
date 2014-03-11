@@ -1,17 +1,17 @@
 package myth.graphics 
 {
 	import myth.entity.player.PlayerType;
+	import myth.gui.components.GuiButton;
 	import starling.textures.TextureAtlas;
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 	import flash.filesystem.File;
 	import myth.Main;
+	import myth.gui.game.GuiLoading;
 	
 	public class TextureList 
 	{
 		//textures
-		[Embed(source="../../../lib/textures/gui.png")]
-		public static var gui_textures:Class;
 		[Embed(source="../../../lib/textures/gui_achtergrond.png")]
 		public static var gui_background_textures:Class;
 		[Embed(source="../../../lib/textures/player.png")]
@@ -30,8 +30,6 @@ package myth.graphics
 		public static var enemy_textures:Class;
 		
 		//xml files
-		[Embed(source = "../../../lib/textures/gui.xml", mimeType = "application/octet-stream")]
-		public static var gui_xml:Class;
 		[Embed(source = "../../../lib/textures/gui_achtergrond.xml", mimeType = "application/octet-stream")]
 		public static var gui_background_xml:Class;
 		[Embed(source="../../../lib/textures/player.xml", mimeType = "application/octet-stream")]
@@ -60,20 +58,29 @@ package myth.graphics
 		public static var atlas_enemyRunning:TextureAtlas;
 		public static var atlas_enemy:TextureAtlas;
 		
-		public static var assetMngr:AssetManager;
+		public static var assets:AssetManager;
 		public static var currentWorldType:int = -1;
 		public static var currentPlayers:Vector.<PlayerType> = new Vector.<PlayerType>;
 		//private static var tileData:Vector.<int>;
 		
 		public static function preLoad():void
 		{
-			assetMngr = new AssetManager();
-			//assetMngr.verbose = true;
+			assets = new AssetManager();
+
+			var appDir:File = File.applicationDirectory;
+			assets.enqueue(appDir.resolvePath("tex/background"));
+			assets.enqueue(appDir.resolvePath("tex/gui"));
+				
+			assets.loadQueue(function(ratio:Number):void {
+				GuiLoading.progress = ratio;
+				if (ratio == 1.0) {
+					Main.gui.action(null);
+				}
+			});
 		}
 		
 		public static function load():void
 		{
-			atlas_gui = new TextureAtlas(Texture.fromBitmap(new gui_textures()), XML(new gui_xml()));
 			atlas_gui_background = new TextureAtlas(Texture.fromBitmap(new gui_background_textures()), XML(new gui_background_xml()));
 			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
 			atlas_background = new TextureAtlas(Texture.fromBitmap(new background_textures()), XML(new background_xml()));
@@ -111,9 +118,9 @@ package myth.graphics
 			
 			if (load) {
 				//hier moeten alleen de assets voor een level geladen worden
-				assetMngr.enqueue(appDir.resolvePath("tex"));
+				assets.enqueue(appDir.resolvePath("tex/anim"));
 				
-				assetMngr.loadQueue(function(ratio:Number):void{
+				assets.loadQueue(function(ratio:Number):void{
 					trace("Loading assets, progress:", ratio);
 					if (ratio == 1.0) {
 						trace("Loading assets done");
