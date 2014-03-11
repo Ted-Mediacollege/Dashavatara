@@ -37,6 +37,7 @@ package myth.input
 				{
 					zooming = false;
 					touchStart = touches[0].getLocation(Main.gui);
+					Main.gui.touch(TouchType.BEGIN, null, e);
 				}
 				else if(touches[0].phase == TouchPhase.ENDED)
 				{

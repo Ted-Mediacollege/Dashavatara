@@ -28,11 +28,6 @@ package myth.gui.game
 		{
 			background = null;
 			
-			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
-			bg.blendMode = BlendMode.NONE;
-			bg.touchable = false;
-			addChild(bg);
-			
 			Main.world = new World(this, levelName);
 			Main.world.init();
 			addChild(Main.world);

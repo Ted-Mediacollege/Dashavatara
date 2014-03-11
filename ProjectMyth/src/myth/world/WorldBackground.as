@@ -7,6 +7,8 @@ package myth.world
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
 	import myth.Main;
+	import starling.display.BlendMode;
+	import starling.display.Image;
 	
 	public class WorldBackground extends Sprite
 	{
@@ -21,15 +23,20 @@ package myth.world
 		public function build(camX:Number, length:int):void
 		{
 			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
+						
+			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
+			bg.blendMode = BlendMode.NONE;
+			bg.touchable = false;
+			addChild(bg);
 			
-			for (var i:int = 0; i < 2; i++ )
+			/*for (var i:int = 0; i < 2; i++ )
 			{
 				var b:Background = new Background(textures[3], i * 8000, 120, 7, 5, 8);
 				b.x = (b.posX + -camX) /b.z;
 				b.visible = false;
 				Backgrounds.push(b);
 				addChild(b);
-			}
+			}*/
 			
 			for (var j:int = 0; j < 50; j++ )
 			{
