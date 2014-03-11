@@ -27,8 +27,6 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);
 			
-			trace(TextureList.assets.getTextureNames());
-			
 			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 10, 450, 100, "Play", 25, 0x31407F));
 			//var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Customize", 25, 0x000000));
 			//var b3:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, "Editor", 25, 0x000000));
