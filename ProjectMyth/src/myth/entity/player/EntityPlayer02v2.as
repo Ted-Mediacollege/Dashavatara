@@ -6,11 +6,11 @@ package myth.entity.player
 	import myth.input.TouchType;
 	import starling.events.TouchEvent;
 	//fish
-	public class EntityPlayerTest2 extends EntityPlayerBase
+	public class EntityPlayer02v2 extends EntityPlayerBase
 	{
 		public var animationWalk:MovieClip;
 		
-		public function EntityPlayerTest2() 
+		public function EntityPlayer02v2() 
 		{
 			super(true,200);
 			

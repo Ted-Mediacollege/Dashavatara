@@ -108,7 +108,23 @@
 		"id":0,
 		"speed":3,
 		"enemies":[
-			{"type":0,"spawnX":2000,"spawnY":640},
+			{"type":0,"spawnX":-400,"spawnY":640},
+			{"type":0,"spawnX":1200,"spawnY":640},
+			{"type":2,"spawnX":800,"spawnY":0},
+			{"type":2,"spawnX":900,"spawnY":0},
+			{"type":2,"spawnX":1000,"spawnY":0},
+			{"type":2,"spawnX":1100,"spawnY":0},
+			{"type":2,"spawnX":1200,"spawnY":0},
+			{"type":2,"spawnX":1300,"spawnY":0},
+			{"type":2,"spawnX":1400,"spawnY":0},
+			{"type":2,"spawnX":1400,"spawnY":200},
+			{"type":2,"spawnX":1400,"spawnY":100},
+			{"type":0,"spawnX":1400,"spawnY":640},
+			{"type":0,"spawnX":1500,"spawnY":640},
+			{"type":0,"spawnX":1600,"spawnY":640},
+			{"type":0,"spawnX":1700,"spawnY":640},
+			{"type":0,"spawnX":1800,"spawnY":640},
+			{"type":0,"spawnX":1900,"spawnY":640},
 			{"type":2,"spawnX":2200,"spawnY":0},
 			{"type":2,"spawnX":2300,"spawnY":50},
 			{"type":0,"spawnX":2500,"spawnY":640},
@@ -131,10 +147,6 @@
 			{"type":0,"depth":2,"x":0,"y":0}
 		],
 		"objects":[
-			{"type":0,"x":675,"y":968},
-			{"type":0,"x":1000,"y":976},
-			{"type":0,"x":1275,"y":868},
-			{"type":0,"x":1500,"y":800},
 			{"type":2,"x":8000,"y":800}
 		],
 		"tiles":[
@@ -195,22 +207,22 @@
 		"id":0,
 		"speed":4.5,
 		"enemies":[
-			{"type":0,"spawnX":-400,"spawnY":550},
-			{"type":0,"spawnX":1200,"spawnY":550}
+		
 		],
 		"background_props":[
 			{"type":0,"depth":1,"x":0,"y":0},
 			{"type":0,"depth":2,"x":0,"y":0}
 		],
 		"objects":[
-			{"type":0,"x":680,"y":200},
-			{"type":0,"x":800,"y":200},
-			{"type":0,"x":980,"y":200},
-			{"type":0,"x":1280,"y":200},
-			{"type":0,"x":1400,"y":200},
-			{"type":2,"x":1700,"y":200},
-			{"type":0,"x":2000,"y":200},
-			{"type":0,"x":2200,"y":0}
+			{"type":0,"x":680,"y":1000},
+			{"type":0,"x":800,"y":950},
+			{"type":0,"x":980,"y":850},
+			{"type":0,"x":1280,"y":1050},
+			{"type":0,"x":1400,"y":900},
+			{"type":2,"x":1700,"y":768},
+			{"type":0,"x":2000,"y":1280},
+			{"type":0,"x":2200,"y":0},
+			{"type":2,"x":1280,"y":0}
 		],
 		"tiles":[
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 

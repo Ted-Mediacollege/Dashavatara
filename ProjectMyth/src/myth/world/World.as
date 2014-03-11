@@ -5,8 +5,9 @@ package myth.world
 	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.player.EntityPlayer03;
-	import myth.entity.player.EntityPlayerTest;
-	import myth.entity.player.EntityPlayerTest2;
+	import myth.entity.player.EntityPlayer01v2;
+	import myth.entity.player.EntityPlayer01v3;
+	import myth.entity.player.EntityPlayer02v2;
 	import myth.gui.game.GuiLose;
 	import myth.gui.game.GuiWin;
 	import myth.gui.GuiScreen;
@@ -138,8 +139,9 @@ package myth.world
 			
 			//player
 			players[0] = new EntityPlayer03(); 
-			players[1] = new EntityPlayerTest(); 
-			players[2] = new EntityPlayerTest2(); 
+			players[1] = new EntityPlayer01v2(); 
+			//players[2] = new EntityPlayer02v2(); 
+			players[2] = new EntityPlayer01v3(); 
 			player = players[1];
 			playerBody.userData.graphic = player;
 			//player.x = 200;
