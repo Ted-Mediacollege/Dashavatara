@@ -23,7 +23,7 @@ package myth.entity.player
 		
 		public var swimmer:Boolean;
 		private var maxBreakSpeed:Number = 5;
-		private var Xpos:Number;
+		public var Xpos:Number;
 		private var playerBody:Body;
 		private var playerMass:Number;
 		
