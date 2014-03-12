@@ -11,6 +11,7 @@ package myth.gui.game
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
 	import flash.display.Loader;
+	import myth.util.MathHelper;
 	
 	public class GuiMainMenu extends GuiScreen
 	{
@@ -37,7 +38,7 @@ package myth.gui.game
 			michealJackson.x = -150;
 			michealJackson.y = 770;
 			michealJackson.playbackSpeed = 1;
-			michealJackson.scaleX = 1;
+			michealJackson.scaleX = -1;
 			michealJackson.scaleY = 1;
 			michealJackson.play("ren animatie");
 			addChild(michealJackson);
@@ -55,6 +56,7 @@ package myth.gui.game
 			background.tick();
 			
 			michealJackson.x += 10;
+			michealJackson.setColor(MathHelper.nextInt(0xFFFFFF));
 			
 			if (michealJackson.x > 1400)
 			{
