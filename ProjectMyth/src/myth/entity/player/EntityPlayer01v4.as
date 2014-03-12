@@ -1,10 +1,13 @@
 package myth.entity.player 
 {
 	import adobe.utils.CustomActions;
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import myth.graphics.TextureList;
 	import nape.geom.Vec2;
 	import starling.display.Image;
+	import starling.display.QuadBatch;
 	import starling.display.Shape;
 	import starling.events.TouchEvent;
 	import myth.input.TouchType;
@@ -15,21 +18,32 @@ package myth.entity.player
 	import myth.particle.slashPart;
 	import pixelpaton.FindSmoothPathBetweenNodes;
 	import com.cartogrammar.drawing.CubicBezier;
-	import starling.utils.Line;
+	import starling.textures.Texture;
 	//lion
 	public class EntityPlayer01v4 extends EntityPlayerBase
 	{
+		[Embed(source="../../../../lib/textures/Line_1.png")]
+		public static var LineTex:Class;
+		private static var line_textures:Texture;
+		private var lineBatch:QuadBatch = new QuadBatch();
+		
+		
 		public var image:Image;
 		public var startShootRadius:int = 100;
 		public var startShootXDisplace:int = -20;
 		public var startShootYDisplace:int = -90;
 		private var debugShape:Shape = new Shape();
-		private var line:Line = new Line();
+		private var line_image:Image;
 		public function EntityPlayer01v4() 
 		{
 			//super(true, false, true,128,200,-64,-200 );
 			super(false,300);
-			addChild(line);
+			line_textures = Texture.fromBitmap(new LineTex());
+			line_image = new Image(line_textures);
+			line_image.x = 640;
+			line_image.y = 383;
+			
+			Main.world.attackShape.addChild(lineBatch);
 			
 			image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			image.scaleX = -1;
@@ -37,6 +51,7 @@ package myth.entity.player
 			image.pivotY = image.height;
 			artLayer.addChild(image);
 			artLayer.addChild(debugShape);
+			artLayer.addChild(line_image);
 			Debug.test(function():void { 
 				//draw start attack circle
 				debugShape.graphics.lineStyle(10, 0x00ff00, 0.3);
@@ -90,15 +105,17 @@ package myth.entity.player
 		override public function tick():void {
 			//line.
 			super.tick();
-			Main.world.attackShape.graphics.clear();
+			//Main.world.attackShape.graphics.clear();
 			//trace(parts.length);
 			var smoothParts:Vector.<slashPart> = FindSmoothPathBetweenNodes.getArrayOfPoints(parts);
 			//var smoothParts:Vector.<slashPart> = parts;
 			
 			//trace("s L:" + smoothParts.length);
-			for (i = 0; i < smoothParts.length; i++) {
-				Main.world.attackShape.graphics.lineStyle(smoothParts[i].t, 0x0022ee, 0.7);
-				Main.world.attackShape.graphics.beginFill(0x0022ee, 0.7);
+			/////////Grapics moveTo lineTo
+			/*for (i = 0; i < smoothParts.length; i++) {
+				Main.world.attackShape.graphics.beginTextureFill(line_textures);
+				//Main.world.attackShape.graphics.lineStyle(smoothParts[i].t, 0x0022ee, 0.7);
+				//Main.world.attackShape.graphics.beginFill(0x0022ee, 0.7);
 				if (i == 0) {
 					Main.world.attackShape.graphics.moveTo(smoothParts[i].x, smoothParts[i].y);
 				}else if (smoothParts.length - 1) {
@@ -107,12 +124,35 @@ package myth.entity.player
 					var distPreviousThis:Number = smoothParts[i].subtract(smoothParts[i - 1]).length;
 					Main.world.attackShape.graphics.lineTo(smoothParts[i].x, smoothParts[i].y);
 				}
+			}*/
+			
+			lineBatch.reset();
+			var rotation:Number;
+			for (i = 0; i < smoothParts.length; i++) {
+				//lineBatch
+				//line_image = new Image(line_textures);
+				
+				line_image.x = smoothParts[i].x;
+				line_image.y = smoothParts[i].y;
+				line_image.pivotX = line_image.width / 2;;
+				line_image.pivotY = line_image.height / 2;;
+				line_image.scaleX = smoothParts[i].t/10;
+				line_image.scaleY = smoothParts[i].t / 10;
+				if (i == smoothParts.length - 1) {
+					line_image.rotation = rotation+Math.PI/2;
+				}else {
+					rotation = Vec2.weak(smoothParts[i].x, smoothParts[i].y).sub(Vec2.weak(smoothParts[i + 1].x, smoothParts[i + 1].y)).angle;
+					line_image.rotation = rotation+Math.PI/2;
+				}
+				lineBatch.addImage(line_image);
+				
 			}
+			
 			
 			for (i = 0; i < parts.length; i++) 
 			{	
 				//Main.world.attackShape.graphics.drawCircle(parts[i].x, parts[i].y, parts[i].t);
-				parts[i].t -= 1.3;
+				parts[i].t -= 1.0;
 				if (parts[i].t < 0) {
 					parts.splice(i, 1);
 				}

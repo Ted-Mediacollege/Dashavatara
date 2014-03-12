@@ -62,6 +62,7 @@ package myth.world
 		public var playerBody:Body;
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
+		private var currentPlayer:int = 1;
 		
 		private var groundMaterial:Material;
 		
@@ -141,9 +142,10 @@ package myth.world
 			//player
 			players[0] = new EntityPlayer03(); 
 			players[1] = new EntityPlayer01v2(); 
-			players[2] = new EntityPlayer02v2(); 
-			//players[2] = new EntityPlayer01v4(); 
-			player = players[1];
+			//players[2] = new EntityPlayer02v2(); 
+			players[2] = new EntityPlayer01v4(); 
+			player = players[2];
+			currentPlayer = 2;
 			playerBody.userData.graphic = player;
 			//player.x = 200;
 			//player.y = 640;
@@ -301,7 +303,7 @@ package myth.world
 			}
 		}
 		
-		private var currentPlayer:int = 1;
+		
 		public function switchAvatar(id:int):void {
 			if(id !=currentPlayer){
 				var playerPosX:int = player.x;

@@ -61,7 +61,7 @@ package myth.entity.player
 			var speed:Number = Main.world.speed;
 			var force:Number = speed * 5;
 			var maxBreakSpeed:Number = speed * 2;
-			var XposT:Number = Xpos + (maxBreakSpeed * playerMass);
+			var XposT:Number = Xpos + 50 + (maxBreakSpeed * playerMass);
 			if (levelComplete) {
 				Xpos += speed;
 			}
@@ -103,6 +103,7 @@ package myth.entity.player
 		
 		public function pushBack():void
 		{
+			trace("push");
 			Main.world.playerBody.applyImpulse(new Vec2(-140*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
 		}
 		
