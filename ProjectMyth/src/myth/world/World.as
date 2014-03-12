@@ -6,7 +6,7 @@ package myth.world
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.player.EntityPlayer03;
 	import myth.entity.player.EntityPlayer01v2;
-	import myth.entity.player.EntityPlayer01v3;
+	import myth.entity.player.EntityPlayer01v4;
 	import myth.entity.player.EntityPlayer02v2;
 	import myth.gui.game.GuiLose;
 	import myth.gui.game.GuiWin;
@@ -76,6 +76,7 @@ package myth.world
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();
+		public var attackShape:Shape = new Shape();
 		
 		public var physicsSpace:Space;
 		public var debug:Debug;
@@ -140,8 +141,8 @@ package myth.world
 			//player
 			players[0] = new EntityPlayer03(); 
 			players[1] = new EntityPlayer01v2(); 
-			//players[2] = new EntityPlayer02v2(); 
-			players[2] = new EntityPlayer01v3(); 
+			players[2] = new EntityPlayer02v2(); 
+			//players[2] = new EntityPlayer01v4(); 
 			player = players[1];
 			playerBody.userData.graphic = player;
 			//player.x = 200;
@@ -167,6 +168,7 @@ package myth.world
 			//debug
 			addChild(debugShape);
 			addChild(debugShape2);
+			addChild(attackShape);
 			
 			worldBuild = true;
 		}

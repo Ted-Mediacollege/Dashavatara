@@ -19,7 +19,8 @@ package myth.util
 		public static const DrawArracks:int = 2;
 		public static const DrawRectsColliders:int = 1;
 		private static const OFF:int = -1;
-		public static var USER:Vector.<int> = new <int>[1,0,0]; //enter all user u want to print for
+		//public static var USER:Vector.<int> = new <int>[0,2,1]; //enter all user u want to print for
+		public static var USER:Vector.<int> = new <int>[-1,-1,-1]; //enter all user u want to print for
 
 		public static function test(func:Function,user:int):Function 
 		{

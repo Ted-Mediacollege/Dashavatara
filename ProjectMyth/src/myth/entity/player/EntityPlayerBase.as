@@ -103,7 +103,7 @@ package myth.entity.player
 		
 		public function pushBack():void
 		{
-			Main.world.playerBody.applyImpulse(new Vec2(-240*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
+			Main.world.playerBody.applyImpulse(new Vec2(-140*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
 		}
 		
 		public function isOnFeet():Boolean
