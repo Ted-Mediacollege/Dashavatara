@@ -7,7 +7,8 @@ package myth.gui.game
 	import myth.input.TouchType;
 	import myth.graphics.TextureList;
 	import starling.display.Image;
-
+	import myth.data.GameData;
+	
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
 	import flash.display.Loader;
@@ -15,7 +16,10 @@ package myth.gui.game
 	
 	public class GuiMainMenu extends GuiScreen
 	{
-		public var michealJackson:SpriterClip;
+		public var michealJackson1:SpriterClip;
+		public var michealJackson2:SpriterClip;
+		
+		public var direction:int = 1;
 		
 		public function GuiMainMenu() 
 		{
@@ -33,16 +37,29 @@ package myth.gui.game
 			
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);
+			
+			var versiontext:GuiText = new GuiText(1200, 700, 400, 100, "right", "center", "Version " + GameData.GAME_VERSION, 20, 0x000000);
+			addChild(versiontext);
 	
-			michealJackson = TextureList.spriterLoader.getSpriterClip("animLion");
-			michealJackson.x = -150;
-			michealJackson.y = 770;
-			michealJackson.playbackSpeed = 1;
-			michealJackson.scaleX = -1;
-			michealJackson.scaleY = 1;
-			michealJackson.play("ren animatie");
-			addChild(michealJackson);
-			Starling.juggler.add(michealJackson);
+			michealJackson1 = TextureList.spriterLoader.getSpriterClip("animLion");
+			michealJackson1.x = -650;
+			michealJackson1.y = 770;
+			michealJackson1.playbackSpeed = 1;
+			michealJackson1.scaleX = 1;
+			michealJackson1.scaleY = 1;
+			michealJackson1.play("ren animatie");
+			addChild(michealJackson1);
+			Starling.juggler.add(michealJackson1);
+			
+			michealJackson2 = TextureList.spriterLoader.getSpriterClip("animSwine");
+			michealJackson2.x = -450;
+			michealJackson2.y = 770;
+			michealJackson2.playbackSpeed = 1;
+			michealJackson2.scaleX = 1;
+			michealJackson2.scaleY = 1;
+			michealJackson2.play("sprint");
+			addChild(michealJackson2);
+			Starling.juggler.add(michealJackson2);
 			
 			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 10, 450, 100, "Play", 25, 0x31407F));
 			//var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Customize", 25, 0x000000));
@@ -55,12 +72,14 @@ package myth.gui.game
 		{ 
 			background.tick();
 			
-			michealJackson.x += 10;
-			michealJackson.setColor(MathHelper.nextInt(0xFFFFFF));
+			michealJackson1.x += direction * 10;
+			michealJackson2.x += direction * 10;
 			
-			if (michealJackson.x > 1400)
+			if ((michealJackson1.x > 1700 && direction == 1) || (michealJackson1.x < -550 && direction == -1))
 			{
-				michealJackson.x = -150;
+				direction = -direction;
+				michealJackson1.scaleX = direction;
+				michealJackson2.scaleX = direction;
 			}
 		}
 		
