@@ -26,7 +26,6 @@ package myth.world
 						
 			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
 			bg.blendMode = BlendMode.NONE;
-			bg.touchable = false;
 			addChild(bg);
 			
 			/*for (var i:int = 0; i < 2; i++ )
