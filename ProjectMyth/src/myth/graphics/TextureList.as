@@ -8,6 +8,8 @@ package myth.graphics
 	import flash.filesystem.File;
 	import myth.Main;
 	import myth.gui.game.GuiLoading;
+	import treefortress.spriter.SpriterLoader;
+	import treefortress.spriter.SpriterClip;
 	
 	public class TextureList 
 	{
@@ -59,6 +61,8 @@ package myth.graphics
 		public static var atlas_enemy:TextureAtlas;
 		
 		public static var assets:AssetManager;
+		public static var spriterLoader:SpriterLoader;
+		
 		public static var currentWorldType:int = -1;
 		public static var currentPlayers:Vector.<PlayerType> = new Vector.<PlayerType>;
 		//private static var tileData:Vector.<int>;
@@ -66,6 +70,10 @@ package myth.graphics
 		public static function preLoad():void
 		{
 			assets = new AssetManager();
+			
+			spriterLoader = new SpriterLoader();
+			spriterLoader.completed.addOnce(onSpriterLoaded);
+			spriterLoader.load(["spriteranims/transformation/transAnim.scml", "spriteranims/player1/animLion.scml"]);
 
 			var appDir:File = File.applicationDirectory;
 			assets.enqueue(appDir.resolvePath("tex/background"));
@@ -74,9 +82,14 @@ package myth.graphics
 			assets.loadQueue(function(ratio:Number):void {
 				GuiLoading.progress = ratio;
 				if (ratio == 1.0) {
-					Main.gui.action(null);
+					GuiLoading.ready++;
 				}
 			});
+		}
+		
+		public static function onSpriterLoaded(loader:SpriterLoader):void 
+		{
+			GuiLoading.ready++;
 		}
 		
 		public static function load():void

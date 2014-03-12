@@ -25,12 +25,12 @@ package myth.gui.background
 			
 			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
 			
-			var r:Image = new Image(textures[3]);
+			/*var r:Image = new Image(textures[3]);
 			r.x = -200;
 			r.y = 200;
 			r.scaleX = 4.5;
 			r.scaleY = 4.5;
-			addChild(r);
+			addChild(r);*/
 			
 			for (var i:int = 0; i < 15; i++ )
 			{

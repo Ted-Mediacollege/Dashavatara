@@ -22,9 +22,10 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiLevelSelect", 25, 0x000000);
 			addChild(t);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 120, 450, 100, "Test Level 1", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -  10, 450, 100, "Test Level 2", 25, 0x000000));
-			var b3:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 100, 450, 100, "Test Level 3", 25, 0x000000));
+			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 60, 450, 100, "Test Level 1", 25, 0x000000));
+			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 170, 450, 100, "Test Level 2", 25, 0x000000));
+			var b3:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 280, 450, 100, "Test Level 3", 25, 0x000000));
+			var b5:GuiButton = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 390, 450, 100, "testlevel", 25, 0x000000));
 			var b4:GuiButton = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 		}
 		
@@ -50,6 +51,10 @@ package myth.gui.game
 			else if (b.buttonID == 3)
 			{
 				main.switchGui(new GuiMainMenu());
+			}
+			else if (b.buttonID == 4)
+			{
+				main.switchGui(new GuiLevelInfo("testlevel"));
 			}
 		}
 		
