@@ -44,6 +44,9 @@ package myth.gui.game
 			
 			help_text_temp = new GuiText(40, 700, 1200, 100, "left", "top", "Swipe to slash", 40, 0x000000, "Arial");
 			addChild(help_text_temp);
+			help_visible = true;
+			help_fade = 100;
+			help_text_temp.alpha = 1;
 		}
 		
 		private function createPauseButtons():void 

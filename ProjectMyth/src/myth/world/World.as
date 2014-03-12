@@ -39,6 +39,9 @@ package myth.world
 	import myth.entity.player.PlayerType;
 	import nape.geom.Mat23;
 	import myth.entity.objects.ObjectType;
+	import treefortress.spriter.SpriterClip;
+	import starling.core.Starling;
+	import flash.display.Loader;
 	
 	public class World extends Sprite
 	{
@@ -82,6 +85,9 @@ package myth.world
 		public var debug:Debug;
 		private var shape:flash.display.Sprite;
 		
+		private var animTransform:SpriterClip;
+		private var transformCircle:Image;
+		
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
 			EntityPlayerBase.levelStart();
@@ -111,7 +117,6 @@ package myth.world
 				shape.addChild(debug.display);
 				Starling.current.nativeOverlay.addChild(shape);
 			}, myth.util.Debug.DrawArracks);
-			
 			
 			//ground physics body
 			var floor:Body = new Body(BodyType.STATIC);
@@ -161,6 +166,12 @@ package myth.world
 			
 			//add childs
 			addChild(background);
+			
+			transformCircle = new Image(TextureList.assets.getTexture("common_tadaa"));
+			transformCircle.pivotX = 102;
+			transformCircle.pivotY = 100;
+			addChild(transformCircle);
+			
 			addChild(player);
 			addChild(entityManager);
 			addChild(objectManager);
@@ -169,6 +180,21 @@ package myth.world
 			addChild(debugShape);
 			addChild(debugShape2);
 			addChild(attackShape);
+						
+			animTransform = TextureList.spriterLoader.getSpriterClip("transAnim");
+			animTransform.playbackSpeed = 1.5;
+			addChild(animTransform);
+			Starling.juggler.add(animTransform);
+			animTransform.visible = false;
+			
+			animTransform.animationComplete.add(
+				function(clip:SpriterClip):void
+				{
+					animTransform.visible = false;
+					animTransform.stop();
+					transformCircle.visible = false;
+				}
+			);
 			
 			worldBuild = true;
 		}
@@ -284,6 +310,12 @@ package myth.world
 				}
 				//physicsSpace.bodies.foreach( move );
 				moveGraphics();
+				
+				animTransform.x = player.x;
+				animTransform.y = player.y;
+				transformCircle.x = player.x;
+				transformCircle.y = player.y - 90;
+				transformCircle.rotation += 2;
 			}
 		}
 		private var graphic:Sprite;
@@ -320,8 +352,12 @@ package myth.world
 				trace("switch "+currentPlayer+" "+distance);
 				player.x = playerPosX;
 				player.y = playerPosY;
-				addChild(player);
+				addChildAt(player, getChildIndex(animTransform));
 				playerBody.userData.graphic = player;
+				
+				animTransform.play("lotusflower");
+				animTransform.visible = true;
+				transformCircle.visible = true;
 			}
 		}
 		

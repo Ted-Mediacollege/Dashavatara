@@ -75,11 +75,19 @@ package myth.gui.game
 			michealJackson1.x += direction * 10;
 			michealJackson2.x += direction * 10;
 			
-			if ((michealJackson1.x > 1700 && direction == 1) || (michealJackson1.x < -550 && direction == -1))
+			if (michealJackson1.x > 1700 && direction == 1)
 			{
 				direction = -direction;
 				michealJackson1.scaleX = direction;
 				michealJackson2.scaleX = direction;
+				michealJackson2.play("Run");
+			}
+			if (michealJackson1.x < -550 && direction == -1)
+			{
+				direction = -direction;
+				michealJackson1.scaleX = direction;
+				michealJackson2.scaleX = direction;
+				michealJackson2.play("sprint");
 			}
 		}
 		
@@ -109,6 +117,8 @@ package myth.gui.game
 		
 		override public function destroy():void 
 		{ 
+			Starling.juggler.remove(michealJackson1);
+			Starling.juggler.remove(michealJackson2);
 		}
 	}
 }
