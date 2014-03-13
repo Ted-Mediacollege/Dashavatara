@@ -68,6 +68,7 @@ package myth.entity.player
 		private var i:int = 0;
 		private var j:int = 0;
 		private var hit:Boolean;
+		private var previousPos:Point = null;
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
 			//trace("touch");
 			//data vector = posX, posY, movedX, movedY
@@ -78,10 +79,30 @@ package myth.entity.player
 					//Main.world.debugShape2.graphics.drawCircle(data[0], data[1], 55);
 				}, Debug.DrawArracks);
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
+				previousPos = null;
 				Debug.test(function():void { 
 					Main.world.debugShape2.graphics.clear();
 				}, Debug.DrawArracks);
 			}else if (e.touches[0].phase == TouchPhase.MOVED) {
+				var thisPos:Point = new Point(data[0], data[1]);
+				var testPoints:Vector.<Point> = new Vector.<Point>();
+				if(previousPos!=null){
+					var dist:Point = thisPos.subtract(previousPos);
+					var distNumber:Number = dist.length;
+					var checks:int = Math.floor(distNumber / 5);
+					for (var k:int = 0; k < checks; k++) 
+					{
+						var point:Point = Point.interpolate(thisPos,previousPos,((checks-k)/checks));
+						testPoints.push(point);
+						Debug.test(function():void { 
+							Main.world.debugShape2.graphics.lineStyle(2, 0xff00ff, 0.7);
+							Main.world.debugShape2.graphics.drawCircle(point.x, point.y, 5);
+						}, Debug.DrawArracks);
+					}
+				}else {
+					testPoints[0] = new Point(data[0], data[1]);
+				}
+				//trace("[testpoints]: " +testPoints.length);
 				Debug.test(function():void { 
 					Main.world.debugShape2.graphics.lineStyle(2, 0x990000, 0.7);
 					Main.world.debugShape2.graphics.drawCircle(data[0], data[1], 10);
@@ -91,14 +112,19 @@ package myth.entity.player
 				
 				for (j = Main.world.entityManager.enemyList.length - 1; j > -1; j--) {
 					hit = false;
-					if (Main.world.entityManager.enemyList[j].collider.intersectPoint(new Point(data[0],data[1]))) {
-						hit = true;
+					for (var l:int = 0; l < testPoints.length; l++) 
+					{
+						if (Main.world.entityManager.enemyList[j].collider.intersectPoint(testPoints[l])) {
+							hit = true;
+							break;
+						}
 					}
 					if (hit) {
 						Main.world.entityManager.removeChild(Main.world.entityManager.enemyList[j]);
 						Main.world.entityManager.enemyList.splice(j , 1);
 					}
 				}
+				previousPos = new Point(data[0], data[1]);
 			}
 		}
 		
@@ -107,7 +133,7 @@ package myth.entity.player
 			super.tick();
 			//Main.world.attackShape.graphics.clear();
 			//trace(parts.length);
-			var smoothParts:Vector.<slashPart> = FindSmoothPathBetweenNodes.getArrayOfPoints(parts);
+			var smoothParts:Vector.<slashPart> = FindSmoothPathBetweenNodes.getArrayOfPoints(parts,false,10);
 			//var smoothParts:Vector.<slashPart> = parts;
 			
 			//trace("s L:" + smoothParts.length);
@@ -131,13 +157,13 @@ package myth.entity.player
 			for (i = 0; i < smoothParts.length; i++) {
 				//lineBatch
 				//line_image = new Image(line_textures);
-				
+				//trace(smoothParts[i].x + "," + smoothParts[i].y + ","+ smoothParts[i].t);
 				line_image.x = smoothParts[i].x;
 				line_image.y = smoothParts[i].y;
 				line_image.pivotX = line_image.width / 2;;
 				line_image.pivotY = line_image.height / 2;;
 				line_image.scaleX = smoothParts[i].t/10;
-				line_image.scaleY = smoothParts[i].t / 10;
+				line_image.scaleY = 12/ 10;
 				if (i == smoothParts.length - 1) {
 					line_image.rotation = rotation+Math.PI/2;
 				}else {
