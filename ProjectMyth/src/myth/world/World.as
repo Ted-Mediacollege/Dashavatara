@@ -146,11 +146,12 @@ package myth.world
 			
 			//player
 			players[0] = new EntityPlayer03(); 
-			players[1] = new EntityPlayer01v2(); 
-			//players[2] = new EntityPlayer02v2(); 
-			players[2] = new EntityPlayer01v4(); 
-			player = players[2];
-			currentPlayer = 2;
+			//players[1] = new EntityPlayer01v2(); 
+			players[1] = new EntityPlayer01v4();
+			players[2] = new EntityPlayer02v2(); 
+			 
+			player = players[1];
+			currentPlayer = 1;
 			playerBody.userData.graphic = player;
 			//player.x = 200;
 			//player.y = 640;

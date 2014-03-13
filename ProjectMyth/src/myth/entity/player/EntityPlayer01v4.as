@@ -19,6 +19,8 @@ package myth.entity.player
 	import pixelpaton.FindSmoothPathBetweenNodes;
 	import com.cartogrammar.drawing.CubicBezier;
 	import starling.textures.Texture;
+	import treefortress.spriter.SpriterClip;
+	import starling.core.Starling;
 	//lion
 	public class EntityPlayer01v4 extends EntityPlayerBase
 	{
@@ -28,7 +30,7 @@ package myth.entity.player
 		private var lineBatch:QuadBatch = new QuadBatch();
 		
 		
-		public var image:Image;
+		public var image:SpriterClip;
 		public var startShootRadius:int = 100;
 		public var startShootXDisplace:int = -20;
 		public var startShootYDisplace:int = -90;
@@ -36,19 +38,24 @@ package myth.entity.player
 		private var line_image:Image;
 		public function EntityPlayer01v4() 
 		{
+			//line
 			//super(true, false, true,128,200,-64,-200 );
 			super(false,300);
 			line_textures = Texture.fromBitmap(new LineTex());
 			line_image = new Image(line_textures);
 			line_image.x = 640;
 			line_image.y = 383;
-			
 			Main.world.attackShape.addChild(lineBatch);
 			
-			image = new Image(TextureList.atlas_player.getTexture("player_3"));
-			image.scaleX = -1;
-			image.pivotX = image.width / 2;
-			image.pivotY = image.height;
+			//player art
+			image = TextureList.spriterLoader.getSpriterClip("animLion");
+			image.playbackSpeed = 1;
+			image.scaleX = 0.7;
+			image.scaleY = 0.7;
+			image.play("ren animatie");
+			addChild(image);
+			Starling.juggler.add(image);
+			
 			artLayer.addChild(image);
 			artLayer.addChild(debugShape);
 			artLayer.addChild(line_image);
