@@ -34,7 +34,7 @@
 						var secondItem:slashPart = _nodeArray[(drawCurrentItem + 1)];
 						var thirdItem:slashPart = null;
 						if (_nodeArray.length-1-drawCurrentItem>4 ){
-							var thirdItem:slashPart = _nodeArray[(drawCurrentItem + 2)];
+							thirdItem = _nodeArray[(drawCurrentItem + 2)];
 						} 
 						if (thirdItem == null) {
 							theAngle = 0;
@@ -89,7 +89,7 @@
 			var radians:Number = Math.atan2 (py, px);
 			return radians;
 		}
-		private static function findValue (point0:Number, point1:Number, point2:Number, point3:Number, time:Number) {
+		private static function findValue (point0:Number, point1:Number, point2:Number, point3:Number, time:Number):Number {
 			
 			var timeSub:Number = (1 - time);
 			var returnVal:Number = Math.pow (timeSub, 3) * point0;

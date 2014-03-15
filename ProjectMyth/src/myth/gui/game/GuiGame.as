@@ -1,21 +1,42 @@
 package myth.gui.game 
 {
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.filters.DisplacementMapFilter;
+	import flash.filters.DisplacementMapFilterMode;
+	import flash.geom.Matrix;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	import flash.display.BitmapDataChannel;
 	import myth.gui.components.GuiButton;
 	import myth.gui.components.GuiText;
 	import myth.gui.GuiScreen;
 	import myth.Main;
 	import myth.world.World;
-	import starling.display.Image;
-	import starling.events.TouchEvent;
-	import myth.gui.background.GuiBackground;
 	import myth.graphics.TextureList;
+	import myth.gui.background.GuiBackground;
+	import myth.util.ScaleHelper;
+	import starling.core.RenderSupport;
+	import starling.display.DisplayObject;
+	import starling.display.Sprite;
+	import starling.display.Image;
+	import starling.display.Stage;
+	import starling.events.TouchEvent;
 	import starling.display.BlendMode;
+	import starling.filters.BlurFilter;
+	import starling.filters.ColorMatrixFilter;
+	import starling.filters.FragmentFilterMode;
+	import starling.textures.RenderTexture;
+	import starling.core.Starling;
+	
+	
 	
 	public class GuiGame extends GuiScreen 
 	{
 		private var bg:Image;
 		private var levelName:String;
 		private var pause:Boolean = false;
+		private var pauseScreen:Boolean = false;
 		
 		private var b1:GuiButton;
 		private var b2:GuiButton;
@@ -23,6 +44,15 @@ package myth.gui.game
 		private var help_text_temp:GuiText;
 		private var help_fade:int;
 		private var help_visible:Boolean;
+		private var pauseFilter:BlurFilter;
+		private var pauseFilter2:ColorMatrixFilter;
+		private var gameLayer:Sprite;
+		private var pauseScreenTexture:RenderTexture;
+		private var pauseScreenImage:Image;
+		private var pauseScreenImage2:Image;
+		private var pauseBitmapData:BitmapData;
+		private var pauseBitmap:Bitmap;
+		private var pauseFade:Number = 0;
 		
 		public function GuiGame(_levelName:String) 
 		{
@@ -32,10 +62,11 @@ package myth.gui.game
 		override public function init():void
 		{
 			background = null;
-			
+			gameLayer = new Sprite();
 			Main.world = new World(this, levelName);
 			Main.world.init();
-			addChild(Main.world);
+			addChild(gameLayer);
+			gameLayer.addChild(Main.world);
 			
 			addButton(new GuiButton(10, TextureList.assets.getTexture("gui_icon1"), 100, 80, 194, 142, ""));
 			addButton(new GuiButton(11, TextureList.assets.getTexture("gui_icon2"), 300, 80, 194, 142, ""));
@@ -47,6 +78,12 @@ package myth.gui.game
 			help_visible = true;
 			help_fade = 100;
 			help_text_temp.alpha = 1;
+			
+			pauseFilter = new BlurFilter(0, 0, 0);
+			pauseFilter2 = new ColorMatrixFilter();
+			//pauseFilter2.adjustHue(1.0);
+			//pauseFilter2.adjustSaturation(2.0);
+			//pauseFilter2.adjustContrast(0.8);
 		}
 		
 		private function createPauseButtons():void 
@@ -61,18 +98,85 @@ package myth.gui.game
 			removeButton(b2);
 		}
 		
+		private function unPause():void {
+			gameLayer.addChild(Main.world);
+			gameLayer.removeChild(pauseScreenImage);
+			gameLayer.removeChild(pauseScreenImage2);
+			//pauseScreenTexture.dispose();
+			pauseScreenTexture = null;
+			pauseScreenImage = null;
+			pauseScreenImage2 = null;
+			pause = false;
+			removePauseButtons();
+		}
 		override public function action(button:GuiButton):void
 		{
 			if (button.buttonID == 13 ||button.buttonID == 0) 
 			{
+				//trace(pause + " " +pauseScreen);
 				if (pause)
 				{
-					pause = false;
-					removePauseButtons();
+					if(pauseScreen){
+						pauseScreen = false;
+					}else {
+						pauseScreen = true;
+					}
+					//Main.world.unflatten();
+					//Main.world.filter = null;
+					
 				}
-				else
+				else if(pauseScreenImage==null)
 				{
-					pause = true;
+					//game screen to 1280X768 image
+					pauseScreenTexture = new RenderTexture(ScaleHelper.phoneX, ScaleHelper.phoneY);
+					var drawMatrix:Matrix = new Matrix();
+					drawMatrix.scale(ScaleHelper.scaleX, ScaleHelper.scaleY);
+					pauseScreenTexture.draw(Main.world,drawMatrix);
+					
+					//var textureDisplacement:Image = Image.fromBitmap(
+					
+					if (false) {
+						var perlingDisplacement:BitmapData = new BitmapData(1280, 768);
+						perlingDisplacement.perlinNoise(5, 5, 2, 30, false, true);
+						var pauseScreenTempImage:Image = new Image(pauseScreenTexture);
+						pauseBitmapData = copyToBitmap(pauseScreenTempImage, 1);
+						var filter:flash.filters.BlurFilter = new flash.filters.BlurFilter(10,10,1);
+						
+						var displacementFilter:DisplacementMapFilter = new DisplacementMapFilter(perlingDisplacement, new Point(), BitmapDataChannel.RED, BitmapDataChannel.GREEN, 20, 20, DisplacementMapFilterMode.WRAP);
+						pauseBitmapData.applyFilter(pauseBitmapData, new Rectangle(0, 0, 1280, 768), new Point(0, 0), displacementFilter);
+						//pauseBitmapData.applyFilter(pauseBitmapData, new Rectangle(0,0,1280,768), new Point(0, 0), filter);
+						pauseBitmap = new Bitmap(pauseBitmapData);
+						pauseScreenImage = Image.fromBitmap(pauseBitmap);
+						pauseBitmap = null;
+						pauseBitmapData = null;
+						pauseScreenImage.width = 1280;
+						pauseScreenImage.height = 768;
+						gameLayer.addChild(pauseScreenImage);
+					}else {
+						//pauseScreenTexture.draw(Main.world);
+						pauseScreenImage = new Image(pauseScreenTexture);
+						//pauseScreenImage.blendMode = BlendMode.MULTIPLY;
+						pauseScreenImage.width = 1280;
+						pauseScreenImage.height = 768;
+						pauseScreenImage.filter = pauseFilter;
+						//pauseFilter.mode = FragmentFilterMode.ABOVE;
+						pauseFilter.cache();
+						
+						pauseScreenImage2 = new Image(pauseScreenTexture);
+						//pauseScreenImage2.blendMode = BlendMode.NONE;
+						pauseScreenImage2.width = 1280;
+						pauseScreenImage2.height = 768;
+						
+						//pauseFilter2.mode = FragmentFilterMode.ABOVE;
+						pauseScreenImage2.filter = pauseFilter2;
+						pauseFilter2.cache();
+						gameLayer.addChild(pauseScreenImage2);
+						gameLayer.addChild(pauseScreenImage);
+					}
+					
+					gameLayer.removeChild(Main.world);
+					
+					pauseScreen = true;
 					createPauseButtons();
 				}
 			}
@@ -95,6 +199,27 @@ package myth.gui.game
 				}
 			}
 		}
+		
+		public static function copyToBitmap(disp:DisplayObject, scl:Number=1.0):BitmapData
+		{
+			var rc:Rectangle = new Rectangle();
+			disp.getBounds(disp, rc);
+		 
+			var stage:Stage= Starling.current.stage;
+			var rs:RenderSupport = new RenderSupport();
+		 
+			rs.clear();
+			rs.scaleMatrix(scl, scl);
+			rs.setOrthographicProjection(0, 0, stage.stageWidth, stage.stageHeight);
+			rs.translateMatrix(-rc.x, -rc.y); // move to 0,0
+			disp.render(rs, 1.0);
+			rs.finishQuadBatch();
+		 
+			var outBmp:BitmapData = new BitmapData(rc.width*scl, rc.height*scl, true);
+			Starling.context.drawToBitmapData(outBmp);
+		 
+			return outBmp;
+		}
 
 		override public function tick():void
 		{	
@@ -104,9 +229,32 @@ package myth.gui.game
 				help_text_temp.alpha = Number(help_fade) / 100.0;
 			}
 			
-			if (!pause)
+			trace(pauseFade);
+			if (!pauseScreen)
 			{
-				Main.world.tick();
+				if (pauseFade >= 0.01) {
+					pauseFade-= 0.01;
+					pauseFilter.blurX = pauseFade * 20;
+					pauseFilter.blurY = pauseFade * 20;
+					pauseFilter.resolution =  0.2;
+					pauseFilter.cache();
+					if (pauseFade <= 0.02 || pauseScreen) {
+						unPause();
+					}
+				}else {
+					Main.world.tick();
+				}
+			}else {
+				if (pauseFade <= 0.49) {
+					pauseFade+= 0.01;
+					pauseFilter.blurX = pauseFade * 20;
+					pauseFilter.blurY = pauseFade * 20;
+					pauseFilter.resolution = 0.2;
+					pauseFilter.cache();
+					if (pauseFade >= 0.49) {
+						pause = true;
+					}
+				}
 			}
 		}
 		
