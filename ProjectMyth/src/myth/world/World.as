@@ -2,7 +2,6 @@ package myth.world
 {
 	import flash.display.DisplayObject;
 	import flash.events.Event;
-	import flash.utils.ByteArray;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.player.EntityPlayer03;
 	import myth.entity.player.EntityPlayer01v2;
@@ -42,25 +41,17 @@ package myth.world
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
 	import flash.display.Loader;
+	import myth.data.LevelData;
 	
 	public class World extends Sprite
 	{
+		private var lvlName:String;
+		
 		private var worldBuild:Boolean;
 		public var gui:GuiScreen;
 		
 		public var tiles:WorldTiles2;
 		public var background:WorldBackground;
-		
-		[Embed(source = "../../../lib/JSONData/levels.json", mimeType = "application/octet-stream")]
-		private var levelData2:Class;
-		
-		private var jsonLevel:Object;
-		private var lvlName:String;
-		private var nextLvlName:String;
-		private var enemyData:Vector.<Vector.<int>>;
-		private var tileData:Vector.<int>;
-		private var backgroundAssetData:Vector.<Vector.<int>>;
-		private var ObjectData:Vector.<Vector.<int>>;
 		
 		public var playerBody:Body;
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
@@ -89,12 +80,16 @@ package myth.world
 		private var animTransform:SpriterClip;
 		private var transformCircle:Image;
 		
+		public var levelData:LevelData;
+		
 		public function World(g:GuiScreen ,levelName:String = "level_1") 
 		{
 			EntityPlayerBase.levelStart();
 			gui = g;
 			lvlName = levelName;
-			loadJSON();
+			levelData = new LevelData(levelName);
+			speed = levelData.startSpeed;
+			endPointPosition = levelData.endPointPosition;
 		}
 		
 		public function init():void {
@@ -156,16 +151,16 @@ package myth.world
 			//player.x = 200;
 			//player.y = 640;
 			//entityManager
-			entityManager = new WorldEntityManager(enemyData);
+			entityManager = new WorldEntityManager(levelData.enemyData);
 			//tiles
 			tiles = new WorldTiles2();
-			tiles.build(0, tileData);
+			tiles.build(0, levelData.tileData);
 			//background asser manager
 			//backgroundAssetData
-			background = new WorldBackground(tileData.length); //MOET ACHTER TILES GELADEN WORDEN
+			background = new WorldBackground(levelData.tileData.length); //MOET ACHTER TILES GELADEN WORDEN
 			
 			//object manager
-			objectManager = new WorldObjectManager(ObjectData);
+			objectManager = new WorldObjectManager(levelData.ObjectData);
 			
 			//add childs
 			addChild(background);
@@ -208,54 +203,7 @@ package myth.world
 			}, myth.util.Debug.DrawArracks);
 		}
 		
-		private function loadJSON():void {
-			var i:int;
-			var json:ByteArray = new levelData2();
-			var jsonString:String = json.readUTFBytes(json.length);
-			jsonLevel = JSON.parse(jsonString);
-			var levelData:Object;
-			for each (var level:Object in jsonLevel.levels) {
-				if (level.name == lvlName) {
-					levelData = level;
-				}
-			}
-			var levelNameDisplay:TextField = new TextField(200, 400, "json: " + levelData.name, "Verdana", 20, 0xffffff);
-			addChild(levelNameDisplay);
-			//set end point position
-			for (i = 0; i < levelData.objects.length; i++) 
-			{
-				if(levelData.objects[i].type == ObjectType.endPort1){
-					endPointPosition = levelData.objects[i].x;
-				}
-			}
-			//set level speed
-			speed = levelData.speed;
-			nextLvlName = levelData.next_level_name;
-			//set enemy data in vector
-			enemyData = new Vector.<Vector.<int>>(levelData.enemies.length);
-			for (i = 0; i < levelData.enemies.length; i++) 
-			{
-				enemyData[i] = new <int>[ levelData.enemies[i].type, levelData.enemies[i].spawnX, levelData.enemies[i].spawnY ];
-			}
-			//set tile data in vector
-			tileData = new Vector.<int>(levelData.tiles.length);
-			for (i = 0; i < levelData.tiles.length; i++) 
-			{
-				tileData[i] = levelData.tiles[i].type as int;
-			}
-			//set layer data in vector
-			backgroundAssetData = new Vector.<Vector.<int>> (levelData.background_props.length);
-			for (i = 0; i < levelData.background_props.length; i++) 
-			{
-				backgroundAssetData[i] = new <int>[ levelData.background_props[i].type, levelData.background_props[i].depth, levelData.background_props[i].x, levelData.background_props[i].y];
-			}
-			//set object data in vector
-			ObjectData = new Vector.<Vector.<int>> (levelData.objects.length);
-			for (i = 0; i < levelData.objects.length; i++) 
-			{
-				ObjectData[i] = new <int>[ levelData.objects[i].type, levelData.objects[i].x, levelData.objects[i].y];
-			}
-		}
+		
 		
 		//LOOP
 		private var sps:Boolean = true;
@@ -309,7 +257,7 @@ package myth.world
 				{
 					gui.main.switchGui(new GuiLose(lvlName));
 				}else if(player.x > 1480 || levelComplete) {
-					gui.main.switchGui(new GuiWin(lvlName,nextLvlName));
+					gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName));
 				}
 				//physicsSpace.bodies.foreach( move );
 				moveGraphics();

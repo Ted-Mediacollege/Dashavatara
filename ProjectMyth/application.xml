@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?> 
 <application xmlns="http://ns.adobe.com/air/application/3.9">
 	
-	<id>air.ProjectMyth.desktop</id>
+	<id>air.ProjectMyth</id>
 	<versionNumber>0.1</versionNumber>
 	<supportedProfiles>mobileDevice</supportedProfiles>
 	<filename>ProjectMyth</filename>
 	
-	<name>ProjectMythDesktop</name>
+	<name>ProjectMyth</name>
 	<description></description>
 	<copyright></copyright>
 	

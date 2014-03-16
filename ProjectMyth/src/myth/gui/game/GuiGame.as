@@ -229,7 +229,7 @@ package myth.gui.game
 				help_text_temp.alpha = Number(help_fade) / 100.0;
 			}
 			
-			trace(pauseFade);
+			//trace(pauseFade);
 			if (!pauseScreen)
 			{
 				if (pauseFade >= 0.01) {
