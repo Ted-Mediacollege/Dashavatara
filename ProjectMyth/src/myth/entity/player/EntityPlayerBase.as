@@ -35,8 +35,8 @@ package myth.entity.player
 			
 			swimmer = _swimmer;
 			Xpos = _XPos;
-			playerBody = Main.world.playerBody;
-			playerMass = Main.world.playerBody.mass;
+			playerBody = Main.world.physicsWorld.playerBody;
+			playerMass = Main.world.physicsWorld.playerBody.mass;
 			
 			//collider = new RectCollider(art.x, art.y, art.width, art.height, art.rotation, art.pivotX, art.pivotY);
 		}
@@ -104,7 +104,7 @@ package myth.entity.player
 		public function pushBack():void
 		{
 			trace("push");
-			Main.world.playerBody.applyImpulse(new Vec2(-140*Main.world.deltaSpeed*Main.world.playerBody.mass, -200*Main.world.playerBody.mass));
+			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-140*Main.world.deltaSpeed*Main.world.physicsWorld.playerBody.mass, -200*Main.world.physicsWorld.playerBody.mass));
 		}
 		
 		public function isOnFeet():Boolean

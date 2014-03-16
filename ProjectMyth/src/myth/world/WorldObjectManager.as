@@ -64,7 +64,7 @@ package myth.world
 				platform.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
 				//platform.velocity.x = -Main.world.speed*60;
 				//platform.velocity.x = Main.world.distance;
-				platform.space =  Main.world.physicsSpace;
+				platform.space =  Main.world.physicsWorld.physicsSpace;
 				//platform.userData.Pivot = new Vec2(0, -90);
 				platform.userData.graphic = object;
 				platform.userData.Pivot = new Vec2(object.width / 2, 0);
@@ -72,7 +72,7 @@ package myth.world
 				platform.setShapeMaterials(groundMaterial);
 			}else {
 				platform.position.setxy(xPos, yPos);
-				platform.space =  Main.world.physicsSpace;
+				platform.space =  Main.world.physicsWorld.physicsSpace;
 				platform.userData.graphic = object;
 				platform.userData.Pivot = new Vec2(object.width / 2, 0);
 				platform.userData.name = "pillar";

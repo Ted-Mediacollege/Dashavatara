@@ -42,7 +42,7 @@ package myth.entity.player
 				if (isOnFeet())
 				{
 					//trace("jump");
-					Main.world.playerBody.applyImpulse(new Vec2(0, -18000));
+					Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(0, -18000));
 					velY = -17;
 					onfeet = false;
 				}

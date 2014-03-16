@@ -10,18 +10,12 @@ package myth.world
 	import myth.gui.game.GuiLose;
 	import myth.gui.game.GuiWin;
 	import myth.gui.GuiScreen;
+	import myth.world.physicsWorld.PhysicsWorld;
 	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
 	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
-	import nape.geom.Vec2;
-	import nape.phys.Body;
-	import nape.phys.Material;
-	import nape.shape.Polygon;
-	import nape.space.Space;
-	import nape.util.BitmapDebug;
-	import nape.util.ShapeDebug;
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;
@@ -34,9 +28,7 @@ package myth.world
 	import nape.util.Debug;
 	import starling.events.TouchPhase;
 	import starling.core.Starling;
-	import nape.phys.BodyType;
 	import myth.entity.player.PlayerType;
-	import nape.geom.Mat23;
 	import myth.entity.objects.ObjectType;
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
@@ -53,12 +45,9 @@ package myth.world
 		public var tiles:WorldTiles2;
 		public var background:WorldBackground;
 		
-		public var playerBody:Body;
 		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
 		private var currentPlayer:int = 1;
-		
-		private var groundMaterial:Material;
 		
 		public var distance:Number = 0;
 		public var speed:Number;
@@ -73,9 +62,7 @@ package myth.world
 		public var debugShape2:Shape = new Shape();
 		public var attackShape:Shape = new Shape();
 		
-		public var physicsSpace:Space;
-		public var debug:Debug;
-		private var shape:flash.display.Sprite;
+		public var physicsWorld:PhysicsWorld;
 		
 		private var animTransform:SpriterClip;
 		private var transformCircle:Image;
@@ -97,47 +84,8 @@ package myth.world
 		}
 		
 		public function build():void {
-			groundMaterial = new Material(0, 0, 0, 1, 0);
-			//create space
-			physicsSpace = new Space(new Vec2(0, 2200));
-			//physicsSpace.worldLinearDrag = 0.5;
-			//debug
-			myth.util.Debug.test(function():void { 
-				debug = new ShapeDebug(1280, 768, 0x666666);
-				//debug = new BitmapDebug(1280, 768, 3355443, false);
-				debug.drawShapeDetail = true;
-				shape = new flash.display.Sprite();
-				shape.alpha = 0.5;
-				shape.scaleX = ScaleHelper.scaleX;
-				shape.scaleY = ScaleHelper.scaleY;
-				shape.addChild(debug.display);
-				Starling.current.nativeOverlay.addChild(shape);
-			}, myth.util.Debug.DrawArracks);
+			physicsWorld = new PhysicsWorld();
 			
-			//ground physics body
-			var floor:Body = new Body(BodyType.STATIC);
-			floor.shapes.add(new Polygon(Polygon.rect(0-200, 640, 1280+400 +100000, 100)));
-			floor.space = physicsSpace; 
-			floor.userData.Pivot = new Vec2(0, 0);
-			floor.userData.name = "ground";
-			floor.setShapeMaterials(groundMaterial);
-			
-			//player physics body
-			playerBody = new Body(BodyType.DYNAMIC,new Vec2(200,200) );
-			playerBody.shapes.add(new Polygon(Polygon.box(100,180)));
-			playerBody.position.setxy(200,639);
-			playerBody.space = physicsSpace;
-			playerBody.userData.Pivot = new Vec2(0, -90);
-			playerBody.userData.name = "player";
-			playerBody.allowRotation = false;
-			
-			for (var i:int = 0; i < 0; i++) 
-			{
-				var cube:Body = new Body(BodyType.DYNAMIC,new Vec2(200,200) );
-				cube.shapes.add(new Polygon(Polygon.box(28,28)));
-				cube.position.setxy(200+Math.random(),200+Math.random());
-				cube.space = physicsSpace;
-			}
 			
 			//player
 			players[0] = new EntityPlayer03(); 
@@ -147,9 +95,8 @@ package myth.world
 			 
 			player = players[1];
 			currentPlayer = 1;
-			playerBody.userData.graphic = player;
-			//player.x = 200;
-			//player.y = 640;
+			physicsWorld.playerBody.userData.graphic = player;
+			
 			//entityManager
 			entityManager = new WorldEntityManager(levelData.enemyData);
 			//tiles
@@ -199,7 +146,7 @@ package myth.world
 		
 		public function onRemove():void {
 			myth.util.Debug.test(function():void { 
-				Starling.current.nativeOverlay.removeChild(shape);
+				Starling.current.nativeOverlay.removeChild(physicsWorld.shape);
 			}, myth.util.Debug.DrawArracks);
 		}
 		
@@ -232,17 +179,7 @@ package myth.world
 						distance += deltaSpeed;
 					}
 				}
-				
-				physicsSpace.step(TimeHelper.deltaTime);
-				
-				myth.util.Debug.test(function():void {
-					var debugMatrix:Mat23 = new Mat23();
-					debugMatrix.tx = -distance;
-					debug.transform = debugMatrix;
-					debug.clear();
-					debug.draw(physicsSpace);
-					debug.flush();
-				}, myth.util.Debug.DrawArracks);
+				physicsWorld.tick();
 				player.tick();
 				
 				tiles.tick(distance);
@@ -259,8 +196,6 @@ package myth.world
 				}else if(player.x > 1480 || levelComplete) {
 					gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName));
 				}
-				//physicsSpace.bodies.foreach( move );
-				moveGraphics();
 				
 				animTransform.x = player.x;
 				animTransform.y = player.y;
@@ -269,21 +204,6 @@ package myth.world
 				transformCircle.rotation += 2;
 			}
 		}
-		private var graphic:Sprite;
-		private function moveGraphics():void 
-		{
-			for (var i:int = 0; i < physicsSpace.bodies.length; i++) 
-			{
-				var body:Body = physicsSpace.bodies.at(i);
-				graphic = body.userData.graphic;
-				if(body.userData.Pivot!=null && graphic!=null){
-					graphic.x = body.position.x - body.userData.Pivot.x - distance;
-					graphic.y = body.position.y - body.userData.Pivot.y ;
-					graphic.rotation = body.rotation;
-				}
-			}
-		}
-		
 		
 		public function switchAvatar(id:int):void {
 			if(id !=currentPlayer){
@@ -304,7 +224,7 @@ package myth.world
 				player.x = playerPosX;
 				player.y = playerPosY;
 				addChildAt(player, getChildIndex(animTransform));
-				playerBody.userData.graphic = player;
+				physicsWorld.playerBody.userData.graphic = player;
 				
 				animTransform.play("lotusflower");
 				animTransform.visible = true;
