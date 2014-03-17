@@ -15,13 +15,15 @@ package myth.editor
 		public var artName:String;
 		public var fileID:int;
 		public var art:Texture;
+		public var catigory:int;
 		
-		public function EditorFiles(cat:int, art:String, type:int) 
+		public function EditorFiles(type:int, art:String, cat:int, id:int) 
 		{
 			artName = art;
-			fileID = type;
+			fileID = id;
+			catigory = cat;
 			
-			switch(cat)
+			switch(type)
 			{
 				case 0: LIST_TILES.push(this); break;
 				case 1: LIST_ENTITIES.push(this); break;
