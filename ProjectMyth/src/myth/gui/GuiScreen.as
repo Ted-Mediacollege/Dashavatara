@@ -46,9 +46,12 @@ package myth.gui
 			}
 		}
 		
-		public function addButton(b:GuiButton):GuiButton
+		public function addButton(b:GuiButton,addToDisplay:Boolean = true):GuiButton
 		{
-			addChild(b);
+			if (addToDisplay)
+			{
+				addChild(b);
+			}
 			buttonList.push(b);
 			return b;
 		}
