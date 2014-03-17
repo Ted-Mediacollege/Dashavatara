@@ -42,6 +42,8 @@ package myth.gui.game
 		private var b1:GuiButton;
 		private var b2:GuiButton;
 		private var b3:GuiButton;
+		private var pauseb1:GuiButton;
+		private var pauseb2:GuiButton;
 		
 		private var help_text_temp:GuiText;
 		private var help_fade:int;
@@ -96,14 +98,14 @@ package myth.gui.game
 		
 		private function createPauseButtons():void 
 		{
-			addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
-			addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
+			pauseb1 = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
+			pauseb2 = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
 		}
 		
 		private function removePauseButtons():void
 		{
-			removeButton(b1);
-			removeButton(b2);
+			removeButton(pauseb1);
+			removeButton(pauseb2);
 		}
 		
 		private function unPause():void {
@@ -199,6 +201,7 @@ package myth.gui.game
 			//trace(pauseFade);
 			if (!pauseScreen)
 			{
+				trace(pauseFade);
 				if (pauseFade >= 0.01) {
 					pauseFade-= 0.01;
 					pauseFilter.blurX = pauseFade * 20;
@@ -206,6 +209,7 @@ package myth.gui.game
 					pauseFilter.resolution =  0.2;
 					pauseFilter.cache();
 					if (pauseFade <= 0.02 || pauseScreen) {
+						trace("--------------unpause");
 						unPause();
 					}
 				}else {
