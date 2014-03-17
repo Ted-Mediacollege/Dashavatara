@@ -8,6 +8,7 @@ package myth.gui.game
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
 	import myth.gui.game.GuiMainMenu;
+	import myth.editor.EditorFiles;
 
 	public class GuiEditor extends GuiScreen
 	{
@@ -20,6 +21,12 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
+			EditorFiles.loadTextures();
+			if (EditorFiles.TILE_SKY_0.art != null)
+			{
+				trace("yay 1");
+			}
+			
 			addChild(background);
 			
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiEditor", 25, 0x000000);
@@ -53,7 +60,11 @@ package myth.gui.game
 		
 		override public function destroy():void 
 		{ 
-			
+			EditorFiles.unLoadTextures();
+			if (EditorFiles.TILE_SKY_0.art == null)
+			{
+				trace("yay 2");
+			}
 		}
 	}
 }
