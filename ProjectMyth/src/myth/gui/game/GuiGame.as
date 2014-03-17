@@ -201,7 +201,6 @@ package myth.gui.game
 			//trace(pauseFade);
 			if (!pauseScreen)
 			{
-				trace(pauseFade);
 				if (pauseFade >= 0.01) {
 					pauseFade-= 0.01;
 					pauseFilter.blurX = pauseFade * 20;
@@ -209,7 +208,6 @@ package myth.gui.game
 					pauseFilter.resolution =  0.2;
 					pauseFilter.cache();
 					if (pauseFade <= 0.02 || pauseScreen) {
-						trace("--------------unpause");
 						unPause();
 					}
 				}else {
