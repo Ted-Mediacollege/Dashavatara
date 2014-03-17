@@ -1,4 +1,4 @@
-package myth.gui.game 
+package myth.editor 
 {
 	import myth.gui.GuiScreen;
 	import myth.gui.components.GuiButton;
@@ -7,10 +7,10 @@ package myth.gui.game
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
 
-	public class GuiEditor extends GuiScreen
+	public class Editor extends GuiScreen
 	{
 		
-		public function GuiEditor() 
+		public function Editor() 
 		{
 			
 		}
