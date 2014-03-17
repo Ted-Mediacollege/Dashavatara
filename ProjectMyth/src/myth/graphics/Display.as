@@ -11,10 +11,15 @@ package myth.graphics
 			layers = new Vector.<DisplayLayer>;
 			layers.push(new DisplayLayer(LayerID.GameLevelBack));
 			layers.push(new DisplayLayer(LayerID.GameLevel));
+			layers.push(new DisplayLayer(LayerID.GamePlayerBack));
 			layers.push(new DisplayLayer(LayerID.GamePlayer));
+			layers.push(new DisplayLayer(LayerID.GamePlayerFront));
 			layers.push(new DisplayLayer(LayerID.GameGui));
+			
+			layers.push(new DisplayLayer(LayerID.PauseImage));
 			layers.push(new DisplayLayer(LayerID.PauseGui));
-			layers.push(new DisplayLayer(LayerID.PauseGui));
+			
+			layers.push(new DisplayLayer(LayerID.DebugLayer));
 			
 			for (var i:int = 0; i < layers.length; i++) {
 				parent.addChild(layers[i]);
@@ -27,7 +32,7 @@ package myth.graphics
 			}
 		}
 		
-		public static function add(add:DisplayObject, layerName:LayerID):void {
+		public static function add(add:DisplayObject, layerName:int):void {
 			for (var i:int = 0; i < layers.length; i++) {
 				if(layerName == layers[i].layerName){
 					layers[i].addChild(add);
@@ -36,7 +41,7 @@ package myth.graphics
 			}
 		}
 		
-		public static function layerVisible(visible:Boolean, layerName:LayerID):void {
+		public static function layerVisible(visible:Boolean, layerName:int):void {
 			for (var i:int = 0; i < layers.length; i++) {
 				if(layerName == layers[i].layerName){
 					layers[i].visible = visible;
@@ -45,7 +50,7 @@ package myth.graphics
 			}
 		}
 		
-		private static function getLayer(layerName:LayerID):DisplayLayer {
+		private static function getLayer(layerName:int):DisplayLayer {
 			var returnLayer:DisplayLayer;
 			for (var i:int = 0; i < layers.length; i++) {
 				if(layerName == layers[i].layerName){

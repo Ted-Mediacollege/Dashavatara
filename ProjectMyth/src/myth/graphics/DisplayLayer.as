@@ -4,13 +4,13 @@ package myth.graphics
 	
 	public class DisplayLayer extends Sprite
 	{
-		private static var privateLayerName:LayerID;
-		public function DisplayLayer(_layerName:LayerID) 
+		private var privateLayerName:int;
+		public function DisplayLayer(_layerName:int) 
 		{
 			privateLayerName = _layerName;
 		}
 		
-		public function get layerName():LayerID 
+		public function get layerName():int 
 		{ 
 			return privateLayerName; 
 		} 

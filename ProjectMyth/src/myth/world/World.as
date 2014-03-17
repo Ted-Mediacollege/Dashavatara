@@ -34,8 +34,10 @@ package myth.world
 	import starling.core.Starling;
 	import flash.display.Loader;
 	import myth.data.LevelData;
+	import myth.graphics.Display;
+	import myth.graphics.LayerID;
 	
-	public class World extends Sprite
+	public class World
 	{
 		private var lvlName:String;
 		
@@ -110,25 +112,25 @@ package myth.world
 			objectManager = new WorldObjectManager(levelData.ObjectData);
 			
 			//add childs
-			addChild(background);
+			Display.add(background,LayerID.GameLevelBack);
 			
 			transformCircle = new Image(TextureList.assets.getTexture("common_tadaa"));
 			transformCircle.pivotX = 102;
 			transformCircle.pivotY = 100;
-			addChild(transformCircle);
+			Display.add(transformCircle,LayerID.GamePlayerBack);
 			
-			addChild(player);
-			addChild(entityManager);
-			addChild(objectManager);
-			addChild(tiles);
+			Display.add(player,LayerID.GamePlayer);
+			Display.add(entityManager,LayerID.GamePlayer);
+			Display.add(objectManager,LayerID.GamePlayerFront);
+			Display.add(tiles,LayerID.GameLevelBack);
 			//debug
-			addChild(debugShape);
-			addChild(debugShape2);
-			addChild(attackShape);
+			Display.add(debugShape,LayerID.DebugLayer);
+			Display.add(debugShape2,LayerID.DebugLayer);
+			Display.add(attackShape,LayerID.DebugLayer);
 						
 			animTransform = TextureList.spriterLoader.getSpriterClip("transAnim");
 			animTransform.playbackSpeed = 1.5;
-			addChild(animTransform);
+			Display.add(animTransform,LayerID.GamePlayerFront);
 			Starling.juggler.add(animTransform);
 			animTransform.visible = false;
 			
@@ -209,7 +211,7 @@ package myth.world
 			if(id !=currentPlayer){
 				var playerPosX:int = player.x;
 				var playerPosY:int = player.y;
-				removeChild(player);
+				player.removeFromParent();
 				if (id==0) {
 					player = players[0];
 					currentPlayer = 0;
@@ -223,7 +225,7 @@ package myth.world
 				trace("switch "+currentPlayer+" "+distance);
 				player.x = playerPosX;
 				player.y = playerPosY;
-				addChildAt(player, getChildIndex(animTransform));
+				Display.add(player, LayerID.GamePlayer);
 				physicsWorld.playerBody.userData.graphic = player;
 				
 				animTransform.play("lotusflower");
@@ -242,7 +244,7 @@ package myth.world
 				debugShape.graphics.clear();
 				debugShape.graphics.beginFill(0x000000, 0.2);
 				debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
-				debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.world).x,e.touches[0].getLocation(Main.world).y,20);
+				debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.gui).x,e.touches[0].getLocation(Main.gui).y,20);
 				debugShape.graphics.endFill();
 			}, myth.util.Debug.DrawArracks);
 		}

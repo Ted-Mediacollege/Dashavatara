@@ -2,14 +2,18 @@ package myth.graphics
 {
 	public class LayerID
 	{
-		public static const GamePlayer:LayerID = 0 as LayerID;
-		public static const GameLevelBack:LayerID = 1 as LayerID;
-		public static const GameLevel:LayerID = 2 as LayerID;
-		public static const GameGui:LayerID = 4 as LayerID;
-		public static const PauseImage:LayerID = 5 as LayerID;
-		public static const PauseGui:LayerID = 8 as LayerID;
+		public static const GamePlayer:int = 0;
+		public static const GameLevelBack:int = 1;
+		public static const GameLevel:int = 2;
+		public static const GameGui:int = 4  ;
+		public static const PauseImage:int = 5 ;
+		public static const PauseGui:int = 6 ;
+		public static const GamePlayerFront:int = 7 ;
+		public static const GamePlayerBack:int = 8 ;
 		
-		public static const MenuGui:LayerID = 6 as LayerID;
-		public static const MenuGuiBack:LayerID = 7 as LayerID;
+		public static const MenuGui:int = 100 ;
+		public static const MenuGuiBack:int = 101 ;
+		
+		public static const DebugLayer:int = 1000 ;
 	}
 }

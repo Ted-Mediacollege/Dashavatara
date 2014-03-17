@@ -73,7 +73,7 @@ package myth.gui.game
 			
 			Main.world = new World(this, levelName);
 			Main.world.init();
-			Display.add(Main.world,LayerID.GameLevel);
+			//Display.add(Main.world,LayerID.GameLevel);
 			b1 = addButton(new GuiButton(10, TextureList.assets.getTexture("gui_icon1"), 100, 80, 194, 142, ""),false);
 			b2 = addButton(new GuiButton(11, TextureList.assets.getTexture("gui_icon2"), 300, 80, 194, 142, ""),false);
 			b3 = addButton(new GuiButton(12, TextureList.assets.getTexture("gui_icon3"), 500, 80, 194, 142, ""),false);
@@ -240,7 +240,7 @@ package myth.gui.game
 		
 		override public function destroy():void
 		{
-			removeChild(Main.world);
+			//removeChild(Main.world);
 			Main.world.onRemove();
 			Main.world = null;
 		}
