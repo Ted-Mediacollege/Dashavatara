@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="editor.png">
+	<SubTexture name="editor_arrow_left"		x="57"	y="866"	width="40"	height="40"  frameX="-0" frameY="-0"  frameWidth="40"  frameHeight="40"/>
+	<SubTexture name="editor_arrow_right"		x="57"	y="825"	width="40"	height="40"  frameX="-0" frameY="-0"  frameWidth="40"  frameHeight="40"/>
+	<SubTexture name="editor_option_delete"		x="0"	y="939"	width="56"	height="56"  frameX="-0" frameY="-0"  frameWidth="56"  frameHeight="56"/>
+	<SubTexture name="editor_option_depth"		x="0"	y="882"	width="56"	height="56"  frameX="-0" frameY="-0"  frameWidth="56"  frameHeight="56"/>
+	<SubTexture name="editor_option_move"		x="0"	y="825"	width="56"	height="56"  frameX="-0" frameY="-0"  frameWidth="56"  frameHeight="56"/>
+	<SubTexture name="editor_panel_main"		x="0"	y="0"	width="350"	height="768" frameX="-0" frameY="-0"  frameWidth="350" frameHeight="768"/>
+	<SubTexture name="editor_scroll_background"	x="0"	y="769"	width="100"	height="30"  frameX="-0" frameY="-10" frameWidth="100" frameHeight="40"/>
+	<SubTexture name="editor_scroll_pos"		x="0"	y="800"	width="62"	height="24"  frameX="-0" frameY="-0"  frameWidth="62"  frameHeight="24"/>
+</TextureAtlas>

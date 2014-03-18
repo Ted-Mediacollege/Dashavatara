@@ -9,8 +9,8 @@ package myth.editor
 		public static var LIST_ENTITIES:Vector.<EditorFiles> = new Vector.<EditorFiles>();
 		public static var LIST_OBJECTS:Vector.<EditorFiles> = new Vector.<EditorFiles>();
 		
-		public static var TILE_SKY_0:EditorFiles = new EditorFiles(0, "sky_tile00", 0);
-		public static var TILE_SKY_1:EditorFiles = new EditorFiles(0, "sky_tile01", 1);
+		public static var TILE_SKY_0:EditorFiles = new EditorFiles(0, "sky_tile00", 0, 0);
+		public static var TILE_SKY_1:EditorFiles = new EditorFiles(0, "sky_tile01", 1, 1);
 		
 		public var artName:String;
 		public var fileID:int;

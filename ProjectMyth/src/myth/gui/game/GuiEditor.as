@@ -9,10 +9,16 @@ package myth.gui.game
 	import myth.gui.background.GuiBackground;
 	import myth.gui.game.GuiMainMenu;
 	import myth.editor.EditorFiles;
+	import starling.events.TouchEvent;
 
 	public class GuiEditor extends GuiScreen
 	{
+		private var button_menu:GuiButton;
+		private var button_create:GuiButton;
+		private var button_load:GuiButton;
+		
 		private var editor:Editor;
+		public var inEditor:Boolean = false;
 		
 		public function GuiEditor() 
 		{
@@ -21,25 +27,27 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			EditorFiles.loadTextures();
-			if (EditorFiles.TILE_SKY_0.art != null)
-			{
-				trace("yay 1");
-			}
-			
 			addChild(background);
 			
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiEditor", 25, 0x000000);
-			addChild(t);
-			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Create Level", 25, 0x000000));
-			var b3:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Load Level", 25, 0x000000));
+			button_menu = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
+			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Create Level", 25, 0x000000));
+			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Load Level", 25, 0x000000));
 		}
 		
 		override public function tick():void 
 		{ 
-			background.tick();
+			if (inEditor)
+			{
+				editor.tick();
+			}
+		}
+		
+		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
+		{ 
+			if (inEditor)
+			{
+				editor.input(type, data, e);
+			}
 		}
 		
 		override public function action(b:GuiButton):void 
@@ -50,21 +58,36 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 1)
 			{
-				main.switchGui(new GuiMainMenu());
+				removeButton(button_menu);
+				removeButton(button_create);
+				removeButton(button_load);
+				
+				//removeChild(background);
+				//background = null;
+				editor = new Editor();
+				addChild(editor);
+				editor.build();
+				
+				inEditor = true;
 			}
 			else if (b.buttonID == 2)
 			{
-				main.switchGui(new GuiMainMenu());
+				removeButton(button_menu);
+				removeButton(button_create);
+				removeButton(button_load);
+				
+				removeChild(background);
+				background = null;
+				editor = new Editor();
+				addChild(editor);
+				editor.build();
+				
+				inEditor = true;
 			}
 		}
 		
 		override public function destroy():void 
 		{ 
-			EditorFiles.unLoadTextures();
-			if (EditorFiles.TILE_SKY_0.art == null)
-			{
-				trace("yay 2");
-			}
 		}
 	}
 }

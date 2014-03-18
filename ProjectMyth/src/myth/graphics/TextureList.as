@@ -78,6 +78,7 @@ package myth.graphics
 			var appDir:File = File.applicationDirectory;
 			assets.enqueue(appDir.resolvePath("tex/background"));
 			assets.enqueue(appDir.resolvePath("tex/gui"));
+			assets.enqueue(appDir.resolvePath("tex/editor"));
 				
 			assets.loadQueue(function(ratio:Number):void {
 				GuiLoading.progress = ratio;
