@@ -127,8 +127,10 @@ package myth.entity.player
 						}
 					}
 					if (hit) {
-						Main.world.entityManager.removeChild(Main.world.entityManager.enemyList[j]);
-						Main.world.entityManager.enemyList.splice(j , 1);
+						if(Main.world.entityManager.enemyList[j].hit(-25)||true){
+							Main.world.entityManager.removeChild(Main.world.entityManager.enemyList[j]);
+							Main.world.entityManager.enemyList.splice(j , 1);
+						}
 					}
 				}
 				previousPos = new Point(data[0], data[1]);

@@ -12,17 +12,28 @@ package myth.entity.enemy
 	public class EntityEnemyBase extends Entity
 	{
 		public var damage:int  = 10;
+		private var health:int = 100;
 		public var enemyType:int;
 		
 		public function EntityEnemyBase(_enemyType:int,_colWidth:int=80,_colHeight:int=80,_pivotX:int=-40,_pivotY:int=-40) 
 		{
 			super(_colWidth, _colHeight, _pivotX, _pivotY);
-			
 			enemyType = _enemyType;
-			
-			
 		}
 		
+		public function hit(change:int):Boolean {
+			//trace("hit: "+health);
+			var dead:Boolean = false;
+			health += change;
+			if (health < 0) {
+				dead = true;
+			}
+			return dead;
+		}
+		
+		override public function tick():void {
+			super.tick();
+		}
 	}
 
 }
