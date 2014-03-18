@@ -11,6 +11,7 @@ package myth.entity.player
 	import myth.util.collision.RectCollider;
 	import myth.Main;
 	import myth.util.TimeHelper;
+	import starling.textures.Texture;
 	
 	public class EntityPlayerBase extends Entity
 	{
@@ -27,9 +28,14 @@ package myth.entity.player
 		private var playerBody:Body;
 		private var playerMass:Number;
 		
-		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int)
+		private var privatePlayerType:int;
+		private var privatePlayerTex:Texture;
+		
+		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int,_playerType:int,_playerTex:Texture)
 		{
 			super(100, 180, -50, -180);
+			privatePlayerTex = _playerTex;
+			privatePlayerType = _playerType;
 			art = new Sprite();
 			addChild(art);
 			
@@ -133,5 +139,11 @@ package myth.entity.player
 			}
 			return false;
 		}
+		
+		public function get playerType():int {return privatePlayerType};
+		//public function set playerType(type:int):void { privatePlayerType = type; };
+		
+		public function get playerTexture():Texture {return privatePlayerTex};
+		//public function set playerTexture(tex:Texture):void {privatePlayerTex = tex;};
 	}
 }

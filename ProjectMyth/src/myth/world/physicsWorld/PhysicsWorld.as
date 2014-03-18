@@ -1,5 +1,6 @@
 package myth.world.physicsWorld 
 {
+	import myth.entity.objects.EntityObjectBase;
 	import starling.core.Starling;
 	import myth.util.TimeHelper;
 	import myth.util.ScaleHelper;
@@ -85,16 +86,26 @@ package myth.world.physicsWorld
 		}
 		
 		private var graphic:starling.display.Sprite;
+		private var graphics:Vector.<EntityObjectBase>;
 		private function moveGraphics():void 
 		{
 			for (var i:int = 0; i < physicsSpace.bodies.length; i++) 
 			{
 				var body:Body = physicsSpace.bodies.at(i);
 				graphic = body.userData.graphic;
+				graphics = body.userData.graphics;
 				if(body.userData.Pivot!=null && graphic!=null){
 					graphic.x = body.position.x - body.userData.Pivot.x - Main.world.distance;
 					graphic.y = body.position.y - body.userData.Pivot.y ;
 					graphic.rotation = body.rotation;
+				}else if (body.userData.Pivots != null && graphics != null) {
+					for (var j:int = 0; j < graphics.length; j++) 
+					{
+						graphics[j].x = body.position.x - body.userData.Pivots[j].x - Main.world.distance;
+						graphics[j].y = body.position.y - body.userData.Pivots[j].y ;
+						graphics[j].rotation = body.rotation;
+					}
+					
 				}
 			}
 		}

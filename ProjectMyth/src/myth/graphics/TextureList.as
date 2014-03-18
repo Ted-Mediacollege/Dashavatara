@@ -64,7 +64,7 @@ package myth.graphics
 		public static var spriterLoader:SpriterLoader;
 		
 		public static var currentWorldType:int = -1;
-		public static var currentPlayers:Vector.<PlayerType> = new Vector.<PlayerType>;
+		public static var currentPlayers:Vector.<int> = new Vector.<int>;
 		//private static var tileData:Vector.<int>;
 		
 		public static function preLoad():void
@@ -104,7 +104,7 @@ package myth.graphics
 			atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
 		}
 		
-		public static function loadLevelAssets(worldType:int,player1Type:PlayerType,player2Type:PlayerType,player3Type:PlayerType):void
+		public static function loadLevelAssets(worldType:int,player1Type:int,player2Type:int,player3Type:int):void
 		{
 			var load:Boolean = false;
 			var appDir:File = File.applicationDirectory;

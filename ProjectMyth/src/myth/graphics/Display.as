@@ -10,10 +10,12 @@ package myth.graphics
 		public static function InitGameLayers(parent:Sprite):void{
 			layers = new Vector.<DisplayLayer>;
 			layers.push(new DisplayLayer(LayerID.GameLevelBack));
-			layers.push(new DisplayLayer(LayerID.GameLevel));
 			layers.push(new DisplayLayer(LayerID.GamePlayerBack));
 			layers.push(new DisplayLayer(LayerID.GamePlayer));
+			layers.push(new DisplayLayer(LayerID.GameLevel));
+			layers.push(new DisplayLayer(LayerID.GameLevel2));
 			layers.push(new DisplayLayer(LayerID.GamePlayerFront));
+			layers.push(new DisplayLayer(LayerID.GameLevelFront));
 			layers.push(new DisplayLayer(LayerID.GameGui));
 			
 			layers.push(new DisplayLayer(LayerID.PauseImage));

@@ -2,6 +2,7 @@ package myth.world
 {
 	import myth.entity.objects.EntityObjectBase;
 	import myth.entity.objects.EntityObjectEndPort;
+	import myth.entity.objects.EntityObjectEndPortPart2;
 	import myth.entity.objects.EntityObjectPillar;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
@@ -11,6 +12,8 @@ package myth.world
 	import myth.entity.objects.ObjectType;
 	import nape.phys.BodyType;
 	import myth.Main;
+	import myth.graphics.Display;
+	import myth.graphics.LayerID;
 	/**
 	 * XML File
 	 * "objects":[
@@ -49,41 +52,65 @@ package myth.world
 		
 		public function makeObject( type:int,xPos:int,yPos:int) :void
 		{
-			var platform:Body = new Body(BodyType.KINEMATIC);
+			var newBody:Body = new Body(BodyType.KINEMATIC);
 			var object :EntityObjectBase;
+			var objects :Vector.<EntityObjectBase>;
 			
 			if(type == ObjectType.Pillar){
 				object = new EntityObjectPillar();
 			}else if(type == ObjectType.pillar2){
 				object = new EntityObjectPillar();
 			}else if (type == ObjectType.endPort1) {
-				object = new EntityObjectEndPort();
+				objects = new Vector.<EntityObjectBase>;
+				objects[0] = new EntityObjectEndPort();
+				objects[1] = new EntityObjectEndPortPart2();
 			}
 			if (type == ObjectType.Pillar || type == ObjectType.pillar2) {
-				platform.position.setxy(xPos, yPos);
-				platform.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
+				newBody.position.setxy(xPos, yPos);
+				newBody.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
 				//platform.velocity.x = -Main.world.speed*60;
 				//platform.velocity.x = Main.world.distance;
-				platform.space =  Main.world.physicsWorld.physicsSpace;
+				newBody.space =  Main.world.physicsWorld.physicsSpace;
 				//platform.userData.Pivot = new Vec2(0, -90);
-				platform.userData.graphic = object;
-				platform.userData.Pivot = new Vec2(object.width / 2, 0);
-				platform.userData.name = "pillar";
-				platform.setShapeMaterials(groundMaterial);
+				newBody.userData.graphic = object;
+				newBody.userData.Pivot = new Vec2(object.width / 2, 0);
+				newBody.userData.name = "pillar";
+				newBody.setShapeMaterials(groundMaterial);
+				Display.add(object,LayerID.GameLevel);
 			}else {
-				platform.position.setxy(xPos, yPos);
-				platform.space =  Main.world.physicsWorld.physicsSpace;
-				platform.userData.graphic = object;
-				platform.userData.Pivot = new Vec2(object.width / 2, 0);
-				platform.userData.name = "pillar";
+				newBody.position.setxy(xPos, yPos);
+				newBody.space =  Main.world.physicsWorld.physicsSpace;
+				newBody.userData.graphics = new Vector.<EntityObjectBase>;
+				newBody.userData.Pivots = new Vector.<Vec2>;
+				//part1
+				newBody.userData.graphics[0] = objects[0];
+				newBody.userData.Pivots[0] = new Vec2(objects[0].width / 2 , 0);
+				Display.add(objects[0],LayerID.GameLevelBack);
+				//
+				//part2
+				newBody.userData.graphics[1] = objects[1];
+				newBody.userData.Pivots[1] = new Vec2(objects[1].width / 2 , 0);
+				Display.add(objects[1],LayerID.GameLevelFront);
+				//
+				newBody.userData.name = "endPort";
 			}
 			
-			objectList.push(platform);
-			addChild(object);
+			objectList.push(newBody);
 		}
 		
+		private var graphic:starling.display.Sprite;
+		private var graphics:Vector.<EntityObjectBase>;
 		private function removeObject(number:int):void {
-			removeChild(objectList[number].userData.graphic);
+			graphic = objectList[number].userData.graphic;
+			graphics = objectList[number].userData.graphics;
+			if(graphic!=null){
+				objectList[number].userData.graphic.removeFromParent();
+			}else {
+				for (var i:int = 0; i < graphics.length; i++) 
+				{
+					objectList[number].userData.graphics[i].removeFromParent();
+				}
+			}
 			objectList.splice(number , 1);
 		}
 		

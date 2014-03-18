@@ -7,12 +7,14 @@ package myth.world
 	import myth.entity.player.EntityPlayer01v2;
 	import myth.entity.player.EntityPlayer01v4;
 	import myth.entity.player.EntityPlayer02v2;
+	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiLose;
 	import myth.gui.game.GuiWin;
 	import myth.gui.GuiScreen;
 	import myth.world.physicsWorld.PhysicsWorld;
 	import myth.world.WorldEntityManager;
 	import myth.entity.player.EntityPlayer01;
+	import myth.entity.player.EntityPlayerBoar;
 	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
@@ -42,12 +44,12 @@ package myth.world
 		private var lvlName:String;
 		
 		private var worldBuild:Boolean;
-		public var gui:GuiScreen;
+		public var gui:GuiGame;
 		
 		public var tiles:WorldTiles2;
 		public var background:WorldBackground;
 		
-		private var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
+		public var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		public var player:EntityPlayerBase;
 		private var currentPlayer:int = 1;
 		
@@ -71,7 +73,7 @@ package myth.world
 		
 		public var levelData:LevelData;
 		
-		public function World(g:GuiScreen ,levelName:String = "level_1") 
+		public function World(g:GuiGame ,levelName:String = "level_1") 
 		{
 			EntityPlayerBase.levelStart();
 			gui = g;
@@ -88,17 +90,18 @@ package myth.world
 		public function build():void {
 			physicsWorld = new PhysicsWorld();
 			
-			
 			//player
 			players[0] = new EntityPlayer03(); 
 			//players[1] = new EntityPlayer01v2(); 
 			players[1] = new EntityPlayer01v4();
-			players[2] = new EntityPlayer02v2(); 
+			//players[2] = new EntityPlayer02v2(); 
+			players[2] = new EntityPlayerBoar(); 
 			 
 			player = players[1];
 			currentPlayer = 1;
 			physicsWorld.playerBody.userData.graphic = player;
 			
+			gui.build();
 			//entityManager
 			entityManager = new WorldEntityManager(levelData.enemyData);
 			//tiles
@@ -122,7 +125,7 @@ package myth.world
 			Display.add(player,LayerID.GamePlayer);
 			Display.add(entityManager,LayerID.GamePlayer);
 			Display.add(objectManager,LayerID.GamePlayerFront);
-			Display.add(tiles,LayerID.GameLevelBack);
+			Display.add(tiles,LayerID.GameLevel2);
 			//debug
 			Display.add(debugShape,LayerID.DebugLayer);
 			Display.add(debugShape2,LayerID.DebugLayer);

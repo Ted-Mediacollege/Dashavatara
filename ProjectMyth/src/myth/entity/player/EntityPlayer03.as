@@ -16,7 +16,7 @@ package myth.entity.player
 		public var animationWalk:MovieClip;
 		public function EntityPlayer03() 
 		{
-			super(false,200);
+			super(false,300,PlayerType.Fluit,TextureList.assets.getTexture("gui_icon1"));
 			
 			image = new Image(TextureList.atlas_player.getTexture("player_4"));
 			image.scaleX = -1;
@@ -48,7 +48,5 @@ package myth.entity.player
 				}
 			}
 		}
-		
 	}
-
 }

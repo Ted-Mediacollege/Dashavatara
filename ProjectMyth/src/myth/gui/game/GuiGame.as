@@ -74,12 +74,6 @@ package myth.gui.game
 			Main.world = new World(this, levelName);
 			Main.world.init();
 			//Display.add(Main.world,LayerID.GameLevel);
-			b1 = addButton(new GuiButton(10, TextureList.assets.getTexture("gui_icon1"), 100, 80, 194, 142, ""),false);
-			b2 = addButton(new GuiButton(11, TextureList.assets.getTexture("gui_icon2"), 300, 80, 194, 142, ""),false);
-			b3 = addButton(new GuiButton(12, TextureList.assets.getTexture("gui_icon3"), 500, 80, 194, 142, ""),false);
-			Display.add(b1,LayerID.GameGui);
-			Display.add(b2,LayerID.GameGui);
-			Display.add(b3,LayerID.GameGui);
 			
 			addButton(new GuiButton(13, TextureList.assets.getTexture("gui_button_pause"), 1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, ""));
 			
@@ -225,6 +219,15 @@ package myth.gui.game
 					}
 				}
 			}
+		}
+		
+		public function build():void {
+			b1 = addButton(new GuiButton(10, Main.world.players[0].playerTexture, 100, 80, 194, 142, ""),false);
+			b2 = addButton(new GuiButton(11, Main.world.players[1].playerTexture, 300, 80, 194, 142, ""),false);
+			b3 = addButton(new GuiButton(12, Main.world.players[2].playerTexture, 500, 80, 194, 142, ""),false);
+			Display.add(b1,LayerID.GameGui);
+			Display.add(b2,LayerID.GameGui);
+			Display.add(b3,LayerID.GameGui);
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 

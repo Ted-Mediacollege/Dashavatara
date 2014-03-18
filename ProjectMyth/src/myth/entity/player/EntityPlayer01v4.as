@@ -40,7 +40,7 @@ package myth.entity.player
 		{
 			//line
 			//super(true, false, true,128,200,-64,-200 );
-			super(false,300);
+			super(false,300,PlayerType.Lion,TextureList.assets.getTexture("gui_icon2"));
 			line_textures = Texture.fromBitmap(new LineTex());
 			line_image = new Image(line_textures);
 			line_image.x = 640;
@@ -180,7 +180,6 @@ package myth.entity.player
 				lineBatch.addImage(line_image);
 				
 			}
-			
 			
 			for (i = 0; i < parts.length; i++) 
 			{	

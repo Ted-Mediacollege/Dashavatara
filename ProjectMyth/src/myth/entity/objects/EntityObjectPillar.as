@@ -12,7 +12,7 @@ package myth.entity.objects
 		public var image:Image;
 		public function EntityObjectPillar() 
 		{
-			image = new Image(TextureList.atlas_level.getTexture("pillar_1"));
+			image = new Image(TextureList.assets.getTexture("sky_pilar"));
 			image.pivotY = image.height;
 			artLayer.addChild(image);
 		}
