@@ -20,17 +20,10 @@ package myth.gui.background
 		{
 			clouds = new Vector.<Image>();
 			
-			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
+			var bg:Image = new Image(TextureList.assets.getTexture("earth_lucht"));
 			addChild(bg);
 			
 			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
-			
-			/*var r:Image = new Image(textures[3]);
-			r.x = -200;
-			r.y = 200;
-			r.scaleX = 4.5;
-			r.scaleY = 4.5;
-			addChild(r);*/
 			
 			for (var i:int = 0; i < 15; i++ )
 			{
