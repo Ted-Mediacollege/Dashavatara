@@ -73,7 +73,12 @@ package myth.graphics
 			
 			spriterLoader = new SpriterLoader();
 			spriterLoader.completed.addOnce(onSpriterLoaded);
-			spriterLoader.load(["spriteranims/transformation/transAnim.scml", "spriteranims/player1/animLion.scml", "spriteranims/player4/animSwine.scml"]);
+			spriterLoader.load([
+				"spriteranims/transformation/transAnim.scml", 
+				"spriteranims/player1/animLion.scml", 
+				"spriteranims/player2/animFlute.scml", 
+				"spriteranims/player4/animSwine.scml"
+			]);
 
 			var appDir:File = File.applicationDirectory;
 			assets.enqueue(appDir.resolvePath("tex/background"));
