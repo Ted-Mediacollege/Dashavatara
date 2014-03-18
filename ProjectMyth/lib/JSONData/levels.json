@@ -216,6 +216,13 @@
 		],
 		"tiles":[
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
 			{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}
 		]
 	},
