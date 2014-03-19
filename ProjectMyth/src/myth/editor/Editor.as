@@ -63,7 +63,10 @@ package myth.editor
 				}
 				else if (data[0] < 930 && data[1] > 728)
 				{
-					SCROLL.warp(data[0] / 930 * maxX);
+					if (type == TouchType.SWIPE)
+					{
+						SCROLL.warp(data[0] / 930 * maxX);
+					}
 				}
 			}
 		}
