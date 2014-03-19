@@ -50,5 +50,19 @@ package myth.editor.component
 				Editor.camX = Editor.maxX;
 			}
 		}
+		
+		public function warp(pos:Number):void
+		{
+			Editor.camX = pos;
+			
+			if (Editor.camX < 0)
+			{
+				Editor.camX = 0;
+			}
+			if (Editor.camX > Editor.maxX)
+			{
+				Editor.camX = Editor.maxX;
+			}
+		}
 	}
 }

@@ -9,6 +9,7 @@ package myth.editor
 	import myth.graphics.TextureList;
 	import starling.events.TouchEvent;
 	import myth.input.TouchType;
+	import myth.util.ScaleHelper;
 	
 	public class Editor extends Sprite
 	{		
@@ -51,9 +52,19 @@ package myth.editor
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{ 
-			if (type == TouchType.SWIPE)
+			if (type == TouchType.SWIPE || type == TouchType.CLICK)
 			{
-				SCROLL.scroll(data[2]);
+				if (data[0] < 930 && data[1] < 728)
+				{
+					if (type == TouchType.SWIPE)
+					{
+						SCROLL.scroll(data[2]);
+					}
+				}
+				else if (data[0] < 930 && data[1] > 728)
+				{
+					SCROLL.warp(data[0] / 930 * maxX);
+				}
 			}
 		}
 		
