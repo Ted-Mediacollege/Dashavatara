@@ -3,19 +3,16 @@ package myth.editor.component
 	import starling.display.Sprite;
 	import starling.display.Image;
 	import myth.graphics.TextureList;
+	import myth.editor.Editor;
 	
 	public class Scroll extends Sprite
 	{		
 		private var art_background:Sprite;
 		private var art_scroll:Image;
 		
-		public var camX:Number;
-		public var maxX:Number;
-		
 		public function Scroll() 
 		{
-			camX = 0;
-			maxX = 4000;
+			Editor.camX = 0;
 			
 			art_background = new Sprite();
 			art_scroll = new Image(TextureList.assets.getTexture("editor_scroll_pos"));
@@ -37,20 +34,20 @@ package myth.editor.component
 		
 		public function tick():void
 		{
-			art_scroll.x = 930 / maxX * camX;
+			art_scroll.x = 930 / Editor.maxX * Editor.camX;
 		}
 		
 		public function scroll(dir:Number):void
 		{
-			camX += -dir;
+			Editor.camX += -dir;
 			
-			if (camX < 0)
+			if (Editor.camX < 0)
 			{
-				camX = 0;
+				Editor.camX = 0;
 			}
-			if (camX > maxX)
+			if (Editor.camX > Editor.maxX)
 			{
-				camX = maxX;
+				Editor.camX = Editor.maxX;
 			}
 		}
 	}

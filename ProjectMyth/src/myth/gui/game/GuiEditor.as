@@ -62,8 +62,8 @@ package myth.gui.game
 				removeButton(button_create);
 				removeButton(button_load);
 				
-				//removeChild(background);
-				//background = null;
+				removeChild(background);
+				background = null;
 				editor = new Editor();
 				addChild(editor);
 				editor.build();

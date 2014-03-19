@@ -1,6 +1,8 @@
 package myth.editor 
 {
 	import myth.editor.component.Scroll;
+	import myth.editor.field.FieldBackground;
+	import myth.editor.field.FieldTiles;
 	import myth.gui.components.GuiText;
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -10,13 +12,14 @@ package myth.editor
 	
 	public class Editor extends Sprite
 	{		
+		public static var camX:Number;
+		public static var maxX:Number;
+		
 		public var SCROLL:Scroll;
 		
-		public var text_cat:GuiText;
-		
-		public static var catList:Vector.<String> = new < String > ["Tiles", "Objects", "Background", "Entities"];
-		public var catSelected:int;
-		
+		public var FIELD_BACKGROUND:FieldBackground;
+		public var FIELD_TILES:FieldTiles;
+
 		public function Editor() 
 		{
 			
@@ -24,14 +27,26 @@ package myth.editor
 		
 		public function build():void
 		{
-			catSelected = 0;
+			var levelSize:int = 80;
+			
+			camX = 0;
+			maxX = levelSize * 127 - 1000;
+			
+			FIELD_BACKGROUND = new FieldBackground();
+			addChild(FIELD_BACKGROUND);
+			
+			FIELD_TILES = new FieldTiles();
+			addChild(FIELD_TILES);
+			
+			SCROLL = new Scroll();
+			addChild(SCROLL);
 			
 			var a1:Image = new Image(TextureList.assets.getTexture("editor_panel_main"));
 			a1.x = 1280 - 350;
 			addChild(a1);
 			
-			SCROLL = new Scroll();
-			addChild(SCROLL);
+			FIELD_BACKGROUND.buildNew(levelSize * 127, 0);
+			FIELD_TILES.buildNew(levelSize, 0);
 		}
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
@@ -45,6 +60,9 @@ package myth.editor
 		public function tick():void
 		{
 			SCROLL.tick();
+			
+			FIELD_TILES.tick(camX);
+			FIELD_BACKGROUND.tick(camX);
 		}
 		
 		public function save():void
