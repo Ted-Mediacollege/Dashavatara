@@ -34,7 +34,7 @@ package myth.editor.field
 				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
 				for (var j:int = 0; j < cloudiness; j++ )
 				{
-					var b2:Background = new Background(clouds[MathHelper.nextInt(cloudslength)], MathHelper.nextInt(size + 2500) - 500, MathHelper.nextInt(370), 4, 1, 1);
+					var b2:Background = new Background(clouds[MathHelper.nextInt(cloudslength)], MathHelper.nextInt(size + 2500) - 500, MathHelper.nextInt(280) - 50, 4, 1, 1);
 					b2.x = b2.posX / b2.z;
 					b2.visible = false;
 					BACKGROUND_RANDOM.push(b2);

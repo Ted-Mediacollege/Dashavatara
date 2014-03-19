@@ -39,7 +39,7 @@ package myth.world
 			
 			for (var j:int = 0; j < 50; j++ )
 			{
-				var b2:Background = new Background(textures[MathHelper.nextInt(3)], MathHelper.nextInt(34000), MathHelper.nextInt(370), 4, 1, 1);
+				var b2:Background = new Background(textures[MathHelper.nextInt(3)], MathHelper.nextInt(34000), MathHelper.nextInt(280) - 50, 4, 1, 1);
 				b2.x = (b2.posX + -camX) /b2.z;
 				b2.visible = false;
 				Backgrounds.push(b2);
