@@ -29,6 +29,9 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
+			var version:GuiText = new GuiText(screenWidth - 220, screenHeight - 15, 200, 60, "right", "center", "Version " + GameData.GAME_VERSION, 24, 0x000000, "Arial");
+			addChild(version);
+			
 			var logo:Image = new Image(TextureList.assets.getTexture("gui_logo"));
 			logo.pivotX = 250;
 			logo.x = 630;
@@ -37,10 +40,7 @@ package myth.gui.game
 			
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiMainMenu", 25, 0x000000);
 			addChild(t);
-			
-			var versiontext:GuiText = new GuiText(1200, 700, 400, 100, "right", "center", "Version " + GameData.GAME_VERSION, 20, 0x000000);
-			addChild(versiontext);
-	
+
 			michealJackson1 = TextureList.spriterLoader.getSpriterClip("animLion");
 			michealJackson1.x = -650;
 			michealJackson1.y = 770;

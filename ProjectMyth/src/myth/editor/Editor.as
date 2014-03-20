@@ -28,7 +28,7 @@ package myth.editor
 		
 		public function build():void
 		{
-			var levelSize:int = 40;
+			var levelSize:int = 30;
 			
 			camX = 0;
 			maxX = levelSize * 127 - 1000;
