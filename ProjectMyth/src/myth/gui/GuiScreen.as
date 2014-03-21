@@ -76,7 +76,8 @@ package myth.gui
 			{
 				for (var i:int = 0; i < buttonList.length; i++ )
 				{
-					if (data[0] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+					if (buttonList[i].enabled &&
+						data[0] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
 						data[1] > buttonList[i].posY - buttonList[i].posHeight / 2 && 
 						data[2] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
 						data[3] > buttonList[i].posY - buttonList[i].posHeight / 2 && 

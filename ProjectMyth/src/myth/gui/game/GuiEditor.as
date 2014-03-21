@@ -9,6 +9,7 @@ package myth.gui.game
 	import myth.gui.background.GuiBackground;
 	import myth.gui.game.GuiMainMenu;
 	import myth.editor.EditorFiles;
+	import starling.display.Shape;
 	import starling.events.TouchEvent;
 
 	public class GuiEditor extends GuiScreen
@@ -16,6 +17,20 @@ package myth.gui.game
 		private var button_menu:GuiButton;
 		private var button_create:GuiButton;
 		private var button_load:GuiButton;
+		
+		private var button_cat_left:GuiButton;
+		private var button_cat_right:GuiButton;
+		private var button_item_left:GuiButton;
+		private var button_item_right:GuiButton;
+		
+		private var button_editor_new:GuiButton;
+		private var button_editor_menu:GuiButton;
+		private var button_editor_load:GuiButton;
+		private var button_editor_save:GuiButton;
+		private var button_editor_settings:GuiButton;
+		private var button_editor_test:GuiButton;
+		
+		private var grey_screen:Shape;
 		
 		private var editor:Editor;
 		public var inEditor:Boolean = false;
@@ -27,7 +42,29 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			addChild(background);
+			background = null;
+			
+			editor = new Editor(this);
+			addChild(editor);
+			editor.init();
+				
+			button_editor_new = addButton(new GuiButton(10, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 40, 147, 55, "New", 28)); button_editor_new.enabled = false;
+			button_editor_menu = addButton(new GuiButton(11, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 40, 147, 55, "Menu", 28)); button_editor_menu.enabled = false;
+			button_editor_load = addButton(new GuiButton(12, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 110, 147, 55, "Load", 28)); button_editor_load.enabled = false;
+			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 110, 147, 55, "Save", 28)); button_editor_save.enabled = false;
+			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 180, 147, 55, "Settings", 28)); button_editor_settings.enabled = false;
+			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 180, 147, 55, "Test", 28)); button_editor_test.enabled = false;
+				
+			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 320, screenHeight - 350, 40, 40, "")); button_cat_left.enabled = false;
+			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 30, screenHeight - 350, 40, 40, "")); button_cat_right.enabled = false;
+			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 320, screenHeight - 150, 40, 40, "")); button_item_left.enabled = false;
+			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 30, screenHeight - 150, 40, 40, "")); button_item_right.enabled = false;
+			
+			grey_screen = new Shape();
+			grey_screen.graphics.lineStyle(0, 0x555555, 0.8);
+			grey_screen.graphics.beginFill(0x555555, 0.8);
+			grey_screen.graphics.drawRect(0, 0, 1280, 768);
+			addChild(grey_screen);
 			
 			button_menu = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Create Level", 25, 0x000000));
@@ -52,42 +89,59 @@ package myth.gui.game
 		
 		override public function action(b:GuiButton):void 
 		{ 
-			if (b.buttonID == 0)
+			if (b.buttonID == 0) //BACK TO MAIN GAME MENU
 			{
 				main.switchGui(new GuiMainMenu());
 			}
-			else if (b.buttonID == 1)
+			else if (b.buttonID == 1) //CREATE NEW (MAIN EDITOR MENU)
 			{
-				removeButton(button_menu);
-				removeButton(button_create);
-				removeButton(button_load);
-				
-				removeChild(background);
-				background = null;
-				editor = new Editor();
-				addChild(editor);
+				menu_main(false);
+				editor_menu(true);
 				editor.build();
-				
 				inEditor = true;
+				grey_screen.visible = false;
 			}
-			else if (b.buttonID == 2)
+			else if (b.buttonID == 2) //LOAD (MAIN EDITOR MENU)
 			{
-				removeButton(button_menu);
-				removeButton(button_create);
-				removeButton(button_load);
-				
-				removeChild(background);
-				background = null;
-				editor = new Editor();
-				addChild(editor);
+				menu_main(false);
+				editor_menu(true);
 				editor.build();
-				
 				inEditor = true;
+				grey_screen.visible = false;
+			}
+			else if (b.buttonID > 9 && b.buttonID < 30)
+			{
+				editor.action(b.buttonID);
 			}
 		}
 		
 		override public function destroy():void 
 		{ 
+		}
+		
+		public function menu_main(e:Boolean):void
+		{
+			button_menu.enabled = e;
+			button_create.enabled = e;
+			button_load.enabled = e;
+			button_menu.visible = e;
+			button_create.visible = e;
+			button_load.visible = e;
+		}
+		
+		public function editor_menu(e:Boolean):void
+		{
+			button_cat_left.enabled = e;
+			button_cat_right.enabled = e;
+			button_item_left.enabled = e;
+			button_item_right.enabled = e;
+			
+			button_editor_new.enabled = e;
+			button_editor_menu.enabled = e;
+			button_editor_load.enabled = e;
+			button_editor_save.enabled = e;
+			button_editor_settings.enabled = e;
+			button_editor_test.enabled = e;
 		}
 	}
 }

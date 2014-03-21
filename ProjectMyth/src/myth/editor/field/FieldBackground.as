@@ -11,7 +11,7 @@ package myth.editor.field
 	public class FieldBackground extends Sprite
 	{
 		public var BACKGROUND_RANDOM:Vector.<Background>;
-		public var BACKGROUND_OBJECTS:Vector.<Background>;
+		public var BACKGROUND_CREATED:Vector.<Background>;
 		
 		public function FieldBackground() 
 		{
@@ -21,7 +21,7 @@ package myth.editor.field
 		public function buildCommon(size:int, t:int):void
 		{
 			BACKGROUND_RANDOM = new Vector.<Background>();
-			BACKGROUND_OBJECTS = new Vector.<Background>();
+			BACKGROUND_CREATED = new Vector.<Background>();
 			
 			if (t == 0)
 			{
@@ -40,6 +40,16 @@ package myth.editor.field
 					BACKGROUND_RANDOM.push(b2);
 					addChild(b2);
 				}
+					
+				var PLAYER_SPAWN:Background = new Background(TextureList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
+				PLAYER_SPAWN.visible = false;
+				BACKGROUND_RANDOM.push(PLAYER_SPAWN);
+				addChild(PLAYER_SPAWN);
+					
+				var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 600, 210, 1, 1, 1);
+				PLAYER_END.visible = false;
+				BACKGROUND_RANDOM.push(PLAYER_END);
+				addChild(PLAYER_END);
 			}
 			else if (t == 1)
 			{
