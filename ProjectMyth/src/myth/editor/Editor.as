@@ -15,6 +15,7 @@ package myth.editor
 	import starling.events.TouchEvent;
 	import myth.input.TouchType;
 	import myth.util.ScaleHelper;
+	import com.adobe.serialization.json.JSON;
 	
 	public class Editor extends Sprite
 	{		
@@ -94,16 +95,6 @@ package myth.editor
 			FIELD_BACKGROUND.tick(camX);
 		}
 		
-		public function save():void
-		{
-			
-		}
-		
-		public function load():void
-		{
-			
-		}
-		
 		public function action(id:int):void
 		{
 			if (id == 10) //NEW
@@ -130,7 +121,7 @@ package myth.editor
 			}
 			else if (id == 13) //SAVE
 			{
-				
+				save();
 			}
 			else if (id == 14) //SETTINGS
 			{
@@ -156,6 +147,68 @@ package myth.editor
 			{
 				
 			}
+		}
+		
+		public function save(name:String = "test", speed:int = 4):void
+		{
+			//SAVE FILE
+			var saveFile:Object = new Object();
+			
+			//MAIN SETTINGS
+			saveFile.name = name;
+			saveFile.next_level_name = "editor";
+			saveFile.id = 0;
+			saveFile.speed = speed;
+			
+			//ENEMIES
+			saveFile.enemies = new Array();
+			for (var i:int = 0; i < 5; i++ )
+			{
+				var en:Object = new Object();
+				en.type = 0;
+				en.spawnX = i * 100;
+				en.spawnY = i * 200;
+				saveFile.enemies.push(en);
+			}
+			
+			//BACKGROUND
+			saveFile.background_props = new Array();
+			for (var j:int = 0; j < 5; j++ )
+			{
+				var bg:Object = new Object();
+				bg.type = 0;
+				bg.depth = 1;
+				bg.x = 0;
+				bg.y = 0;
+				saveFile.background_props.push(bg);
+			}
+			
+			//OBJECTS
+			saveFile.objects = new Array();
+			for (var k:int = 0; k < 5; k++ )
+			{
+				var obj:Object = new Object();
+				obj.type = 0;
+				obj.x = 100;
+				obj.y = 200;
+				saveFile.objects.push(obj);
+			}
+			
+			//TILES
+			saveFile.tiles = new Array();
+			for (var l:int = 0; l < 5; l++ )
+			{
+				var ti:Object = new Object();
+				ti.type = 0;
+				saveFile.tiles.push(ti);
+			}
+
+			trace(com.adobe.serialization.json.JSON.encode(saveFile));
+		}
+		
+		public function load():void
+		{
+			
 		}
 	}
 }
