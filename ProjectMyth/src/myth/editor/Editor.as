@@ -72,14 +72,7 @@ package myth.editor
 		{ 
 			if (type == TouchType.SWIPE || type == TouchType.CLICK)
 			{
-				if (data[0] < 930 && data[1] > 728) //SCROLL BALK FIRST
-				{
-					if (type == TouchType.SWIPE)
-					{
-						SCROLL.warp(data[0] / 930 * maxX);
-					}
-				}
-				else if (data[0] < 930 && data[1] < 728) //FIELDS
+				if (data[0] < 930 && data[1] < 728) //FIELDS
 				{
 					if (type == TouchType.SWIPE)
 					{

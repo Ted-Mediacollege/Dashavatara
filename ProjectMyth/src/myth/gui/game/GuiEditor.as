@@ -48,17 +48,17 @@ package myth.gui.game
 			addChild(editor);
 			editor.init();
 				
-			button_editor_new = addButton(new GuiButton(10, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 40, 147, 55, "New", 28)); button_editor_new.enabled = false;
-			button_editor_menu = addButton(new GuiButton(11, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 40, 147, 55, "Menu", 28)); button_editor_menu.enabled = false;
-			button_editor_load = addButton(new GuiButton(12, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 110, 147, 55, "Load", 28)); button_editor_load.enabled = false;
-			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 110, 147, 55, "Save", 28)); button_editor_save.enabled = false;
-			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 180, 147, 55, "Settings", 28)); button_editor_settings.enabled = false;
-			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 180, 147, 55, "Test", 28)); button_editor_test.enabled = false;
+			button_editor_new = addButton(new GuiButton(10, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 55, 147, 85, "New", 28)); button_editor_new.enabled = false;
+			button_editor_menu = addButton(new GuiButton(11, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 55, 147, 85, "Menu", 28)); button_editor_menu.enabled = false;
+			button_editor_load = addButton(new GuiButton(12, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, "Load", 28)); button_editor_load.enabled = false;
+			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, "Save", 28)); button_editor_save.enabled = false;
+			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, "Settings", 28)); button_editor_settings.enabled = false;
+			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, "Test", 28)); button_editor_test.enabled = false;
 				
-			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 320, screenHeight - 350, 40, 40, "")); button_cat_left.enabled = false;
-			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 30, screenHeight - 350, 40, 40, "")); button_cat_right.enabled = false;
-			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 320, screenHeight - 150, 40, 40, "")); button_item_left.enabled = false;
-			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 30, screenHeight - 150, 40, 40, "")); button_item_right.enabled = false;
+			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 340, 60, 60, "")); button_cat_left.enabled = false;
+			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 340, 60, 60, "")); button_cat_right.enabled = false;
+			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 140, 60, 60, "")); button_item_left.enabled = false;
+			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 140, 60, 60, "")); button_item_right.enabled = false;
 			
 			grey_screen = new Shape();
 			grey_screen.graphics.lineStyle(0, 0x555555, 0.8);
