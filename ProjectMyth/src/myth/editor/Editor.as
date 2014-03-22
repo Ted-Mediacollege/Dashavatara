@@ -117,6 +117,9 @@ package myth.editor
 								removeChild(CONSTRUCTOR);
 							}
 						}
+						else
+						{
+						}
 					}
 					else if (type == TouchType.SWIPE_START && CONSTRUCTOR.active)
 					{

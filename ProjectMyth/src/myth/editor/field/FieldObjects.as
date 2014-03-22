@@ -47,9 +47,12 @@ package myth.editor.field
 			addChild(ob);
 		}
 		
-		public function removeObject():void
+		public function getObjectAt(px:Number, py:Number):Background
 		{
-			
+			for (var i:int = OBJECTS.length; i > -1; i-- )
+			{
+				
+			}
 		}
 	}
 }
