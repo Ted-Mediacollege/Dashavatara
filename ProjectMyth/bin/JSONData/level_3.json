@@ -1,0 +1,32 @@
+{
+	"name":"level_3",
+	"next_level_name":"level_1",
+	"id":0,
+	"speed":4.5,
+	"enemies":[
+	
+	],
+	"background_props":[
+		{"type":0,"depth":1,"x":0,"y":0},
+		{"type":0,"depth":2,"x":0,"y":0}
+	],
+	"objects":[
+		{"type":0,"x":1280,"y":1050},
+		{"type":0,"x":1400,"y":900},
+		{"type":2,"x":1700,"y":768},
+		{"type":0,"x":2000,"y":1280},
+		{"type":0,"x":2200,"y":0},
+		{"type":2,"x":1280,"y":0}
+	],
+	"tiles":[
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}
+	]
+}

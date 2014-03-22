@@ -1,14 +1,16 @@
 package myth.data 
 {
+	import flash.filesystem.FileStream;
 	import flash.utils.ByteArray;
 	import myth.entity.objects.ObjectType;
+	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
+	import starling.utils.AssetManager;
 	
 	public class LevelData 
 	{
-		[Embed(source = "../../../lib/JSONData/levels.json", mimeType = "application/octet-stream")]
-		private static var levelData2:Class;
 		
-		public var jsonLevel:Object;
+		public var levelData:Object;
 		public var levelName:String;
 		public var nextLvlName:String;
 		public var enemyData:Vector.<Vector.<int>>;
@@ -21,20 +23,15 @@ package myth.data
 		public function LevelData(_levelName:String = "level_1")
 		{
 			levelName = _levelName;
-			
 			var i:int;
-			var json:ByteArray = new levelData2();
-			var jsonString:String = json.readUTFBytes(json.length);
-			jsonLevel = JSON.parse(jsonString);
-			var levelData:Object;
-			for each (var level:Object in jsonLevel.levels) {
-				if (level.name == levelName) {
-					levelData = level;
-				}
-			}
 			
-			//var levelNameDisplay:TextField = new TextField(200, 400, "json: " + levelData.name, "Verdana", 20, 0xffffff);
-			//addChild(levelNameDisplay);
+			//read file
+			var levelFile:File = File.applicationDirectory.resolvePath("JSONData/" + _levelName + ".json");
+			var myFileStream:FileStream = new FileStream();
+			myFileStream.open(levelFile, FileMode.READ);
+			var jsonString:String = myFileStream.readUTFBytes(myFileStream.bytesAvailable);
+			levelData = JSON.parse(jsonString);
+			myFileStream.close();
 			
 			//set end point position
 			for (i = 0; i < levelData.objects.length; i++) 
