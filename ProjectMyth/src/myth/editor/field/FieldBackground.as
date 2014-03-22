@@ -9,11 +9,12 @@ package myth.editor.field
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
 	import myth.editor.EditorFiles;
+	import myth.editor.EditorItem;
 	
 	public class FieldBackground extends Sprite
 	{
 		public var BACKGROUND_RANDOM:Vector.<Background>;
-		public var BACKGROUND_CREATED:Vector.<Background>;
+		public var BACKGROUND_CREATED:Vector.<EditorItem>;
 		
 		public function FieldBackground() 
 		{
@@ -23,7 +24,7 @@ package myth.editor.field
 		public function buildCommon(size:int, t:int):void
 		{
 			BACKGROUND_RANDOM = new Vector.<Background>();
-			BACKGROUND_CREATED = new Vector.<Background>();
+			BACKGROUND_CREATED = new Vector.<EditorItem>();
 		
 			var bg:Image = new Image(TextureList.assets.getTexture(EditorFiles.getLuchtName(t)));
 			bg.blendMode = BlendMode.NONE;
@@ -95,16 +96,26 @@ package myth.editor.field
 		
 		public function addBackground(tex:String, px:Number, py:Number, pz:Number, sx:Number, sy:Number):void
 		{
-			var b:Background = new Background(TextureList.assets.getTexture(tex), px, py, pz, sx, sy);
+			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 1, px, py, pz, sx, sy);
 			b.x = b.posX / b.z;
 			b.visible = false;
 			BACKGROUND_CREATED.push(b);
 			addChild(b);
 		}
 		
-		public function removeBackground():void
+		public function getBackgroundAt(px:Number, py:Number):EditorItem
 		{
-			
+			for (var i:int = BACKGROUND_CREATED.length - 1; i > -1; i-- )
+			{
+				if (px > BACKGROUND_CREATED[i].x && px < BACKGROUND_CREATED[i].x + BACKGROUND_CREATED[i].width && py > BACKGROUND_CREATED[i].y && py < BACKGROUND_CREATED[i].y + BACKGROUND_CREATED[i].height)
+				{
+					var back:EditorItem = BACKGROUND_CREATED[i];
+					removeChild(BACKGROUND_CREATED[i]);
+					BACKGROUND_CREATED.splice(i, 1);
+					return back;
+				}
+			}
+			return null;
 		}
 	}
 }

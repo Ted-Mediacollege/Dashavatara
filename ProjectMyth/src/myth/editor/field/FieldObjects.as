@@ -3,10 +3,11 @@ package myth.editor.field
 	import starling.display.Sprite;
 	import myth.background.Background;
 	import myth.graphics.TextureList;
+	import myth.editor.EditorItem;
 	
 	public class FieldObjects extends Sprite
 	{
-		public var OBJECTS:Vector.<Background>;
+		public var OBJECTS:Vector.<EditorItem>;
 		
 		public function FieldObjects() 
 		{
@@ -15,12 +16,12 @@ package myth.editor.field
 		
 		public function buildNew():void
 		{
-			OBJECTS = new Vector.<Background>();
+			OBJECTS = new Vector.<EditorItem>();
 		}
 		
 		public function buildFile():void
 		{
-			OBJECTS = new Vector.<Background>();
+			OBJECTS = new Vector.<EditorItem>();
 		}
 		
 		public function tick(camX:Number):void
@@ -41,19 +42,24 @@ package myth.editor.field
 		
 		public function addObject(tex:String, px:Number, py:Number):void
 		{
-			var ob:Background = new Background(TextureList.assets.getTexture(tex), px, py, 1, 1, 1);
+			var ob:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, 1, 1, 1);
 			ob.visible = false;
 			OBJECTS.push(ob);
 			addChild(ob);
 		}
 		
-		public function getObjectAt(px:Number, py:Number):Background
+		public function getObjectAt(px:Number, py:Number):EditorItem
 		{
-			for (var i:int = OBJECTS.length; i > -1; i-- )
+			for (var i:int = OBJECTS.length - 1; i > -1; i-- )
 			{
-				
+				if (px > OBJECTS[i].x && px < OBJECTS[i].x + OBJECTS[i].width && py > OBJECTS[i].y && py < OBJECTS[i].y + OBJECTS[i].height)
+				{
+					var ob:EditorItem = OBJECTS[i];
+					removeChild(OBJECTS[i]);
+					OBJECTS.splice(i, 1);
+					return ob;
+				}
 			}
-			
 			return null;
 		}
 	}

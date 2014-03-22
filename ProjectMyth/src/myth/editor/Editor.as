@@ -92,33 +92,58 @@ package myth.editor
 				{
 					if (type == TouchType.CLICK)
 					{
-						if (CONSTRUCTOR.active && CONSTRUCTOR.moving)
+						if (MathHelper.dis2(data[0], data[1], data[2], data[3]) < 20)
 						{
-							CONSTRUCTOR.moving = false;
-						}
-						else if (CONSTRUCTOR.active) 
-						{ 
-							if (data[0] > CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 20 && data[0] < CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 76 && data[1] > CONSTRUCTOR.item.y && data[1] < CONSTRUCTOR.item.y + 56) //MOVE
+							if (CONSTRUCTOR.active && CONSTRUCTOR.moving)
 							{
-								if (CONSTRUCTOR.type == Selector.CAT_BACKGROUND)
-								{
-									FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y, 1, 1, 1);
-								}
-								else if (CONSTRUCTOR.type == Selector.CAT_OBJECTS)
-								{
-									FIELD_OBJECTS.addObject(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
-								}
-								CONSTRUCTOR.destory(false);
-								removeChild(CONSTRUCTOR);
+								CONSTRUCTOR.moving = false;
 							}
-							else if (data[0] > CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 20 && data[0] < CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 76 && data[1] > CONSTRUCTOR.item.y + 70 && data[1] < CONSTRUCTOR.item.y + 126) //MOVE
+							else if (CONSTRUCTOR.active) 
+							{ 
+								if (data[0] > CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 20 && data[0] < CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 76 && data[1] > CONSTRUCTOR.item.y && data[1] < CONSTRUCTOR.item.y + 56) //MOVE
+								{
+									if (CONSTRUCTOR.type == Selector.CAT_BACKGROUND)
+									{
+										FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y, 1, 1, 1);
+									}
+									else if (CONSTRUCTOR.type == Selector.CAT_OBJECTS)
+									{
+										FIELD_OBJECTS.addObject(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
+									}
+									CONSTRUCTOR.destory(false);
+									removeChild(CONSTRUCTOR);
+								}
+								else if (data[0] > CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 20 && data[0] < CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 76 && data[1] > CONSTRUCTOR.item.y + 70 && data[1] < CONSTRUCTOR.item.y + 126) //MOVE
+								{
+									CONSTRUCTOR.destory(true);
+									removeChild(CONSTRUCTOR);
+								}
+							}
+							else
 							{
-								CONSTRUCTOR.destory(true);
-								removeChild(CONSTRUCTOR);
+								var item:EditorItem = FIELD_OBJECTS.getObjectAt(data[0], data[1]);
+								if (item != null)
+								{
+									CONSTRUCTOR.construct(item.item_name, item.type, item.x, item.y);
+									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_OBJECTS) + 1);
+									return;
+								}
+								
+								item = FIELD_BACKGROUND.getBackgroundAt(data[0], data[1]);
+								if (item != null)
+								{
+									CONSTRUCTOR.construct(item.item_name, item.type, item.x, item.y);
+									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1);
+									return;
+								}
 							}
 						}
 						else
 						{
+							if (CONSTRUCTOR.active && CONSTRUCTOR.moving)
+							{
+								CONSTRUCTOR.moving = false;
+							}
 						}
 					}
 					else if (type == TouchType.SWIPE_START && CONSTRUCTOR.active)

@@ -31,14 +31,18 @@ package myth.editor.component
 			addChild(button_delete);
 		}	
 		
-		public function construct(tex:String, t:int):void
+		public function construct(tex:String, t:int, px:Number = 50, py:Number = 50):void
 		{
 			visible = true;
 			active = true;
 			
 			item = new Image(TextureList.assets.getTexture(tex));
+			item.x = px;
+			item.y = py;
 			addChild(item);
 			frame = new Shape();
+			frame.x = px;
+			frame.y = py;
 			addChild(frame);
 			frame.graphics.lineStyle(4, 0xFF0000);
 			frame.graphics.drawRect(0, 0, item.width, item.height);
