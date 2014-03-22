@@ -30,7 +30,7 @@ package myth.editor.field
 			{
 				if (a[i].type != 2) //QUICK FIX
 				{
-					addObject(objectNames[a[i].type], a[i].x, a[i].y);
+					addObject(objectNames[a[i].type], a[i].x, a[i].y, true);
 				}
 			}
 		}
@@ -51,9 +51,13 @@ package myth.editor.field
 			}
 		}
 		
-		public function addObject(tex:String, px:Number, py:Number):void
+		public function addObject(tex:String, px:Number, py:Number, pivotFix:Boolean = false):void
 		{
 			var ob:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, 1, 1, 1);
+			if (pivotFix)
+			{
+				ob.y -= ob.height;
+			}
 			ob.visible = false;
 			OBJECTS.push(ob);
 			addChild(ob);

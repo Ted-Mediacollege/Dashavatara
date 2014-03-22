@@ -7,6 +7,7 @@ package myth.world
 	import myth.entity.player.EntityPlayer01v2;
 	import myth.entity.player.EntityPlayer01v4;
 	import myth.entity.player.EntityPlayer02v2;
+	import myth.gui.game.GuiEditor;
 	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiLose;
 	import myth.gui.game.GuiWin;
@@ -203,9 +204,17 @@ package myth.world
 				
 				if (player.x < -200)
 				{
-					gui.main.switchGui(new GuiLose(lvlName));
-				}else if(player.x > 1480 || levelComplete) {
-					gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName));
+					if (levelData.nextLvlName == "editor") {
+						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
+					} else {
+						gui.main.switchGui(new GuiLose(lvlName));
+					}
+				}else if (player.x > 1480 || levelComplete) {
+					if (levelData.nextLvlName == "editor") {
+						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
+					} else {
+						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName));
+					}
 				}
 				
 				animTransform.x = player.x;

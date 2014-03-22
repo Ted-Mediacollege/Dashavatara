@@ -285,21 +285,21 @@ package myth.editor
 			//OBJECTS
 			saveFile.objects = new Array();
 			
-			var gate:Object = new Object();
-			gate.type = 2;
-			gate.x = FIELD_BACKGROUND.BACKGROUND_END.x;
-			gate.y = FIELD_BACKGROUND.BACKGROUND_END.y;
-			saveFile.objects.push(gate);
-			
 			var objectsLength:int = FIELD_OBJECTS.OBJECTS.length;
 			for (var k:int = 0; k < objectsLength; k++ )
 			{
 				var obj:Object = new Object();
 				obj.type = 0;
 				obj.x = FIELD_OBJECTS.OBJECTS[k].x;
-				obj.y = FIELD_OBJECTS.OBJECTS[k].y;
+				obj.y = FIELD_OBJECTS.OBJECTS[k].y + FIELD_OBJECTS.OBJECTS[k].height;
 				saveFile.objects.push(obj);
 			}
+						
+			var gate:Object = new Object();
+			gate.type = 2;
+			gate.x = FIELD_BACKGROUND.BACKGROUND_END.x;
+			gate.y = FIELD_BACKGROUND.BACKGROUND_END.y;
+			saveFile.objects.push(gate);
 			
 			//TILES
 			saveFile.tiles = new Array();
