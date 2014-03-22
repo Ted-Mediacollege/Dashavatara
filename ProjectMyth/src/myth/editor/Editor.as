@@ -19,6 +19,7 @@ package myth.editor
 	import myth.input.TouchType;
 	import myth.util.ScaleHelper;
 	import com.adobe.serialization.json.JSON;
+	import myth.util.MathHelper;
 	
 	public class Editor extends Sprite
 	{		
@@ -71,8 +72,8 @@ package myth.editor
 			FIELD_ENEMIES = new FieldEnemies();
 			
 			addChildAt(FIELD_BACKGROUND, 0);
-			addChildAt(FIELD_TILES, 1);
-			addChildAt(FIELD_OBJECTS, 2);
+			addChildAt(FIELD_OBJECTS, 1);
+			addChildAt(FIELD_TILES, 2);
 			addChildAt(FIELD_ENEMIES, 3);
 			
 			FIELD_BACKGROUND.buildNew(levelSize * 127, theme);
@@ -81,28 +82,47 @@ package myth.editor
 			FIELD_ENEMIES.buildNew();
 			
 			CONSTRUCTOR = new Constructor();
-			addChild(CONSTRUCTOR);
-			CONSTRUCTOR.visible = false;
 		}
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{ 
-			if (type == TouchType.SWIPE || type == TouchType.CLICK)
+			if (type == TouchType.SWIPE || type == TouchType.CLICK || type == TouchType.SWIPE_START)
 			{
 				if (data[0] < 930 && data[1] < 728) //FIELDS
 				{
 					if (type == TouchType.CLICK)
 					{
-						if (CONSTRUCTOR.active)
+						if (CONSTRUCTOR.active && CONSTRUCTOR.moving)
 						{
-							CONSTRUCTOR.action(data[0], data[1]);
+							CONSTRUCTOR.moving = false;
 						}
-						else
-						{
-							//CONSTRUCTOR.construct("", 0);
+						else if (CONSTRUCTOR.active) 
+						{ 
+							if (data[0] > CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 20 && data[0] < CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 76 && data[1] > CONSTRUCTOR.item.y && data[1] < CONSTRUCTOR.item.y + 56) //MOVE
+							{
+								if (CONSTRUCTOR.type == Selector.CAT_BACKGROUND)
+								{
+									FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y, 1, 1, 1);
+								}
+								else if (CONSTRUCTOR.type == Selector.CAT_OBJECTS)
+								{
+									FIELD_OBJECTS.addObject(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
+								}
+								CONSTRUCTOR.destory(false);
+								removeChild(CONSTRUCTOR);
+							}
+							else if (data[0] > CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 20 && data[0] < CONSTRUCTOR.item.x + CONSTRUCTOR.item.width + 76 && data[1] > CONSTRUCTOR.item.y + 70 && data[1] < CONSTRUCTOR.item.y + 126) //MOVE
+							{
+								CONSTRUCTOR.destory(true);
+								removeChild(CONSTRUCTOR);
+							}
 						}
 					}
-					if (type == TouchType.SWIPE)
+					else if (type == TouchType.SWIPE_START && CONSTRUCTOR.active)
+					{
+						CONSTRUCTOR.tryMove(data[0], data[1]);
+					}
+					else if (type == TouchType.SWIPE)
 					{
 						if (CONSTRUCTOR.moving)
 						{
@@ -118,7 +138,17 @@ package myth.editor
 				{
 					if (type == TouchType.CLICK)
 					{
-						CONSTRUCTOR.construct(SELECTOR.current_items[SELECTOR.ITEM], SELECTOR.CAT);
+						if (!CONSTRUCTOR.active)
+						{
+							CONSTRUCTOR.construct(SELECTOR.current_items[SELECTOR.ITEM], SELECTOR.CAT);
+							switch(SELECTOR.CAT)
+							{
+								case Selector.CAT_BACKGROUND: addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1); break;
+								case Selector.CAT_OBJECTS: addChildAt(CONSTRUCTOR, getChildIndex(FIELD_OBJECTS) + 1); break;
+								case Selector.CAT_ENEMY: addChildAt(CONSTRUCTOR, getChildIndex(FIELD_ENEMIES) + 1); break;
+								default: addChild(CONSTRUCTOR); break;
+							}
+						}
 					}
 				}
 			}
@@ -130,6 +160,7 @@ package myth.editor
 			
 			FIELD_TILES.tick(camX);
 			FIELD_BACKGROUND.tick(camX);
+			FIELD_OBJECTS.tick(camX);
 		}
 		
 		public function action(id:int):void
