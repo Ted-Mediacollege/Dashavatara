@@ -6,7 +6,7 @@ package myth.util
 	 */
 	public class TimeHelper
 	{
-		public static var deltaTime:Number = 1/60;
+		public static var deltaTime:Number;
 		public static var deltaTimeScale:Number = 1;
 		private static var oldTime:Number = 0;
 		private static var newTime:Number = 0;
