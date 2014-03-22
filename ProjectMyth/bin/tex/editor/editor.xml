@@ -4,23 +4,23 @@
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="editor_arrow_left.png"	x="148"	y="944"	width="60"	height="60" frameX="-0" frameY="-0" frameWidth="60" frameHeight="60"/>
-	<SubTexture name="editor_arrow_right.png"	x="209"	y="950"	width="60"	height="60" frameX="-0" frameY="-0" frameWidth="60" frameHeight="60"/>
-	<SubTexture name="editor_button_small.png"	x="0"	y="913"	width="147"	height="85" frameX="-0" frameY="-0" frameWidth="147" frameHeight="85"/>
-	<SubTexture name="editor_gate.png"	x="351"	y="0"	width="280"	height="430" frameX="-0" frameY="-0" frameWidth="280" frameHeight="430"/>
-	<SubTexture name="editor_option_delete.png"	x="351"	y="659"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_option_depth.png"	x="351"	y="602"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_option_depth2.png"	x="327"	y="950"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_option_done.png"	x="270"	y="950"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_option_move.png"	x="384"	y="950"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_option_rotate.png"	x="408"	y="659"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_option_scale.png"	x="408"	y="602"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
-	<SubTexture name="editor_panel_main.png"	x="0"	y="0"	width="350"	height="768" frameX="-0" frameY="-0" frameWidth="350" frameHeight="768"/>
-	<SubTexture name="editor_player.png"	x="351"	y="431"	width="90"	height="170" frameX="-0" frameY="-0" frameWidth="90" frameHeight="170"/>
-	<SubTexture name="editor_scroll_background.png"	x="148"	y="913"	width="100"	height="30" frameX="-0" frameY="-10" frameWidth="100" frameHeight="40"/>
-	<SubTexture name="editor_scroll_pos.png"	x="0"	y="999"	width="62"	height="24" frameX="-0" frameY="-0" frameWidth="62" frameHeight="24"/>
-	<SubTexture name="editor_tool_depth.png"	x="0"	y="826"	width="300"	height="86" frameX="-0" frameY="-0" frameWidth="300" frameHeight="86"/>
-	<SubTexture name="editor_tool_rotator.png"	x="301"	y="769"	width="180"	height="180" frameX="-0" frameY="-0" frameWidth="180" frameHeight="180"/>
-	<SubTexture name="editor_tool_scaler.png"	x="0"	y="769"	width="300"	height="56" frameX="-0" frameY="-0" frameWidth="300" frameHeight="56"/>
-	<SubTexture name="editor_tool_slider.png"	x="351"	y="716"	width="42"	height="42" frameX="-0" frameY="-0" frameWidth="42" frameHeight="42"/>
+	<SubTexture name="editor_arrow_left"	x="148"	y="944"	width="60"	height="60" frameX="-0" frameY="-0" frameWidth="60" frameHeight="60"/>
+	<SubTexture name="editor_arrow_right"	x="209"	y="950"	width="60"	height="60" frameX="-0" frameY="-0" frameWidth="60" frameHeight="60"/>
+	<SubTexture name="editor_button_small"	x="0"	y="913"	width="147"	height="85" frameX="-0" frameY="-0" frameWidth="147" frameHeight="85"/>
+	<SubTexture name="editor_gate"	x="351"	y="0"	width="280"	height="430" frameX="-0" frameY="-0" frameWidth="280" frameHeight="430"/>
+	<SubTexture name="editor_option_delete"	x="351"	y="659"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_option_depth"	x="351"	y="602"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_option_depth2"	x="327"	y="950"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_option_done"	x="270"	y="950"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_option_move"	x="384"	y="950"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_option_rotate"	x="408"	y="659"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_option_scale"	x="408"	y="602"	width="56"	height="56" frameX="-0" frameY="-0" frameWidth="56" frameHeight="56"/>
+	<SubTexture name="editor_panel_main"	x="0"	y="0"	width="350"	height="768" frameX="-0" frameY="-0" frameWidth="350" frameHeight="768"/>
+	<SubTexture name="editor_player"	x="351"	y="431"	width="90"	height="170" frameX="-0" frameY="-0" frameWidth="90" frameHeight="170"/>
+	<SubTexture name="editor_scroll_background"	x="148"	y="913"	width="100"	height="30" frameX="-0" frameY="-10" frameWidth="100" frameHeight="40"/>
+	<SubTexture name="editor_scroll_pos"	x="0"	y="999"	width="62"	height="24" frameX="-0" frameY="-0" frameWidth="62" frameHeight="24"/>
+	<SubTexture name="editor_tool_depth"	x="0"	y="826"	width="300"	height="86" frameX="-0" frameY="-0" frameWidth="300" frameHeight="86"/>
+	<SubTexture name="editor_tool_rotator"	x="301"	y="769"	width="180"	height="180" frameX="-0" frameY="-0" frameWidth="180" frameHeight="180"/>
+	<SubTexture name="editor_tool_scaler"	x="0"	y="769"	width="300"	height="56" frameX="-0" frameY="-0" frameWidth="300" frameHeight="56"/>
+	<SubTexture name="editor_tool_slider"	x="351"	y="716"	width="42"	height="42" frameX="-0" frameY="-0" frameWidth="42" frameHeight="42"/>
 </TextureAtlas>
