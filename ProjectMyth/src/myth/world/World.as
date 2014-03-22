@@ -19,6 +19,7 @@ package myth.world
 	import myth.entity.player.EntityPlayerBase;
 	import myth.gui.components.GuiButton;
 	import myth.Main;
+	import myth.world.worldZones.WorldZoneManager;
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;
@@ -62,6 +63,7 @@ package myth.world
 		
 		public var entityManager:WorldEntityManager;
 		public var objectManager:WorldObjectManager;
+		private var zoneManager:WorldZoneManager;
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();
@@ -120,6 +122,8 @@ package myth.world
 			
 			//object manager
 			objectManager = new WorldObjectManager(levelData.ObjectData);
+			//zoneManager
+			zoneManager = new WorldZoneManager();
 			
 			//add childs
 			Display.add(background,LayerID.GameLevelBack);
@@ -169,19 +173,7 @@ package myth.world
 		public function tick():void
 		{
 			
-			/*
-			if(sps){
-				speed -= 0.05;
-				if (speed < -1) {
-					sps = false;
-				}
-			}else {
-				speed += 0.1;
-				if (speed > 6) {
-					sps = true;
-				}
-			}
-			trace(speed);*/
+			
 			if (worldBuild) {
 				if(!levelComplete){
 					if (distance > endPointPosition-500) {
@@ -192,6 +184,7 @@ package myth.world
 					}
 				}
 				physicsWorld.tick();
+				zoneManager.tick();
 				player.tick();
 				
 				tiles.tick(distance);
