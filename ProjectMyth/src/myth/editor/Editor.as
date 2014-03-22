@@ -2,6 +2,7 @@ package myth.editor
 {
 	import myth.background.Background;
 	import myth.data.Theme;
+	import myth.editor.component.Constructor;
 	import myth.editor.component.Scroll;
 	import myth.editor.component.Selector;
 	import myth.editor.field.FieldBackground;
@@ -30,6 +31,7 @@ package myth.editor
 		
 		public var SCROLL:Scroll;
 		public var SELECTOR:Selector;
+		public var CONSTRUCTOR:Constructor;
 		
 		public var FIELD_BACKGROUND:FieldBackground;
 		public var FIELD_TILES:FieldTiles;
@@ -77,6 +79,10 @@ package myth.editor
 			FIELD_TILES.buildNew(levelSize, theme);
 			FIELD_OBJECTS.buildNew();
 			FIELD_ENEMIES.buildNew();
+			
+			CONSTRUCTOR = new Constructor();
+			addChild(CONSTRUCTOR);
+			CONSTRUCTOR.visible = false;
 		}
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
@@ -85,16 +91,34 @@ package myth.editor
 			{
 				if (data[0] < 930 && data[1] < 728) //FIELDS
 				{
+					if (type == TouchType.CLICK)
+					{
+						if (CONSTRUCTOR.active)
+						{
+							CONSTRUCTOR.action(data[0], data[1]);
+						}
+						else
+						{
+							//CONSTRUCTOR.construct("", 0);
+						}
+					}
 					if (type == TouchType.SWIPE)
 					{
-						SCROLL.scroll(data[2]);
+						if (CONSTRUCTOR.moving)
+						{
+							CONSTRUCTOR.move(data[0], data[1]);
+						}
+						else
+						{
+							SCROLL.scroll(data[2]);
+						}
 					}
 				}
 				else if(data[0] > 1002 && data[0] < 1206 && data[1] > 467 && data[1] < 689) //SELECTOR BUILD
 				{
 					if (type == TouchType.CLICK)
 					{
-						trace("build");
+						CONSTRUCTOR.construct(SELECTOR.current_items[SELECTOR.ITEM], SELECTOR.CAT);
 					}
 				}
 			}
@@ -156,11 +180,11 @@ package myth.editor
 			}
 			else if (id == 22) //ITEM LEFT
 			{
-				
+				SELECTOR.switch_item(-1);
 			}
 			else if (id == 23) //ITEM RIGHT
 			{
-				
+				SELECTOR.switch_item(1);
 			}
 		}
 		

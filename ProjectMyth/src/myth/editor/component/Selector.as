@@ -55,8 +55,8 @@ package myth.editor.component
 		public function switch_item(dir:int):void
 		{
 			ITEM += dir;
-			if (ITEM < 0) { CAT = current_items.length - 1; }
-			if (ITEM > current_items.length - 1) { CAT = 0; }
+			if (ITEM < 0) { ITEM = current_items.length - 1; }
+			if (ITEM > current_items.length - 1) { ITEM = 0; }
 			
 			if (item_art != null)
 			{
