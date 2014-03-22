@@ -49,9 +49,6 @@ package myth.editor
 			var a1:Image = new Image(TextureList.assets.getTexture("editor_panel_main"));
 			a1.x = 1280 - 350;
 			addChild(a1);
-			
-			SELECTOR = new Selector();
-			addChild(SELECTOR);
 		}
 		
 		public function build():void
@@ -59,6 +56,8 @@ package myth.editor
 			theme = Theme.SKY;
 			var levelSize:int = 30;
 			
+			SELECTOR = new Selector();
+			addChild(SELECTOR);
 			SELECTOR.build(theme);
 			
 			camX = 0;
@@ -91,9 +90,12 @@ package myth.editor
 						SCROLL.scroll(data[2]);
 					}
 				}
-				else if(data[0] > 930) //MENU
+				else if(data[0] > 1002 && data[0] < 1206 && data[1] > 467 && data[1] < 689) //SELECTOR BUILD
 				{
-					
+					if (type == TouchType.CLICK)
+					{
+						trace("build");
+					}
 				}
 			}
 		}
@@ -114,6 +116,7 @@ package myth.editor
 				removeChild(FIELD_TILES);
 				removeChild(FIELD_OBJECTS);
 				removeChild(FIELD_ENEMIES);
+				removeChild(SELECTOR);
 				
 				build();
 			}
@@ -127,6 +130,7 @@ package myth.editor
 				removeChild(FIELD_TILES);
 				removeChild(FIELD_OBJECTS);
 				removeChild(FIELD_ENEMIES);
+				removeChild(SELECTOR);
 				
 				build();
 			}
