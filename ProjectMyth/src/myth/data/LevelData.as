@@ -20,18 +20,17 @@ package myth.data
 		public var endPointPosition:Number;
 		public var startSpeed:Number;
 		
-		public function LevelData(_levelName:String = "level_1")
+		public function LevelData()
+		{	
+		}
+		
+		public function loadFromString(data:String, _levelName:String):void
 		{
 			levelName = _levelName;
 			var i:int;
 			
-			//read file
-			var levelFile:File = File.applicationDirectory.resolvePath("JSONData/" + _levelName + ".json");
-			var myFileStream:FileStream = new FileStream();
-			myFileStream.open(levelFile, FileMode.READ);
-			var jsonString:String = myFileStream.readUTFBytes(myFileStream.bytesAvailable);
-			levelData = JSON.parse(jsonString);
-			myFileStream.close();
+			//parse
+			levelData = JSON.parse(data);
 			
 			//set end point position
 			for (i = 0; i < levelData.objects.length; i++) 
@@ -67,6 +66,17 @@ package myth.data
 			{
 				ObjectData[i] = new <int>[ levelData.objects[i].type, levelData.objects[i].x, levelData.objects[i].y];
 			}
+		}
+		
+		public function loadFile(_levelName:String = "level_1"):void
+		{
+			var levelFile:File = File.applicationDirectory.resolvePath("JSONData/" + _levelName + ".json");
+			var myFileStream:FileStream = new FileStream();
+			myFileStream.open(levelFile, FileMode.READ);
+			var jsonString:String = myFileStream.readUTFBytes(myFileStream.bytesAvailable);
+			myFileStream.close();
+			
+			loadFromString(jsonString, _levelName);
 		}
 	}
 }

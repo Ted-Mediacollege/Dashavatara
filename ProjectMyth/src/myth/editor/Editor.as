@@ -259,7 +259,7 @@ package myth.editor
 			saveFile.speed = speed;
 			
 			//ENEMIES
-			saveFile.enemies = new Array();
+			/*saveFile.enemies = new Array();
 			for (var i:int = 0; i < 1; i++ )
 			{
 				var en:Object = new Object();
@@ -267,10 +267,10 @@ package myth.editor
 				en.spawnX = i * 100;
 				en.spawnY = i * 200;
 				saveFile.enemies.push(en);
-			}
+			}*/
 			
 			//BACKGROUND
-			saveFile.background_props = new Array();
+			/*saveFile.background_props = new Array();
 			for (var j:int = 0; j < 1; j++ )
 			{
 				var bg:Object = new Object();
@@ -279,10 +279,10 @@ package myth.editor
 				bg.x = 0;
 				bg.y = 0;
 				saveFile.background_props.push(bg);
-			}
+			}*/
 			
 			//OBJECTS
-			saveFile.objects = new Array();
+			/*saveFile.objects = new Array();
 			for (var k:int = 0; k < 1; k++ )
 			{
 				var obj:Object = new Object();
@@ -290,7 +290,7 @@ package myth.editor
 				obj.x = 100;
 				obj.y = 200;
 				saveFile.objects.push(obj);
-			}
+			}*/
 			
 			//TILES
 			saveFile.tiles = new Array();

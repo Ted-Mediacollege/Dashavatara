@@ -78,7 +78,8 @@ package myth.world
 			EntityPlayerBase.levelStart();
 			gui = g;
 			lvlName = levelName;
-			levelData = new LevelData(levelName);
+			levelData = new LevelData();
+			levelData.loadFile(levelName);
 			speed = levelData.startSpeed;
 			endPointPosition = levelData.endPointPosition;
 		}
