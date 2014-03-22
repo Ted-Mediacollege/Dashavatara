@@ -105,7 +105,7 @@ package myth.editor
 								{
 									if (CONSTRUCTOR.type == Selector.CAT_BACKGROUND)
 									{
-										FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y, 1, 1, 1);
+										FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, (CONSTRUCTOR.item.x + (camX / 2)) * 2, CONSTRUCTOR.item.y, 2, 1, 1);
 									}
 									else if (CONSTRUCTOR.type == Selector.CAT_OBJECTS)
 									{
