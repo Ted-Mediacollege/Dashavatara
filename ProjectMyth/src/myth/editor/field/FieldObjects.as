@@ -4,6 +4,7 @@ package myth.editor.field
 	import myth.background.Background;
 	import myth.graphics.TextureList;
 	import myth.editor.EditorItem;
+	import myth.editor.EditorFiles;
 	
 	public class FieldObjects extends Sprite
 	{
@@ -19,9 +20,19 @@ package myth.editor.field
 			OBJECTS = new Vector.<EditorItem>();
 		}
 		
-		public function buildFile(a:Array):void
+		public function buildFile(a:Array, t:int):void
 		{
 			OBJECTS = new Vector.<EditorItem>();
+			
+			var arrayLength:int = a.length;
+			var objectNames:Vector.<String> = EditorFiles.getObjectNames(t);
+			for (var i:int = 0; i < arrayLength; i++ )
+			{
+				if (a[i].type != 2) //QUICK FIX
+				{
+					addObject(objectNames[a[i].type], a[i].x, a[i].y);
+				}
+			}
 		}
 		
 		public function tick(camX:Number):void
