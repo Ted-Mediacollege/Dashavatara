@@ -11,6 +11,7 @@ package myth.input
 	{	
 		public var touchStart:Point;
 		public var zooming:Boolean = false;
+		public var swiping:Boolean = false;
 		
 		public function onMouse(e:TouchEvent):void
 		{
@@ -56,6 +57,8 @@ package myth.input
 						v2[3] = touchEnd.y;
 						Main.gui.touch(TouchType.CLICK, v2, e);
 					}
+					
+					swiping = false;
 				}
 				else if(touches[0].phase == TouchPhase.MOVED)
 				{	
@@ -67,7 +70,16 @@ package myth.input
 					v3[1] = touchPos.y; 
 					v3[2] = touchMovement.x; 
 					v3[3] = touchMovement.y;
-					Main.gui.touch(TouchType.SWIPE, v3, e);
+					
+					if (!swiping)
+					{
+						Main.gui.touch(TouchType.SWIPE_START, v3, e);
+						swiping = true;
+					}
+					else
+					{
+						Main.gui.touch(TouchType.SWIPE, v3, e);
+					}
 				}
 			}
 		}

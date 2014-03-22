@@ -78,6 +78,33 @@ package myth.editor.field
 					BACKGROUND_RANDOM[i].visible = true;
 				}
 			}
+			
+			for (var j:int = BACKGROUND_CREATED.length - 1; j > -1; j-- )
+			{
+				BACKGROUND_CREATED[j].x = (BACKGROUND_CREATED[j].posX + -camX) / BACKGROUND_CREATED[j].z;
+				if (BACKGROUND_CREATED[j].x < -BACKGROUND_CREATED[j].width || BACKGROUND_CREATED[j].x > 1080)
+				{
+					BACKGROUND_CREATED[j].visible = false;
+				}
+				else
+				{
+					BACKGROUND_CREATED[j].visible = true;
+				}
+			}
+		}
+		
+		public function addBackground(tex:String, px:Number, py:Number, pz:Number, sx:Number, sy:Number):void
+		{
+			var b:Background = new Background(TextureList.assets.getTexture(tex), px, py, pz, sx, sy);
+			b.x = b.posX / b.z;
+			b.visible = false;
+			BACKGROUND_CREATED.push(b);
+			addChild(b);
+		}
+		
+		public function removeBackground():void
+		{
+			
 		}
 	}
 }
