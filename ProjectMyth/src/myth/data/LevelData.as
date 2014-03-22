@@ -16,6 +16,7 @@ package myth.data
 		public var enemyData:Vector.<Vector.<int>>;
 		public var tileData:Vector.<int>;
 		public var backgroundAssetData:Vector.<Vector.<int>>;
+		public var zoneData:Vector.<Vector.<int>>;
 		public var ObjectData:Vector.<Vector.<int>>;
 		public var endPointPosition:Number;
 		public var startSpeed:Number;
@@ -65,6 +66,12 @@ package myth.data
 			for (i = 0; i < levelData.objects.length; i++) 
 			{
 				ObjectData[i] = new <int>[ levelData.objects[i].type, levelData.objects[i].x, levelData.objects[i].y];
+			}
+			//set zonedata in vector
+			zoneData = new Vector.<Vector.<int>>(levelData.zones.length);
+			for (i = 0; i < levelData.zones.length; i++) 
+			{
+				zoneData[i] = new <int>[ levelData.zones[i].type, levelData.zones[i].xPos, levelData.zones[i].deltaSpeed, levelData.zones[i].zonewidth ];
 			}
 		}
 		

@@ -10,10 +10,11 @@ package myth.world.worldZones
 		private var currentSpeedZones:Vector.<SpeedZone> = new Vector.<SpeedZone>;
 		
 		public function WorldZoneManager(_data:Vector.<Vector.<int>> = null):void{
-			//data = _data;
-			data = new Vector.<Vector.<int>> (2);
-			data[0] = new <int>[0,1000,4,1000];
-			data[1] = new <int>[0,4000,-4,200];
+			data = _data;
+			//type,xpos,deltaspeed,zonewidth
+			//data = new Vector.<Vector.<int>> (2);
+			//data[0] = new <int>[0,1000,4,1000];
+			//data[1] = new <int>[0,4000,-4,200];
 			build();
 		}
 		
@@ -33,12 +34,11 @@ package myth.world.worldZones
 		}
 		private function checkEnterZone():void {
 			var dist = Main.world.distance;
-			Main.world.speed = Main.world.speed;
 			if(zones.length > 0){
 				if (dist > zones[0].x) {
 					if(zones[0].zoneType == ZoneType.Speed){
 						currentSpeedZones.push(zones[0]);
-						trace("enterZone");
+						trace("enterZone pos: "+Main.world.distance+" speed: "+Main.world.speed);
 					}
 					zones.splice(0, 1);
 				}
@@ -49,7 +49,7 @@ package myth.world.worldZones
 			for (var i:int = 0; i < currentSpeedZones.length; i++) {
 				if (Main.world.distance > currentSpeedZones[i].xExit) {
 					currentSpeedZones.splice(i, 1);
-					trace("exitZone");
+					trace("exitZone pos: "+Main.world.distance+" speed: "+Main.world.speed);
 				}else {
 					Main.world.speed = Main.world.speed +  ((Main.world.deltaSpeed/currentSpeedZones[i].width)*currentSpeedZones[i].deltaSpeed);
 				}

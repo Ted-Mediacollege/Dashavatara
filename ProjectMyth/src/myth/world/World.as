@@ -123,7 +123,7 @@ package myth.world
 			//object manager
 			objectManager = new WorldObjectManager(levelData.ObjectData);
 			//zoneManager
-			zoneManager = new WorldZoneManager();
+			zoneManager = new WorldZoneManager(levelData.zoneData);
 			
 			//add childs
 			Display.add(background,LayerID.GameLevelBack);
