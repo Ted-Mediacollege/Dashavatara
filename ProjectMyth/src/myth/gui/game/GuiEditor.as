@@ -35,9 +35,11 @@ package myth.gui.game
 		private var editor:Editor;
 		public var inEditor:Boolean = false;
 		
-		public function GuiEditor() 
+		private var levelString:String;
+		
+		public function GuiEditor(_levelString:String = null) 
 		{
-			
+			levelString = _levelString;
 		}
 		
 		override public function init():void 
@@ -69,6 +71,15 @@ package myth.gui.game
 			button_menu = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
 			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Create Level", 25, 0x000000));
 			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Load Level", 25, 0x000000));
+				
+			if (levelString != null)
+			{
+				menu_main(false);
+				editor_menu(true);
+				editor.load(levelString);
+				inEditor = true;
+				grey_screen.visible = false;
+			}
 		}
 		
 		override public function tick():void 

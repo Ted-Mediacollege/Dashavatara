@@ -11,6 +11,7 @@ package myth.editor
 	import myth.editor.field.FieldTiles;
 	import myth.gui.components.GuiText;
 	import myth.gui.game.GuiEditor;
+	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiMainMenu;
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -227,7 +228,7 @@ package myth.editor
 			}
 			else if (id == 15) //TEST
 			{
-				
+				guiEditor.main.switchGui(new GuiGame("test", createJSONstring()));
 			}
 			else if (id == 20) //CAT LEFT
 			{
@@ -259,8 +260,8 @@ package myth.editor
 			saveFile.speed = speed;
 			
 			//ENEMIES
-			/*saveFile.enemies = new Array();
-			for (var i:int = 0; i < 1; i++ )
+			saveFile.enemies = new Array();
+			/*for (var i:int = 0; i < 1; i++ )
 			{
 				var en:Object = new Object();
 				en.type = 0;
@@ -270,8 +271,8 @@ package myth.editor
 			}*/
 			
 			//BACKGROUND
-			/*saveFile.background_props = new Array();
-			for (var j:int = 0; j < 1; j++ )
+			saveFile.background_props = new Array();
+			/*for (var j:int = 0; j < 1; j++ )
 			{
 				var bg:Object = new Object();
 				bg.type = 0;
@@ -282,8 +283,15 @@ package myth.editor
 			}*/
 			
 			//OBJECTS
-			/*saveFile.objects = new Array();
-			for (var k:int = 0; k < 1; k++ )
+			saveFile.objects = new Array();
+			
+			var gate:Object = new Object();
+			gate.type = 2;
+			gate.x = FIELD_BACKGROUND.BACKGROUND_END.x;
+			gate.y = FIELD_BACKGROUND.BACKGROUND_END.y;
+			saveFile.objects.push(gate);
+			
+			/*for (var k:int = 0; k < 1; k++ )
 			{
 				var obj:Object = new Object();
 				obj.type = 0;
@@ -304,9 +312,36 @@ package myth.editor
 			return com.adobe.serialization.json.JSON.encode(saveFile);
 		}
 		
-		public function load():void
+		public function load(levelString:String):void
 		{
+			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
 			
+			theme = Theme.SKY;
+			var levelSize:int = saveFile.tiles.length;
+			
+			SELECTOR = new Selector();
+			addChild(SELECTOR);
+			SELECTOR.build(theme);
+			
+			camX = 0;
+			maxX = levelSize * 127 - 1000;
+			
+			FIELD_BACKGROUND = new FieldBackground();
+			FIELD_TILES = new FieldTiles();
+			FIELD_OBJECTS = new FieldObjects();
+			FIELD_ENEMIES = new FieldEnemies();
+			
+			addChildAt(FIELD_BACKGROUND, 0);
+			addChildAt(FIELD_OBJECTS, 1);
+			addChildAt(FIELD_TILES, 2);
+			addChildAt(FIELD_ENEMIES, 3);
+			
+			CONSTRUCTOR = new Constructor();
+			
+			FIELD_BACKGROUND.buildFile(saveFile.background_props, levelSize * 127, theme);
+			FIELD_TILES.buildFile(saveFile.tiles, theme);
+			FIELD_OBJECTS.buildFile(saveFile.objects);
+			FIELD_ENEMIES.buildFile(saveFile.enemies);
 		}
 	}
 }

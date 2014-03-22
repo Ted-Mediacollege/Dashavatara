@@ -55,15 +55,35 @@ package myth.editor.field
 				TILES.push(s);
 				TILES_IDS.push(rand);
 				
-				var tile:Image = new Image(tile_textures[MathHelper.nextInt(maxRandom)]);
+				var tile:Image = new Image(tile_textures[rand]);
 				s.addChild(tile);
 				s.flatten();
 			}
 		}
 		
-		public function buildFile(t:int):void
+		public function buildFile(a:Array, t:int):void
 		{
 			buildCommon(t);
+			
+			TILES = new Vector.<Sprite>();
+			TILES_IDS = new Vector.<int>();
+			
+			var arrayLength:int = a.length;
+			for (var i:int = 0; i < arrayLength; i++ )
+			{
+				var s:Sprite = new Sprite();
+				s.x = i * textureSize;
+				s.y = 768 - 128;
+				s.touchable = false;
+				addChild(s);
+
+				TILES.push(s);
+				TILES_IDS.push(a[i].type);
+				
+				var tile:Image = new Image(tile_textures[a[i].type]);
+				s.addChild(tile);
+				s.flatten();
+			}
 		}
 		
 		public function tick(camX:Number):void

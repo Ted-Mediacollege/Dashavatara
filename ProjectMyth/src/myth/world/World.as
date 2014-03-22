@@ -73,13 +73,18 @@ package myth.world
 		
 		public var levelData:LevelData;
 		
-		public function World(g:GuiGame ,levelName:String = "level_1") 
+		public function World(g:GuiGame ,levelName:String = "level_1", _editorTesting:Boolean = false, _editorString:String = null) 
 		{
 			EntityPlayerBase.levelStart();
 			gui = g;
 			lvlName = levelName;
 			levelData = new LevelData();
-			levelData.loadFile(levelName);
+			if (_editorTesting) {
+				levelData.loadFromString(_editorString, levelName);
+			}
+			else {
+				levelData.loadFile(levelName);
+			}
 			speed = levelData.startSpeed;
 			endPointPosition = levelData.endPointPosition;
 		}

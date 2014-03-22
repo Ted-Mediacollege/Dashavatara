@@ -58,9 +58,20 @@ package myth.gui.game
 		private var pauseBitmap:Bitmap;
 		private var pauseFade:Number = 0;
 		
-		public function GuiGame(_levelName:String) 
+		private var editorTesting:Boolean = false;
+		public static var editorString:String = "";
+		
+		public function GuiGame(_levelName:String, _editorString:String = null) 
 		{
 			levelName = _levelName;
+			editorTesting = false;
+			editorString = "";
+			
+			if (_editorString != null)
+			{
+				editorTesting = true;
+				editorString = _editorString;
+			}
 		}	
 		
 		private var gameScreen:Sprite = new Sprite();
@@ -71,7 +82,14 @@ package myth.gui.game
 			
 			background = null;
 			
-			Main.world = new World(this, levelName);
+			if (editorTesting)
+			{
+				Main.world = new World(this, levelName, editorTesting, editorString);
+			}
+			else
+			{
+				Main.world = new World(this, levelName);
+			}
 			Main.world.init();
 			//Display.add(Main.world,LayerID.GameLevel);
 			
@@ -118,6 +136,11 @@ package myth.gui.game
 		{
 			if (button.buttonID == 13 ||button.buttonID == 0) 
 			{
+				if (button.buttonID == 13 && editorTesting)
+				{
+					main.switchGui(new GuiEditor(editorString));
+				}
+				
 				//trace(pause + " " +pauseScreen);
 				if (pause)
 				{

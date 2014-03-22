@@ -15,6 +15,8 @@ package myth.editor.field
 	{
 		public var BACKGROUND_RANDOM:Vector.<Background>;
 		public var BACKGROUND_CREATED:Vector.<EditorItem>;
+		public var BACKGROUND_SPAWN:Background;
+		public var BACKGROUND_END:Background;
 		
 		public function FieldBackground() 
 		{
@@ -49,11 +51,14 @@ package myth.editor.field
 			PLAYER_SPAWN.visible = false;
 			BACKGROUND_RANDOM.push(PLAYER_SPAWN);
 			addChild(PLAYER_SPAWN);
+			BACKGROUND_SPAWN = PLAYER_SPAWN;
 				
-			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 600, 210, 1, 1, 1);
+			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 800, 768 - 125, 1, 1, 1);
+			PLAYER_END.pivotY = PLAYER_END.height;
 			PLAYER_END.visible = false;
 			BACKGROUND_RANDOM.push(PLAYER_END);
 			addChild(PLAYER_END);
+			BACKGROUND_END = PLAYER_END;
 		}
 		
 		public function buildNew(size:int, t:int):void
@@ -61,8 +66,9 @@ package myth.editor.field
 			buildCommon(size, t);
 		}
 		
-		public function buildFile(t:int):void
+		public function buildFile(a:Array, size:int, t:int):void
 		{
+			buildCommon(size, t);
 		}
 		
 		public function tick(camX:Number):void

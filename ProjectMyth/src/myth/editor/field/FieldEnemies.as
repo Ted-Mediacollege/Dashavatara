@@ -17,7 +17,7 @@ package myth.editor.field
 			ENEMIES = new Vector.<Background>();
 		}
 		
-		public function buildFile():void
+		public function buildFile(a:Array):void
 		{
 			ENEMIES = new Vector.<Background>();
 		}

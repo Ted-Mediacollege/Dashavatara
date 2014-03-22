@@ -19,7 +19,7 @@ package myth.editor.field
 			OBJECTS = new Vector.<EditorItem>();
 		}
 		
-		public function buildFile():void
+		public function buildFile(a:Array):void
 		{
 			OBJECTS = new Vector.<EditorItem>();
 		}
