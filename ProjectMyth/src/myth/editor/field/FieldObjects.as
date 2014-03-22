@@ -53,6 +53,8 @@ package myth.editor.field
 			{
 				
 			}
+			
+			return null;
 		}
 	}
 }
