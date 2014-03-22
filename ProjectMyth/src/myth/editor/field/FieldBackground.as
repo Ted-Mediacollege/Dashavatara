@@ -1,12 +1,14 @@
 package myth.editor.field 
 {
 	import myth.background.Background;
+	import myth.data.Theme;
 	import starling.display.Sprite;
 	import starling.display.Image;
 	import myth.graphics.TextureList;
 	import starling.display.BlendMode;
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
+	import myth.editor.EditorFiles;
 	
 	public class FieldBackground extends Sprite
 	{
@@ -22,13 +24,13 @@ package myth.editor.field
 		{
 			BACKGROUND_RANDOM = new Vector.<Background>();
 			BACKGROUND_CREATED = new Vector.<Background>();
-			
-			if (t == 0)
+		
+			var bg:Image = new Image(TextureList.assets.getTexture(EditorFiles.getLuchtName(t)));
+			bg.blendMode = BlendMode.NONE;
+			addChild(bg);
+				
+			if (t == Theme.SKY)
 			{
-				var bg:Image = new Image(TextureList.assets.getTexture("sky_lucht"));
-				bg.blendMode = BlendMode.NONE;
-				addChild(bg);
-							
 				var clouds:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
 				var cloudslength:int = clouds.length;
 				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
@@ -40,25 +42,17 @@ package myth.editor.field
 					BACKGROUND_RANDOM.push(b2);
 					addChild(b2);
 				}
-					
-				var PLAYER_SPAWN:Background = new Background(TextureList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
-				PLAYER_SPAWN.visible = false;
-				BACKGROUND_RANDOM.push(PLAYER_SPAWN);
-				addChild(PLAYER_SPAWN);
-					
-				var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 600, 210, 1, 1, 1);
-				PLAYER_END.visible = false;
-				BACKGROUND_RANDOM.push(PLAYER_END);
-				addChild(PLAYER_END);
 			}
-			else if (t == 1)
-			{
-				buildCommon(size, 0);
-			}
-			else
-			{
-				buildCommon(size, 0);
-			}
+				
+			var PLAYER_SPAWN:Background = new Background(TextureList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
+			PLAYER_SPAWN.visible = false;
+			BACKGROUND_RANDOM.push(PLAYER_SPAWN);
+			addChild(PLAYER_SPAWN);
+				
+			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 600, 210, 1, 1, 1);
+			PLAYER_END.visible = false;
+			BACKGROUND_RANDOM.push(PLAYER_END);
+			addChild(PLAYER_END);
 		}
 		
 		public function buildNew(size:int, t:int):void

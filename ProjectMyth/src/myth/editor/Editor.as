@@ -1,7 +1,9 @@
 package myth.editor 
 {
 	import myth.background.Background;
+	import myth.data.Theme;
 	import myth.editor.component.Scroll;
+	import myth.editor.component.Selector;
 	import myth.editor.field.FieldBackground;
 	import myth.editor.field.FieldEnemies;
 	import myth.editor.field.FieldObjects;
@@ -19,12 +21,15 @@ package myth.editor
 	
 	public class Editor extends Sprite
 	{		
+		public static var theme:int;
+		
 		public static var camX:Number;
 		public static var maxX:Number;
 		
 		public var guiEditor:GuiEditor;
 		
 		public var SCROLL:Scroll;
+		public var SELECTOR:Selector;
 		
 		public var FIELD_BACKGROUND:FieldBackground;
 		public var FIELD_TILES:FieldTiles;
@@ -44,11 +49,17 @@ package myth.editor
 			var a1:Image = new Image(TextureList.assets.getTexture("editor_panel_main"));
 			a1.x = 1280 - 350;
 			addChild(a1);
+			
+			SELECTOR = new Selector();
+			addChild(SELECTOR);
 		}
 		
 		public function build():void
 		{
+			theme = Theme.SKY;
 			var levelSize:int = 30;
+			
+			SELECTOR.build(theme);
 			
 			camX = 0;
 			maxX = levelSize * 127 - 1000;
@@ -63,8 +74,8 @@ package myth.editor
 			addChildAt(FIELD_OBJECTS, 2);
 			addChildAt(FIELD_ENEMIES, 3);
 			
-			FIELD_BACKGROUND.buildNew(levelSize * 127, 0);
-			FIELD_TILES.buildNew(levelSize, 0);
+			FIELD_BACKGROUND.buildNew(levelSize * 127, theme);
+			FIELD_TILES.buildNew(levelSize, theme);
 			FIELD_OBJECTS.buildNew();
 			FIELD_ENEMIES.buildNew();
 		}
@@ -121,7 +132,7 @@ package myth.editor
 			}
 			else if (id == 13) //SAVE
 			{
-				save();
+				trace(createJSONstring());
 			}
 			else if (id == 14) //SETTINGS
 			{
@@ -133,11 +144,11 @@ package myth.editor
 			}
 			else if (id == 20) //CAT LEFT
 			{
-				
+				SELECTOR.switch_cat(-1);
 			}
 			else if (id == 21) //CAT RIGHT
 			{
-				
+				SELECTOR.switch_cat(1);
 			}
 			else if (id == 22) //ITEM LEFT
 			{
@@ -149,7 +160,7 @@ package myth.editor
 			}
 		}
 		
-		public function save(name:String = "test", speed:int = 4):void
+		public function createJSONstring(name:String = "test", speed:int = 4):String
 		{
 			//SAVE FILE
 			var saveFile:Object = new Object();
@@ -162,7 +173,7 @@ package myth.editor
 			
 			//ENEMIES
 			saveFile.enemies = new Array();
-			for (var i:int = 0; i < 5; i++ )
+			for (var i:int = 0; i < 1; i++ )
 			{
 				var en:Object = new Object();
 				en.type = 0;
@@ -173,7 +184,7 @@ package myth.editor
 			
 			//BACKGROUND
 			saveFile.background_props = new Array();
-			for (var j:int = 0; j < 5; j++ )
+			for (var j:int = 0; j < 1; j++ )
 			{
 				var bg:Object = new Object();
 				bg.type = 0;
@@ -185,7 +196,7 @@ package myth.editor
 			
 			//OBJECTS
 			saveFile.objects = new Array();
-			for (var k:int = 0; k < 5; k++ )
+			for (var k:int = 0; k < 1; k++ )
 			{
 				var obj:Object = new Object();
 				obj.type = 0;
@@ -196,14 +207,14 @@ package myth.editor
 			
 			//TILES
 			saveFile.tiles = new Array();
-			for (var l:int = 0; l < 5; l++ )
+			var tileLength:int = FIELD_TILES.TILES_IDS.length;
+			for (var l:int = 0; l < tileLength; l++ )
 			{
 				var ti:Object = new Object();
-				ti.type = 0;
+				ti.type = FIELD_TILES.TILES_IDS[l];
 				saveFile.tiles.push(ti);
 			}
-
-			trace(com.adobe.serialization.json.JSON.encode(saveFile));
+			return com.adobe.serialization.json.JSON.encode(saveFile);
 		}
 		
 		public function load():void

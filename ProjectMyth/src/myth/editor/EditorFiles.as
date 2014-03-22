@@ -1,69 +1,62 @@
 package myth.editor 
 {
-	import starling.textures.Texture;
-	import myth.graphics.TextureList;
+	import myth.data.Theme;
 	
 	public class EditorFiles 
 	{
-		public static var LIST_TILES:Vector.<EditorFiles> = new Vector.<EditorFiles>();
-		public static var LIST_ENTITIES:Vector.<EditorFiles> = new Vector.<EditorFiles>();
-		public static var LIST_OBJECTS:Vector.<EditorFiles> = new Vector.<EditorFiles>();
+		private static var tiles_sky:Vector.<String> = new <String>["sky_tile00", "sky_tile01"];
+		private static var tiles_earth:Vector.<String> = new <String>["earth_tile00", "earth_tile01"];
+		private static var tiles_hell:Vector.<String> = new < String > [""];
 		
-		public static var TILE_SKY_0:EditorFiles = new EditorFiles(0, "sky_tile00", 0, 0);
-		public static var TILE_SKY_1:EditorFiles = new EditorFiles(0, "sky_tile01", 1, 1);
+		private static var objects_sky:Vector.<String> = new <String>["sky_pilar"];
+		private static var objects_earth:Vector.<String> = new <String>["earth_pilaar"];
+		private static var objects_hell:Vector.<String> = new <String>[""];
 		
-		public var artName:String;
-		public var fileID:int;
-		public var art:Texture;
-		public var catigory:int;
+		private static var background_sky:Vector.<String> = new <String>["sky_tree"];
+		private static var background_earth:Vector.<String> = new <String>[""];
+		private static var background_hell:Vector.<String> = new <String>[""];
 		
-		public function EditorFiles(type:int, art:String, cat:int, id:int) 
+		public function EditorFiles() 
 		{
-			artName = art;
-			fileID = id;
-			catigory = cat;
-			
-			switch(type)
+		}
+		
+		public static function getLuchtName(theme:int):String
+		{
+			switch(theme)
 			{
-				case 0: LIST_TILES.push(this); break;
-				case 1: LIST_ENTITIES.push(this); break;
-				default: LIST_OBJECTS.push(this); break;
+				case Theme.SKY:   return "sky_lucht";
+				case Theme.EARTH: return "earth_lucht";
+				default:          return "";
 			}
 		}
 		
-		public static function loadTextures():void
+		public static function getTileNames(theme:int):Vector.<String>
 		{
-			for (var i:int = LIST_TILES.length - 1; i > -1; i-- )
+			switch(theme)
 			{
-				LIST_TILES[i].art = TextureList.assets.getTexture(LIST_TILES[i].artName);
-			}
-			
-			for (var j:int = LIST_ENTITIES.length - 1; j > -1; j-- )
-			{
-				LIST_ENTITIES[i].art = TextureList.assets.getTexture(LIST_ENTITIES[i].artName);
-			}
-			
-			for (var k:int = LIST_OBJECTS.length - 1; k > -1; k-- )
-			{
-				LIST_OBJECTS[i].art = TextureList.assets.getTexture(LIST_OBJECTS[i].artName);
+				case Theme.SKY:   return tiles_sky;
+				case Theme.EARTH: return tiles_earth;
+				default:          return tiles_hell;
 			}
 		}
 		
-		public static function unLoadTextures():void
+		public static function getObjectNames(theme:int):Vector.<String>
 		{
-			for (var i:int = LIST_TILES.length - 1; i > -1; i-- )
+			switch(theme)
 			{
-				LIST_TILES[i].art = null;
+				case Theme.SKY:   return objects_sky;
+				case Theme.EARTH: return objects_earth;
+				default:          return objects_hell;
 			}
-			
-			for (var j:int = LIST_ENTITIES.length - 1; j > -1; j-- )
+		}
+		
+		public static function getBackgroundNames(theme:int):Vector.<String>
+		{
+			switch(theme)
 			{
-				LIST_ENTITIES[j].art = null;
-			}
-			
-			for (var k:int = LIST_OBJECTS.length - 1; k > -1; k-- )
-			{
-				LIST_OBJECTS[k].art = null;
+				case Theme.SKY:   return background_sky;
+				case Theme.EARTH: return background_earth;
+				default:          return background_hell;
 			}
 		}
 	}

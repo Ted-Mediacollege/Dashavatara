@@ -1,5 +1,6 @@
 package myth.editor.field 
 {
+	import myth.data.Theme;
 	import myth.tile.Tile;
 	import starling.display.Image;
 	import starling.display.Shape;
@@ -7,16 +8,16 @@ package myth.editor.field
 	import starling.textures.Texture;
 	import myth.graphics.TextureList;
 	import myth.util.MathHelper;
+	import myth.editor.EditorFiles;
 	
 	public class FieldTiles extends Sprite
 	{
 		public static var textureSize:Number = 127;
-		
-		public static var tile_names_sky:Vector.<String> = new <String>["sky_tile00", "sky_tile01"];
-		
+
 		public var tile_textures:Vector.<Texture>;
 		
 		public var TILES:Vector.<Sprite>;
+		public var TILES_IDS:Vector.<int>;
 		
 		public function FieldTiles() 
 		{
@@ -25,13 +26,7 @@ package myth.editor.field
 		
 		public function buildCommon(t:int):void
 		{
-			var tile_names:Vector.<String>;
-			
-			switch(t)
-			{
-				default: tile_names = tile_names_sky; break;
-			}
-			
+			var tile_names:Vector.<String> = EditorFiles.getTileNames(t);
 			tile_textures = new Vector.<Texture>();
 			for (var i:int = 0; i < tile_names.length; i++ )
 			{
@@ -45,6 +40,8 @@ package myth.editor.field
 			
 			var maxRandom:int = tile_textures.length;
 			TILES = new Vector.<Sprite>();
+			TILES_IDS = new Vector.<int>();
+			
 			for (var i:int = 0; i < a; i++ )
 			{
 				var s:Sprite = new Sprite();
@@ -53,7 +50,10 @@ package myth.editor.field
 				s.touchable = false;
 				addChild(s);
 				
+				var rand:int = MathHelper.nextInt(maxRandom);
+				
 				TILES.push(s);
+				TILES_IDS.push(rand);
 				
 				var tile:Image = new Image(tile_textures[MathHelper.nextInt(maxRandom)]);
 				s.addChild(tile);
