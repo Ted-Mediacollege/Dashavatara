@@ -36,10 +36,11 @@ package myth.editor.field
 			{
 				var clouds:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
 				var cloudslength:int = clouds.length;
-				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
+				var cloudiness:int = int(Math.ceil(size / 127 * 0.55)); //0.35
 				for (var j:int = 0; j < cloudiness; j++ )
 				{
-					var b2:Background = new Background(clouds[MathHelper.nextInt(cloudslength)], MathHelper.nextInt(size + 2500) - 500, MathHelper.nextInt(280) - 50, 4, 1, 1);
+					var randomHeight:int = MathHelper.nextInt(380);
+					var b2:Background = new Background(clouds[MathHelper.nextInt(cloudslength)], MathHelper.nextInt(size + 2500) - 500, randomHeight - 50, 4 + (randomHeight / 100), 1 - (randomHeight / 800), 1 - (randomHeight / 800));
 					b2.x = b2.posX / b2.z;
 					b2.visible = false;
 					BACKGROUND_RANDOM.push(b2);
