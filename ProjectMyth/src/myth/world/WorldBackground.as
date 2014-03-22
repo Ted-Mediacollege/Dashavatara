@@ -45,15 +45,6 @@ package myth.world
 				Backgrounds.push(b2);
 				addChild(b2);
 			}
-			
-			for (var k:int = 0; k < 5; k++ )
-			{
-				var b3:Background = new Background(textures[4], 800 + 2800 * k - 800 + MathHelper.nextInt(1600), 265, 2, 1, 1);
-				b3.x = (b3.posX + -camX) /b3.z;
-				b3.visible = false;
-				Backgrounds.push(b3);
-				addChild(b3);
-			}
 		}
 		
 		public function tick(camX:Number):void

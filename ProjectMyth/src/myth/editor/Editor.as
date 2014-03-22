@@ -291,14 +291,15 @@ package myth.editor
 			gate.y = FIELD_BACKGROUND.BACKGROUND_END.y;
 			saveFile.objects.push(gate);
 			
-			/*for (var k:int = 0; k < 1; k++ )
+			var objectsLength:int = FIELD_OBJECTS.OBJECTS.length;
+			for (var k:int = 0; k < objectsLength; k++ )
 			{
 				var obj:Object = new Object();
 				obj.type = 0;
-				obj.x = 100;
-				obj.y = 200;
+				obj.x = FIELD_OBJECTS.OBJECTS[k].x;
+				obj.y = FIELD_OBJECTS.OBJECTS[k].y;
 				saveFile.objects.push(obj);
-			}*/
+			}
 			
 			//TILES
 			saveFile.tiles = new Array();
@@ -340,7 +341,7 @@ package myth.editor
 			
 			FIELD_BACKGROUND.buildFile(saveFile.background_props, levelSize * 127, theme);
 			FIELD_TILES.buildFile(saveFile.tiles, theme);
-			FIELD_OBJECTS.buildFile(saveFile.objects);
+			FIELD_OBJECTS.buildFile(saveFile.objects, theme);
 			FIELD_ENEMIES.buildFile(saveFile.enemies);
 		}
 	}
