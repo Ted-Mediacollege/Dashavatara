@@ -67,13 +67,13 @@ package myth.entity.player
 			var speed:Number = Main.world.speed;
 			var force:Number = speed * 5;
 			var maxBreakSpeed:Number = speed * 2;
-			var XposT:Number = Xpos + 50 + (maxBreakSpeed * playerMass);
+			var XposT:Number = Xpos + (speed * 60);
 			if (levelComplete) {
 				Xpos += speed;
 			}
-			//trace(Main.world.playerBody.mass+" - "+Main.world.playerBody.velocity.x);
-			//trace("X: "+this.x);
+			//trace("Xpos: "+this.x+" velX: "+playerBody.velocity.x+" velX: "+playerBody.velocity.x/60+" timeStep: "+TimeHelper.deltaTime);
 			//move
+			
 			if (swimmer) {
 				playerBody.applyImpulse(new Vec2((playerMass * -10), 0));
 			}else{
@@ -89,7 +89,7 @@ package myth.entity.player
 					}
 				}
 			}
-			//apply break
+			//apply drag
 			if (playerBody.velocity.x != 0) {
 				if (playerBody.velocity.x > 0) {
 					if(playerBody.velocity.x<maxBreakSpeed){
