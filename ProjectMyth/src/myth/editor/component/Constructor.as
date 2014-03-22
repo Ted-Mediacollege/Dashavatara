@@ -21,14 +21,23 @@ package myth.editor.component
 		
 		public var button_done:Image;
 		public var button_delete:Image;
+		public var button_scale:Image;
+		public var button_rotate:Image;
+		public var button_depth:Image;
 		
 		public function Constructor() 
 		{
 			button_done = new Image(TextureList.assets.getTexture("editor_option_done"));
 			button_delete = new Image(TextureList.assets.getTexture("editor_option_delete"));
+			button_scale = new Image(TextureList.assets.getTexture("editor_option_scale"));
+			button_rotate = new Image(TextureList.assets.getTexture("editor_option_rotate"));
+			button_depth = new Image(TextureList.assets.getTexture("editor_option_depth"));
 			
 			addChild(button_done);
 			addChild(button_delete);
+			addChild(button_scale);
+			addChild(button_rotate);
+			addChild(button_depth);
 		}	
 		
 		public function construct(tex:String, t:int, px:Number = 50, py:Number = 50):void
@@ -54,6 +63,12 @@ package myth.editor.component
 			button_done.y = item.y;
 			button_delete.x = item.x + item.width + 20;
 			button_delete.y = item.y + 70;
+			button_scale.x = item.x + item.width + 20;
+			button_scale.y = item.y + 140;
+			button_rotate.x = item.x + item.width + 20;
+			button_rotate.y = item.y + 210;
+			button_depth.x = item.x + item.width + 20;
+			button_depth.y = item.y + 280;
 		}
 		
 		public function destory(del:Boolean):void
@@ -84,10 +99,17 @@ package myth.editor.component
 			item.y = py - moveposY;
 			frame.x = px - moveposX;
 			frame.y = py - moveposY;
+			
 			button_done.x = item.x + item.width + 20;
 			button_done.y = item.y;
 			button_delete.x = item.x + item.width + 20;
 			button_delete.y = item.y + 70;
+			button_scale.x = item.x + item.width + 20;
+			button_scale.y = item.y + 140;
+			button_rotate.x = item.x + item.width + 20;
+			button_rotate.y = item.y + 210;
+			button_depth.x = item.x + item.width + 20;
+			button_depth.y = item.y + 280;
 		}
 	}
 }

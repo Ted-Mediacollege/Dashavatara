@@ -58,7 +58,7 @@ package myth.editor
 		public function build():void
 		{
 			theme = Theme.SKY;
-			var levelSize:int = 30;
+			var levelSize:int = 50;
 			
 			SELECTOR = new Selector();
 			addChild(SELECTOR);
