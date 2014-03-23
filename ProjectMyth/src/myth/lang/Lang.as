@@ -16,7 +16,7 @@ package myth.lang
 		
 		public static function init():void
 		{
-			setLanguage(1);//GameData.SYSTEM_LANG_ID);
+			setLanguage(0);//GameData.SYSTEM_LANG_ID);
 		}
 		
 		public static function setLanguage(id:int):void
