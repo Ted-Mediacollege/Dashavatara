@@ -293,15 +293,15 @@ package myth.editor
 			{
 				var obj:Object = new Object();
 				obj.type = 0;
-				obj.x = FIELD_OBJECTS.OBJECTS[k].x;
+				obj.x = FIELD_OBJECTS.OBJECTS[k].posX;
 				obj.y = FIELD_OBJECTS.OBJECTS[k].y + FIELD_OBJECTS.OBJECTS[k].height;
 				saveFile.objects.push(obj);
 			}
 						
 			var gate:Object = new Object();
 			gate.type = 2;
-			gate.x = FIELD_BACKGROUND.BACKGROUND_END.x;
-			gate.y = FIELD_BACKGROUND.BACKGROUND_END.y;
+			gate.x = FIELD_BACKGROUND.BACKGROUND_END.posX;
+			gate.y = 800;
 			saveFile.objects.push(gate);
 			
 			//TILES
