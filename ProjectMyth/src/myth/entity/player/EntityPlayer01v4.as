@@ -119,15 +119,15 @@ package myth.entity.player
 				
 				for (j = Main.world.entityManager.enemyList.length - 1; j > -1; j--) {
 					hit = false;
-					for (var l:int = 0; l < testPoints.length; l++) 
-					{
+					for (var l:int = 0; l < testPoints.length; l++) {
 						if (Main.world.entityManager.enemyList[j].collider.intersectPoint(testPoints[l])) {
 							hit = true;
 							break;
 						}
 					}
 					if (hit) {
-						if(Main.world.entityManager.enemyList[j].hit(-25)||true){
+						trace("hit:"+Main.world.entityManager.enemyList[j].Healt);
+						if (Main.world.entityManager.enemyList[j].hit( -25)) {
 							Main.world.entityManager.removeChild(Main.world.entityManager.enemyList[j]);
 							Main.world.entityManager.enemyList.splice(j , 1);
 						}
