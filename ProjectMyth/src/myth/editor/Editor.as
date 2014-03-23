@@ -193,17 +193,11 @@ package myth.editor
 			}
 			else if (id == 12) //LOAD
 			{
-				removeChild(FIELD_BACKGROUND);
-				removeChild(FIELD_TILES);
-				removeChild(FIELD_OBJECTS);
-				removeChild(FIELD_ENEMIES);
-				removeChild(SELECTOR);
-				
-				build();
+
 			}
 			else if (id == 13) //SAVE
 			{
-				trace(createJSONstring());
+				//trace(createJSONstring());
 			}
 			else if (id == 14) //SETTINGS
 			{
@@ -319,7 +313,7 @@ package myth.editor
 		{
 			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
 			
-			theme = Theme.SKY;
+			theme = saveFile.theme;
 			var levelSize:int = saveFile.tiles.length;
 			
 			SELECTOR = new Selector();

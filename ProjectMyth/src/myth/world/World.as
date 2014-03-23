@@ -115,7 +115,7 @@ package myth.world
 			entityManager = new WorldEntityManager(levelData.enemyData);
 			//tiles
 			tiles = new WorldTiles2();
-			tiles.build(0, levelData.tileData);
+			tiles.build(0, levelData.tileData, levelData.theme);
 			//background asser manager
 			//backgroundAssetData
 			background = new WorldBackground(levelData.backgroundAssetData, levelData.levelLength * 127, levelData.theme); //MOET ACHTER TILES GELADEN WORDEN

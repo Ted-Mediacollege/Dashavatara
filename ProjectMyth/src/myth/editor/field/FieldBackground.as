@@ -47,6 +47,19 @@ package myth.editor.field
 					addChild(b2);
 				}
 			}
+			else if (t == Theme.EARTH)
+			{
+				var mountain:Texture = TextureList.assets.getTexture("earth_bergen");
+				var amount:int = int(Math.ceil((size / 1280) / 4));
+				for (var k:int = 0; k < amount; k++ )
+				{
+					var b3:Background = new Background(mountain, (k * 1280) * 4, 0, 4, 1, 1);
+					b3.x = b3.posX / b3.z;
+					b3.visible = false;
+					BACKGROUND_RANDOM.push(b3);
+					addChild(b3);
+				}
+			}
 				
 			var PLAYER_SPAWN:Background = new Background(TextureList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
 			PLAYER_SPAWN.visible = false;

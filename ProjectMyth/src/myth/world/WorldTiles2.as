@@ -8,40 +8,46 @@ package myth.world
 	import myth.tile.Tile;
 	import myth.tile.TileDefault;
 	import myth.graphics.TextureList;
+	import myth.data.Theme;
 
 	public class WorldTiles2 extends Sprite
-	{		
+	{				
+		//NEED TO BE THE SAME IN EditorFiles.as
+		private static var textures_sky:Vector.<String> = new <String>["sky_tile00", "sky_tile01"];
+		private static var textures_earth:Vector.<String> = new <String>["earth_tile00", "earth_tile01"];
+		private static var textures_hell:Vector.<String> = new <String>[""];
+		
 		public var TILES:Vector.<Tile>;
 		public var changed:Boolean = true;
-		
-		public var textures:Vector.<Texture>;
-		public var data:Vector.<int>;
-		public var datalength:int;
 		public var textureSize:Number = 127;
-		
-		public static var waterTiles:Vector.<Texture>;
 		
 		public function WorldTiles2() 
 		{
 			TILES = new Vector.<Tile>();
-			
-			waterTiles = TextureList.atlas_background.getTextures("water");
-			textures = TextureList.atlas_background.getTextures("tiles");
 		}
 		
-		public function build(camX:Number, d:Vector.<int>):void
+		public function build(camX:Number, d:Vector.<int>, theme:int):void
 		{
-			data = d;
-			datalength = data.length;
-			
 			x = -camX;
 			
-			var lowestID:int = 0;
-			var highestID:int = data.length - 1;
-			
-			for (var j:int = lowestID; j < highestID + 1; j++)
+			var textureNames:Vector.<String> = getTexturesForTheme(theme);
+			var tileLength:int = d.length;
+			for (var i:int = 0; i < tileLength; i++ )
 			{
-				addTile(j);
+				var t:Tile = new TileDefault(TextureList.assets.getTexture(textureNames[d[i]]), i * textureSize, 768 - 128, i);
+				t.visible = false;
+				TILES.push(t);
+				addChild(t);
+			}
+		}
+		
+		public function getTexturesForTheme(theme:int):Vector.<String>
+		{
+			switch(theme)
+			{
+				case Theme.SKY:   return textures_sky;
+				case Theme.EARTH: return textures_earth;
+				default:          return textures_hell;
 			}
 		}
 		
@@ -63,74 +69,6 @@ package myth.world
 					TILES[i].visible = true;
 				}
 			}
-			
-			/*
-			for (var j:int = lowestID; j < highestID + 1; j++) 
-			{
-				var f:Boolean = false;
-				for (var k:int = TILES.length - 1; k > -1; k-- )
-				{
-					if (TILES[k].id == j)
-					{
-						f = true;
-						break;
-					}
-				}
-				
-				if (!f)
-				{
-					addTile(j);
-				}
-			}
-			
-			if (changed)
-			{
-				flatten();
-				changed = false;
-			}*/
-		}
-		
-		public function addTile(id:int):void
-		{
-			if (id > -1 && id < data.length)
-			{
-				if (data[id] < textures.length)
-				{
-					if (!changed)
-					{
-						unflatten();
-						changed = true;
-						//trace("UNFLATTEN");
-					}
-					
-					var t:Tile = getTileFromData(data[id], id * textureSize, 768 - 128, id);
-					t.visible = false;
-					TILES.push(t);
-					addChild(t);
-				}
-			}
-		}
-		
-		public function getTileFromData(id:int, px:Number, py:Number, pos:int):Tile
-		{
-			switch(id)
-			{
-				case 0: return new TileDefault(textures[0], px, py, pos);
-				case 1: return new TileDefault(textures[1], px, py, pos);
-				//case 0: return new TileWater(px, py, pos);
-				//default: return new TileWater(px, py, pos);
-				default: return new TileDefault(textures[0], px, py, pos);
-			}
-		}
-		
-		public function getTileAt(distance:Number):int
-		{
-			var pos:int = int(distance / textureSize);
-			if (pos > -1 && pos < datalength)
-			{
-				return data[pos];
-			}
-			return 0;
 		}
 	}
 }
