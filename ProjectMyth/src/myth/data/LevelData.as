@@ -21,6 +21,7 @@ package myth.data
 		public var endPointPosition:Number;
 		public var startSpeed:Number;
 		public var levelLength:int;
+		public var theme:int;
 		
 		public function LevelData()
 		{	
@@ -33,6 +34,9 @@ package myth.data
 			
 			//parse
 			levelData = JSON.parse(data);
+			
+			//theme
+			theme = levelData.theme;
 			
 			//set end point position
 			for (i = 0; i < levelData.objects.length; i++) 

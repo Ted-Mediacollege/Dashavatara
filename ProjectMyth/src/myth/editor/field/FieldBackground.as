@@ -55,7 +55,6 @@ package myth.editor.field
 			BACKGROUND_SPAWN = PLAYER_SPAWN;
 				
 			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 800, 221, 1, 1, 1);
-			PLAYER_END.pivotY = PLAYER_END.height;
 			PLAYER_END.visible = false;
 			BACKGROUND_RANDOM.push(PLAYER_END);
 			addChild(PLAYER_END);

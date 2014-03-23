@@ -10,11 +10,12 @@ package myth.editor
 		
 		private static var objects_sky:Vector.<String> = new <String>["sky_pilar"];
 		private static var objects_earth:Vector.<String> = new <String>["earth_pilaar"];
-		private static var objects_hell:Vector.<String> = new <String>[""];
+		private static var objects_hell:Vector.<String> = new <String>["earth_pilaar"];
 		
+		//NEED TO BE THE SAME IN WorldBackground.as
 		private static var background_sky:Vector.<String> = new <String>["sky_tree"];
-		private static var background_earth:Vector.<String> = new <String>[""];
-		private static var background_hell:Vector.<String> = new <String>[""];
+		private static var background_earth:Vector.<String> = new <String>["sky_tree"];
+		private static var background_hell:Vector.<String> = new <String>["sky_tree"];
 		
 		public function EditorFiles() 
 		{
