@@ -20,27 +20,22 @@ package myth.world
 			build(0, length);
 		}
 		
-		public function build(camX:Number, length:int):void
+		public function build(camX:Number, size:int):void
 		{
 			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
 						
 			var bg:Image = new Image(TextureList.atlas_background2.getTexture("background"));
 			bg.blendMode = BlendMode.NONE;
 			addChild(bg);
-			
-			/*for (var i:int = 0; i < 2; i++ )
+
+			var clouds:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
+			var cloudslength:int = clouds.length;
+			var cloudiness:int = int(Math.ceil(size / 127 * 0.55));
+			for (var j:int = 0; j < cloudiness; j++ )
 			{
-				var b:Background = new Background(textures[3], i * 8000, 120, 7, 5, 8);
-				b.x = (b.posX + -camX) /b.z;
-				b.visible = false;
-				Backgrounds.push(b);
-				addChild(b);
-			}*/
-			
-			for (var j:int = 0; j < 50; j++ )
-			{
-				var b2:Background = new Background(textures[MathHelper.nextInt(3)], MathHelper.nextInt(34000), MathHelper.nextInt(280) - 50, 4, 1, 1);
-				b2.x = (b2.posX + -camX) /b2.z;
+				var randomHeight:int = MathHelper.nextInt(380);
+				var b2:Background = new Background(clouds[MathHelper.nextInt(cloudslength)], MathHelper.nextInt(size + 2500) - 500, randomHeight - 50, 4 + (randomHeight / 100), 1 - (randomHeight / 800), 1 - (randomHeight / 800));
+				b2.x = b2.posX / b2.z;
 				b2.visible = false;
 				Backgrounds.push(b2);
 				addChild(b2);

@@ -20,6 +20,7 @@ package myth.data
 		public var ObjectData:Vector.<Vector.<int>>;
 		public var endPointPosition:Number;
 		public var startSpeed:Number;
+		public var levelLength:int;
 		
 		public function LevelData()
 		{	
@@ -40,33 +41,42 @@ package myth.data
 					endPointPosition = levelData.objects[i].x;
 				}
 			}
+			
 			//set level startSpeed
 			startSpeed = levelData.speed;
 			nextLvlName = levelData.next_level_name;
+			
 			//set enemy data in vector
 			enemyData = new Vector.<Vector.<int>>(levelData.enemies.length);
 			for (i = 0; i < levelData.enemies.length; i++) 
 			{
 				enemyData[i] = new <int>[ levelData.enemies[i].type, levelData.enemies[i].spawnX, levelData.enemies[i].spawnY ];
 			}
+			
 			//set tile data in vector
 			tileData = new Vector.<int>(levelData.tiles.length);
 			for (i = 0; i < levelData.tiles.length; i++) 
 			{
 				tileData[i] = levelData.tiles[i].type as int;
 			}
+			
+			//level length
+			levelLength = levelData.tiles.length;
+			
 			//set layer data in vector
 			backgroundAssetData = new Vector.<Vector.<int>> (levelData.background_props.length);
 			for (i = 0; i < levelData.background_props.length; i++) 
 			{
 				backgroundAssetData[i] = new <int>[ levelData.background_props[i].type, levelData.background_props[i].depth, levelData.background_props[i].x, levelData.background_props[i].y];
 			}
+			
 			//set object data in vector
 			ObjectData = new Vector.<Vector.<int>> (levelData.objects.length);
 			for (i = 0; i < levelData.objects.length; i++) 
 			{
 				ObjectData[i] = new <int>[ levelData.objects[i].type, levelData.objects[i].x, levelData.objects[i].y];
 			}
+			
 			//set zonedata in vector
 			zoneData = new Vector.<Vector.<int>>(levelData.zones.length);
 			for (i = 0; i < levelData.zones.length; i++) 

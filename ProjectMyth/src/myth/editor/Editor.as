@@ -275,15 +275,16 @@ package myth.editor
 			
 			//BACKGROUND
 			saveFile.background_props = new Array();
-			/*for (var j:int = 0; j < 1; j++ )
+			var backgroundLength:int = FIELD_BACKGROUND.BACKGROUND_CREATED.length;
+			for (var j:int = 0; j < backgroundLength; j++ )
 			{
 				var bg:Object = new Object();
-				bg.type = 0;
-				bg.depth = 1;
-				bg.x = 0;
-				bg.y = 0;
+				bg.type = FIELD_BACKGROUND.BACKGROUND_CREATED[j].type;
+				bg.depth = FIELD_BACKGROUND.BACKGROUND_CREATED[j].z;
+				bg.x = FIELD_BACKGROUND.BACKGROUND_CREATED[j].posX;
+				bg.y = FIELD_BACKGROUND.BACKGROUND_CREATED[j].y;
 				saveFile.background_props.push(bg);
-			}*/
+			}
 			
 			//OBJECTS
 			saveFile.objects = new Array();
