@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<menu>
+		<t name="loading.tap">Tap om door tegaan</t>
+		
+		<t name="main.play">Spelen</t>
+		<t name="main.editor">Editor</t>
+		<t name="main.options">Instellingen</t>
+		<t name="main.credits">Credits</t>
+		<t name="main.version">Versie</t>
+	</menu>
+	
+	<editor>
+		<t name="menu.menu">Hoofd Menu</t>
+		<t name="menu.create">Nieuw Level</t>
+		<t name="menu.load">Level Laden</t>
+		
+		<t name="side_menu.new">Nieuw</t>
+		<t name="side_menu.menu">Menu</t>
+		<t name="side_menu.load">Laden</t>
+		<t name="side_menu.save">Opslaan</t>
+		<t name="side_menu.settings">Instellingen</t>
+		<t name="side_menu.test">Testen</t>
+		
+		<t name="item_cat.objects">Objecten</t>
+		<t name="item_cat.background">Achtergronden</t>
+		
+		<t name="alert.warning">Waarschuwing!</t>
+		<t name="alert.yes">Ja</t>
+		<t name="alert.no">Nee</t>
+		<t name="alert.save_new">Weet je zeker dat je een nieuwe level wilt maken?</t>
+		<t name="alert.save_menu">Weet je zeker dat je naar het hoofd menu wilt gaan zonder op te slaan?</t>
+		<t name="alert.save_load">Weet je zeker dat je dit level niet eerst wilt opslaan?</t>
+	</editor>
+	
+	<game>
+		<t name="game1">game2</t>
+	</game>
+</data>

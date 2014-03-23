@@ -10,6 +10,7 @@ package myth.graphics
 	import myth.gui.game.GuiLoading;
 	import treefortress.spriter.SpriterLoader;
 	import treefortress.spriter.SpriterClip;
+	import myth.lang.Lang;
 	
 	public class TextureList 
 	{
@@ -84,10 +85,12 @@ package myth.graphics
 			assets.enqueue(appDir.resolvePath("tex/background"));
 			assets.enqueue(appDir.resolvePath("tex/gui"));
 			assets.enqueue(appDir.resolvePath("tex/editor"));
+			assets.enqueue(appDir.resolvePath("lang"));
 				
 			assets.loadQueue(function(ratio:Number):void {
 				GuiLoading.progress = ratio;
 				if (ratio == 1.0) {
+					Lang.init();
 					GuiLoading.ready++;
 				}
 			});

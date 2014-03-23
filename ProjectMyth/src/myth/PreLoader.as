@@ -12,6 +12,8 @@ package myth
 	import myth.util.ScaleHelper;
 	import treefortress.spriter.SpriterClip;
 	import starling.events.Event;
+	import flash.system.Capabilities;
+	import myth.data.GameData;
 	
 	public class PreLoader extends Sprite
 	{
@@ -27,6 +29,8 @@ package myth
 			screen.scaleX = stage.fullScreenWidth / 1280;
 			screen.scaleY = stage.fullScreenHeight / 768;
 			addChild(screen);
+			
+			GameData.SYSTEM_LANG_ID = getLanguageID();
 			
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
@@ -51,6 +55,16 @@ package myth
 		{
 			Main.onDeactivate(e);
 			NativeApplication.nativeApplication.exit();
+		}
+		
+		public function getLanguageID():int
+		{
+			var lang:String = Capabilities.language;
+			switch(lang)
+			{
+				case "nl": return 1;
+				default: return 0;
+			}
 		}
 	}
 }

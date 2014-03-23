@@ -22,6 +22,7 @@ package myth.editor
 	import myth.util.ScaleHelper;
 	import com.adobe.serialization.json.JSON;
 	import myth.util.MathHelper;
+	import myth.lang.Lang;
 	
 	public class Editor extends Sprite
 	{		
@@ -230,9 +231,9 @@ package myth.editor
 			{
 				switch(id)
 				{
-					case 10: alert(10, "WARNING!", "Are you sure you want to create a new level?", "Yes", "No"); break;
-					case 11: alert(11, "WARNING!", "Are you sure you want to go to the main menu without saving?", "Yes", "No"); break;
-					case 12: alert(12, "WARNING!", "Are you sure you don't want to save this level first?", "Yes", "No"); break;
+					case 10: alert(10, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_new"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
+					case 11: alert(11, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_menu"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
+					case 12: alert(12, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_load"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
 				}
 			}
 			else if (id == 10) //NEW

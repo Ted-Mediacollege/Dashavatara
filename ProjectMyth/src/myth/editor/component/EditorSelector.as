@@ -6,6 +6,7 @@ package myth.editor.component
 	import myth.editor.EditorFiles;
 	import myth.editor.Editor;
 	import myth.graphics.TextureList;
+	import myth.lang.Lang;
 
 	public class EditorSelector extends Sprite
 	{
@@ -43,8 +44,8 @@ package myth.editor.component
 			
 			switch(CAT)
 			{
-				case CAT_OBJECTS: cat_text.text.text = "Objects"; current_items = EditorFiles.getObjectNames(Editor.theme); break;
-				case CAT_BACKGROUND: cat_text.text.text = "Background"; current_items = EditorFiles.getBackgroundNames(Editor.theme); break;
+				case CAT_OBJECTS: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.objects"); current_items = EditorFiles.getObjectNames(Editor.theme); break;
+				case CAT_BACKGROUND: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.background"); current_items = EditorFiles.getBackgroundNames(Editor.theme); break;
 				default: break;
 			}
 			
