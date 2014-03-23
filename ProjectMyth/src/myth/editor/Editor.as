@@ -259,6 +259,9 @@ package myth.editor
 			saveFile.id = 0;
 			saveFile.speed = speed;
 			
+			//ZONES
+			saveFile.zones = new Array();
+			
 			//ENEMIES
 			saveFile.enemies = new Array();
 			/*for (var i:int = 0; i < 1; i++ )
