@@ -30,7 +30,7 @@ package myth.gui.game
 		private var button_editor_settings:GuiButton;
 		private var button_editor_test:GuiButton;
 		
-		private var grey_screen:Shape;
+		public var grey_screen:Shape;
 		
 		private var editor:Editor;
 		public var inEditor:Boolean = false;
@@ -76,7 +76,7 @@ package myth.gui.game
 			{
 				menu_main(false);
 				editor_menu(true);
-				editor.load(levelString);
+				editor.load(levelString, true);
 				inEditor = true;
 				grey_screen.visible = false;
 			}

@@ -5,12 +5,12 @@ package myth.editor.component
 	import myth.graphics.TextureList;
 	import myth.editor.Editor;
 	
-	public class Scroll extends Sprite
+	public class EditorScroll extends Sprite
 	{		
 		private var art_background:Sprite;
 		private var art_scroll:Image;
 		
-		public function Scroll() 
+		public function EditorScroll() 
 		{
 			Editor.camX = 0;
 			

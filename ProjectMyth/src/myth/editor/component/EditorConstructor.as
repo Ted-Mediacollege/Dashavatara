@@ -6,7 +6,7 @@ package myth.editor.component
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	
-	public class Constructor extends Sprite
+	public class EditorConstructor extends Sprite
 	{
 		private var editor:Editor;
 		
@@ -30,7 +30,7 @@ package myth.editor.component
 		public var button_rotate:Image;
 		public var button_depth:Image;
 		
-		public function Constructor(e:Editor) 
+		public function EditorConstructor(e:Editor) 
 		{
 			editor = e;
 			
@@ -122,11 +122,11 @@ package myth.editor.component
 				
 				if (menuY > 0 && menuY < 56)
 				{
-					if (editor.CONSTRUCTOR.type == Selector.CAT_BACKGROUND)
+					if (editor.CONSTRUCTOR.type == EditorSelector.CAT_BACKGROUND)
 					{
 						editor.FIELD_BACKGROUND.addBackground(editor.CONSTRUCTOR.item_name, (editor.CONSTRUCTOR.item.x + (Editor.camX / 2)) * 2, editor.CONSTRUCTOR.item.y, 2, 1, 1);
 					}
-					else if (editor.CONSTRUCTOR.type == Selector.CAT_OBJECTS)
+					else if (editor.CONSTRUCTOR.type == EditorSelector.CAT_OBJECTS)
 					{
 						editor.FIELD_OBJECTS.addObject(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
 					}

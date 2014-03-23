@@ -7,7 +7,7 @@ package myth.editor.component
 	import myth.editor.Editor;
 	import myth.graphics.TextureList;
 
-	public class Selector extends Sprite
+	public class EditorSelector extends Sprite
 	{
 		public var cat_text:GuiText;
 		
@@ -21,7 +21,7 @@ package myth.editor.component
 		public var current_items:Vector.<String>;
 		public var item_art:Image;
 		
-		public function Selector() 
+		public function EditorSelector() 
 		{
 			
 		}
