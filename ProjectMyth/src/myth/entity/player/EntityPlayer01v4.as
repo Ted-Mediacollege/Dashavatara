@@ -77,6 +77,13 @@ package myth.entity.player
 		private var j:int = 0;
 		private var hit:Boolean;
 		private var previousPos:Point = null;
+		
+		private var thisSwipeHit:Boolean = false;
+		private var secondRegister:Boolean = false;
+		private var swipeMaxAngle:Number = (1 / 4) * Math.PI;
+		private var previousAngle:Number;
+		private var swipeCount:int = 0;
+		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
 			//trace("touch");
 			//data vector = posX, posY, movedX, movedY
@@ -92,10 +99,23 @@ package myth.entity.player
 				previousPos = thisPos;
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
 				previousPos = null;
+				thisSwipeHit = false;
+				secondRegister = false;
 				Debug.test(function():void { 
 					Main.world.debugShape2.graphics.clear();
 				}, Debug.DrawArracks);
 			}else if (e.touches[0].phase == TouchPhase.MOVED) {
+				if (secondRegister) {
+					var delta2:Point = previousPos.subtract(thisPos);
+					var thisAngle:Number = MathHelper.pointToRadian(0, delta2.x, 0, delta2.y);
+					var angelDelta:Number = thisAngle - previousAngle;
+					//trace("---------------------angleDelta: " + angelDelta);
+					if (angelDelta > swipeMaxAngle || angelDelta < -swipeMaxAngle) {
+						thisSwipeHit = false;
+						swipeCount++;
+						trace("newSwipe: "+swipeCount);
+					}
+				}
 				var dist:Point = thisPos.subtract(previousPos);
 				var distNumber:Number = dist.length;
 				var checks:int = Math.floor(distNumber / 5);
@@ -116,22 +136,38 @@ package myth.entity.player
 				var part:slashPart = new slashPart(data[0], data[1],12);
 				parts.push(part);
 				
-				for (j = Main.world.entityManager.enemyList.length - 1; j > -1; j--) {
-					hit = false;
-					for (var l:int = 0; l < testPoints.length; l++) {
-						if (Main.world.entityManager.enemyList[j].collider.intersectPoint(testPoints[l])) {
-							hit = true;
-							break;
+				//check hit
+				//if(thisSwipeHit){
+					for (j = Main.world.entityManager.enemyList.length - 1; j > -1; j--) {
+						hit = false;
+						for (var l:int = 0; l < testPoints.length; l++) {
+							if (Main.world.entityManager.enemyList[j].collider.intersectPoint(testPoints[l])) {
+								hit = true;
+								break;
+							}
+						}
+						if (hit) {
+							thisSwipeHit = true;
+							trace("hit:" + Main.world.entityManager.enemyList[j].Healt);
+							if (Main.world.entityManager.enemyList[j].lastSwipe != swipeCount) {
+								Main.world.entityManager.enemyList[j].lastSwipe = swipeCount;
+								if (Main.world.entityManager.enemyList[j].hit( -25)) {
+									Main.world.entityManager.killEnemy(Main.world.entityManager.enemyList[j]);
+									
+									
+									
+									
+								}
+							}
 						}
 					}
-					if (hit) {
-						trace("hit:"+Main.world.entityManager.enemyList[j].Healt);
-						if (Main.world.entityManager.enemyList[j].hit( -25)) {
-							Main.world.entityManager.removeChild(Main.world.entityManager.enemyList[j]);
-							Main.world.entityManager.enemyList.splice(j , 1);
-						}
-					}
+				//}
+				if (!secondRegister) {
+					secondRegister = true;
 				}
+				//var  vec:Vec2 = Vec2.weak(0, 0);
+				var delta:Point = previousPos.subtract(thisPos);
+				previousAngle = MathHelper.pointToRadian(0, delta.x, 0, delta.y);
 				previousPos = thisPos;
 			}
 		}

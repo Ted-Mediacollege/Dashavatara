@@ -20,7 +20,7 @@ package myth.entity.enemy
 		public function EntityEnemyWalking() 
 		{
 			super(EnemyType.Walking_01, 100, 170, -50, -170);
-			
+			health = 50;
 			animationWalk = new MovieClip(TextureList.atlas_enemyRunning.getTextures("RunningEnemy"), 30);
 			animationWalk.x = 0;
 			animationWalk.y = 0;

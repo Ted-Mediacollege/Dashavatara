@@ -14,6 +14,7 @@ package myth.entity.enemy
 		public var damage:int  = 10;
 		internal var health:int = 100;
 		public var enemyType:int;
+		public var lastSwipe:int;
 		
 		public function EntityEnemyBase(_enemyType:int,_colWidth:int=80,_colHeight:int=80,_pivotX:int=-40,_pivotY:int=-40) 
 		{

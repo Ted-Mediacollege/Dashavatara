@@ -78,7 +78,8 @@ package myth.graphics
 				"spriteranims/transformation/transAnim.scml", 
 				"spriteranims/player1/animLion.scml", 
 				"spriteranims/player2/animFlute.scml", 
-				"spriteranims/player4/animSwine.scml"
+				"spriteranims/player4/animSwine.scml", 
+				"spriteranims/enemydeath/enemydeaths.scml"
 			]);
 
 			var appDir:File = File.applicationDirectory;

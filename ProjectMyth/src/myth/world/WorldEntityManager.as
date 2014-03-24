@@ -4,6 +4,7 @@ package myth.world
 	import flash.geom.Rectangle;
 	import myth.entity.bullet.EntityBulletBase;
 	import myth.entity.bullet.EntityBulletClaw;
+	import myth.entity.effects.deahtRunning;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.enemy.EnemyType;
 	import myth.entity.enemy.EntityEnemyFlying;
@@ -44,7 +45,20 @@ package myth.world
 			addChild(enemy);
 		}
 		
-		private function removeEnemy(e:EntityEnemyBase, number:int):void {
+		private function makeDeathPart(xPos:int, yPos:int, e:int) :void{
+			var deathrunnig:deahtRunning = new deahtRunning();
+			deathrunnig.x = xPos;
+			deathrunnig.y = yPos;
+			addChild(deathrunnig);
+		}
+		
+		public function killEnemy(e:EntityEnemyBase):void {
+			removeChild(e);
+			enemyList.splice(getChildIndex(e) , 1);
+			makeDeathPart(e.x, e.y,e.enemyType);
+		}
+		
+		private function removeEnemy(e:EntityEnemyBase,number:int):void {
 			removeChild(enemyList[number]);
 			enemyList.splice(number , 1);
 		}

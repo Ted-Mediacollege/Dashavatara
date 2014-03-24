@@ -109,7 +109,7 @@ package myth.entity.player
 		
 		public function pushBack():void
 		{
-			trace("push");
+			trace("push "+Main.world.deltaSpeed);
 			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-140*Main.world.deltaSpeed*Main.world.physicsWorld.playerBody.mass, -200*Main.world.physicsWorld.playerBody.mass));
 		}
 		
