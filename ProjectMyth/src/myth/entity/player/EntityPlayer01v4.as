@@ -154,6 +154,9 @@ package myth.entity.player
 								if (Main.world.entityManager.enemyList[j].hit( -25)) {
 									Main.world.entityManager.killEnemy(Main.world.entityManager.enemyList[j]);
 									
+									
+									
+									
 								}
 							}
 						}

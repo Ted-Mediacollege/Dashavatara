@@ -10,6 +10,7 @@ package myth.world
 	import myth.entity.enemy.EntityEnemyFlying;
 	import myth.entity.enemy.EntityEnemyWalking;
 	import myth.entity.player.EntityPlayerBase;
+	import myth.entity.SimpleEntity;
 	import starling.display.Sprite;
 	import myth.util.ScaleHelper;
 	import myth.util.MathHelper;
@@ -54,7 +55,7 @@ package myth.world
 		
 		public function killEnemy(e:EntityEnemyBase):void {
 			removeChild(e);
-			enemyList.splice(getChildIndex(e) , 1);
+			enemyList.splice(enemyList.indexOf(e) , 1);
 			makeDeathPart(e.x, e.y,e.enemyType);
 		}
 		

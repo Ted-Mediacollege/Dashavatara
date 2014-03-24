@@ -3,7 +3,7 @@ package myth.world.worldZones.zone
 	public class Zone 
 	{
 		internal var privateZoneType:int;
-		internal var privateX;
+		internal var privateX:int;
 		public function Zone(_x:int,_zoneType:int) 
 		{
 			privateX = _x;

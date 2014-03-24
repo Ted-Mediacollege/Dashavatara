@@ -5,6 +5,7 @@ package myth.entity.effects
 	import treefortress.spriter.SpriterClip;
 	import myth.graphics.TextureList;
 	import starling.core.Starling;
+	import myth.Main
 	public class deahtRunning extends SimpleEntity
 	{
 		private var image:SpriterClip;
@@ -18,8 +19,18 @@ package myth.entity.effects
 			image.play("running_death");
 			addChild(image);
 			Starling.juggler.add(image);
+			image.animationComplete.add(
+				function(clip:SpriterClip):void
+				{
+					remove();
+				}
+			);
 			
 			artLayer.addChild(image);
+		}
+		
+		private function remove():void {
+			removeFromParent();
 		}
 		
 	}

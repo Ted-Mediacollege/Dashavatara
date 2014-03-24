@@ -6,7 +6,7 @@ package myth.entity
 		public var artLayer:Sprite = new Sprite();
 		public function SimpleEntity() 
 		{
-			
+			addChild(artLayer);
 		}
 		
 	}

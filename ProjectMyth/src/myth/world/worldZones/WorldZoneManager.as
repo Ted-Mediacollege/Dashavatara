@@ -33,7 +33,7 @@ package myth.world.worldZones
 			updateZone();
 		}
 		private function checkEnterZone():void {
-			var dist = Main.world.distance;
+			var dist:Number = Main.world.distance;
 			if(zones.length > 0){
 				if (dist > zones[0].x) {
 					if(zones[0].zoneType == ZoneType.Speed){
