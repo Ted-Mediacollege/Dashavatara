@@ -11,7 +11,7 @@ package myth.entity.effects
 		public function deahtRunning() 
 		{
 			//player art
-			image = TextureList.spriterLoader.getSpriterClip("death_animations");
+			image = TextureList.spriterLoader.getSpriterClip("enemydeaths");
 			image.playbackSpeed = 1;
 			//image.scaleX = 0.7;
 			//image.scaleY = 0.7;
