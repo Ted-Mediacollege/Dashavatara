@@ -219,6 +219,7 @@ package myth.editor
 			FIELD_TILES.tick(camX);
 			FIELD_BACKGROUND.tick(camX);
 			FIELD_OBJECTS.tick(camX);
+			FIELD_ENEMIES.tick(camX);
 		}
 		
 		public function action(id:int, fromAlert:Boolean = false):void

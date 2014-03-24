@@ -18,8 +18,15 @@ package myth.editor
 		private static var background_earth:Vector.<String> = new <String>["earth_tree"];
 		private static var background_hell:Vector.<String> = new <String>["earth_tree"];
 		
+		private static var enemies:Vector.<String> = new <String>[""];
+		
 		public function EditorFiles() 
 		{
+		}
+		
+		public static function getEnemieNames():Vector.<String>
+		{
+			return enemies;
 		}
 		
 		public static function getLuchtName(theme:int):String
