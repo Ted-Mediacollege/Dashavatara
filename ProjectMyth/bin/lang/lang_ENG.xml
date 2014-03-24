@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<menu>
+		<t name="loading.tap">Tap to continue</t>
+		
+		<t name="main.play">Play</t>
+		<t name="main.editor">Editor</t>
+		<t name="main.options">Options</t>
+		<t name="main.credits">Credits</t>
+		<t name="main.version">Version</t>
+	</menu>
+	
+	<editor>
+		<t name="menu.menu">Main Menu</t>
+		<t name="menu.create">Create Level</t>
+		<t name="menu.load">Load level</t>
+		
+		<t name="side_menu.new">New</t>
+		<t name="side_menu.menu">Menu</t>
+		<t name="side_menu.load">Load</t>
+		<t name="side_menu.save">Save</t>
+		<t name="side_menu.settings">Settings</t>
+		<t name="side_menu.test">Test</t>
+		
+		<t name="item_cat.objects">Objects</t>
+		<t name="item_cat.background">Backgrounds</t>
+		
+		<t name="alert.warning">Warning!</t>
+		<t name="alert.yes">Yes</t>
+		<t name="alert.no">No</t>
+		<t name="alert.save_new">Are you sure you want to create a new level?</t>
+		<t name="alert.save_menu">Are you sure you want to go to the main menu without saving?</t>
+		<t name="alert.save_load">Are you sure you don't want to save this level first?</t>
+	</editor>
+	
+	<game>
+		<t name="game1">game2</t>
+	</game>
+</data>

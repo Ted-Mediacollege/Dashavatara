@@ -47,6 +47,19 @@ package myth.editor.field
 					addChild(b2);
 				}
 			}
+			else if (t == Theme.EARTH)
+			{
+				var mountain:Texture = TextureList.assets.getTexture("earth_bergen");
+				var amount:int = int(Math.ceil((size / 1280) / 4));
+				for (var k:int = 0; k < amount; k++ )
+				{
+					var b3:Background = new Background(mountain, (k * 1280) * 4, 0, 4, 1, 1);
+					b3.x = b3.posX / b3.z;
+					b3.visible = false;
+					BACKGROUND_RANDOM.push(b3);
+					addChild(b3);
+				}
+			}
 				
 			var PLAYER_SPAWN:Background = new Background(TextureList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
 			PLAYER_SPAWN.visible = false;
@@ -54,8 +67,7 @@ package myth.editor.field
 			addChild(PLAYER_SPAWN);
 			BACKGROUND_SPAWN = PLAYER_SPAWN;
 				
-			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 800, 768 - 125, 1, 1, 1);
-			PLAYER_END.pivotY = PLAYER_END.height;
+			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 800, 221, 1, 1, 1);
 			PLAYER_END.visible = false;
 			BACKGROUND_RANDOM.push(PLAYER_END);
 			addChild(PLAYER_END);
@@ -70,6 +82,13 @@ package myth.editor.field
 		public function buildFile(a:Array, size:int, t:int):void
 		{
 			buildCommon(size, t);
+			
+			var arrayLength:int = a.length;
+			var bgNames:Vector.<String> = EditorFiles.getBackgroundNames(t);
+			for (var i:int = 0; i < arrayLength; i++ )
+			{
+				addBackground(bgNames[a[i].type], a[i].x, a[i].y, a[i].depth, 1, 1);
+			}
 		}
 		
 		public function tick(camX:Number):void
@@ -103,7 +122,7 @@ package myth.editor.field
 		
 		public function addBackground(tex:String, px:Number, py:Number, pz:Number, sx:Number, sy:Number):void
 		{
-			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 1, px, py, pz, sx, sy);
+			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, pz, sx, sy);
 			b.x = b.posX / b.z;
 			b.visible = false;
 			BACKGROUND_CREATED.push(b);

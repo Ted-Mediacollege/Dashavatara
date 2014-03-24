@@ -16,7 +16,7 @@ package myth.entity.enemy
 		public function EntityEnemyFlying() 
 		{
 			super(EnemyType.Flying_01);
-			
+			health = 50;
 			flyAnimation = new MovieClip(TextureList.atlas_enemy.getTextures("FlyingEnemy"), 30);
 			flyAnimation.x = 0;
 			flyAnimation.y = 0;

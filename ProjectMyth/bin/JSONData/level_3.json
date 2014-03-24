@@ -3,6 +3,7 @@
 	"next_level_name":"level_1",
 	"id":0,
 	"speed":4.5,
+	"theme":0,
 	"zones":[
 		{"type":0,"xPos":1000,"deltaSpeed":1,"zonewidth":200},
 		{"type":0,"xPos":2000,"deltaSpeed":1,"zonewidth":200}

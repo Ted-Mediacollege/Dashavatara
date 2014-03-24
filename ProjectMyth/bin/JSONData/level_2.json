@@ -2,10 +2,11 @@
 	"name":"level_2",
 	"next_level_name":"level_3",
 	"id":0,
-	"speed":3,
+	"speed":2,
+	"theme":0,
 	"zones":[
-		{"type":0,"xPos":1000,"deltaSpeed":1,"zonewidth":200},
-		{"type":0,"xPos":2000,"deltaSpeed":1,"zonewidth":200}
+		{"type":0,"xPos":2000,"deltaSpeed":4,"zonewidth":200},
+		{"type":0,"xPos":5000,"deltaSpeed":4,"zonewidth":200}
 	],
 	"enemies":[
 		{"type":0,"spawnX":400,"spawnY":640},

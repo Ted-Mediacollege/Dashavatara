@@ -11,6 +11,7 @@ package myth.gui.game
 	import myth.Main;
 	import myth.PreLoader;
 	import myth.util.ScaleHelper;
+	import myth.lang.Lang;
 	
 	public class GuiLoading extends GuiScreen
 	{
@@ -46,7 +47,7 @@ package myth.gui.game
 			}
 			else
 			{
-				KevinIsEenRareEngeVampier.text.text = "Tap to continue";
+				KevinIsEenRareEngeVampier.text.text = Lang.trans(Lang.MENU, "loading.tap");
 			}
 		}
 		

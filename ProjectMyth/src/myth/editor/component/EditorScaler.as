@@ -1,10 +1,10 @@
 package myth.editor.component 
 {
 	import starling.display.Sprite;
-
-	public class Rotater extends Sprite
+	
+	public class EditorScaler extends Sprite
 	{
-		public function Rotater() 
+		public function EditorScaler() 
 		{
 			
 		}

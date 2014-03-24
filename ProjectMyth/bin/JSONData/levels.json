@@ -7,6 +7,7 @@
 		"next_level_name":"level_2",
 		"id":0,
 		"speed":4,
+		"theme":0,
 		"enemies":[
 			{"type":0,"spawnX":5600,"spawnY":640},
 			{"type":0,"spawnX":6200,"spawnY":640},

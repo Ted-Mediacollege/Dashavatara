@@ -6,8 +6,9 @@ package myth.editor.component
 	import myth.editor.EditorFiles;
 	import myth.editor.Editor;
 	import myth.graphics.TextureList;
+	import myth.lang.Lang;
 
-	public class Selector extends Sprite
+	public class EditorSelector extends Sprite
 	{
 		public var cat_text:GuiText;
 		
@@ -21,7 +22,7 @@ package myth.editor.component
 		public var current_items:Vector.<String>;
 		public var item_art:Image;
 		
-		public function Selector() 
+		public function EditorSelector() 
 		{
 			
 		}
@@ -43,8 +44,8 @@ package myth.editor.component
 			
 			switch(CAT)
 			{
-				case CAT_OBJECTS: cat_text.text.text = "Objects"; current_items = EditorFiles.getObjectNames(Editor.theme); break;
-				case CAT_BACKGROUND: cat_text.text.text = "Background"; current_items = EditorFiles.getBackgroundNames(Editor.theme); break;
+				case CAT_OBJECTS: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.objects"); current_items = EditorFiles.getObjectNames(Editor.theme); break;
+				case CAT_BACKGROUND: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.background"); current_items = EditorFiles.getBackgroundNames(Editor.theme); break;
 				default: break;
 			}
 			

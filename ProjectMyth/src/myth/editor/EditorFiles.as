@@ -4,17 +4,19 @@ package myth.editor
 	
 	public class EditorFiles 
 	{
+		//NEED TO BE THE SAME IN WorldTiles2.as
 		private static var tiles_sky:Vector.<String> = new <String>["sky_tile00", "sky_tile01"];
 		private static var tiles_earth:Vector.<String> = new <String>["earth_tile00", "earth_tile01"];
 		private static var tiles_hell:Vector.<String> = new < String > [""];
 		
 		private static var objects_sky:Vector.<String> = new <String>["sky_pilar"];
 		private static var objects_earth:Vector.<String> = new <String>["earth_pilaar"];
-		private static var objects_hell:Vector.<String> = new <String>[""];
+		private static var objects_hell:Vector.<String> = new <String>["earth_pilaar"];
 		
+		//NEED TO BE THE SAME IN WorldBackground.as
 		private static var background_sky:Vector.<String> = new <String>["sky_tree"];
-		private static var background_earth:Vector.<String> = new <String>[""];
-		private static var background_hell:Vector.<String> = new <String>[""];
+		private static var background_earth:Vector.<String> = new <String>["earth_tree"];
+		private static var background_hell:Vector.<String> = new <String>["earth_tree"];
 		
 		public function EditorFiles() 
 		{

@@ -12,7 +12,7 @@ package myth.entity.enemy
 	public class EntityEnemyBase extends Entity
 	{
 		public var damage:int  = 10;
-		private var health:int = 100;
+		internal var health:int = 100;
 		public var enemyType:int;
 		
 		public function EntityEnemyBase(_enemyType:int,_colWidth:int=80,_colHeight:int=80,_pivotX:int=-40,_pivotY:int=-40) 
@@ -33,6 +33,10 @@ package myth.entity.enemy
 		
 		override public function tick():void {
 			super.tick();
+		}
+		
+		public function get Healt():int {
+			return health;
 		}
 	}
 
