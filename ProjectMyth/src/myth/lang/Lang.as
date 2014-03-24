@@ -29,6 +29,7 @@ package myth.lang
 			switch(id)
 			{
 				case 1: language = new Language(TextureList.assets.getXml("lang_NL")); break;
+				case 99: language = new Language(TextureList.assets.getXml("lang_YOLO")); break;
 				default: language = new Language(TextureList.assets.getXml("lang_ENG")); break;
 			}
 		}

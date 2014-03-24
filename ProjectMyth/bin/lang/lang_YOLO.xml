@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<menu>
-		<t name="loading.tap">Tap to continue</t>
+		<t name="loading.tap">Swag yolo 420</t>
 		
-		<t name="main.play">Play</t>
-		<t name="main.editor">Editor</t>
-		<t name="main.options">Options</t>
-		<t name="main.credits">Credits</t>
-		<t name="main.version">Version</t>
+		<t name="main.play">1v1 arena</t>
+		<t name="main.editor">420 swagator</t>
+		<t name="main.options">smoke weed</t>
+		<t name="main.credits">MLG Clan</t>
+		<t name="main.version">Weed</t>
 		
-		<t name="main.back">Back to Main Menu</t>
+		<t name="main.back">Smoke weed 420</t>
 	</menu>
 	
 	<editor>

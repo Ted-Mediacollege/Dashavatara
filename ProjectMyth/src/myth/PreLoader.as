@@ -31,6 +31,7 @@ package myth
 			addChild(screen);
 			
 			GameData.SYSTEM_LANG_ID = getLanguageID();
+			setOperator();
 			
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
@@ -64,6 +65,19 @@ package myth
 			{
 				case "nl": return 1;
 				default: return 0;
+			}
+		}
+		
+		public function setOperator():void
+		{
+			var os:String = Capabilities.os;
+			
+			switch(os)
+			{
+				case "Windows 8": break;
+				case "Windows 7": break;
+				//Windows Vista
+				//Windows XP
 			}
 		}
 	}

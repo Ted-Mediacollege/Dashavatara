@@ -15,16 +15,8 @@ package myth.graphics
 	public class TextureList 
 	{
 		//textures
-		[Embed(source="../../../lib/textures/gui_achtergrond.png")]
-		public static var gui_background_textures:Class;
 		[Embed(source="../../../lib/textures/player.png")]
 		public static var player_textures:Class;
-		[Embed(source="../../../lib/textures/backgroundtiles.png")]
-		public static var background_textures:Class;
-		[Embed(source="../../../lib/textures/background_sky.png")]
-		public static var background2_textures:Class;
-		[Embed(source="../../../lib/textures/level.png")]
-		public static var level_textures:Class;
 		[Embed(source="../../../lib/textures/fish.png")]
 		public static var fish_textures:Class;
 		[Embed(source="../../../lib/textures/RunningEnemy.png")]
@@ -33,16 +25,8 @@ package myth.graphics
 		public static var enemy_textures:Class;
 		
 		//xml files
-		[Embed(source = "../../../lib/textures/gui_achtergrond.xml", mimeType = "application/octet-stream")]
-		public static var gui_background_xml:Class;
 		[Embed(source="../../../lib/textures/player.xml", mimeType = "application/octet-stream")]
 		public static var player_xml:Class;
-		[Embed(source="../../../lib/textures/backgroundtiles.xml", mimeType = "application/octet-stream")]
-		public static var background_xml:Class;
-		[Embed(source="../../../lib/textures/background_sky.xml", mimeType = "application/octet-stream")]
-		public static var background2_xml:Class;
-		[Embed(source="../../../lib/textures/level.xml", mimeType = "application/octet-stream")]
-		public static var level_xml:Class;
 		[Embed(source="../../../lib/textures/fish.xml", mimeType = "application/octet-stream")]
 		public static var fish_xml:Class;
 		[Embed(source="../../../lib/textures/RunningEnemy.xml", mimeType = "application/octet-stream")]
@@ -104,11 +88,7 @@ package myth.graphics
 		
 		public static function load():void
 		{
-			atlas_gui_background = new TextureAtlas(Texture.fromBitmap(new gui_background_textures()), XML(new gui_background_xml()));
 			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
-			atlas_background = new TextureAtlas(Texture.fromBitmap(new background_textures()), XML(new background_xml()));
-			atlas_background2 = new TextureAtlas(Texture.fromBitmap(new background2_textures()), XML(new background2_xml()));
-			atlas_level = new TextureAtlas(Texture.fromBitmap(new level_textures()), XML(new level_xml()));
 			atlas_fish = new TextureAtlas(Texture.fromBitmap(new fish_textures()), XML(new fish_xml()));
 			atlas_enemyRunning = new TextureAtlas(Texture.fromBitmap(new enemyRunning_textures()), XML(new enemyRunning_xml()));
 			atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
