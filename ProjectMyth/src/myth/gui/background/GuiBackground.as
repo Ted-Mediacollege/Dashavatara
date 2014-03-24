@@ -23,7 +23,7 @@ package myth.gui.background
 			var bg:Image = new Image(TextureList.assets.getTexture("sky_lucht"));
 			addChild(bg);
 			
-			var textures:Vector.<Texture> = TextureList.atlas_background.getTextures("background");
+			var textures:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
 			
 			for (var i:int = 0; i < 15; i++ )
 			{
