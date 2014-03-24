@@ -8,6 +8,8 @@
 		<t name="main.options">Instellingen</t>
 		<t name="main.credits">Credits</t>
 		<t name="main.version">Versie</t>
+		
+		<t name="main.back">Terug naar het hoofd menu</t>
 	</menu>
 	
 	<editor>
