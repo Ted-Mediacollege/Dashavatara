@@ -21,6 +21,7 @@ package myth.entity.player
 	import starling.textures.Texture;
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
+	import myth.util.ScaleHelper;
 	//lion
 	public class EntityPlayer01v4 extends EntityPlayerBase
 	{
@@ -79,35 +80,33 @@ package myth.entity.player
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
 			//trace("touch");
 			//data vector = posX, posY, movedX, movedY
+			var thisPos:Point = new Point(e.touches[0].globalX/ScaleHelper.scaleX, e.touches[0].globalY/ScaleHelper.scaleY);
+			var testPoints:Vector.<Point> = new Vector.<Point>();
 			if (e.touches[0].phase == TouchPhase.BEGAN) {
 				//trace("began");
+				testPoints[0] = thisPos;
 				Debug.test(function():void { 
 					//Main.world.debugShape2.graphics.lineStyle(10, 0x00ff00, 0.7);
 					//Main.world.debugShape2.graphics.drawCircle(data[0], data[1], 55);
 				}, Debug.DrawArracks);
+				previousPos = thisPos;
 			}else if (e.touches[0].phase == TouchPhase.ENDED) {
 				previousPos = null;
 				Debug.test(function():void { 
 					Main.world.debugShape2.graphics.clear();
 				}, Debug.DrawArracks);
 			}else if (e.touches[0].phase == TouchPhase.MOVED) {
-				var thisPos:Point = new Point(data[0], data[1]);
-				var testPoints:Vector.<Point> = new Vector.<Point>();
-				if(previousPos!=null){
-					var dist:Point = thisPos.subtract(previousPos);
-					var distNumber:Number = dist.length;
-					var checks:int = Math.floor(distNumber / 5);
-					for (var k:int = 0; k < checks; k++) 
-					{
-						var point:Point = Point.interpolate(thisPos,previousPos,((checks-k)/checks));
-						testPoints.push(point);
-						Debug.test(function():void { 
-							Main.world.debugShape2.graphics.lineStyle(2, 0xff00ff, 0.7);
-							Main.world.debugShape2.graphics.drawCircle(point.x, point.y, 5);
-						}, Debug.DrawArracks);
-					}
-				}else {
-					testPoints[0] = new Point(data[0], data[1]);
+				var dist:Point = thisPos.subtract(previousPos);
+				var distNumber:Number = dist.length;
+				var checks:int = Math.floor(distNumber / 5);
+				for (var k:int = 0; k < checks; k++) 
+				{
+					var point:Point = Point.interpolate(thisPos,previousPos,((checks-k)/checks));
+					testPoints.push(point);
+					Debug.test(function():void { 
+						Main.world.debugShape2.graphics.lineStyle(2, 0xff00ff, 0.7);
+						Main.world.debugShape2.graphics.drawCircle(point.x, point.y, 5);
+					}, Debug.DrawArracks);
 				}
 				//trace("[testpoints]: " +testPoints.length);
 				Debug.test(function():void { 
@@ -133,7 +132,7 @@ package myth.entity.player
 						}
 					}
 				}
-				previousPos = new Point(data[0], data[1]);
+				previousPos = thisPos;
 			}
 		}
 		
