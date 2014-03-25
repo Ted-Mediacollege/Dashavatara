@@ -139,6 +139,7 @@ package myth.gui.game
 				if (button.buttonID == 13 && editorTesting)
 				{
 					main.switchGui(new GuiEditor(editorString));
+					return;
 				}
 				
 				//trace(pause + " " +pauseScreen);
