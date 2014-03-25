@@ -130,6 +130,10 @@ package myth.editor.component
 					{
 						editor.FIELD_OBJECTS.addObject(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
 					}
+					else if (editor.CONSTRUCTOR.type == EditorSelector.CAT_ENEMY)
+					{
+						editor.FIELD_ENEMIES.addEnemies(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
+					}
 					destory(false);
 					editor.removeChild(editor.CONSTRUCTOR);
 				}

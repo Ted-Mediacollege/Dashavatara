@@ -165,6 +165,14 @@ package myth.editor
 									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1);
 									return;
 								}
+								
+								item = FIELD_ENEMIES.getEnemiesAt(data[0], data[1]);
+								if (item != null)
+								{
+									CONSTRUCTOR.construct(item.item_name, 1, item.x, item.y);
+									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_ENEMIES) + 1);
+									return;
+								}
 							}
 						}
 						else
@@ -255,7 +263,7 @@ package myth.editor
 			}
 			else if (id == 12) //LOAD
 			{
-
+				
 			}
 			else if (id == 13) //SAVE
 			{
@@ -277,6 +285,10 @@ package myth.editor
 					else if (CONSTRUCTOR.type == EditorSelector.CAT_OBJECTS)
 					{
 						FIELD_OBJECTS.addObject(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
+					}
+					else if (CONSTRUCTOR.type == EditorSelector.CAT_ENEMY)
+					{
+						FIELD_ENEMIES.addEnemies(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
 					}
 					CONSTRUCTOR.destory(false);
 					removeChild(CONSTRUCTOR);

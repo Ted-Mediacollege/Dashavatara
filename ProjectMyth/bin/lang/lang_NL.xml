@@ -26,6 +26,7 @@
 		
 		<t name="item_cat.objects">Objecten</t>
 		<t name="item_cat.background">Achtergronden</t>
+		<t name="item_cat.enemie">Vijanden</t>
 		
 		<t name="alert.warning">Waarschuwing!</t>
 		<t name="alert.yes">Ja</t>

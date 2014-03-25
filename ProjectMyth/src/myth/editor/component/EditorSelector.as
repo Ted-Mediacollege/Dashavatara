@@ -39,13 +39,14 @@ package myth.editor.component
 		public function switch_cat(dir:int):void
 		{
 			CAT += dir;
-			if (CAT < CAT_OBJECTS) { CAT = CAT_BACKGROUND; }
-			if (CAT > CAT_BACKGROUND) { CAT = CAT_OBJECTS; }
+			if (CAT < CAT_OBJECTS) { CAT = CAT_ENEMY; }
+			if (CAT > CAT_ENEMY) { CAT = CAT_OBJECTS; }
 			
 			switch(CAT)
 			{
 				case CAT_OBJECTS: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.objects"); current_items = EditorFiles.getObjectNames(Editor.theme); break;
 				case CAT_BACKGROUND: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.background"); current_items = EditorFiles.getBackgroundNames(Editor.theme); break;
+				case CAT_ENEMY: cat_text.text.text = Lang.trans(Lang.EDITOR, "item_cat.enemie"); current_items = EditorFiles.getEnemieNames(); break;
 				default: break;
 			}
 			
