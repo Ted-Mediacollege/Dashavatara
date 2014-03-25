@@ -19,7 +19,7 @@ package myth.entity.player
 			animationWalk.y = 0;
 			animationWalk.loop = true;
 			animationWalk.play();
-			Starling.juggler.add(animationWalk);
+			Main.world.gameJuggler.add(animationWalk);
 			art.addChild(animationWalk);
 			
 			art.pivotX = art.width / 2;

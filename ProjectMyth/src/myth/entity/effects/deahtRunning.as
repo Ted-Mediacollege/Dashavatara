@@ -18,7 +18,7 @@ package myth.entity.effects
 			//image.scaleY = 0.7;
 			image.play("running_death");
 			addChild(image);
-			Starling.juggler.add(image);
+			Main.world.gameJuggler.add(image);
 			image.animationComplete.add(
 				function(clip:SpriterClip):void
 				{

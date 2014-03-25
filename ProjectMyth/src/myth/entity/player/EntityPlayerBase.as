@@ -105,7 +105,7 @@ package myth.entity.player
 					}
 				}
 			}
-			trace(Main.world.physicsWorld.playerBody.velocity.x + " - " + Main.world.deltaSpeed*60);
+			//trace(Main.world.physicsWorld.playerBody.velocity.x + " - " + Main.world.deltaSpeed*60);
 		}
 		
 		public function pushBack():void

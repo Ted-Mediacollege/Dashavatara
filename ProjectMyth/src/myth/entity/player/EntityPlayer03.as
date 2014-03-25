@@ -29,7 +29,7 @@ package myth.entity.player
 			image.scaleY = 1;
 			image.play("running1");
 			addChild(image);
-			Starling.juggler.add(image);
+			Main.world.gameJuggler.add(image);
 			jumping = false;
 			
 			/*image = new Image(TextureList.atlas_player.getTexture("player_4"));

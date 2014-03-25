@@ -20,6 +20,7 @@ package myth.world
 	import myth.gui.components.GuiButton;
 	import myth.Main;
 	import myth.world.worldZones.WorldZoneManager;
+	import starling.animation.Juggler;
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;
@@ -75,9 +76,11 @@ package myth.world
 		private var transformCircle:Image;
 		
 		public var levelData:LevelData;
+		public var gameJuggler:Juggler;
 		
 		public function World(g:GuiGame ,levelName:String = "level_1", _editorTesting:Boolean = false, _editorString:String = null) 
 		{
+			gameJuggler = new Juggler();
 			EntityPlayerBase.levelStart();
 			gui = g;
 			lvlName = levelName;
@@ -145,7 +148,7 @@ package myth.world
 			animTransform = TextureList.spriterLoader.getSpriterClip("transAnim");
 			animTransform.playbackSpeed = 1.5;
 			Display.add(animTransform,LayerID.GamePlayerFront);
-			Starling.juggler.add(animTransform);
+			gameJuggler.add(animTransform);
 			animTransform.visible = false;
 			
 			animTransform.animationComplete.add(
@@ -173,7 +176,7 @@ package myth.world
 		public function tick():void
 		{
 			
-			
+			gameJuggler.advanceTime(TimeHelper.deltaTime);
 			if (worldBuild) {
 				if(!levelComplete){
 					if (distance > endPointPosition-500) {

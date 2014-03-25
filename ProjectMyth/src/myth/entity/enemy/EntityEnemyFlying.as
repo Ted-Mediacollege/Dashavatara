@@ -22,7 +22,7 @@ package myth.entity.enemy
 			flyAnimation.y = 0;
 			flyAnimation.loop = true;
 			flyAnimation.play();
-			Starling.juggler.add(flyAnimation);
+			Main.world.gameJuggler.add(flyAnimation);
 			artLayer.addChild(flyAnimation);
 			
 			flyAnimation.pivotX = flyAnimation.width / 2;

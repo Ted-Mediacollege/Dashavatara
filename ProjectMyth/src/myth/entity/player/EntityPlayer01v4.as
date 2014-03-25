@@ -55,7 +55,7 @@ package myth.entity.player
 			image.scaleY = 0.7;
 			image.play("ren animatie");
 			addChild(image);
-			Starling.juggler.add(image);
+			Main.world.gameJuggler.add(image);
 			
 			artLayer.addChild(image);
 			artLayer.addChild(debugShape);

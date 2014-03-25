@@ -143,19 +143,22 @@ package myth.gui.game
 				}
 				
 				//trace(pause + " " +pauseScreen);
-				if (pause)
+				if (pauseScreen)
 				{
 					if(pauseScreen){
-						pauseScreen = false;
+						
 					}else {
-						pauseScreen = true;
+						//pauseScreen = true;
 					}
 					//Main.world.unflatten();
 					//Main.world.filter = null;
-					
+					pauseScreen = false;
+					removePauseButtons();
 				}
 				else if(pauseScreenImage==null)
 				{
+					/*pauseScreen = false;
+					pause = false;
 					//game screen to 1280X768 image
 					pauseScreenTexture = new RenderTexture(ScaleHelper.phoneX, ScaleHelper.phoneY);
 					var drawMatrix:Matrix = new Matrix();
@@ -167,7 +170,7 @@ package myth.gui.game
 					//pauseScreenImage.blendMode = BlendMode.MULTIPLY;
 					pauseScreenImage.width = 1280;
 					pauseScreenImage.height = 768;
-					pauseScreenImage.filter = pauseFilter;
+					//pauseScreenImage.filter = pauseFilter;
 					//pauseFilter.mode = FragmentFilterMode.ABOVE;
 					pauseFilter.cache();
 					
@@ -177,15 +180,17 @@ package myth.gui.game
 					pauseScreenImage2.height = 768;
 					
 					//pauseFilter2.mode = FragmentFilterMode.ABOVE;
-					pauseScreenImage2.filter = pauseFilter2;
-					pauseFilter2.cache();
+					//pauseScreenImage2.filter = pauseFilter2;
+					//pauseFilter2.cache();
 					gameScreen.addChild(pauseScreenImage2);
 					gameScreen.addChild(pauseScreenImage);
 					
 					Display.layerVisible(false,LayerID.GameLevel);
 					Display.layerVisible(false,LayerID.GameGui);
-					pauseScreen = true;
+					
+					*/
 					createPauseButtons();
+					pauseScreen = true;
 				}
 			}
 			else if (button.buttonID == 1)
@@ -219,29 +224,31 @@ package myth.gui.game
 			//trace(pauseFade);
 			if (!pauseScreen)
 			{
-				if (pauseFade >= 0.01) {
+				/*if (pauseFade >= 0.01) {
 					pauseFade-= 0.01;
-					pauseFilter.blurX = pauseFade * 20;
-					pauseFilter.blurY = pauseFade * 20;
-					pauseFilter.resolution =  0.2;
-					pauseFilter.cache();
+					//pauseFilter.blurX = pauseFade * 20;
+					//pauseFilter.blurY = pauseFade * 20;
+					//pauseFilter.resolution =  0.2;
+					//pauseFilter.cache();
 					if (pauseFade <= 0.02 || pauseScreen) {
-						unPause();
+						
 					}
+					unPause();
 				}else {
-					Main.world.tick();
-				}
+					
+				}*/
+				Main.world.tick();
 			}else {
-				if (pauseFade <= 0.49) {
-					pauseFade+= 0.01;
-					pauseFilter.blurX = pauseFade * 20;
-					pauseFilter.blurY = pauseFade * 20;
-					pauseFilter.resolution = 0.2;
-					pauseFilter.cache();
+				/*if (pauseFade <= 0.49) {
+					//pauseFade+= 0.01;
+					//pauseFilter.blurX = pauseFade * 20;
+					//pauseFilter.blurY = pauseFade * 20;
+					//pauseFilter.resolution = 0.2;
+					//pauseFilter.cache();
 					if (pauseFade >= 0.49) {
 						pause = true;
 					}
-				}
+				}*/
 			}
 		}
 		

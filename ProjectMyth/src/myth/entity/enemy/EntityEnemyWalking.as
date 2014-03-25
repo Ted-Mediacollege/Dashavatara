@@ -28,7 +28,7 @@ package myth.entity.enemy
 			animationWalk.pivotY = animationWalk.height;
 			animationWalk.loop = true;
 			animationWalk.play();
-			Starling.juggler.add(animationWalk);
+			Main.world.gameJuggler.add(animationWalk);
 			artLayer.addChild(animationWalk);
 			
 			//var image:Image = new Image(TextureList.atlas_player.getTexture("player_3"));
