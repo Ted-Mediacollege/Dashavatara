@@ -105,12 +105,13 @@ package myth.entity.player
 					}
 				}
 			}
+			trace(Main.world.physicsWorld.playerBody.velocity.x + " - " + Main.world.deltaSpeed*60);
 		}
 		
 		public function pushBack():void
 		{
-			trace("push "+Main.world.deltaSpeed);
-			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-140*Main.world.deltaSpeed*Main.world.physicsWorld.playerBody.mass, -200*Main.world.physicsWorld.playerBody.mass));
+			//trace("push "+Main.world.deltaSpeed);
+			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*2*Main.world.physicsWorld.playerBody.mass, -200*Main.world.physicsWorld.playerBody.mass));
 		}
 		
 		public function isOnFeet():Boolean

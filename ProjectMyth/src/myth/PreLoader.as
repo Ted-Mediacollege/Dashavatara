@@ -55,7 +55,7 @@ package myth
 		private function deactivate(e:flash.events.Event):void 
 		{
 			Main.onDeactivate(e);
-			NativeApplication.nativeApplication.exit();
+			//NativeApplication.nativeApplication.exit();
 		}
 		
 		public function getLanguageID():int
