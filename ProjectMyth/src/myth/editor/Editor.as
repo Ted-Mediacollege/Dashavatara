@@ -267,7 +267,7 @@ package myth.editor
 			}
 			else if (id == 13) //SAVE
 			{
-				//trace(createJSONstring());
+				trace(createJSONstring());
 				saved = true;
 			}
 			else if (id == 14) //SETTINGS
@@ -331,14 +331,15 @@ package myth.editor
 			
 			//ENEMIES
 			saveFile.enemies = new Array();
-			/*for (var i:int = 0; i < 1; i++ )
+			var enemieLength:int = FIELD_ENEMIES.ENEMIES.length;
+			for (var m:int = 0; m < enemieLength; m++ )
 			{
-				var en:Object = new Object();
-				en.type = 0;
-				en.spawnX = i * 100;
-				en.spawnY = i * 200;
-				saveFile.enemies.push(en);
-			}*/
+				var enm:Object = new Object();
+				enm.type = FIELD_ENEMIES.ENEMIES[m].type;
+				enm.spawnX = FIELD_ENEMIES.ENEMIES[m].posX - 1280;
+				enm.spawnY = FIELD_ENEMIES.ENEMIES[m].y + FIELD_ENEMIES.ENEMIES[m].height;
+				saveFile.enemies.push(enm);
+			}
 			
 			//BACKGROUND
 			saveFile.background_props = new Array();

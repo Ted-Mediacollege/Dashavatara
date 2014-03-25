@@ -18,7 +18,7 @@ package myth.editor
 		private static var background_earth:Vector.<String> = new <String>["earth_tree"];
 		private static var background_hell:Vector.<String> = new <String>["earth_tree"];
 		
-		private static var enemies:Vector.<String> = new <String>["editor_enemie", "editor_enemie2"];
+		private static var enemies:Vector.<String> = new <String>["editor_enemie", "editor_enemie2", "editor_enemie2"];
 		
 		public function EditorFiles() 
 		{

@@ -68,6 +68,9 @@ package myth.editor.component
 			item_art = new Image(TextureList.assets.getTexture(current_items[ITEM]));
 			addChild(item_art);
 			
+			item_art.pivotX = item_art.width / 2;
+			item_art.pivotY = item_art.height / 2;
+			
 			if (item_art.width > item_art.height)
 			{
 				item_art.width = 200;
@@ -79,8 +82,6 @@ package myth.editor.component
 				item_art.scaleX = item_art.scaleY;
 			}
 			
-			item_art.pivotX = item_art.width;
-			item_art.pivotY = item_art.height;
 			item_art.x = 1105;
 			item_art.y = 570;
 		}

@@ -22,13 +22,13 @@ package myth.editor.field
 		
 		public function buildFile(a:Array):void
 		{
-			ENEMIES = new Vector.<Background>();
+			ENEMIES = new Vector.<EditorItem>();
 			
 			var arrayLength:int = a.length;
 			var enemiesNames:Vector.<String> = EditorFiles.getEnemieNames();
 			for (var i:int = 0; i < arrayLength; i++ )
 			{
-				addEnemies(enemiesNames[a[i].type], a[i].x, a[i].y, true);
+				addEnemies(enemiesNames[a[i].type], a[i].spawnX + 1280, a[i].spawnY, true);
 			}
 		}
 		
