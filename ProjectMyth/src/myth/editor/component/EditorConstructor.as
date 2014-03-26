@@ -19,6 +19,7 @@ package myth.editor.component
 		public var item:Image;
 		public var frame:Shape;
 		
+		public var cat:int;
 		public var type:int;
 		public var item_name:String;
 		
@@ -57,7 +58,7 @@ package myth.editor.component
 			holder.addChild(button_depth);
 		}	
 		
-		public function construct(tex:String, t:int, px:Number = 50, py:Number = 50):void
+		public function construct(tex:String, c:int, t:int, px:Number = 50, py:Number = 50):void
 		{
 			visible = true;
 			active = true;
@@ -73,6 +74,7 @@ package myth.editor.component
 			frame.graphics.lineStyle(4, 0xFF0000);
 			frame.graphics.drawRect(0, 0, item.width, item.height);
 			
+			cat = c;
 			type = t;
 			item_name = tex;
 			
@@ -122,15 +124,15 @@ package myth.editor.component
 				
 				if (menuY > 0 && menuY < 56)
 				{
-					if (editor.CONSTRUCTOR.type == EditorSelector.CAT_BACKGROUND)
+					if (editor.CONSTRUCTOR.cat == EditorSelector.CAT_BACKGROUND)
 					{
 						editor.FIELD_BACKGROUND.addBackground(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, (editor.CONSTRUCTOR.item.x + (Editor.camX / 2)) * 2, editor.CONSTRUCTOR.item.y, 2, 1, 1);
 					}
-					else if (editor.CONSTRUCTOR.type == EditorSelector.CAT_OBJECTS)
+					else if (editor.CONSTRUCTOR.cat == EditorSelector.CAT_OBJECTS)
 					{
 						editor.FIELD_OBJECTS.addObject(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
 					}
-					else if (editor.CONSTRUCTOR.type == EditorSelector.CAT_ENEMY)
+					else if (editor.CONSTRUCTOR.cat == EditorSelector.CAT_ENEMY)
 					{
 						editor.FIELD_ENEMIES.addEnemies(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
 					}

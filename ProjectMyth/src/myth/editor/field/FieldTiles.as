@@ -86,6 +86,18 @@ package myth.editor.field
 			}
 		}
 		
+		public function saveData(saveFile:Object):void
+		{
+			saveFile.tiles = new Array();
+			var tileLength:int = TILES_IDS.length;
+			for (var l:int = 0; l < tileLength; l++ )
+			{
+				var ti:Object = new Object();
+				ti.type = TILES_IDS[l];
+				saveFile.tiles.push(ti);
+			}
+		}
+		
 		public function tick(camX:Number):void
 		{
 			x = -camX;

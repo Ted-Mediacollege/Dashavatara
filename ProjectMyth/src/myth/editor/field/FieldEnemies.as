@@ -32,6 +32,57 @@ package myth.editor.field
 			}
 		}
 		
+		public function saveData(saveFile:Object):void
+		{
+			saveFile.enemies = new Array();
+			var enemieLength:int = ENEMIES.length;
+			for (var m:int = 0; m < enemieLength; m++ )
+			{
+				var enm:Object = new Object();
+				enm.type = ENEMIES[m].type;
+				enm.spawnX = ENEMIES[m].posX - 1280;
+				enm.spawnY = ENEMIES[m].y + ENEMIES[m].height;
+				saveFile.enemies.push(enm);
+			}
+		}
+		
+		public function sortData(saveFile:Object):void
+		{
+			var id:int = 0;
+			var value:Number = 0;
+			var oldEnemy:Array = saveFile.enemies;
+			var newEnemy:Array = new Array();
+			
+			for (var i:int = oldEnemy.length - 1; i > -1; i-- )
+			{
+				var l:int = newEnemy.length;
+				if (l == 0)
+				{
+					newEnemy.push(oldEnemy.pop());
+				}
+				else
+				{
+					var added:Boolean = false;
+					for (var j:int = 0; j < l; j++ )
+					{
+						if (oldEnemy[i].spawnX < newEnemy[j].spawnX)
+						{
+							newEnemy.splice(j, 0, oldEnemy.pop());
+							added = true;
+							break;
+						}
+					}
+					
+					if (!added)
+					{
+						newEnemy.push(oldEnemy.pop());
+					}
+				}
+			}
+			
+			saveFile.enemies = newEnemy;
+		}
+		
 		public function tick(camX:Number):void
 		{
 			for (var i:int = ENEMIES.length - 1; i > -1; i-- )

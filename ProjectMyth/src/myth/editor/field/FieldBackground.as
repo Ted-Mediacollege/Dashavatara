@@ -91,6 +91,21 @@ package myth.editor.field
 			}
 		}
 		
+		public function saveData(saveFile:Object):void
+		{
+			saveFile.background_props = new Array();
+			var backgroundLength:int = BACKGROUND_CREATED.length;
+			for (var j:int = 0; j < backgroundLength; j++ )
+			{
+				var bg:Object = new Object();
+				bg.type = BACKGROUND_CREATED[j].type;
+				bg.depth = BACKGROUND_CREATED[j].z;
+				bg.x = BACKGROUND_CREATED[j].posX;
+				bg.y = BACKGROUND_CREATED[j].y;
+				saveFile.background_props.push(bg);
+			}
+		}
+		
 		public function tick(camX:Number):void
 		{
 			for (var i:int = BACKGROUND_RANDOM.length - 1; i > -1; i-- )

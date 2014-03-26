@@ -35,6 +35,57 @@ package myth.editor.field
 			}
 		}
 		
+		public function saveData(saveFile:Object):void
+		{
+			saveFile.objects = new Array();
+			var objectsLength:int = OBJECTS.length;
+			for (var k:int = 0; k < objectsLength; k++ )
+			{
+				var obj:Object = new Object();
+				obj.type = 0;
+				obj.x = OBJECTS[k].posX;
+				obj.y = OBJECTS[k].y + OBJECTS[k].height;
+				saveFile.objects.push(obj);
+			}
+		}
+		
+		public function sortData(saveFile:Object):void
+		{
+			var id:int = 0;
+			var value:Number = 0;
+			var oldObject:Array = saveFile.objects;
+			var newObject:Array = new Array();
+			
+			for (var i:int = oldObject.length - 1; i > -1; i-- )
+			{
+				var l:int = newObject.length;
+				if (l == 0)
+				{
+					newObject.push(oldObject.pop());
+				}
+				else
+				{
+					var added:Boolean = false;
+					for (var j:int = 0; j < l; j++ )
+					{
+						if (oldObject[i].x < newObject[j].x)
+						{
+							newObject.splice(j, 0, oldObject.pop());
+							added = true;
+							break;
+						}
+					}
+					
+					if (!added)
+					{
+						newObject.push(oldObject.pop());
+					}
+				}
+			}
+			
+			saveFile.objects = newObject;
+		}
+		
 		public function tick(camX:Number):void
 		{
 			for (var i:int = OBJECTS.length - 1; i > -1; i-- )
