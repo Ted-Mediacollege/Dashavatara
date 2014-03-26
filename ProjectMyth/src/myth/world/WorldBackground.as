@@ -14,7 +14,7 @@ package myth.world
 	public class WorldBackground extends Sprite
 	{
 		//NEED TO BE THE SAME IN EditorFiles.as
-		private static var textures_sky:Vector.<String> = new <String>["sky_tree"]; 
+		private static var textures_sky:Vector.<String> = new <String>["sky_tree", "common_easteregg1"]; 
 		private static var textures_earth:Vector.<String> = new <String>["earth_tree"];
 		private static var textures_hell:Vector.<String> = new <String>["earth_tree"];
 		private static var textures_lucht:Vector.<String> = new <String>["sky_lucht", "earth_lucht", "null"];

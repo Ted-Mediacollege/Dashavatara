@@ -87,7 +87,7 @@ package myth.editor.field
 			var bgNames:Vector.<String> = EditorFiles.getBackgroundNames(t);
 			for (var i:int = 0; i < arrayLength; i++ )
 			{
-				addBackground(bgNames[a[i].type], a[i].x, a[i].y, a[i].depth, 1, 1);
+				addBackground(bgNames[a[i].type], a[i].type, a[i].x, a[i].y, a[i].depth, 1, 1);
 			}
 		}
 		
@@ -120,9 +120,9 @@ package myth.editor.field
 			}
 		}
 		
-		public function addBackground(tex:String, px:Number, py:Number, pz:Number, sx:Number, sy:Number):void
+		public function addBackground(tex:String, t:int, px:Number, py:Number, pz:Number, sx:Number, sy:Number):void
 		{
-			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, pz, sx, sy);
+			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy);
 			b.x = b.posX / b.z;
 			b.visible = false;
 			BACKGROUND_CREATED.push(b);

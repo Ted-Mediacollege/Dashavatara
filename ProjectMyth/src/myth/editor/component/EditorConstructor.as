@@ -124,15 +124,15 @@ package myth.editor.component
 				{
 					if (editor.CONSTRUCTOR.type == EditorSelector.CAT_BACKGROUND)
 					{
-						editor.FIELD_BACKGROUND.addBackground(editor.CONSTRUCTOR.item_name, (editor.CONSTRUCTOR.item.x + (Editor.camX / 2)) * 2, editor.CONSTRUCTOR.item.y, 2, 1, 1);
+						editor.FIELD_BACKGROUND.addBackground(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, (editor.CONSTRUCTOR.item.x + (Editor.camX / 2)) * 2, editor.CONSTRUCTOR.item.y, 2, 1, 1);
 					}
 					else if (editor.CONSTRUCTOR.type == EditorSelector.CAT_OBJECTS)
 					{
-						editor.FIELD_OBJECTS.addObject(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
+						editor.FIELD_OBJECTS.addObject(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
 					}
 					else if (editor.CONSTRUCTOR.type == EditorSelector.CAT_ENEMY)
 					{
-						editor.FIELD_ENEMIES.addEnemies(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
+						editor.FIELD_ENEMIES.addEnemies(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
 					}
 					destory(false);
 					editor.removeChild(editor.CONSTRUCTOR);

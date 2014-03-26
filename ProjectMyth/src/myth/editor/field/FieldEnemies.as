@@ -28,7 +28,7 @@ package myth.editor.field
 			var enemiesNames:Vector.<String> = EditorFiles.getEnemieNames();
 			for (var i:int = 0; i < arrayLength; i++ )
 			{
-				addEnemies(enemiesNames[a[i].type], a[i].spawnX + 1280, a[i].spawnY, true);
+				addEnemies(enemiesNames[a[i].type], a[i].type, a[i].spawnX + 1280, a[i].spawnY, true);
 			}
 		}
 		
@@ -48,9 +48,9 @@ package myth.editor.field
 			}
 		}
 		
-		public function addEnemies(tex:String, px:Number, py:Number, pivotFix:Boolean = false):void
+		public function addEnemies(tex:String, t:int, px:Number, py:Number, pivotFix:Boolean = false):void
 		{
-			var en:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, 1, 1, 1);
+			var en:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
 			if (pivotFix)
 			{
 				en.y -= en.height;
