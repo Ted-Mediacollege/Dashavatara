@@ -10,6 +10,7 @@ package myth.editor
 	import myth.editor.field.FieldEnemies;
 	import myth.editor.field.FieldObjects;
 	import myth.editor.field.FieldTiles;
+	import myth.gui.components.GuiButton;
 	import myth.gui.components.GuiText;
 	import myth.gui.game.GuiEditor;
 	import myth.gui.game.GuiGame;
@@ -64,10 +65,10 @@ package myth.editor
 			alerting = false;
 		}
 		
-		public function build():void
+		public function build(t:int, s:int):void
 		{
-			theme = Theme.SKY;
-			var levelSize:int = 80;
+			theme = t;
+			var levelSize:int = s;
 			
 			SELECTOR = new EditorSelector();
 			addChild(SELECTOR);
@@ -255,7 +256,7 @@ package myth.editor
 				CONSTRUCTOR.destory(false);
 				removeChild(CONSTRUCTOR);
 				
-				build();
+				guiEditor.action(guiEditor.button_create);
 			}
 			else if (id == 11) //MENU
 			{

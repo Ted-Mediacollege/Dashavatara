@@ -16,8 +16,12 @@ package myth.gui.game
 	public class GuiEditor extends GuiScreen
 	{
 		private var button_menu:GuiButton;
-		private var button_create:GuiButton;
+		public var button_create:GuiButton;
 		private var button_load:GuiButton;
+		
+		private var button_creator_build:GuiButton;
+		private var button_creator_theme:GuiButton;
+		private var button_creator_size:GuiButton;
 		
 		private var button_cat_left:GuiButton;
 		private var button_cat_right:GuiButton;
@@ -30,6 +34,11 @@ package myth.gui.game
 		private var button_editor_save:GuiButton;
 		private var button_editor_settings:GuiButton;
 		private var button_editor_test:GuiButton;
+		
+		private var themes:Vector.<String> = new < String > ["Sky", "Earth", "Hell"];
+		private var sizes:Vector.<String> = new < String > ["Small", "Normal", "Large"];
+		private var theme_selected:int = 0;
+		private var size_selected:int = 0;
 		
 		public var grey_screen:Shape;
 		
@@ -73,6 +82,12 @@ package myth.gui.game
 			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 25, 0x000000));
 			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 25, 0x000000));
 				
+			button_creator_build = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 250, 450, 100, "Create level", 25, 0x000000));
+			button_creator_theme = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 50, 450, 100, "Theme: Sky", 25, 0x000000));
+			button_creator_size = addButton(new GuiButton(5, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 70, 450, 100, "Size: Small", 25, 0x000000));
+			
+			create_menu(false);
+			
 			if (levelString != null)
 			{
 				menu_main(false);
@@ -105,21 +120,42 @@ package myth.gui.game
 			{
 				main.switchGui(new GuiMainMenu());
 			}
-			else if (b.buttonID == 1) //CREATE NEW (MAIN EDITOR MENU)
+			else if (b.buttonID == 1) //CREATE 
 			{
 				menu_main(false);
+				create_menu(true);
+				grey_screen.visible = true;
+			}
+			else if (b.buttonID == 2) //LOAD 
+			{
+			}
+			else if (b.buttonID == 3) //BUILD EDITOR
+			{
+				var s:int = 0;
+				switch(size_selected)
+				{
+					case 0: s = 70; break;
+					case 1: s = 100; break;
+					case 2: s = 130; break;
+				}
+				
+				create_menu(false);
 				editor_menu(true);
-				editor.build();
+				editor.build(theme_selected, s);
 				inEditor = true;
 				grey_screen.visible = false;
 			}
-			else if (b.buttonID == 2) //LOAD (MAIN EDITOR MENU)
+			else if (b.buttonID == 4) //THEME
 			{
-				menu_main(false);
-				editor_menu(true);
-				editor.build();
-				inEditor = true;
-				grey_screen.visible = false;
+				theme_selected++;
+				if (theme_selected > 2) { theme_selected = 0; }
+				button_creator_theme.buttonText.text = "Theme: " + themes[theme_selected];
+			}
+			else if (b.buttonID == 5) //SIZE
+			{
+				size_selected++;
+				if (size_selected > 2) { size_selected = 0; }
+				button_creator_size.buttonText.text = "Size: " + sizes[size_selected];
 			}
 			else if (b.buttonID > 9 && b.buttonID < 30)
 			{
@@ -139,6 +175,16 @@ package myth.gui.game
 			button_menu.visible = e;
 			button_create.visible = e;
 			button_load.visible = e;
+		}
+		
+		public function create_menu(e:Boolean):void
+		{
+			button_creator_build.visible = e;
+			button_creator_build.enabled = e;
+			button_creator_theme.visible = e;
+			button_creator_theme.enabled = e;
+			button_creator_size.visible = e;
+			button_creator_size.enabled = e;
 		}
 		
 		public function editor_menu(e:Boolean):void
