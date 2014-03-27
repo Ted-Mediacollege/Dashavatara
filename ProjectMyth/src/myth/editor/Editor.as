@@ -67,7 +67,7 @@ package myth.editor
 		public function build():void
 		{
 			theme = Theme.SKY;
-			var levelSize:int = 50;
+			var levelSize:int = 80;
 			
 			SELECTOR = new EditorSelector();
 			addChild(SELECTOR);
@@ -314,7 +314,7 @@ package myth.editor
 			}
 		}
 		
-		public function createJSONstring(name:String = "test", speed:int = 4):String
+		public function createJSONstring(name:String = "test", speed:int = 6):String
 		{
 			//SAVE FILE
 			var saveFile:Object = new Object();
