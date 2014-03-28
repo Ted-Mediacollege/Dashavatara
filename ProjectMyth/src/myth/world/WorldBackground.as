@@ -14,10 +14,10 @@ package myth.world
 	public class WorldBackground extends Sprite
 	{
 		//NEED TO BE THE SAME IN EditorFiles.as
-		private static var textures_sky:Vector.<String> = new <String>["sky_tree"]; 
+		private static var textures_sky:Vector.<String> = new <String>["sky_tree", "common_easteregg1"]; 
 		private static var textures_earth:Vector.<String> = new <String>["earth_tree"];
-		private static var textures_hell:Vector.<String> = new <String>["earth_tree"];
-		private static var textures_lucht:Vector.<String> = new <String>["sky_lucht", "earth_lucht", "null"];
+		private static var textures_hell:Vector.<String> = new <String>["hell_bg_rock1", "hell_bg_rock2", "hell_bg_rock3", "hell_bg_rock4", "hell_bg_stalag"];
+		private static var textures_lucht:Vector.<String> = new <String>["sky_lucht", "earth_lucht", "hell_lucht"];
 		
 		public var Backgrounds:Vector.<Background>;
 		

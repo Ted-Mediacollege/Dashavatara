@@ -10,6 +10,7 @@ package myth.editor
 	import myth.editor.field.FieldEnemies;
 	import myth.editor.field.FieldObjects;
 	import myth.editor.field.FieldTiles;
+	import myth.gui.components.GuiButton;
 	import myth.gui.components.GuiText;
 	import myth.gui.game.GuiEditor;
 	import myth.gui.game.GuiGame;
@@ -64,10 +65,10 @@ package myth.editor
 			alerting = false;
 		}
 		
-		public function build():void
+		public function build(t:int, s:int):void
 		{
-			theme = Theme.SKY;
-			var levelSize:int = 50;
+			theme = t;
+			var levelSize:int = s;
 			
 			SELECTOR = new EditorSelector();
 			addChild(SELECTOR);
@@ -153,7 +154,7 @@ package myth.editor
 								var item:EditorItem = FIELD_OBJECTS.getObjectAt(data[0], data[1]);
 								if (item != null)
 								{
-									CONSTRUCTOR.construct(item.item_name, 0, item.x, item.y);
+									CONSTRUCTOR.construct(item.item_name, 0, item.type, item.x, item.y);
 									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_OBJECTS) + 1);
 									return;
 								}
@@ -161,7 +162,7 @@ package myth.editor
 								item = FIELD_BACKGROUND.getBackgroundAt(data[0], data[1]);
 								if (item != null)
 								{
-									CONSTRUCTOR.construct(item.item_name, 1, item.x, item.y);
+									CONSTRUCTOR.construct(item.item_name, 1, item.type, item.x, item.y);
 									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1);
 									return;
 								}
@@ -169,7 +170,7 @@ package myth.editor
 								item = FIELD_ENEMIES.getEnemiesAt(data[0], data[1]);
 								if (item != null)
 								{
-									CONSTRUCTOR.construct(item.item_name, 1, item.x, item.y);
+									CONSTRUCTOR.construct(item.item_name, 2, item.type, item.x, item.y);
 									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_ENEMIES) + 1);
 									return;
 								}
@@ -206,7 +207,7 @@ package myth.editor
 						if (!CONSTRUCTOR.active)
 						{
 							saved = false;
-							CONSTRUCTOR.construct(SELECTOR.current_items[SELECTOR.ITEM], SELECTOR.CAT);
+							CONSTRUCTOR.construct(SELECTOR.current_items[SELECTOR.ITEM], SELECTOR.CAT, SELECTOR.ITEM);
 							switch(SELECTOR.CAT)
 							{
 								case EditorSelector.CAT_BACKGROUND: addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1); break;
@@ -255,7 +256,7 @@ package myth.editor
 				CONSTRUCTOR.destory(false);
 				removeChild(CONSTRUCTOR);
 				
-				build();
+				guiEditor.action(guiEditor.button_create);
 			}
 			else if (id == 11) //MENU
 			{
@@ -280,15 +281,15 @@ package myth.editor
 				{ 
 					if (CONSTRUCTOR.type == EditorSelector.CAT_BACKGROUND)
 					{
-						FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, (CONSTRUCTOR.item.x + (camX / 2)) * 2, CONSTRUCTOR.item.y, 2, 1, 1);
+						FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.type, (CONSTRUCTOR.item.x + (camX / 2)) * 2, CONSTRUCTOR.item.y, 2, 1, 1);
 					}
 					else if (CONSTRUCTOR.type == EditorSelector.CAT_OBJECTS)
 					{
-						FIELD_OBJECTS.addObject(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
+						FIELD_OBJECTS.addObject(CONSTRUCTOR.item_name, CONSTRUCTOR.type, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
 					}
 					else if (CONSTRUCTOR.type == EditorSelector.CAT_ENEMY)
 					{
-						FIELD_ENEMIES.addEnemies(CONSTRUCTOR.item_name, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
+						FIELD_ENEMIES.addEnemies(CONSTRUCTOR.item_name, CONSTRUCTOR.type, CONSTRUCTOR.item.x + camX, CONSTRUCTOR.item.y);
 					}
 					CONSTRUCTOR.destory(false);
 					removeChild(CONSTRUCTOR);
@@ -314,7 +315,7 @@ package myth.editor
 			}
 		}
 		
-		public function createJSONstring(name:String = "test", speed:int = 4):String
+		public function createJSONstring(name:String = "test", speed:int = 6):String
 		{
 			//SAVE FILE
 			var saveFile:Object = new Object();
@@ -330,43 +331,16 @@ package myth.editor
 			saveFile.zones = new Array();
 			
 			//ENEMIES
-			saveFile.enemies = new Array();
-			var enemieLength:int = FIELD_ENEMIES.ENEMIES.length;
-			for (var m:int = 0; m < enemieLength; m++ )
-			{
-				var enm:Object = new Object();
-				enm.type = FIELD_ENEMIES.ENEMIES[m].type;
-				enm.spawnX = FIELD_ENEMIES.ENEMIES[m].posX - 1280;
-				enm.spawnY = FIELD_ENEMIES.ENEMIES[m].y + FIELD_ENEMIES.ENEMIES[m].height;
-				saveFile.enemies.push(enm);
-			}
+			FIELD_ENEMIES.saveData(saveFile);
+			FIELD_ENEMIES.sortData(saveFile);
 			
 			//BACKGROUND
-			saveFile.background_props = new Array();
-			var backgroundLength:int = FIELD_BACKGROUND.BACKGROUND_CREATED.length;
-			for (var j:int = 0; j < backgroundLength; j++ )
-			{
-				var bg:Object = new Object();
-				bg.type = FIELD_BACKGROUND.BACKGROUND_CREATED[j].type;
-				bg.depth = FIELD_BACKGROUND.BACKGROUND_CREATED[j].z;
-				bg.x = FIELD_BACKGROUND.BACKGROUND_CREATED[j].posX;
-				bg.y = FIELD_BACKGROUND.BACKGROUND_CREATED[j].y;
-				saveFile.background_props.push(bg);
-			}
+			FIELD_BACKGROUND.saveData(saveFile);
 			
 			//OBJECTS
-			saveFile.objects = new Array();
+			FIELD_OBJECTS.saveData(saveFile);
+			FIELD_OBJECTS.sortData(saveFile);
 			
-			var objectsLength:int = FIELD_OBJECTS.OBJECTS.length;
-			for (var k:int = 0; k < objectsLength; k++ )
-			{
-				var obj:Object = new Object();
-				obj.type = 0;
-				obj.x = FIELD_OBJECTS.OBJECTS[k].posX;
-				obj.y = FIELD_OBJECTS.OBJECTS[k].y + FIELD_OBJECTS.OBJECTS[k].height;
-				saveFile.objects.push(obj);
-			}
-						
 			var gate:Object = new Object();
 			gate.type = 2;
 			gate.x = FIELD_BACKGROUND.BACKGROUND_END.posX;
@@ -374,14 +348,8 @@ package myth.editor
 			saveFile.objects.push(gate);
 			
 			//TILES
-			saveFile.tiles = new Array();
-			var tileLength:int = FIELD_TILES.TILES_IDS.length;
-			for (var l:int = 0; l < tileLength; l++ )
-			{
-				var ti:Object = new Object();
-				ti.type = FIELD_TILES.TILES_IDS[l];
-				saveFile.tiles.push(ti);
-			}
+			FIELD_TILES.saveData(saveFile);
+			
 			return com.adobe.serialization.json.JSON.encode(saveFile);
 		}
 		

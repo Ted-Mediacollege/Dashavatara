@@ -160,6 +160,8 @@ package myth.world
 				}
 			);
 			
+			animTransform.visible = false;
+			
 			worldBuild = true;
 		}
 		

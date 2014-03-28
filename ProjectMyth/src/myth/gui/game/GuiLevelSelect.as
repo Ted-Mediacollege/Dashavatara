@@ -6,9 +6,13 @@ package myth.gui.game
 	import myth.gui.components.GuiText;
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
+	import starling.display.Image;
 
 	public class GuiLevelSelect extends GuiScreen
 	{
+		public var chapter:int = 1;
+		public var map1:Image;
+		public var map2:Image;
 		
 		public function GuiLevelSelect() 
 		{
@@ -17,44 +21,53 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			addChild(background);
+			background = null;
+			setBackground(1);
 			
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiLevelSelect", 25, 0x000000);
-			addChild(t);
+			addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, "Main Menu", 25, 0x000000));
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 60, 450, 100, "Test Level 1", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 170, 450, 100, "Test Level 2", 25, 0x000000));
-			var b3:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 280, 450, 100, "Test Level 3", 25, 0x000000));
-			var b5:GuiButton = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 390, 450, 100, "testlevel", 25, 0x000000));
-			var b4:GuiButton = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Main Menu", 25, 0x000000));
+			addButton(new GuiButton(10, TextureList.assets.getTexture("map_button_1a"), 160, 120, 138, 139, ""));
+		}
+		
+		public function setBackground(id:int):void
+		{
+			chapter = id;
+			if (map1 != null)
+			{
+				removeChild(map1);
+				map1 = null;
+				
+				if (map2 != null)
+				{
+					removeChild(map2);
+					map2 = null;
+				}
+			}
+			
+			switch(id)
+			{
+				case 1: map1 = new Image(TextureList.assets.getTexture("map_1")); break;
+				case 2: map1 = new Image(TextureList.assets.getTexture("map_2")); break;
+				case 3: map1 = new Image(TextureList.assets.getTexture("map_31")); map2 = new Image(TextureList.assets.getTexture("map_32")); addChild(map2); break;
+			}
+			
+			addChild(map1);
 		}
 		
 		override public function tick():void 
 		{ 
-			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiLevelInfo("level_1"));
-			}
-			else if (b.buttonID == 1)
-			{
-				main.switchGui(new GuiLevelInfo("level_2"));
-			}
-			else if (b.buttonID == 2)
-			{
-				main.switchGui(new GuiLevelInfo("level_3"));
-			}
-			else if (b.buttonID == 3)
-			{
 				main.switchGui(new GuiMainMenu());
 			}
-			else if (b.buttonID == 4)
+			
+			if (b.buttonID == 10)
 			{
-				main.switchGui(new GuiLevelInfo("testlevel"));
+				main.switchGui(new GuiLevelInfo("level_1"));
 			}
 		}
 		

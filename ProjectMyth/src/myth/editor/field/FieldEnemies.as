@@ -28,8 +28,59 @@ package myth.editor.field
 			var enemiesNames:Vector.<String> = EditorFiles.getEnemieNames();
 			for (var i:int = 0; i < arrayLength; i++ )
 			{
-				addEnemies(enemiesNames[a[i].type], a[i].spawnX + 1280, a[i].spawnY, true);
+				addEnemies(enemiesNames[a[i].type], a[i].type, a[i].spawnX + 1280, a[i].spawnY, true);
 			}
+		}
+		
+		public function saveData(saveFile:Object):void
+		{
+			saveFile.enemies = new Array();
+			var enemieLength:int = ENEMIES.length;
+			for (var m:int = 0; m < enemieLength; m++ )
+			{
+				var enm:Object = new Object();
+				enm.type = ENEMIES[m].type;
+				enm.spawnX = ENEMIES[m].posX - 1280;
+				enm.spawnY = ENEMIES[m].y + ENEMIES[m].height;
+				saveFile.enemies.push(enm);
+			}
+		}
+		
+		public function sortData(saveFile:Object):void
+		{
+			var id:int = 0;
+			var value:Number = 0;
+			var oldEnemy:Array = saveFile.enemies;
+			var newEnemy:Array = new Array();
+			
+			for (var i:int = oldEnemy.length - 1; i > -1; i-- )
+			{
+				var l:int = newEnemy.length;
+				if (l == 0)
+				{
+					newEnemy.push(oldEnemy.pop());
+				}
+				else
+				{
+					var added:Boolean = false;
+					for (var j:int = 0; j < l; j++ )
+					{
+						if (oldEnemy[i].spawnX < newEnemy[j].spawnX)
+						{
+							newEnemy.splice(j, 0, oldEnemy.pop());
+							added = true;
+							break;
+						}
+					}
+					
+					if (!added)
+					{
+						newEnemy.push(oldEnemy.pop());
+					}
+				}
+			}
+			
+			saveFile.enemies = newEnemy;
 		}
 		
 		public function tick(camX:Number):void
@@ -48,9 +99,9 @@ package myth.editor.field
 			}
 		}
 		
-		public function addEnemies(tex:String, px:Number, py:Number, pivotFix:Boolean = false):void
+		public function addEnemies(tex:String, t:int, px:Number, py:Number, pivotFix:Boolean = false):void
 		{
-			var en:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, 1, 1, 1);
+			var en:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
 			if (pivotFix)
 			{
 				en.y -= en.height;

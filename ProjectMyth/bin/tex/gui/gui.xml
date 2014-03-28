@@ -4,10 +4,10 @@
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="gui_button_default"	x="0"	y="175"	width="450"	height="100" frameX="-0" frameY="-0" frameWidth="450" frameHeight="100"/>
-	<SubTexture name="gui_button_pause"	x="0"	y="705"	width="112"	height="112" frameX="-0" frameY="-0" frameWidth="112" frameHeight="112"/>
-	<SubTexture name="gui_icon1"	x="0"	y="419"	width="194"	height="142" frameX="-0" frameY="-0" frameWidth="194" frameHeight="142"/>
-	<SubTexture name="gui_icon2"	x="0"	y="562"	width="194"	height="142" frameX="-0" frameY="-0" frameWidth="194" frameHeight="142"/>
-	<SubTexture name="gui_icon3"	x="0"	y="276"	width="194"	height="142" frameX="-0" frameY="-0" frameWidth="194" frameHeight="142"/>
-	<SubTexture name="gui_logo"	x="0"	y="0"	width="492"	height="174" frameX="-6" frameY="-4" frameWidth="501" frameHeight="178"/>
+	<SubTexture name="gui_button_default"	x="0"	y="279"	width="450"	height="100" frameX="-0" frameY="-0" frameWidth="450" frameHeight="100"/>
+	<SubTexture name="gui_button_pause"		x="0"	y="380"	width="112"	height="112" frameX="-0" frameY="-0" frameWidth="112" frameHeight="112"/>
+	<SubTexture name="gui_icon1"			x="646"	y="279"	width="194"	height="142" frameX="-0" frameY="-0" frameWidth="194" frameHeight="142"/>
+	<SubTexture name="gui_icon2"			x="721"	y="0"	width="194"	height="142" frameX="-0" frameY="-0" frameWidth="194" frameHeight="142"/>
+	<SubTexture name="gui_icon3"			x="451"	y="279"	width="194"	height="142" frameX="-0" frameY="-0" frameWidth="194" frameHeight="142"/>
+	<SubTexture name="gui_logo"				x="0"	y="0"	width="720"	height="278" frameX="-7" frameY="-2" frameWidth="736" frameHeight="280"/>
 </TextureAtlas>

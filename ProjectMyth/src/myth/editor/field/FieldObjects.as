@@ -30,9 +30,60 @@ package myth.editor.field
 			{
 				if (a[i].type != 2) //QUICK FIX
 				{
-					addObject(objectNames[a[i].type], a[i].x, a[i].y, true);
+					addObject(objectNames[a[i].type], a[i].type, a[i].x, a[i].y, true);
 				}
 			}
+		}
+		
+		public function saveData(saveFile:Object):void
+		{
+			saveFile.objects = new Array();
+			var objectsLength:int = OBJECTS.length;
+			for (var k:int = 0; k < objectsLength; k++ )
+			{
+				var obj:Object = new Object();
+				obj.type = 0;
+				obj.x = OBJECTS[k].posX;
+				obj.y = OBJECTS[k].y + OBJECTS[k].height;
+				saveFile.objects.push(obj);
+			}
+		}
+		
+		public function sortData(saveFile:Object):void
+		{
+			var id:int = 0;
+			var value:Number = 0;
+			var oldObject:Array = saveFile.objects;
+			var newObject:Array = new Array();
+			
+			for (var i:int = oldObject.length - 1; i > -1; i-- )
+			{
+				var l:int = newObject.length;
+				if (l == 0)
+				{
+					newObject.push(oldObject.pop());
+				}
+				else
+				{
+					var added:Boolean = false;
+					for (var j:int = 0; j < l; j++ )
+					{
+						if (oldObject[i].x < newObject[j].x)
+						{
+							newObject.splice(j, 0, oldObject.pop());
+							added = true;
+							break;
+						}
+					}
+					
+					if (!added)
+					{
+						newObject.push(oldObject.pop());
+					}
+				}
+			}
+			
+			saveFile.objects = newObject;
 		}
 		
 		public function tick(camX:Number):void
@@ -51,9 +102,9 @@ package myth.editor.field
 			}
 		}
 		
-		public function addObject(tex:String, px:Number, py:Number, pivotFix:Boolean = false):void
+		public function addObject(tex:String, t:int, px:Number, py:Number, pivotFix:Boolean = false):void
 		{
-			var ob:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, 0, px, py, 1, 1, 1);
+			var ob:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
 			if (pivotFix)
 			{
 				ob.y -= ob.height;

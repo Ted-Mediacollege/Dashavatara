@@ -15,7 +15,7 @@ package myth.world
 		//NEED TO BE THE SAME IN EditorFiles.as
 		private static var textures_sky:Vector.<String> = new <String>["sky_tile00", "sky_tile01"];
 		private static var textures_earth:Vector.<String> = new <String>["earth_tile00", "earth_tile01"];
-		private static var textures_hell:Vector.<String> = new <String>[""];
+		private static var textures_hell:Vector.<String> = new <String>["hell_tile00", "hell_tile01", "hell_tile02", "hell_tile03"];
 		
 		public var TILES:Vector.<Tile>;
 		public var changed:Boolean = true;
