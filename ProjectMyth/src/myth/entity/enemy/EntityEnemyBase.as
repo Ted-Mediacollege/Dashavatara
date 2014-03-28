@@ -17,7 +17,7 @@ package myth.entity.enemy
 		public var enemyType:int;
 		public var lastSwipe:int;
 		
-		private var knockColor:int = 0;
+		private var knockColor:int = 255;
 		private var hitApply:Boolean;
 		
 		private var colorRGB:RGB;

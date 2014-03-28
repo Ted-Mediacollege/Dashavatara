@@ -199,7 +199,7 @@ package myth.gui.game
 			}
 			else if (button.buttonID > 9 && !pause)
 			{
-				Main.world.switchAvatar(button.buttonID - 10);
+				Main.world.playerHolder.switchAvatar(button.buttonID - 10);
 				
 				help_visible = true;
 				help_fade = 100;
@@ -253,9 +253,9 @@ package myth.gui.game
 		}
 		
 		public function build():void {
-			b1 = addButton(new GuiButton(10, Main.world.players[0].playerTexture, 100, 80, 194, 142, ""),false);
-			b2 = addButton(new GuiButton(11, Main.world.players[1].playerTexture, 300, 80, 194, 142, ""),false);
-			b3 = addButton(new GuiButton(12, Main.world.players[2].playerTexture, 500, 80, 194, 142, ""),false);
+			b1 = addButton(new GuiButton(10, Main.world.playerHolder.players[0].playerTexture, 100, 80, 194, 142, ""),false);
+			b2 = addButton(new GuiButton(11, Main.world.playerHolder.players[1].playerTexture, 300, 80, 194, 142, ""),false);
+			b3 = addButton(new GuiButton(12, Main.world.playerHolder.players[2].playerTexture, 500, 80, 194, 142, ""),false);
 			Display.add(b1,LayerID.GameGui);
 			Display.add(b2,LayerID.GameGui);
 			Display.add(b3,LayerID.GameGui);

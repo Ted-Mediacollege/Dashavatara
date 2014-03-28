@@ -52,10 +52,6 @@ package myth.world
 		public var tiles:WorldTiles2;
 		public var background:WorldBackground;
 		
-		public var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
-		public var player:EntityPlayerBase;
-		private var currentPlayer:int = 1;
-		
 		public var distance:Number = 0;
 		public var speed:Number;
 		public var deltaSpeed:Number;
@@ -65,6 +61,7 @@ package myth.world
 		public var entityManager:WorldEntityManager;
 		public var objectManager:WorldObjectManager;
 		private var zoneManager:WorldZoneManager;
+		public var playerHolder:PlayerHolder;
 		
 		private var debugShape:Shape = new Shape();
 		public var debugShape2:Shape = new Shape();
@@ -72,11 +69,10 @@ package myth.world
 		
 		public var physicsWorld:PhysicsWorld;
 		
-		private var animTransform:SpriterClip;
-		private var transformCircle:Image;
-		
 		public var levelData:LevelData;
 		public var gameJuggler:Juggler;
+		
+		public var player:EntityPlayerBase;
 		
 		public function World(g:GuiGame ,levelName:String = "level_1", _editorTesting:Boolean = false, _editorString:String = null) 
 		{
@@ -103,15 +99,7 @@ package myth.world
 			physicsWorld = new PhysicsWorld();
 			
 			//player
-			players[0] = new EntityPlayer03(); 
-			//players[1] = new EntityPlayer01v2(); 
-			players[1] = new EntityPlayer01v4();
-			//players[2] = new EntityPlayer02v2(); 
-			players[2] = new EntityPlayerBoar(); 
-			 
-			player = players[1];
-			currentPlayer = 1;
-			physicsWorld.playerBody.userData.graphic = player;
+			playerHolder = new PlayerHolder();
 			
 			gui.build();
 			//entityManager
@@ -131,12 +119,8 @@ package myth.world
 			//add childs
 			Display.add(background,LayerID.GameLevelBack);
 			
-			transformCircle = new Image(TextureList.assets.getTexture("common_tadaa"));
-			transformCircle.pivotX = 102;
-			transformCircle.pivotY = 100;
-			Display.add(transformCircle,LayerID.GamePlayerBack);
 			
-			Display.add(player,LayerID.GamePlayer);
+			
 			Display.add(entityManager,LayerID.GamePlayer);
 			Display.add(objectManager,LayerID.GamePlayerFront);
 			Display.add(tiles,LayerID.GameLevel2);
@@ -144,23 +128,6 @@ package myth.world
 			Display.add(debugShape,LayerID.DebugLayer);
 			Display.add(debugShape2,LayerID.DebugLayer);
 			Display.add(attackShape,LayerID.DebugLayer);
-						
-			animTransform = TextureList.spriterLoader.getSpriterClip("transAnim");
-			animTransform.playbackSpeed = 1.5;
-			Display.add(animTransform,LayerID.GamePlayerFront);
-			gameJuggler.add(animTransform);
-			animTransform.visible = false;
-			
-			animTransform.animationComplete.add(
-				function(clip:SpriterClip):void
-				{
-					animTransform.visible = false;
-					animTransform.stop();
-					transformCircle.visible = false;
-				}
-			);
-			
-			animTransform.visible = false;
 			
 			worldBuild = true;
 		}
@@ -171,13 +138,8 @@ package myth.world
 			}, myth.util.Debug.DrawArracks);
 		}
 		
-		
-		
-		//LOOP
-		private var sps:Boolean = true;
 		public function tick():void
 		{
-			
 			gameJuggler.advanceTime(TimeHelper.deltaTime);
 			if (worldBuild) {
 				if(!levelComplete){
@@ -191,6 +153,7 @@ package myth.world
 				physicsWorld.tick();
 				zoneManager.tick();
 				player.tick();
+				playerHolder.tick();
 				
 				tiles.tick(distance);
 				background.tick(distance);
@@ -215,38 +178,6 @@ package myth.world
 					}
 				}
 				
-				animTransform.x = player.x;
-				animTransform.y = player.y;
-				transformCircle.x = player.x;
-				transformCircle.y = player.y - 90;
-				transformCircle.rotation += 2;
-			}
-		}
-		
-		public function switchAvatar(id:int):void {
-			if(id !=currentPlayer){
-				var playerPosX:int = player.x;
-				var playerPosY:int = player.y;
-				player.removeFromParent();
-				if (id==0) {
-					player = players[0];
-					currentPlayer = 0;
-				}else if (id==1) {
-					player = players[1];
-					currentPlayer = 1;
-				}else {
-					player = players[2];
-					currentPlayer = 2;
-				}
-				trace("switch "+currentPlayer+" "+distance);
-				player.x = playerPosX;
-				player.y = playerPosY;
-				Display.add(player, LayerID.GamePlayer);
-				physicsWorld.playerBody.userData.graphic = player;
-				
-				animTransform.play("lotusflower");
-				animTransform.visible = true;
-				transformCircle.visible = true;
 			}
 		}
 		
