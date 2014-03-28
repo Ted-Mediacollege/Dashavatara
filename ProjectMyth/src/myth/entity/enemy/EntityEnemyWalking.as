@@ -13,23 +13,19 @@ package myth.entity.enemy
 	
 	public class EntityEnemyWalking extends EntityEnemyBase
 	{
-		
-		private var image:Image;
-		public var animationWalk:MovieClip;
-			
 		public function EntityEnemyWalking() 
 		{
 			super(EnemyType.Walking_01, 100, 170, -50, -170);
 			health = 50;
-			animationWalk = new MovieClip(TextureList.atlas_enemyRunning.getTextures("RunningEnemy"), 30);
-			animationWalk.x = 0;
-			animationWalk.y = 0;
-			animationWalk.pivotX = animationWalk.width / 2;
-			animationWalk.pivotY = animationWalk.height;
-			animationWalk.loop = true;
-			animationWalk.play();
-			Main.world.gameJuggler.add(animationWalk);
-			artLayer.addChild(animationWalk);
+			animationClip = new MovieClip(TextureList.atlas_enemyRunning.getTextures("RunningEnemy"), 30);
+			animationClip.x = 0;
+			animationClip.y = 0;
+			animationClip.pivotX = animationClip.width / 2;
+			animationClip.pivotY = animationClip.height;
+			animationClip.loop = true;
+			animationClip.play();
+			Main.world.gameJuggler.add(animationClip);
+			artLayer.addChild(animationClip);
 			
 			//var image:Image = new Image(TextureList.atlas_player.getTexture("player_3"));
 			//artLayer.addChild(image);

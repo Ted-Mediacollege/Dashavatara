@@ -113,7 +113,7 @@ package myth.entity.player
 					if (angelDelta > swipeMaxAngle || angelDelta < -swipeMaxAngle) {
 						thisSwipeHit = false;
 						swipeCount++;
-						trace("newSwipe: "+swipeCount);
+						//trace("newSwipe: "+swipeCount);
 					}
 				}
 				var dist:Point = thisPos.subtract(previousPos);

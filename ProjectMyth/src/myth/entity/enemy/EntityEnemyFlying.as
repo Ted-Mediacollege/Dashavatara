@@ -12,22 +12,21 @@ package myth.entity.enemy
 	
 	public class EntityEnemyFlying extends EntityEnemyBase
 	{
-		private var flyAnimation:MovieClip;
 		public function EntityEnemyFlying() 
 		{
 			super(EnemyType.Flying_01);
 			health = 50;
-			flyAnimation = new MovieClip(TextureList.atlas_enemy.getTextures("FlyingEnemy"), 30);
-			flyAnimation.x = 0;
-			flyAnimation.y = 0;
-			flyAnimation.loop = true;
-			flyAnimation.play();
-			Main.world.gameJuggler.add(flyAnimation);
-			artLayer.addChild(flyAnimation);
+			animationClip = new MovieClip(TextureList.atlas_enemy.getTextures("FlyingEnemy"), 30);
+			animationClip.x = 0;
+			animationClip.y = 0;
+			animationClip.loop = true;
+			animationClip.play();
+			Main.world.gameJuggler.add(animationClip);
+			artLayer.addChild(animationClip);
 			
-			flyAnimation.pivotX = flyAnimation.width / 2;
-			flyAnimation.pivotY = flyAnimation.height / 2;
-			flyAnimation.rotation = Math.PI / 2;
+			animationClip.pivotX = animationClip.width / 2;
+			animationClip.pivotY = animationClip.height / 2;
+			animationClip.rotation = Math.PI / 2;
 		}
 		
 		override public function tick():void {
