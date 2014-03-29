@@ -10,6 +10,10 @@
 		<t name="main.version">Version</t>
 		
 		<t name="main.back">Back to Main Menu</t>
+		
+		<t name="credits.pro">Programmers</t>
+		<t name="credits.art">Artists</t>
+		<t name="credits.man">Media Managers</t>
 	</menu>
 	
 	<editor>

@@ -69,6 +69,7 @@ package myth.editor
 		{
 			theme = t;
 			var levelSize:int = s;
+			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();
 			addChild(SELECTOR);
@@ -359,6 +360,7 @@ package myth.editor
 			
 			theme = saveFile.theme;
 			var levelSize:int = saveFile.tiles.length;
+			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();
 			addChild(SELECTOR);

@@ -10,25 +10,10 @@ package myth.gui.game
 	import myth.input.TouchType;
 	import myth.lang.Lang;
 	import starling.events.TouchEvent;
+	import myth.gui.game.GuiCredits;
 	
 	public class GuiCredits extends GuiScreen
 	{
-		/* 
-		
-		Kit van de Bunt
-		Ted de Vos
-		
-		Aaron Ligthart
-		Lieske Timmermans
-		Iris van der Velde
-		Sanne Oudshoorn
-		
-		Merel van der Velde
-		-
-		-
-		
-		 */
-		
 		public var easterEggCount:int = 0;
 		
 		public function GuiCredits() 
@@ -40,9 +25,9 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
-			var credits1:GuiText = new GuiText(0, 100, 590, 400, "right", "top", "Kit van de Bunt \nTed de vos", 45, 0x000000, "GameFont");
-			var credits2:GuiText = new GuiText(screenWidth / 2 + 50, 100, 600, 400, "left", "top", "Aaron Ligthart \nLieske Timmermans \nIris van der Velde \nSanne Oudshoorn", 45, 0x000000, "GameFont");
-			var credits3:GuiText = new GuiText(0, 300, 590, 400, "right", "top", "Merel van der Velde\nPriscilla Schaap \nPim Van Ballegoijen de Jong", 45, 0x000000, "GameFont");
+			var credits1:GuiText = new GuiText(0, 50, 590, 400, "right", "top", Lang.trans(Lang.MENU, "credits.pro") + ": \nKit van de Bunt \nTed de vos", 45, 0x000000, "GameFont");
+			var credits2:GuiText = new GuiText(screenWidth / 2 + 50, 50, 600, 400, "left", "top", Lang.trans(Lang.MENU, "credits.art") + ": \nAaron Ligthart \nLieske Timmermans \nIris van der Velde \nSanne Oudshoorn", 45, 0x000000, "GameFont");
+			var credits3:GuiText = new GuiText(0, 320, 590, 400, "right", "top", Lang.trans(Lang.MENU, "credits.man") + ": \nMerel van der Velde\nPriscilla Schaap \nPim Van Ballegoijen de Jong", 45, 0x000000, "GameFont");
 			addChild(credits1);
 			addChild(credits2);
 			addChild(credits3);

@@ -10,6 +10,10 @@
 		<t name="main.version">Weed</t>
 		
 		<t name="main.back">Smoke weed 420</t>
+		
+		<t name="credits.pro">Trick Shots</t>
+		<t name="credits.art">No Scopers</t>
+		<t name="credits.man">Hard Scopers</t>
 	</menu>
 	
 	<editor>

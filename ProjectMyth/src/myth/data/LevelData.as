@@ -6,6 +6,7 @@ package myth.data
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import starling.utils.AssetManager;
+	import myth.data.Theme;
 	
 	public class LevelData 
 	{
@@ -37,6 +38,7 @@ package myth.data
 			
 			//theme
 			theme = levelData.theme;
+			Theme.MENU_THEME = theme;
 			
 			//set end point position
 			for (i = 0; i < levelData.objects.length; i++) 

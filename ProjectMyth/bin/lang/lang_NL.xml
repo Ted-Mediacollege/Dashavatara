@@ -10,6 +10,10 @@
 		<t name="main.version">Versie</t>
 		
 		<t name="main.back">Terug naar het hoofd menu</t>
+		
+		<t name="credits.pro">Programmeurs</t>
+		<t name="credits.art">Artists</t>
+		<t name="credits.man">Media Managers</t>
 	</menu>
 	
 	<editor>
