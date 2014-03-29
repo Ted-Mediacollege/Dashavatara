@@ -13,6 +13,22 @@ package myth.gui.game
 	
 	public class GuiCredits extends GuiScreen
 	{
+		/* 
+		
+		Kit van de Bunt
+		Ted de Vos
+		
+		Aaron Ligthart
+		Lieske Timmermans
+		Iris van der Velde
+		Sanne Oudshoorn
+		
+		Merel van der Velde
+		-
+		-
+		
+		 */
+		
 		public var easterEggCount:int = 0;
 		
 		public function GuiCredits() 
@@ -24,13 +40,14 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiCredits", 25, 0x000000);
-			addChild(t);
-			
-			var lol:GuiText = new GuiText(screenWidth / 2, screenHeight / 2 - 200, 800, 250, "center", "center", "Ted is de programmeur die het laadscherm heeft gemaakt in paint", 45, 0x000000);
-			addChild(lol);
+			var credits1:GuiText = new GuiText(0, 100, 590, 400, "right", "top", "Kit van de Bunt \nTed de vos", 45, 0x000000, "GameFont");
+			var credits2:GuiText = new GuiText(screenWidth / 2 + 50, 100, 600, 400, "left", "top", "Aaron Ligthart \nLieske Timmermans \nIris van der Velde \nSanne Oudshoorn", 45, 0x000000, "GameFont");
+			var credits3:GuiText = new GuiText(0, 300, 590, 400, "right", "top", "Merel van der Velde\n- \n-", 45, 0x000000, "GameFont");
+			addChild(credits1);
+			addChild(credits2);
+			addChild(credits3);
 
-			var b:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 25, 0x000000));
+			var b:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 

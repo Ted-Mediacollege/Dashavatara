@@ -35,16 +35,17 @@ package myth.graphics
 		public static var enemy_xml:Class;
 		
 		//texture atlas
-		public static var atlas_gui:TextureAtlas;
-		public static var atlas_gui_background:TextureAtlas;
 		public static var atlas_player:TextureAtlas;
-		public static var atlas_background:TextureAtlas;
-		public static var atlas_background2:TextureAtlas;
-		public static var atlas_level:TextureAtlas;
 		public static var atlas_fish:TextureAtlas;
 		public static var atlas_enemyRunning:TextureAtlas;
 		public static var atlas_enemy:TextureAtlas;
 		
+		//font
+		
+		[Embed(source="../../../lib/font/Connie-Regular.ttf", embedAsCFF="false", fontFamily="GameFont")]
+		private static const gameFont:Class;
+		
+		//texture loaders
 		public static var assets:AssetManager;
 		public static var spriterLoader:SpriterLoader;
 		

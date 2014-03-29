@@ -17,7 +17,7 @@ package myth
 	
 	public class PreLoader extends Sprite
 	{
-		private var starling:Starling;
+		public static var starling:Starling;
 		
 		[Embed(source="../../lib/embed/loadingscreen.png")]
 		public static var texture_screen:Class;
@@ -40,7 +40,6 @@ package myth
 			ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
 			
 			starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-			starling.showStats = true;
 			starling.start();
 			
 			starling.addEventListener(starling.events.Event.CONTEXT3D_CREATE, onStarlingLoadComplete);

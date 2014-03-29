@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-
-<TextureAtlas imagePath="level.png">
-	<SubTexture name="pillar_1" x="0" y="0" width="171" height="425"/>;
-</TextureAtlas>

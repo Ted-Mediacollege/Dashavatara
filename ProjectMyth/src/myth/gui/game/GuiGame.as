@@ -30,7 +30,7 @@ package myth.gui.game
 	import starling.core.Starling;
 	import myth.graphics.Display;
 	import myth.graphics.LayerID;
-	
+	import myth.PreLoader;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -77,6 +77,8 @@ package myth.gui.game
 		private var gameScreen:Sprite = new Sprite();
 		override public function init():void
 		{
+			PreLoader.starling.showStats = true;
+			
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
 			
@@ -274,6 +276,8 @@ package myth.gui.game
 		
 		override public function destroy():void
 		{
+			PreLoader.starling.showStats = false;
+			
 			//removeChild(Main.world);
 			Main.world.onRemove();
 			Main.world = null;

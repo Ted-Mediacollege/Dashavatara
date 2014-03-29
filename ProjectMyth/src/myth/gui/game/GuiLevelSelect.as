@@ -7,6 +7,7 @@ package myth.gui.game
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
 	import starling.display.Image;
+	import myth.lang.Lang;
 
 	public class GuiLevelSelect extends GuiScreen
 	{
@@ -24,7 +25,7 @@ package myth.gui.game
 			background = null;
 			setBackground(1);
 			
-			addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, "Main Menu", 25, 0x000000));
+			addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
 			
 			addButton(new GuiButton(10, TextureList.assets.getTexture("map_button_1a"), 160, 120, 138, 139, ""));
 		}
