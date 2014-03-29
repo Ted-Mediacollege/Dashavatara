@@ -140,8 +140,31 @@ package myth.editor.field
 			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy);
 			b.x = b.posX / b.z;
 			b.visible = false;
+			
+			var l:int = BACKGROUND_CREATED.length;
+			if (l == 0)
+			{
+				addChild(b);
+			}
+			else
+			{
+				for (var i:int = 0; i < l; i++ )
+				{
+					if (BACKGROUND_CREATED[i].z >= b.z)
+					{
+						addChildAt(b, getChildIndex(BACKGROUND_CREATED[i]));
+						break;
+					}
+					
+					if (i == l - 1)
+					{
+						addChild(b);
+						break;
+					}
+				}
+			}
+				
 			BACKGROUND_CREATED.push(b);
-			addChild(b);
 		}
 		
 		public function getBackgroundAt(px:Number, py:Number):EditorItem
