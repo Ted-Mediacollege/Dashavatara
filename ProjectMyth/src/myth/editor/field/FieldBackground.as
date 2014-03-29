@@ -145,6 +145,7 @@ package myth.editor.field
 			if (l == 0)
 			{
 				addChild(b);
+				BACKGROUND_CREATED.push(b);
 			}
 			else
 			{
@@ -153,18 +154,18 @@ package myth.editor.field
 					if (BACKGROUND_CREATED[i].z >= b.z)
 					{
 						addChildAt(b, getChildIndex(BACKGROUND_CREATED[i]));
+						BACKGROUND_CREATED.splice(i, 0, b);
 						break;
 					}
 					
 					if (i == l - 1)
 					{
 						addChild(b);
+						BACKGROUND_CREATED.push(b);
 						break;
 					}
 				}
 			}
-				
-			BACKGROUND_CREATED.push(b);
 		}
 		
 		public function getBackgroundAt(px:Number, py:Number):EditorItem
