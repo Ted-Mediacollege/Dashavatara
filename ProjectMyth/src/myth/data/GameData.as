@@ -8,5 +8,7 @@ package myth.data
 		public static var ANDROID:Boolean = false;
 		public static var COMPUTER:Boolean = false;
 		public static var testOS:String = "";
+		
+		public static var levelsUnlocked:int = 99;
 	}
 }

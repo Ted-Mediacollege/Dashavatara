@@ -10,6 +10,7 @@ package myth.gui.game
 	import myth.lang.Lang;
 	import myth.gui.components.GuiButtonLevel;
 	import starling.display.BlendMode;
+	import myth.data.GameData;
 
 	public class GuiLevelSelect extends GuiScreen
 	{
@@ -76,7 +77,10 @@ package myth.gui.game
 			{
 				if (levelList.level[i].@chapter == chapter)
 				{
-					addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y));
+					if (levelList.level[i].@id <= GameData.levelsUnlocked)
+					{
+						addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y));
+					}
 				}
 			}
 		}
