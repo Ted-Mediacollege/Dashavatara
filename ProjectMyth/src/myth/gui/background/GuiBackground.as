@@ -10,7 +10,9 @@ package myth.gui.background
 	
 	public class GuiBackground extends Sprite
 	{	
+		public var theme:int;
 		public var clouds:Vector.<Image>;
+		public var earth:Vector.<Image>;
 		
 		public function GuiBackground() 
 		{
@@ -19,10 +21,10 @@ package myth.gui.background
 		
 		public function build():void
 		{
-			clouds = new Vector.<Image>();
+			theme = Theme.MENU_THEME;
 			
 			var bg:Image;
-			switch(Theme.MENU_THEME)
+			switch(theme)
 			{
 				case Theme.SKY: bg = new Image(TextureList.assets.getTexture("sky_lucht")); break;
 				case Theme.EARTH: bg = new Image(TextureList.assets.getTexture("earth_lucht")); break;
@@ -30,8 +32,9 @@ package myth.gui.background
 			}
 			addChild(bg);
 			
-			if (Theme.MENU_THEME == Theme.SKY)
+			if (theme == Theme.SKY)
 			{
+				clouds = new Vector.<Image>();
 				var textures:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
 				for (var i:int = 0; i < 15; i++ )
 				{
@@ -42,16 +45,41 @@ package myth.gui.background
 					clouds.push(c);
 				}
 			}
+			else if (theme == Theme.EARTH)
+			{
+				earth = new Vector.<Image>();
+				for (var j:int = 0; j < 2; j++ )
+				{
+					var m:Image = new Image(TextureList.assets.getTexture("earth_bergen"));
+					m.x = (j * 1280) - 600;
+					addChild(m);
+					earth.push(m);
+				}
+			}
 		}
 		
 		public function tick():void
 		{
-			for (var i:int = clouds.length - 1; i > -1; i-- )
+			if (theme == 0)
 			{
-				clouds[i].x -= 1;
-				if (clouds[i].x + clouds[i].width < 0)
+				for (var i:int = clouds.length - 1; i > -1; i-- )
 				{
-					clouds[i].x += 1280 + clouds[i].width;
+					clouds[i].x -= 1;
+					if (clouds[i].x + clouds[i].width < 0)
+					{
+						clouds[i].x += 1280 + clouds[i].width;
+					}
+				}
+			}
+			else if (theme == 1)
+			{
+				for (var j:int = earth.length - 1; j > -1; j-- )
+				{
+					if (earth[0].x < -1280)
+					{
+						earth[j].x += 1280;
+					}
+					earth[j].x -= 1;
 				}
 			}
 		}
