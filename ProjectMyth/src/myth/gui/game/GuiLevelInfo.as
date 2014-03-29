@@ -9,21 +9,28 @@ package myth.gui.game
 
 	public class GuiLevelInfo extends GuiScreen
 	{
-		private var levelName:String;
-		public function GuiLevelInfo(_levelName:String) 
+		private var file_name:String;
+		private var level_name:String;
+		private var level_desc:String;
+		private var level_diff:String;
+		
+		public function GuiLevelInfo(file:String, levelname:String, description:String, difficulty:String) 
 		{
-			levelName = _levelName;
+			file_name = file;
+			level_name = levelname;
+			level_desc = description;
+			level_diff = difficulty;
 		}
 		
 		override public function init():void 
 		{ 
 			addChild(background);
 			
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiLevelInfo", 25, 0x000000);
+			var t:GuiText = new GuiText(100, 100, 700, 400, "left", "top", "File: " + file_name + "\nName: " + level_name + "\nDescription: " + level_desc + "\nDifficulty: " + level_diff, 35, 0x000000);
 			addChild(t);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 120, 450, 100, "Play Test Level", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Back To Level Select", 25, 0x000000));
+			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 190, 450, 100, "Play", 45, 0x000000, "GameFont"));
+			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Back To Level Select", 45, 0x000000, "GameFont"));
 		}
 		
 		override public function tick():void 
@@ -35,7 +42,7 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiGame(levelName));
+				main.switchGui(new GuiGame(file_name));
 			}
 			else if (b.buttonID == 1)
 			{

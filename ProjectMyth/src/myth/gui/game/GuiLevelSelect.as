@@ -79,7 +79,7 @@ package myth.gui.game
 				{
 					if (levelList.level[i].@id <= GameData.levelsUnlocked)
 					{
-						addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y));
+						addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y, levelList.level[i].@file, levelList.level[i].@name, levelList.level[i].@description, levelList.level[i].@difficulty));
 					}
 				}
 			}
@@ -93,7 +93,8 @@ package myth.gui.game
 		{ 
 			if (b.buttonID > 99)
 			{
-				main.switchGui(new GuiLevelInfo("level_1"));
+				var lb:GuiButtonLevel = (b as GuiButtonLevel);
+				main.switchGui(new GuiLevelInfo(lb.file_name, lb.level_name, lb.level_description, lb.level_difficulty));
 			}
 			else if (b.buttonID == 0)
 			{

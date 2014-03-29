@@ -48,16 +48,29 @@ package myth.world
 					addChild(b2);
 				}
 			}
+			else if (theme == Theme.EARTH)
+			{
+				var mountain:Texture = TextureList.assets.getTexture("earth_bergen");
+				var amount:int = int(Math.ceil((size / 1280) / 4)) + 1;
+				for (var m:int = 0; m < amount; m++ )
+				{
+					var b3:Background = new Background(mountain, (m * 1280) * 4, 0, 4, 1, 1);
+					b3.x = b3.posX / b3.z;
+					b3.visible = false;
+					Backgrounds.push(b3);
+					addChild(b3);
+				}
+			}
 			
 			var textureNames:Vector.<String> = getTexturesForTheme(theme);
 			var dataLength:int = data.length;
 			for (var k:int = 0; k < dataLength; k++ )
 			{
-				var b3:Background = new Background(TextureList.assets.getTexture(textureNames[data[k][0]]), data[k][2], data[k][3], data[k][1], 1, 1);
-				b3.x = b3.posX / b3.z;
-				b3.visible = false;
-				Backgrounds.push(b3);
-				addChild(b3);
+				var b5:Background = new Background(TextureList.assets.getTexture(textureNames[data[k][0]]), data[k][2], data[k][3], data[k][1], 1, 1);
+				b5.x = b5.posX / b5.z;
+				b5.visible = false;
+				Backgrounds.push(b5);
+				addChild(b5);
 			}
 		}
 		
