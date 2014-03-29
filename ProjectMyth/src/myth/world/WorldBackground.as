@@ -37,7 +37,7 @@ package myth.world
 			{
 				var clouds:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
 				var cloudslength:int = clouds.length;
-				var cloudiness:int = int(Math.ceil(size / 127 * 0.55));
+				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
 				for (var j:int = 0; j < cloudiness; j++ )
 				{
 					var randomHeight:int = MathHelper.nextInt(380);

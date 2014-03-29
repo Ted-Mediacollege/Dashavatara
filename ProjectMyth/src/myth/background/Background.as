@@ -19,6 +19,8 @@ package myth.background
 			image.scaleY = sy;
 			addChild(image);
 			
+			touchable = false;
+			
 			z = pz;
 			posX = px;
 			
