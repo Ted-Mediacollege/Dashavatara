@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<level id="0" chapter="0" x="160" y="120" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="1" chapter="0" x="463" y="93" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="2" chapter="0" x="680" y="191" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="3" chapter="0" x="927" y="213" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="4" chapter="0" x="1039" y="343" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="5" chapter="0" x="829" y="458" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="6" chapter="0" x="567" y="561" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="7" chapter="0" x="289" y="517" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	
+	<level id="8" chapter="1" x="161" y="86" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="9" chapter="1" x="449" y="81" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="10" chapter="1" x="987" y="121" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="11" chapter="1" x="662" y="253" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="12" chapter="1" x="384" y="363" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="13" chapter="1" x="508" y="480" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="14" chapter="1" x="782" y="513" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+	<level id="15" chapter="1" x="1066" y="570" file="LEVEL_SKY_1" name="LEVEL_NAME" description="DESCRIPTION" difficulty="DIFFICULTY" />
+</data>

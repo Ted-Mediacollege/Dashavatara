@@ -72,6 +72,7 @@ package myth.graphics
 			assets.enqueue(appDir.resolvePath("tex/gui"));
 			assets.enqueue(appDir.resolvePath("tex/editor"));
 			assets.enqueue(appDir.resolvePath("lang"));
+			assets.enqueue(appDir.resolvePath("mapData"));
 			assets.enqueue(appDir.resolvePath("tex/map"));
 				
 			assets.loadQueue(function(ratio:Number):void {

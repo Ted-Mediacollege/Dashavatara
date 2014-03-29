@@ -68,6 +68,15 @@ package myth.gui
 			}
 		}
 		
+		public function removeAllButtons():void
+		{
+			for (var i:int = buttonList.length - 1; i > -1; i--)
+			{
+				removeChild(buttonList[i]);
+				buttonList.splice(i, 1);
+			}
+		}
+		
 		//called by touch input
 		public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{

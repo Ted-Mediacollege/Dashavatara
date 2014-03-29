@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TextureAtlas imagePath="maps.png">
-	<SubTexture name="map_1"			x="0"	y="787"	width="1280"	height="786" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="786"/>
-	<SubTexture name="map_2"			x="0"	y="0"	width="1280"	height="786" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="786"/>
-	<SubTexture name="map_31"			x="1281"	y="0"	width="640"	height="786" frameX="-0" frameY="-0" frameWidth="640" frameHeight="786"/>
-	<SubTexture name="map_32"			x="1281"	y="787"	width="640"	height="786" frameX="-0" frameY="-0" frameWidth="640" frameHeight="786"/>
-	<SubTexture name="map_button_1a"	x="139"	y="1886"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_1b"	x="0"	y="1746"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_2a"	x="0"	y="1886"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_2b"	x="139"	y="1746"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_3a"	x="417"	y="1854"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_3b"	x="160"	y="1574"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_4a"	x="417"	y="1714"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_4b"	x="299"	y="1574"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_5a"	x="278"	y="1854"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_5b"	x="278"	y="1714"	width="138"	height="139" frameX="-1" frameY="-0" frameWidth="140" frameHeight="140"/>
-	<SubTexture name="map_button_down"	x="0"	y="1574"	width="159"	height="85" frameX="-0" frameY="-0" frameWidth="159" frameHeight="85"/>
-	<SubTexture name="map_button_up"	x="0"	y="1660"	width="159"	height="85" frameX="-0" frameY="-0" frameWidth="159" frameHeight="85"/>
+	<SubTexture name="map_1"	x="0"	y="787"	width="1280"	height="786" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="786"/>
+	<SubTexture name="map_2"	x="0"	y="0"	width="1280"	height="786" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="786"/>
+	<SubTexture name="map_31"	x="1281"	y="787"	width="640"	height="786" frameX="-0" frameY="-0" frameWidth="640" frameHeight="786"/>
+	<SubTexture name="map_32"	x="1281"	y="0"	width="640"	height="786" frameX="-0" frameY="-0" frameWidth="640" frameHeight="786"/>
+	<SubTexture name="map_button_a"	x="0"	y="1713"	width="137"	height="138" frameX="-2" frameY="-1" frameWidth="140" frameHeight="140"/>
+	<SubTexture name="map_button_b"	x="0"	y="1574"	width="137"	height="138" frameX="-2" frameY="-1" frameWidth="140" frameHeight="140"/>
+	<SubTexture name="map_button_left"	x="86"	y="1852"	width="85"	height="159" frameX="-0" frameY="-0" frameWidth="85" frameHeight="159"/>
+	<SubTexture name="map_button_right"	x="0"	y="1852"	width="85"	height="159" frameX="-0" frameY="-0" frameWidth="85" frameHeight="159"/>
 </TextureAtlas>

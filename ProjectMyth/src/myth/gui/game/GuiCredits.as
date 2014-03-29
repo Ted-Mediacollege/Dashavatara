@@ -42,7 +42,7 @@ package myth.gui.game
 			
 			var credits1:GuiText = new GuiText(0, 100, 590, 400, "right", "top", "Kit van de Bunt \nTed de vos", 45, 0x000000, "GameFont");
 			var credits2:GuiText = new GuiText(screenWidth / 2 + 50, 100, 600, 400, "left", "top", "Aaron Ligthart \nLieske Timmermans \nIris van der Velde \nSanne Oudshoorn", 45, 0x000000, "GameFont");
-			var credits3:GuiText = new GuiText(0, 300, 590, 400, "right", "top", "Merel van der Velde\n- \n-", 45, 0x000000, "GameFont");
+			var credits3:GuiText = new GuiText(0, 300, 590, 400, "right", "top", "Merel van der Velde\nPriscilla Schaap \nPim Van Ballegoijen de Jong", 45, 0x000000, "GameFont");
 			addChild(credits1);
 			addChild(credits2);
 			addChild(credits3);
