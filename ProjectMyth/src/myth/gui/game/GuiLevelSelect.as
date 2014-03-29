@@ -28,10 +28,11 @@ package myth.gui.game
 		override public function init():void 
 		{ 
 			background = null;
-			switchChapter(0);
 			
 			levelList = TextureList.assets.getXml("level_list");
 			levelListLength = levelList.children().length();
+			
+			switchChapter(0);
 		}
 		
 		public function switchChapter(id:int):void
