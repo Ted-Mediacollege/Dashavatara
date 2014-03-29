@@ -148,15 +148,11 @@ package myth.entity.player
 						}
 						if (hit) {
 							thisSwipeHit = true;
-							trace("hit:" + Main.world.entityManager.enemyList[j].Healt);
+							//trace("hit:" + Main.world.entityManager.enemyList[j].Healt);
 							if (Main.world.entityManager.enemyList[j].lastSwipe != swipeCount) {
 								Main.world.entityManager.enemyList[j].lastSwipe = swipeCount;
 								if (Main.world.entityManager.enemyList[j].hit( -25)) {
 									Main.world.entityManager.killEnemy(Main.world.entityManager.enemyList[j]);
-									
-									
-									
-									
 								}
 							}
 						}

@@ -22,6 +22,7 @@ package myth.world
 	import myth.world.worldZones.WorldZoneManager;
 	import starling.animation.Juggler;
 	import starling.display.Image;
+	import starling.display.QuadBatch;
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import myth.graphics.TextureList;
@@ -73,6 +74,8 @@ package myth.world
 		public var gameJuggler:Juggler;
 		
 		public var player:EntityPlayerBase;
+		
+		public var backgroundBatch:QuadBatch = new QuadBatch;
 		
 		public function World(g:GuiGame ,levelName:String = "level_1", _editorTesting:Boolean = false, _editorString:String = null) 
 		{

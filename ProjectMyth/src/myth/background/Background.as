@@ -4,27 +4,22 @@ package myth.background
 	import starling.textures.Texture;
 	import starling.display.Image;
 	
-	public class Background extends Sprite
+	public class Background extends Image
 	{	
-		public var image:Image;
 		public var z:Number;
 		public var posX:Number;
 		
 		public function Background(t:Texture, px:Number, py:Number, pz:Number, sx:Number, sy:Number) 
 		{
-			image = new Image(t);
+			super(t);
 			x = px;
 			y = py;
-			image.scaleX = sx;
-			image.scaleY = sy;
-			addChild(image);
-			
+			scaleX = sx;
+			scaleY = sy;
 			touchable = false;
 			
 			z = pz;
 			posX = px;
-			
-			flatten();
 		}	
 	}
 }

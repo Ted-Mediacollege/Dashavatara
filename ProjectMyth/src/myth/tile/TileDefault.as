@@ -9,15 +9,12 @@ package myth.tile
 	{
 		public function TileDefault(t:Texture, px:Number, py:Number, i:int) 
 		{
-			super(i);
+			super(i,t);
 			
 			var image:Image = new Image(t);
-			image.x = px;
-			image.y = py;
-			image.touchable = false;
-			addChild(image);
-			
-			flatten();
+			this.x = px;
+			this.y = py;
+			this.touchable = false;
 		}	
 	}
 }
