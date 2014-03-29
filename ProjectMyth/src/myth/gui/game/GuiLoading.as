@@ -6,6 +6,7 @@ package myth.gui.game
 	import myth.gui.components.GuiText;
 	import myth.gui.background.GuiBackground;
 	import starling.display.Image;
+	import starling.display.Shape;
 	import starling.events.TouchEvent;
 	import myth.graphics.TextureList;
 	import myth.Main;
@@ -18,6 +19,8 @@ package myth.gui.game
 		public static var ready:int = 0;
 		public static var progress:Number = 0;
 		public static var KevinIsEenRareEngeVampier:GuiText;
+		
+		private var filler:Shape;
 		private var screen:Image;
 		
 		public function GuiLoading() 
@@ -30,20 +33,28 @@ package myth.gui.game
 			ready = 0;
 			progress = 0;
 			
+			filler = new Shape();
+			addChild(filler);
+			
 			screen = Image.fromBitmap(new PreLoader.texture_screen());
 			addChild(screen);
 			
-			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2, 400, 60, "center", "center", "Loading 0%", 25, 0x000000);
+			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 20, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
 			TextureList.preLoad();
 		}
 		
 		override public function tick():void 
-		{ 
+		{ 				
+			filler.graphics.clear();
+			filler.graphics.lineStyle(0, 0x8890D3);
+			filler.graphics.beginFill(0x8890D3);
+			filler.graphics.drawRect(430, 430, progress * 450, 100);
+			
 			if (ready < 2)
 			{
-				KevinIsEenRareEngeVampier.text.text = "Loading " + Math.floor(progress * 100) + "%";
+				KevinIsEenRareEngeVampier.text.text = "Loading Textures...";
 			}
 			else
 			{
