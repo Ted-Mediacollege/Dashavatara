@@ -28,8 +28,6 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			background = null;
-			
 			levelList = TextureList.assets.getXml("level_list");
 			levelListLength = levelList.children().length();
 			
@@ -94,11 +92,11 @@ package myth.gui.game
 			if (b.buttonID > 99)
 			{
 				var lb:GuiButtonLevel = (b as GuiButtonLevel);
-				main.switchGui(new GuiLevelInfo(lb.file_name, lb.level_name, lb.level_description, lb.level_difficulty));
+				main.switchGui(new GuiLevelInfo(chapter, lb.file_name, lb.level_name, lb.level_description, lb.level_difficulty));
 			}
 			else if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 			else if (b.buttonID == 1)
 			{

@@ -39,7 +39,7 @@ package myth.gui.game
 			screen = Image.fromBitmap(new PreLoader.texture_screen());
 			addChild(screen);
 			
-			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 20, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
+			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 70, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
 			TextureList.preLoad();
@@ -50,7 +50,7 @@ package myth.gui.game
 			filler.graphics.clear();
 			filler.graphics.lineStyle(0, 0x8890D3);
 			filler.graphics.beginFill(0x8890D3);
-			filler.graphics.drawRect(430, 430, progress * 450, 100);
+			filler.graphics.drawRect(425, 480, progress * 450, 100);
 			
 			if (ready < 2)
 			{
@@ -66,11 +66,11 @@ package myth.gui.game
 		{
 			if (ready > 1)
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 		}		
 		
-		override public function preInit(m:Main):void
+		override public function preInit(m:Main, bg:Boolean):void
 		{
 			main = m;
 			buttonList = new Vector.<GuiButton>();

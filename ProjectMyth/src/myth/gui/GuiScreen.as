@@ -35,14 +35,21 @@ package myth.gui
 		public function destroy():void { }
 		
 		//called by the main
-		public function preInit(m:Main):void
+		public function preInit(m:Main, bg:Boolean):void
 		{
 			main = m;
 			buttonList = new Vector.<GuiButton>();
 			
-			if (background == null)
+			if (bg)
 			{
-				background = new GuiBackground();
+				if (background == null)
+				{
+					background = new GuiBackground();
+				}
+			}
+			else 
+			{
+				background = null;
 			}
 		}
 		

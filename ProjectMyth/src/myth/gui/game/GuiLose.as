@@ -6,6 +6,7 @@ package myth.gui.game
 	import myth.gui.components.GuiText;
 	import myth.gui.background.GuiBackground;
 	import myth.graphics.TextureList;
+	import starling.display.Image;
 
 	public class GuiLose extends GuiScreen
 	{
@@ -18,18 +19,15 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			addChild(background);
+			var bg:Image = new Image(TextureList.assets.getTexture("gui_lose"));
+			addChild(bg);
 			
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiLose", 25, 0x000000);
-			addChild(t);
-			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Main Menu", 25, 0x000000));
+			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 45, 0x000000, "GameFont"));
+			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Main Menu", 45, 0x000000, "GameFont"));
 		}
 		
 		override public function tick():void 
 		{ 
-			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 
@@ -40,7 +38,7 @@ package myth.gui.game
 			}
 			else
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 		}
 		

@@ -54,8 +54,6 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			background = null;
-			
 			editor = new Editor(this);
 			addChild(editor);
 			editor.init();
@@ -78,13 +76,13 @@ package myth.gui.game
 			grey_screen.graphics.drawRect(0, 0, 1280, 768);
 			addChild(grey_screen);
 			
-			button_menu = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.EDITOR, "menu.menu"), 25, 0x000000));
-			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 25, 0x000000));
-			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 25, 0x000000));
+			button_menu = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
+			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 45, 0x000000, "GameFont"));
+			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 45, 0x000000, "GameFont"));
 				
-			button_creator_build = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 250, 450, 100, "Create level", 25, 0x000000));
-			button_creator_theme = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 50, 450, 100, "Theme: Sky", 25, 0x000000));
-			button_creator_size = addButton(new GuiButton(5, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 70, 450, 100, "Size: Small", 25, 0x000000));
+			button_creator_build = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 250, 450, 100, "Create level", 45, 0x000000, "GameFont"));
+			button_creator_theme = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 50, 450, 100, "Theme: Sky", 45, 0x000000, "GameFont"));
+			button_creator_size = addButton(new GuiButton(5, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 70, 450, 100, "Size: Small", 45, 0x000000, "GameFont"));
 			
 			create_menu(false);
 			
@@ -118,7 +116,7 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0) //BACK TO MAIN GAME MENU
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 			else if (b.buttonID == 1) //CREATE 
 			{

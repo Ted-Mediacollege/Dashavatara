@@ -82,8 +82,6 @@ package myth.gui.game
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
 			
-			background = null;
-			
 			if (editorTesting)
 			{
 				Main.world = new World(this, levelName, editorTesting, editorString);
@@ -197,7 +195,7 @@ package myth.gui.game
 			}
 			else if (button.buttonID == 1)
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 			else if (button.buttonID > 9 && !pause)
 			{

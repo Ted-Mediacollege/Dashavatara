@@ -19,8 +19,6 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			addChild(background);
-			
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiWin", 25, 0x000000);
 			addChild(t);
 			
@@ -32,7 +30,6 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 
@@ -47,7 +44,7 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 2)
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 		}
 		

@@ -58,7 +58,7 @@ package myth.gui.game
 		
 		override public function action(b:GuiButton):void 
 		{ 
-			main.switchGui(new GuiMainMenu());
+			main.switchGui(new GuiMainMenu(), true);
 		}
 		
 		override public function destroy():void 

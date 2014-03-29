@@ -261,7 +261,7 @@ package myth.editor
 			}
 			else if (id == 11) //MENU
 			{
-				guiEditor.main.switchGui(new GuiMainMenu());
+				guiEditor.main.switchGui(new GuiMainMenu(), true);
 			}
 			else if (id == 12) //LOAD
 			{

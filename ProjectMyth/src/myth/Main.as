@@ -52,7 +52,7 @@ package myth
 			TimeHelper.tick();
 		}
 		
-		public function switchGui(newgui:GuiScreen):void
+		public function switchGui(newgui:GuiScreen, bg:Boolean = false):void
 		{
 			if (gui != null)
 			{
@@ -62,7 +62,7 @@ package myth
 			
 			gui = newgui;
 			addChild(newgui);
-			gui.preInit(this);
+			gui.preInit(this, bg);
 			gui.init();
 		}
 		

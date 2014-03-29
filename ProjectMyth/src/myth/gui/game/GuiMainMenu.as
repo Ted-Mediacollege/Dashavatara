@@ -26,13 +26,13 @@ package myth.gui.game
 			var logo:Image = new Image(TextureList.assets.getTexture("gui_logo"));
 			logo.pivotX = logo.width / 2;
 			logo.x = 630;
-			logo.y = 10;
+			logo.y = 5;
 			addChild(logo);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 10, 450, 100, Lang.trans(Lang.MENU, "main.play"), 45, 0x000000, "GameFont"));
-			var b3:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 120, 450, 100, Lang.trans(Lang.MENU, "main.editor"), 45, 0x000000, "GameFont"));
-			var b4:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 230, 450, 100, Lang.trans(Lang.MENU, "main.options"), 45, 0x000000, "GameFont"));
-			var b5:GuiButton = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 340, 450, 100, Lang.trans(Lang.MENU, "main.credits"), 45, 0x000000, "GameFont"));
+			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "main.play"), 45, 0x000000, "GameFont"));
+			var b3:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "main.editor"), 45, 0x000000, "GameFont"));
+			var b4:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 220, 450, 100, Lang.trans(Lang.MENU, "main.options"), 45, 0x000000, "GameFont"));
+			var b5:GuiButton = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.credits"), 45, 0x000000, "GameFont"));
 		}
 		
 		override public function tick():void 
@@ -52,11 +52,11 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 2)
 			{
-				main.switchGui(new GuiOptions());
+				main.switchGui(new GuiOptions(), true);
 			}
 			else if (b.buttonID == 3)
 			{
-				main.switchGui(new GuiCredits());
+				main.switchGui(new GuiCredits(), true);
 			}
 		}
 		

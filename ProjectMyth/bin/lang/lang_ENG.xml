@@ -17,7 +17,6 @@
 	</menu>
 	
 	<editor>
-		<t name="menu.menu">Main Menu</t>
 		<t name="menu.create">Create Level</t>
 		<t name="menu.load">Load level</t>
 		

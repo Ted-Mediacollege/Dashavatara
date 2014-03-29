@@ -6,6 +6,8 @@ package myth.gui.game
 	import myth.gui.components.GuiText;
 	import myth.graphics.TextureList;
 	import myth.gui.background.GuiBackground;
+	import starling.display.Image;
+	import starling.display.BlendMode;
 
 	public class GuiLevelInfo extends GuiScreen
 	{
@@ -14,8 +16,12 @@ package myth.gui.game
 		private var level_desc:String;
 		private var level_diff:String;
 		
-		public function GuiLevelInfo(file:String, levelname:String, description:String, difficulty:String) 
+		private var backgroundmap:int;
+		
+		public function GuiLevelInfo(bgID:int, file:String, levelname:String, description:String, difficulty:String) 
 		{
+			backgroundmap = bgID;
+			
 			file_name = file;
 			level_name = levelname;
 			level_desc = description;
@@ -24,7 +30,12 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			addChild(background);
+			switch(backgroundmap)
+			{
+				case 0: var m1:Image = new Image(TextureList.assets.getTexture("map_1")); addChild(m1); break;
+				case 1: var m2:Image = new Image(TextureList.assets.getTexture("map_2")); addChild(m2); break;
+				case 2: var m3:Image = new Image(TextureList.assets.getTexture("map_31")); addChild(m3); var m4:Image = new Image(TextureList.assets.getTexture("map_32")); m4.x = 640; m4.blendMode = BlendMode.NONE; addChild(m4); break;
+			}
 			
 			var t:GuiText = new GuiText(100, 100, 700, 400, "left", "top", "File: " + file_name + "\nName: " + level_name + "\nDescription: " + level_desc + "\nDifficulty: " + level_diff, 35, 0x000000);
 			addChild(t);
@@ -35,7 +46,6 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
-			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 
