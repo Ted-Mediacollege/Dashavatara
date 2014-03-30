@@ -190,7 +190,7 @@ package myth.entity.player
 			super.tick();
 			//Main.world.attackShape.graphics.clear();
 			//trace(parts.length);
-			smoothParts = FindSmoothPathBetweenNodes.getArrayOfPoints(parts,false,10);
+			smoothParts = FindSmoothPathBetweenNodes.getArrayOfPoints(parts,false,20);
 			//var smoothParts:Vector.<slashPart> = parts;
 			
 			lineBatch.reset();

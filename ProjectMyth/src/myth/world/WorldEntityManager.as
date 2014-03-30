@@ -7,8 +7,10 @@ package myth.world
 	import myth.entity.effects.deahtRunning;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.enemy.EnemyType;
+	import myth.entity.enemy.EntityEnemyStone;
 	import myth.entity.enemy.EntityEnemyFlying;
 	import myth.entity.enemy.EntityEnemyWalking;
+	import myth.entity.Entity;
 	import myth.entity.player.EntityPlayerBase;
 	import myth.entity.SimpleEntity;
 	import starling.display.Sprite;
@@ -24,6 +26,7 @@ package myth.world
 	{
 		private var data:Vector.<Vector.<int>>;
 		public var enemyList:Vector.<EntityEnemyBase> = new Vector.<EntityEnemyBase>;
+		public var stoneList:Vector.<EntityEnemyStone> = new Vector.<EntityEnemyStone>;
 		public var bulletList:Vector.<EntityBulletBase> = new Vector.<EntityBulletBase>;
 		
 		public function WorldEntityManager(_data:Vector.<Vector.<int>> = null):void {
@@ -32,18 +35,34 @@ package myth.world
 		
 		public function makeEnemy( type:int,xPos:int,yPos:int) :void
 		{
-			var enemy : EntityEnemyBase;
-			if(type == EnemyType.Walking_01){
-				enemy = new EntityEnemyWalking();
-			}else if(type == EnemyType.Walking_02){
-				enemy = new EntityEnemyWalking();
-			}else if(type == EnemyType.Flying_01){
-				enemy = new EntityEnemyFlying();
+			var enemy : Entity;
+			switch(type) {
+				case EnemyType.Walking_01:
+					enemy = new EntityEnemyWalking();
+					break;
+				case EnemyType.Walking_02:
+					enemy = new EntityEnemyWalking();
+					break;
+				case EnemyType.Flying_01:
+					enemy = new EntityEnemyFlying();
+					break;
+				case EnemyType.Stone_01:
+					enemy = new EntityEnemyStone();
+					break;
 			}
-			enemy.x = xPos;
-			enemy.y = yPos;
-			enemyList.push(enemy);
-			addChild(enemy);
+			if (type == EnemyType.Walking_01 || 
+				type == EnemyType.Walking_02 ||
+				type == EnemyType.Flying_01){
+				enemy.x = xPos;
+				enemy.y = yPos;
+				enemyList.push(enemy);
+				addChild(enemy);
+			}else if (type == EnemyType.Stone_01) {
+				enemy.x = xPos + yPos;
+				enemy.y = -100;
+				stoneList.push(enemy);
+				addChild(enemy);
+			}
 		}
 		
 		private function makeDeathPart(xPos:int, yPos:int, e:int) :void{
@@ -87,7 +106,7 @@ package myth.world
 		}
 		
 		override public function tick(speed:Number , dist:Number):void {
-			//spawn enemies
+			//spawn entities
 			if (data.length > 0) {
 				while(data[0][1] < dist) {
 					makeEnemy(data[0][0], 1400, data[0][2]);
@@ -97,10 +116,14 @@ package myth.world
 					}
 				}
 			}
-			//move enemies at speed off level
+			//move entitys at speed off level
 			for (var i:int = 0; i < enemyList.length; i++) {
 				enemyList[i].x -= speed;
 				enemyList[i].tick();
+			}
+			for (var i:int = 0; i < stoneList.length; i++) {
+				stoneList[i].x -= speed;
+				stoneList[i].tick();
 			}
 			for (var j:int = 0; j < bulletList.length; j++) {
 				bulletList[j].x -= speed;

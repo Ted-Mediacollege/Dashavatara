@@ -17,7 +17,7 @@ package myth.entity.enemy
 		{
 			super(EnemyType.Walking_01, 100, 170, -50, -170);
 			health = 50;
-			animationClip = new MovieClip(TextureList.atlas_enemyRunning.getTextures("RunningEnemy"), 30);
+			animationClip = new MovieClip(TextureList.assets.getTextures("RunningEnemy"), 30);
 			animationClip.x = 0;
 			animationClip.y = 0;
 			animationClip.pivotX = animationClip.width / 2;

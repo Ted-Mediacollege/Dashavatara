@@ -19,26 +19,16 @@ package myth.graphics
 		public static var player_textures:Class;
 		[Embed(source="../../../lib/textures/fish.png")]
 		public static var fish_textures:Class;
-		[Embed(source="../../../lib/textures/RunningEnemy.png")]
-		public static var enemyRunning_textures:Class;
-		[Embed(source="../../../lib/textures/enemie.png")]
-		public static var enemy_textures:Class;
 		
 		//xml files
 		[Embed(source="../../../lib/textures/player.xml", mimeType = "application/octet-stream")]
 		public static var player_xml:Class;
 		[Embed(source="../../../lib/textures/fish.xml", mimeType = "application/octet-stream")]
 		public static var fish_xml:Class;
-		[Embed(source="../../../lib/textures/RunningEnemy.xml", mimeType = "application/octet-stream")]
-		public static var enemyRunning_xml:Class;
-		[Embed(source="../../../lib/textures/enemie.xml", mimeType = "application/octet-stream")]
-		public static var enemy_xml:Class;
 		
 		//texture atlas
 		public static var atlas_player:TextureAtlas;
 		public static var atlas_fish:TextureAtlas;
-		public static var atlas_enemyRunning:TextureAtlas;
-		public static var atlas_enemy:TextureAtlas;
 		
 		//font
 		
@@ -74,6 +64,7 @@ package myth.graphics
 			assets.enqueue(appDir.resolvePath("lang"));
 			assets.enqueue(appDir.resolvePath("mapData"));
 			assets.enqueue(appDir.resolvePath("tex/map"));
+			assets.enqueue(appDir.resolvePath("tex/anim"));
 				
 			assets.loadQueue(function(ratio:Number):void {
 				GuiLoading.progress = ratio;
@@ -93,8 +84,8 @@ package myth.graphics
 		{
 			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
 			atlas_fish = new TextureAtlas(Texture.fromBitmap(new fish_textures()), XML(new fish_xml()));
-			atlas_enemyRunning = new TextureAtlas(Texture.fromBitmap(new enemyRunning_textures()), XML(new enemyRunning_xml()));
-			atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
+			//atlas_enemyRunning = new TextureAtlas(Texture.fromBitmap(new enemyRunning_textures()), XML(new enemyRunning_xml()));
+			//atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
 		}
 		
 		public static function loadLevelAssets(worldType:int,player1Type:int,player2Type:int,player3Type:int):void

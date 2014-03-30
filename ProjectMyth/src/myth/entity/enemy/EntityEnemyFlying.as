@@ -16,7 +16,7 @@ package myth.entity.enemy
 		{
 			super(EnemyType.Flying_01);
 			health = 50;
-			animationClip = new MovieClip(TextureList.atlas_enemy.getTextures("FlyingEnemy"), 30);
+			animationClip = new MovieClip(TextureList.assets.getTextures("FlyingEnemy"), 30);
 			animationClip.x = 0;
 			animationClip.y = 0;
 			animationClip.loop = true;
