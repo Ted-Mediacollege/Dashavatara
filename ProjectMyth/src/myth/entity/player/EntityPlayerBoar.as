@@ -24,14 +24,13 @@ package myth.entity.player
 	//lion
 	public class EntityPlayerBoar extends EntityPlayerBase
 	{
-		
 		public var image:SpriterClip;
 		private var startXpos:Number = 0;
 		private var xDisplacment:Number = 0;
 		public function EntityPlayerBoar() 
 		{
 			//super(true, false, true,128,200,-64,-200 );
-			super(false,100,PlayerType.Boar,TextureList.assets.getTexture("gui_icon2"));
+			super(false,100,PlayerType.Boar,TextureList.assets.getTexture("gui_icon3"));
 			startXpos = 100;
 			//player art
 			image = TextureList.spriterLoader.getSpriterClip("animSwine");
