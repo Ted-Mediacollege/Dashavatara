@@ -3,7 +3,7 @@ package myth.world
 	import myth.graphics.Display;
 	import myth.graphics.LayerID;
 	import myth.entity.player.EntityPlayerBase;
-	import myth.entity.player.EntityPlayer01v4;
+	import myth.entity.player.EntityPlayer01v5;
 	import myth.entity.player.EntityPlayer03;
 	import myth.entity.player.EntityPlayerBoar;
 	import myth.Main;
@@ -25,7 +25,7 @@ package myth.world
 		{
 			players[0] = new EntityPlayer03(); 
 			//players[1] = new EntityPlayer01v2(); 
-			players[1] = new EntityPlayer01v4();
+			players[1] = new EntityPlayer01v5();
 			//players[2] = new EntityPlayer02v2(); 
 			players[2] = new EntityPlayerBoar(); 
 			 

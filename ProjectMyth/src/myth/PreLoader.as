@@ -14,6 +14,7 @@ package myth
 	import starling.events.Event;
 	import flash.system.Capabilities;
 	import myth.data.GameData;
+	import flash.display.StageQuality;
 	
 	public class PreLoader extends Sprite
 	{
@@ -25,6 +26,7 @@ package myth
 		
 		public function PreLoader() 
 		{			
+			stage.quality = StageQuality.LOW;
 			screen = new texture_screen();
 			screen.scaleX = stage.fullScreenWidth / 1280;
 			screen.scaleY = stage.fullScreenHeight / 768;
