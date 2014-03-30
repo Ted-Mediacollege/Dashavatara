@@ -26,6 +26,7 @@
 		<t name="side_menu.save">Save</t>
 		<t name="side_menu.settings">Settings</t>
 		<t name="side_menu.test">Test</t>
+		<t name="side_menu.export">Export</t>
 		
 		<t name="item_cat.objects">Objects</t>
 		<t name="item_cat.background">Backgrounds</t>

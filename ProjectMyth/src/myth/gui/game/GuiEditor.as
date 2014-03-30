@@ -12,6 +12,7 @@ package myth.gui.game
 	import starling.display.Shape;
 	import starling.events.TouchEvent;
 	import myth.lang.Lang;
+	import myth.data.GameData;
 
 	public class GuiEditor extends GuiScreen
 	{
@@ -34,6 +35,7 @@ package myth.gui.game
 		private var button_editor_save:GuiButton;
 		private var button_editor_settings:GuiButton;
 		private var button_editor_test:GuiButton;
+		private var button_editor_export:GuiButton;
 		
 		private var themes:Vector.<String> = new < String > ["Sky", "Earth", "Hell"];
 		private var sizes:Vector.<String> = new < String > ["Small", "Normal", "Large"];
@@ -64,11 +66,13 @@ package myth.gui.game
 			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 28)); button_editor_save.enabled = false;
 			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 28)); button_editor_settings.enabled = false;
 			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 28)); button_editor_test.enabled = false;
-				
-			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 340, 60, 60, "")); button_cat_left.enabled = false;
-			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 340, 60, 60, "")); button_cat_right.enabled = false;
-			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 140, 60, 60, "")); button_item_left.enabled = false;
-			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 140, 60, 60, "")); button_item_right.enabled = false;
+			button_editor_export = addButton(new GuiButton(16, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 28)); button_editor_export.enabled = false;
+			if (!GameData.DEVELOPMENT) { button_editor_export.visible = false; }
+			
+			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 280, 60, 60, "")); button_cat_left.enabled = false;
+			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 280, 60, 60, "")); button_cat_right.enabled = false;
+			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 80, 60, 60, "")); button_item_left.enabled = false;
+			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 80, 60, 60, "")); button_item_right.enabled = false;
 			
 			grey_screen = new Shape();
 			grey_screen.graphics.lineStyle(0, 0x555555, 0.8);
@@ -198,6 +202,11 @@ package myth.gui.game
 			button_editor_save.enabled = e;
 			button_editor_settings.enabled = e;
 			button_editor_test.enabled = e;
+			
+			if (GameData.DEVELOPMENT)
+			{
+				button_editor_export.enabled = e;
+			}
 		}
 	}
 }

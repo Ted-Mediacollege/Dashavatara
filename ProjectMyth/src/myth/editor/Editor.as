@@ -203,7 +203,7 @@ package myth.editor
 						}
 					}
 				}
-				else if(data[0] > 1002 && data[0] < 1206 && data[1] > 467 && data[1] < 689) //SELECTOR BUILD
+				else if(data[0] > 1002 && data[0] < 1206 && data[1] > 537 && data[1] < 759) //SELECTOR BUILD
 				{
 					if (type == TouchType.CLICK)
 					{
@@ -271,8 +271,7 @@ package myth.editor
 			}
 			else if (id == 13) //SAVE
 			{
-				export(createJSONstring());
-				//trace(createJSONstring());
+				trace(createJSONstring());
 				saved = true;
 			}
 			else if (id == 14) //SETTINGS
@@ -300,6 +299,10 @@ package myth.editor
 				}
 								
 				guiEditor.main.switchGui(new GuiGame("test", createJSONstring()));
+			}
+			else if (id == 16) //EXPORT
+			{
+				export(createJSONstring());
 			}
 			else if (id == 20) //CAT LEFT
 			{
