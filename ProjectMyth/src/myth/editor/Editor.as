@@ -24,6 +24,8 @@ package myth.editor
 	import com.adobe.serialization.json.JSON;
 	import myth.util.MathHelper;
 	import myth.lang.Lang;
+	import flash.utils.ByteArray;
+	import flash.net.FileReference;
 	
 	public class Editor extends Sprite
 	{		
@@ -269,7 +271,8 @@ package myth.editor
 			}
 			else if (id == 13) //SAVE
 			{
-				trace(createJSONstring());
+				export(createJSONstring());
+				//trace(createJSONstring());
 				saved = true;
 			}
 			else if (id == 14) //SETTINGS
@@ -387,6 +390,14 @@ package myth.editor
 			FIELD_ENEMIES.buildFile(saveFile.enemies);
 			
 			saved = !fromTesting;
+		}
+		
+		public function export(s:String):void
+		{
+			var byteArray:ByteArray = new ByteArray();
+			byteArray.writeUTFBytes(s);
+			var fileref:FileReference = new FileReference();
+			fileref.save(byteArray, "leveltest.json");
 		}
 	}
 }

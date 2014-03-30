@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TextureAtlas imagePath="earth_spritesheet.png">
-	<!--
-	Created with ShoeBox
-	http://renderhjs.net/shoebox/
-	-->
-	<SubTexture name="earth_bergen"	x="0"	y="0"	width="1280"	height="666" frameX="-0" frameY="-102" frameWidth="1280" frameHeight="768"/>
-	<SubTexture name="earth_lucht"	x="0"	y="667"	width="1280"	height="768" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="768"/>
-	<SubTexture name="earth_pilaar"	x="363"	y="1436"	width="158"	height="423" frameX="-0" frameY="-0" frameWidth="158" frameHeight="423"/>
-	<SubTexture name="earth_tile00"	x="129"	y="1822"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
-	<SubTexture name="earth_tile01"	x="0"	y="1822"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
-	<SubTexture name="earth_tree"	x="0"	y="1436"	width="362"	height="385" frameX="-1" frameY="-0" frameWidth="372" frameHeight="385"/>
+	<SubTexture name="earth_bergen"	x="0"	y="769"	width="1280"	height="670" frameX="-0" frameY="-98" frameWidth="1280" frameHeight="768"/>
+	<SubTexture name="earth_lucht"	x="0"	y="0"	width="1280"	height="768" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="768"/>
+	<SubTexture name="earth_pilaar"	x="1234"	y="1440"	width="258"	height="589" frameX="-12" frameY="-20" frameWidth="280" frameHeight="609"/>
+	<SubTexture name="earth_tile00"	x="129"	y="1826"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
+	<SubTexture name="earth_tile01"	x="0"	y="1826"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
+	<SubTexture name="earth_tree"	x="871"	y="1440"	width="362"	height="385" frameX="-1" frameY="-0" frameWidth="372" frameHeight="385"/>
+	<SubTexture name="earth_veg"	x="0"	y="1440"	width="870"	height="375" frameX="-0" frameY="-0" frameWidth="870" frameHeight="375"/>
 </TextureAtlas>

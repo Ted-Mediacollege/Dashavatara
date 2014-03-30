@@ -20,8 +20,14 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
-			var version:GuiText = new GuiText(screenWidth - 220, screenHeight - 15, 200, 60, "right", "center", Lang.trans(Lang.MENU, "main.version") + " " + GameData.GAME_VERSION + " " + GameData.testOS, 24, 0x000000, "Arial");
+			var version:GuiText = new GuiText(screenWidth - 220, screenHeight - 15, 200, 60, "right", "center", Lang.trans(Lang.MENU, "main.version") + " " + GameData.GAME_VERSION, 24, 0x000000, "Arial");
 			addChild(version);
+			
+			if (GameData.DEVELOPMENT)
+			{
+				var dev:GuiText = new GuiText(20, 20, 550, 140, "left", "top", "!! DEVELOPMENT VERSION !!", 30, 0xFF0000, "Arial");
+				addChild(dev);
+			}
 			
 			var logo:Image = new Image(TextureList.assets.getTexture("gui_logo"));
 			logo.pivotX = logo.width / 2;

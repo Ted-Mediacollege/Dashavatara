@@ -31,6 +31,7 @@ package myth.gui.game
 	import myth.graphics.Display;
 	import myth.graphics.LayerID;
 	import myth.PreLoader;
+	import myth.data.GameData;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -77,7 +78,10 @@ package myth.gui.game
 		private var gameScreen:Sprite = new Sprite();
 		override public function init():void
 		{
-			PreLoader.starling.showStats = true;
+			if (GameData.DEVELOPMENT)
+			{
+				PreLoader.starling.showStats = true;
+			}
 			
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
