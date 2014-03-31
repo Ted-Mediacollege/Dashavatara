@@ -33,11 +33,11 @@ package myth.gui.game
 			ready = 0;
 			progress = 0;
 			
-			filler = new Shape();
-			addChild(filler);
-			
 			screen = Image.fromBitmap(new PreLoader.texture_screen());
 			addChild(screen);
+			
+			filler = new Shape();
+			addChild(filler);
 			
 			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 70, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
