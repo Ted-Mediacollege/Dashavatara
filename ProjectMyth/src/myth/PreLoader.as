@@ -31,29 +31,17 @@ package myth
 			
 			stage.quality = StageQuality.LOW;
 			screen = new texture_screen();
-			if (GameData.ISCOMPUTER)
-			{
-				screen.scaleX = stage.fullScreenWidth / 1280;
-				screen.scaleY = stage.fullScreenHeight / 768;
-			}
+			screen.scaleX = stage.fullScreenWidth / 1280;
+			screen.scaleY = stage.fullScreenHeight / 768;
 			addChild(screen);
 			
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			stage.addEventListener(flash.events.Event.DEACTIVATE, deactivate);
-			
-			if (GameData.ISCOMPUTER)
-			{
-				ScaleHelper.init(1280, 768);
-				starling = new Starling(Main, stage, new Rectangle(0, 0, 1280, 768));
-				starling.start();
-			}
-			else
-			{
-				ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
-				starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-				starling.start();
-			}
+		
+			ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
+			starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+			starling.start();
 			
 			starling.addEventListener(starling.events.Event.CONTEXT3D_CREATE, onStarlingLoadComplete);
 		}
