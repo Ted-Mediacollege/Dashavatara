@@ -2,9 +2,9 @@
 <TextureAtlas imagePath="earth_spritesheet.png">
 	<SubTexture name="earth_bergen"	x="0"	y="769"	width="1280"	height="670" frameX="-0" frameY="-98" frameWidth="1280" frameHeight="768"/>
 	<SubTexture name="earth_lucht"	x="0"	y="0"	width="1280"	height="768" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="768"/>
-	<SubTexture name="earth_pilaar"	x="1234"	y="1440"	width="258"	height="589" frameX="-12" frameY="-20" frameWidth="280" frameHeight="609"/>
-	<SubTexture name="earth_tile00"	x="129"	y="1826"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
-	<SubTexture name="earth_tile01"	x="0"	y="1826"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
+	<SubTexture name="earth_pilaar"	x="1234"	y="1440"	width="185"	height="425" frameX="-0" frameY="-0" frameWidth="186" frameHeight="425"/>
+	<SubTexture name="earth_tile00"	x="129"	y="1866"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
+	<SubTexture name="earth_tile01"	x="0"	y="1866"	width="128"	height="124" frameX="-0" frameY="-4" frameWidth="128" frameHeight="128"/>
 	<SubTexture name="earth_tree"	x="871"	y="1440"	width="362"	height="385" frameX="-1" frameY="-0" frameWidth="372" frameHeight="385"/>
 	<SubTexture name="earth_veg"	x="0"	y="1440"	width="870"	height="375" frameX="-0" frameY="-0" frameWidth="870" frameHeight="375"/>
 </TextureAtlas>

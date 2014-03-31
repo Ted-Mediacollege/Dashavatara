@@ -19,6 +19,7 @@
 	<editor>
 		<t name="menu.create">Create Level</t>
 		<t name="menu.load">Load level</t>
+		<t name="menu.import">Import level</t>
 		
 		<t name="side_menu.new">New</t>
 		<t name="side_menu.menu">Menu</t>
@@ -27,6 +28,7 @@
 		<t name="side_menu.settings">Settings</t>
 		<t name="side_menu.test">Test</t>
 		<t name="side_menu.export">Export</t>
+		<t name="side_menu.import">Import</t>
 		
 		<t name="item_cat.objects">Objects</t>
 		<t name="item_cat.background">Backgrounds</t>
@@ -38,6 +40,7 @@
 		<t name="alert.save_new">Are you sure you want to create a new level?</t>
 		<t name="alert.save_menu">Are you sure you want to go to the main menu without saving?</t>
 		<t name="alert.save_load">Are you sure you don't want to save this level first?</t>
+		<t name="alert.save_import">Are you sure you don't want to save this level first?</t>
 	</editor>
 	
 	<game>

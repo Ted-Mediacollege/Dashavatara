@@ -4,9 +4,9 @@
 	<SubTexture name="hell_bg_rock2"	x="1713"	y="0"	width="232"	height="590" frameX="-4" frameY="-2" frameWidth="236" frameHeight="592"/>
 	<SubTexture name="hell_bg_rock3"	x="0"	y="769"	width="757"	height="181" frameX="-0" frameY="-0" frameWidth="757" frameHeight="181"/>
 	<SubTexture name="hell_bg_rock4"	x="1281"	y="0"	width="431"	height="518" frameX="-0" frameY="-0" frameWidth="431" frameHeight="518"/>
-	<SubTexture name="hell_bg_stalag"	x="1619"	y="519"	width="72"	height="344" frameX="-0" frameY="-0" frameWidth="72" frameHeight="344"/>
+	<SubTexture name="hell_bg_stalag"	x="1614"	y="519"	width="72"	height="344" frameX="-0" frameY="-0" frameWidth="72" frameHeight="344"/>
 	<SubTexture name="hell_lucht"	x="0"	y="0"	width="1280"	height="768" frameX="-0" frameY="-0" frameWidth="1280" frameHeight="768"/>
-	<SubTexture name="hell_pilar"	x="1456"	y="519"	width="162"	height="425" frameX="-27" frameY="-0" frameWidth="207" frameHeight="425"/>
+	<SubTexture name="hell_pilar"	x="1456"	y="519"	width="157"	height="425" frameX="-0" frameY="-0" frameWidth="158" frameHeight="425"/>
 	<SubTexture name="hell_tile00"	x="758"	y="896"	width="128"	height="126" frameX="-0" frameY="-2" frameWidth="128" frameHeight="128"/>
 	<SubTexture name="hell_tile01"	x="887"	y="769"	width="128"	height="126" frameX="-0" frameY="-2" frameWidth="128" frameHeight="128"/>
 	<SubTexture name="hell_tile02"	x="887"	y="896"	width="128"	height="126" frameX="-0" frameY="-2" frameWidth="128" frameHeight="128"/>
