@@ -24,6 +24,10 @@ package myth.editor.component
 		public var item_name:String;
 		
 		private var holder:Sprite;
+		public var toolholder:Sprite;
+		
+		public var toolActive:Boolean;
+		public var tool:EditorTool;
 		
 		public var button_done:Image;
 		public var button_delete:Image;
@@ -38,6 +42,12 @@ package myth.editor.component
 			holder = new Sprite();
 			editor.addChild(holder);
 			holder.visible = false;
+			
+			toolholder = new Sprite();
+			editor.addChild(toolholder);
+			toolholder.x = 490;
+			toolholder.y = 374;
+			toolholder.visible = false;
 			
 			button_done = new Image(TextureList.assets.getTexture("editor_option_done"));
 			button_delete = new Image(TextureList.assets.getTexture("editor_option_delete"));
@@ -62,6 +72,7 @@ package myth.editor.component
 		{
 			visible = true;
 			active = true;
+			toolActive = false;
 			
 			item = new Image(TextureList.assets.getTexture(tex));
 			item.x = px;
@@ -115,8 +126,35 @@ package myth.editor.component
 			moveHolder();
 		}
 		
+		public function swipeAction(px:int, py:int):Boolean
+		{
+			var w:Number = toolholder.width / 2;
+			var h:Number = toolholder.height / 2;
+			if (px > toolholder.x - w && py > toolholder.y - h && px < toolholder.x + w && py < toolholder.y + h)
+			{
+				tool.swipeAction(px, py);
+				return true;
+			}
+			return false;
+		}
+		
 		public function action(px:int, py:int):void
 		{
+			if (toolActive)
+			{
+				if (px > toolholder.x && py > toolholder.y && px < toolholder.x + toolholder.width && py < toolholder.y + toolholder.height)
+				{
+					tool.action(px, py);
+					return;
+				}
+				else
+				{
+					tool.destroy();
+					toolActive = false;
+					tool = null;
+				}
+			}
+			
 			if (px > holder.x && px < holder.x + holder.width)
 			{
 				var menuX:int = px - holder.x;
@@ -144,17 +182,15 @@ package myth.editor.component
 					destory(true);
 					editor.removeChild(editor.CONSTRUCTOR);
 				}
-				else if (menuY > 140 && menuY < 196)
+				else if (menuY > 140 && menuY < 196) //SCALE
 				{
-					trace("button 3");
 				}
-				else if (menuY > 210 && menuY < 266)
+				else if (menuY > 210 && menuY < 266) //ROTATE
 				{
-					trace("button 4");
+					tool = new EditorRotater(this);
 				}
-				else if (menuY > 280 && menuY < 336)
+				else if (menuY > 280 && menuY < 336) //DEPTH
 				{
-					trace("button 5");
 				}
 			}
 		}

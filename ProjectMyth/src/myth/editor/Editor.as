@@ -78,7 +78,7 @@ package myth.editor
 		public function build(t:int, s:int):void
 		{
 			theme = t;
-			var levelSize:int = s;
+			var levelSize:int = 25; //s
 			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();
@@ -197,17 +197,51 @@ package myth.editor
 					}
 					else if (type == TouchType.SWIPE_START && CONSTRUCTOR.active)
 					{
-						CONSTRUCTOR.tryMove(data[0], data[1]);
-					}
-					else if (type == TouchType.SWIPE)
-					{
-						if (CONSTRUCTOR.moving)
+						if (CONSTRUCTOR.toolActive)
 						{
-							CONSTRUCTOR.move(data[0], data[1]);
+							if (!CONSTRUCTOR.swipeAction(data[0], data[1]))
+							{
+								CONSTRUCTOR.tool.destroy();
+								CONSTRUCTOR.toolActive = false;
+								CONSTRUCTOR.tool = null;
+								CONSTRUCTOR.tryMove(data[0], data[1]);
+							}
 						}
 						else
 						{
-							SCROLL.scroll(data[2]);
+							CONSTRUCTOR.tryMove(data[0], data[1]);
+						}
+					}
+					else if (type == TouchType.SWIPE)
+					{
+						if (CONSTRUCTOR.toolActive)
+						{
+							if (!CONSTRUCTOR.swipeAction(data[0], data[1]))
+							{
+								CONSTRUCTOR.tool.destroy();
+								CONSTRUCTOR.toolActive = false;
+								CONSTRUCTOR.tool = null;
+								
+								if (CONSTRUCTOR.moving)
+								{
+									CONSTRUCTOR.move(data[0], data[1]);
+								}
+								else
+								{
+									SCROLL.scroll(data[2]);
+								}
+							}
+						}
+						else
+						{
+							if (CONSTRUCTOR.moving)
+							{
+								CONSTRUCTOR.move(data[0], data[1]);
+							}
+							else
+							{
+								SCROLL.scroll(data[2]);
+							}
 						}
 					}
 				}
@@ -364,7 +398,7 @@ package myth.editor
 			var gate:Object = new Object();
 			gate.type = 2;
 			gate.x = FIELD_BACKGROUND.BACKGROUND_END.posX;
-			gate.y = 800;
+			gate.y = 670;
 			saveFile.objects.push(gate);
 			
 			//TILES
