@@ -1,5 +1,8 @@
 package myth.editor 
 {
+	import flash.display.Loader;
+	import flash.events.IOErrorEvent;
+	import flash.events.SecurityErrorEvent;
 	import myth.background.Background;
 	import myth.data.Theme;
 	import myth.editor.component.EditorAlert;
@@ -26,6 +29,8 @@ package myth.editor
 	import myth.lang.Lang;
 	import flash.utils.ByteArray;
 	import flash.net.FileReference;
+	import flash.events.Event;
+	import flash.display.LoaderInfo;
 	
 	public class Editor extends Sprite
 	{		
@@ -49,6 +54,9 @@ package myth.editor
 		public var alerting:Boolean;
 		
 		public var saved:Boolean;
+		
+		public var fileref:FileReference;
+		public var fileLoader:Loader;
 
 		public function Editor(gui:GuiEditor) 
 		{
@@ -304,6 +312,10 @@ package myth.editor
 			{
 				export(createJSONstring());
 			}
+			else if (id == 17) //IMPORT
+			{
+				importer();
+			}
 			else if (id == 20) //CAT LEFT
 			{
 				SELECTOR.switch_cat(-1);
@@ -402,5 +414,72 @@ package myth.editor
 			var fileref:FileReference = new FileReference();
 			fileref.save(byteArray, "leveltest.json");
 		}
+		
+		public function importer(r:Boolean = true):void
+		{
+			fileref = new FileReference();         
+			fileref.addEventListener(Event.SELECT, startImporting);
+			fileref.addEventListener(Event.CANCEL, cancelImport);
+			fileref.addEventListener(IOErrorEvent.IO_ERROR, importErrorIO);
+			fileref.addEventListener(SecurityErrorEvent.SECURITY_ERROR, importErrorSecurity);
+			fileref.browse();
+			
+			if (r)
+			{
+				removeChild(FIELD_BACKGROUND);
+				removeChild(FIELD_TILES);
+				removeChild(FIELD_OBJECTS);
+				removeChild(FIELD_ENEMIES);
+				removeChild(SELECTOR);
+				CONSTRUCTOR.destory(false);
+				removeChild(CONSTRUCTOR);
+			}
+			
+			guiEditor.editor_menu(false);
+			guiEditor.grey_screen.visible = true;
+		}
+		
+		public function cancelImport(e:Event):void
+		{
+			guiEditor.menu_main(true);
+			guiEditor.grey_screen.visible = true;
+		}
+		
+		public function startImporting(e:Event):void
+		{
+			fileref.removeEventListener(IOErrorEvent.IO_ERROR, importErrorIO);
+			fileref.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, importErrorSecurity);
+            fileref.removeEventListener(Event.SELECT, startImporting);
+            fileref.addEventListener(Event.COMPLETE, dataImported);
+			fileref.addEventListener(IOErrorEvent.IO_ERROR, importErrorIO);
+			fileref.addEventListener(SecurityErrorEvent.SECURITY_ERROR, importErrorSecurity);
+            fileref.load();   
+		}
+		
+		public function importErrorIO(e:Event):void
+		{
+			guiEditor.menu_main(true);
+			guiEditor.grey_screen.visible = true;
+		}
+		
+		public function importErrorSecurity(e:Event):void
+		{
+			guiEditor.menu_main(true);
+			guiEditor.grey_screen.visible = true;
+		}
+		
+        private function dataImported(e:Event):void
+        {            
+			fileref.removeEventListener(IOErrorEvent.IO_ERROR, importErrorIO);
+			fileref.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, importErrorSecurity);
+            fileref.removeEventListener(Event.COMPLETE, dataImported);
+			load(fileref.data.toString(), false);
+			guiEditor.menu_main(false);
+			guiEditor.create_menu(false);
+			guiEditor.editor_menu(true);
+			guiEditor.inEditor = true;
+			guiEditor.grey_screen.visible = false;
+			saved = true;
+        }
 	}
 }

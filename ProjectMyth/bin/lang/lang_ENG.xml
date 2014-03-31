@@ -19,6 +19,7 @@
 	<editor>
 		<t name="menu.create">Create Level</t>
 		<t name="menu.load">Load level</t>
+		<t name="menu.import">Import level</t>
 		
 		<t name="side_menu.new">New</t>
 		<t name="side_menu.menu">Menu</t>
@@ -27,6 +28,7 @@
 		<t name="side_menu.settings">Settings</t>
 		<t name="side_menu.test">Test</t>
 		<t name="side_menu.export">Export</t>
+		<t name="side_menu.import">Import</t>
 		
 		<t name="item_cat.objects">Objects</t>
 		<t name="item_cat.background">Backgrounds</t>
