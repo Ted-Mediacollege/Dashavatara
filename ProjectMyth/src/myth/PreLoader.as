@@ -25,24 +25,35 @@ package myth
 		private var screen:Bitmap;
 		
 		public function PreLoader() 
-		{			
+		{		
+			GameData.ISCOMPUTER = isOperatorComputer();
+			GameData.SYSTEM_LANG_ID = getLanguageID();
+			
 			stage.quality = StageQuality.LOW;
 			screen = new texture_screen();
-			screen.scaleX = stage.fullScreenWidth / 1280;
-			screen.scaleY = stage.fullScreenHeight / 768;
+			if (GameData.ISCOMPUTER)
+			{
+				screen.scaleX = stage.fullScreenWidth / 1280;
+				screen.scaleY = stage.fullScreenHeight / 768;
+			}
 			addChild(screen);
-			
-			GameData.SYSTEM_LANG_ID = getLanguageID();
-			setOperator();
 			
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			stage.addEventListener(flash.events.Event.DEACTIVATE, deactivate);
 			
-			ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
-			
-			starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-			starling.start();
+			if (GameData.ISCOMPUTER)
+			{
+				ScaleHelper.init(1280, 768);
+				starling = new Starling(Main, stage, new Rectangle(0, 0, 1280, 768));
+				starling.start();
+			}
+			else
+			{
+				ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
+				starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+				starling.start();
+			}
 			
 			starling.addEventListener(starling.events.Event.CONTEXT3D_CREATE, onStarlingLoadComplete);
 		}
@@ -56,7 +67,10 @@ package myth
 		private function deactivate(e:flash.events.Event):void 
 		{
 			Main.onDeactivate(e);
-			//NativeApplication.nativeApplication.exit();
+			if (!GameData.ISCOMPUTER)
+			{
+				NativeApplication.nativeApplication.exit();
+			}
 		}
 		
 		public function getLanguageID():int
@@ -69,16 +83,25 @@ package myth
 			}
 		}
 		
-		public function setOperator():void
+		public function isOperatorComputer():Boolean
 		{
 			var os:String = Capabilities.os;
 			
-			switch(os)
+			if (os.indexOf("Windows") > -1)
 			{
-				case "Windows 8": break;
-				case "Windows 7": break;
-				//Windows Vista
-				//Windows XP
+				if (os == "Windows Mobile" || os == "Windows SmartPhone" || os == "Windows PocketPC" || os == "Windows CEPC")
+				{
+					return false;
+				}
+				return true;
+			}
+			else if (os.indexOf("Mac OS") > -1 || os.indexOf("Linux") > -1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
 	}

@@ -2,21 +2,30 @@ package myth.entity.objects
 {
 	import myth.graphics.TextureList;
 	import starling.display.Image;
-	/**
-	 * ...
-	 * @author Kit van de Bunt
-	 */
+	import myth.Main;
+	import myth.data.Theme;
+	
 	public class EntityObjectPillar extends EntityObjectBase
 	{
+		public static var sky_objects:Vector.<String> = new <String>["sky_pilar"];
+		public static var earth_objects:Vector.<String> = new <String>["earth_pilaar"];
+		public static var hell_objects:Vector.<String> = new <String>["hell_pilar"];
 		
 		public var image:Image;
-		public function EntityObjectPillar() 
+		
+		public function EntityObjectPillar(id:int) 
 		{
-			image = new Image(TextureList.assets.getTexture("sky_pilar"));
+			var currentObjects:Vector.<String>;
+			switch(Main.world.levelData.theme)
+			{
+				case Theme.SKY: currentObjects = sky_objects; break;
+				case Theme.EARTH: currentObjects = earth_objects; break;
+				case Theme.HELL: currentObjects = hell_objects; break;
+			}
+			
+			image = new Image(TextureList.assets.getTexture(currentObjects[id]));
 			image.pivotY = image.height;
 			artLayer.addChild(image);
 		}
-		
 	}
-
 }

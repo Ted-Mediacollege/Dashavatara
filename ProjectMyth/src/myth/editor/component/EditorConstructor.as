@@ -144,6 +144,18 @@ package myth.editor.component
 					destory(true);
 					editor.removeChild(editor.CONSTRUCTOR);
 				}
+				else if (menuY > 140 && menuY < 196)
+				{
+					trace("button 3");
+				}
+				else if (menuY > 210 && menuY < 266)
+				{
+					trace("button 4");
+				}
+				else if (menuY > 280 && menuY < 336)
+				{
+					trace("button 5");
+				}
 			}
 		}
 		

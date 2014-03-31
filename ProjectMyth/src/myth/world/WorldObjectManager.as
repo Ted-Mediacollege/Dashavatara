@@ -57,9 +57,9 @@ package myth.world
 			var objects :Vector.<EntityObjectBase>;
 			
 			if(type == ObjectType.Pillar){
-				object = new EntityObjectPillar();
+				object = new EntityObjectPillar(0);
 			}else if(type == ObjectType.pillar2){
-				object = new EntityObjectPillar();
+				object = new EntityObjectPillar(0);
 			}else if (type == ObjectType.endPort1) {
 				objects = new Vector.<EntityObjectBase>;
 				objects[0] = new EntityObjectEndPort();

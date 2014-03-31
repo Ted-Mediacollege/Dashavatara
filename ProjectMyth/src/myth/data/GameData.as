@@ -6,6 +6,7 @@ package myth.data
 		public static const DEVELOPMENT:Boolean = true;
 		
 		public static var SYSTEM_LANG_ID:int = 0;
+		public static var ISCOMPUTER:Boolean = false;
 		
 		public static var levelsUnlocked:int = 99;
 	}
