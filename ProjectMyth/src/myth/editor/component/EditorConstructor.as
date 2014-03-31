@@ -71,7 +71,7 @@ package myth.editor.component
 			frame.x = px;
 			frame.y = py;
 			addChild(frame);
-			frame.graphics.lineStyle(4, 0xFF0000);
+			frame.graphics.lineStyle(4, 0xE3A601);
 			frame.graphics.drawRect(0, 0, item.width, item.height);
 			
 			cat = c;
