@@ -248,13 +248,14 @@ package myth.editor
 			{
 				return;
 			}
-			else if (!fromAlert && !saved && (id == 10 || id == 11 || id == 12)) //ALERT
+			else if (!fromAlert && !saved && (id == 10 || id == 11 || id == 12 || id == 17)) //ALERT
 			{
 				switch(id)
 				{
 					case 10: alert(10, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_new"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
 					case 11: alert(11, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_menu"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
 					case 12: alert(12, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_load"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
+					case 17: alert(17, Lang.trans(Lang.EDITOR, "alert.warning"), Lang.trans(Lang.EDITOR, "alert.save_import"), Lang.trans(Lang.EDITOR, "alert.yes"), Lang.trans(Lang.EDITOR, "alert.no")); break;
 				}
 			}
 			else if (id == 10) //NEW
@@ -412,7 +413,7 @@ package myth.editor
 			var byteArray:ByteArray = new ByteArray();
 			byteArray.writeUTFBytes(s);
 			var fileref:FileReference = new FileReference();
-			fileref.save(byteArray, "leveltest.json");
+			fileref.save(byteArray, "test_level.json");
 		}
 		
 		public function importer(r:Boolean = true):void
