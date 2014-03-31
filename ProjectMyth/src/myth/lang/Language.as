@@ -35,38 +35,14 @@ package myth.lang
 		
 		public function getTranslation(catigory:int, text:String):String
 		{
-			if (catigory == Lang.MENU)
+			switch(catigory)
 			{
-				for (var i:int = menu.length - 2; i > -1; i-=2)
-				{
-					if (text == menu[i])
-					{
-						return menu[i + 1];
-					}
-				}
-			}
-			else if (catigory == Lang.INGAME)
-			{
-				for (var j:int = ingame.length - 2; j > -1; j-=2)
-				{
-					if (text == ingame[j])
-					{
-						return ingame[j + 1];
-					}
-				}
-			}
-			else if (catigory == Lang.EDITOR)
-			{
-				for (var k:int = editor.length - 2; k > -1; k-=2)
-				{
-					if (text == editor[k])
-					{
-						return editor[k + 1];
-					}
-				}
+				case Lang.MENU: for (var i:int = menu.length - 2; i > -1; i-=2) { if (text == menu[i]) { return menu[i + 1]; } } break;
+				case Lang.INGAME: for (var j:int = ingame.length - 2; j > -1; j-=2) { if (text == ingame[j]) { return ingame[j + 1]; } } break;
+				case Lang.EDITOR: for (var k:int = editor.length - 2; k > -1; k-=2) { if (text == editor[k]) { return editor[k + 1]; } } break;
 			}
 			
-			return "NOT FOUND";
+			return "ERROR";
 		}
 	}
 }
