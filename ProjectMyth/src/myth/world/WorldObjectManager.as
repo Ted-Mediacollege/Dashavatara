@@ -56,15 +56,17 @@ package myth.world
 			var object :EntityObjectBase;
 			var objects :Vector.<EntityObjectBase>;
 			
-			if(type == ObjectType.Pillar){
-				object = new EntityObjectPillar(0);
-			}else if(type == ObjectType.pillar2){
-				object = new EntityObjectPillar(0);
-			}else if (type == ObjectType.endPort1) {
+			if (type == 2)
+			{
 				objects = new Vector.<EntityObjectBase>;
 				objects[0] = new EntityObjectEndPort();
 				objects[1] = new EntityObjectEndPortPart2();
 			}
+			else
+			{
+				object = new EntityObjectPillar(type);
+			}
+			
 			if (type == ObjectType.Pillar || type == ObjectType.pillar2) {
 				newBody.position.setxy(xPos, yPos);
 				newBody.shapes.add(new Polygon(Polygon.rect(-object.width/2, -object.height, object.width, object.height)));
