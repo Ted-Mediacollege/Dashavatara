@@ -5,6 +5,7 @@ package myth.world
 	import myth.entity.bullet.EntityBulletBase;
 	import myth.entity.bullet.EntityBulletClaw;
 	import myth.entity.effects.deahtRunning;
+	import myth.entity.effects.StoneWarning;
 	import myth.entity.enemy.EntityEnemyBase;
 	import myth.entity.enemy.EnemyType;
 	import myth.entity.enemy.EntityEnemyStone;
@@ -28,6 +29,10 @@ package myth.world
 		public var enemyList:Vector.<EntityEnemyBase> = new Vector.<EntityEnemyBase>;
 		public var stoneList:Vector.<EntityEnemyStone> = new Vector.<EntityEnemyStone>;
 		public var bulletList:Vector.<EntityBulletBase> = new Vector.<EntityBulletBase>;
+		public var warningList:Vector.<StoneWarning> = new Vector.<StoneWarning>;
+		private var i:int;
+		private var j:int;
+		private var hit:Boolean;
 		
 		public function WorldEntityManager(_data:Vector.<Vector.<int>> = null):void {
 			data = _data;
@@ -58,8 +63,14 @@ package myth.world
 				enemyList.push(enemy);
 				addChild(enemy);
 			}else if (type == EnemyType.Stone_01) {
+				var warning:StoneWarning = new StoneWarning();
+				warning.x = xPos + yPos;
+				warning.y = 100;
+				warningList.push(warning);
+				addChild(warning);
+				
 				enemy.x = xPos + yPos;
-				enemy.y = -100;
+				enemy.y = -140;
 				stoneList.push(enemy);
 				addChild(enemy);
 			}
@@ -81,6 +92,11 @@ package myth.world
 		private function removeEnemy(e:EntityEnemyBase,number:int):void {
 			removeChild(enemyList[number]);
 			enemyList.splice(number , 1);
+		}
+		
+		private function removeStone(e:EntityEnemyStone,number:int):void {
+			removeChild(stoneList[number]);
+			stoneList.splice(number , 1);
 		}
 		
 		public function makeBullet( type :Number, xPos:Number,yPos:Number, xDest:Number, yDest:Number) :void
@@ -105,6 +121,15 @@ package myth.world
 			bulletList.splice(number , 1);
 		}
 		
+		public function removeWarning(w:StoneWarning):void {
+			removeChild(w);
+			for (i = 0; i < warningList.length; i++) {
+				if (warningList[i] == w) {
+					warningList.splice(i , 1);
+				}
+			}
+		}
+		
 		override public function tick(speed:Number , dist:Number):void {
 			//spawn entities
 			if (data.length > 0) {
@@ -117,17 +142,22 @@ package myth.world
 				}
 			}
 			//move entitys at speed off level
-			for (var i:int = 0; i < enemyList.length; i++) {
+			for (i = 0; i < enemyList.length; i++) {
 				enemyList[i].x -= speed;
 				enemyList[i].tick();
 			}
-			for (var i:int = 0; i < stoneList.length; i++) {
-				stoneList[i].x -= speed;
+			for (i = 0; i < stoneList.length; i++) {
+				if(stoneList[i].spawnd){
+					stoneList[i].x -= speed;
+				}
 				stoneList[i].tick();
 			}
-			for (var j:int = 0; j < bulletList.length; j++) {
+			for (j = 0; j < bulletList.length; j++) {
 				bulletList[j].x -= speed;
 				bulletList[j].tick();
+			}
+			for (i = 0; i < warningList.length; i++) {
+				warningList[i].tick();
 			}
 			
 			checkHit();
@@ -141,7 +171,6 @@ package myth.world
 			var damage:int = checkPlayerEnemyHit();
 			return damage;
 		}
-		
 		
 		private function pointTest():void {
 			var point:Point = new Point(800, 550);
@@ -162,7 +191,6 @@ package myth.world
 		}
 		
 		private function RemoveBulletExitScreen():void {
-			var j:int;
 			var rectBullet:Rectangle;
 			var rectScreen:Rectangle = new Rectangle(-200, -200, ScaleHelper.screenX+400, ScaleHelper.screenY+400);
 			for (j = 0; j < bulletList.length; j++) {
@@ -176,8 +204,6 @@ package myth.world
 		}
 		
 		private function checkBulletHitEnemy():void {
-			var i:int;
-			var j:int;
 			for (i = 0; i < enemyList.length; i++) {
 				for (j = 0; j < bulletList.length; j++) {
 					var hit:Boolean = enemyList[i].collider.intersect(bulletList[j].collider);
@@ -191,13 +217,11 @@ package myth.world
 		}
 		
 		private function checkPlayerEnemyHit():int {
-			var i:int;
 			var player:EntityPlayerBase = Main.world.player;
 			var damage:int;
 			
-			for (i = 0; i < enemyList.length; i++) 
-			{
-				var hit:Boolean = enemyList[i].collider.intersect(player.collider);
+			for (i = 0; i < enemyList.length; i++) {
+				hit = enemyList[i].collider.intersect(player.collider);
 				if (hit) {
 					var dist:Number;
 					switch(enemyList[i].enemyType) {
@@ -214,8 +238,16 @@ package myth.world
 					}
 				}
 			}
+			for (i = 0; i < stoneList.length; i++) {
+				hit = stoneList[i].collider.intersect(player.collider);
+				if (hit) {
+					if(!stoneList[i].onGround){
+						removeStone(stoneList[i], i);
+						Main.world.player.pushBack();
+					}
+				}
+			}
 			return damage;
 		}
 	}
-
 }

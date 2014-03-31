@@ -10,9 +10,9 @@
 	],
 	"enemies":[
 		{"type":3,"spawnX":700,"spawnY":-400},
-		{"type":3,"spawnX":1000,"spawnY":-840},
-		{"type":3,"spawnX":1200,"spawnY":-500},
-		{"type":3,"spawnX":1700,"spawnY":-900},
+		{"type":3,"spawnX":1400,"spawnY":-1040},
+		{"type":3,"spawnX":2000,"spawnY":-500},
+		{"type":3,"spawnX":2700,"spawnY":-1100},
 		{"type":0,"spawnX":2750,"spawnY":640},
 		{"type":0,"spawnX":3000,"spawnY":640},
 		{"type":2,"spawnX":3250,"spawnY":250},
