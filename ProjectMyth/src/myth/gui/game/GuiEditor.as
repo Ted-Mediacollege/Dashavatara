@@ -91,6 +91,11 @@ package myth.gui.game
 			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 180, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 45, 0x000000, "GameFont"));
 			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 45, 0x000000, "GameFont"));
 			button_import = addButton(new GuiButton(9, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.import"), 45, 0x000000, "GameFont"));
+			if (!GameData.ISCOMPUTER)
+			{
+				button_import.visible = false;
+				button_import.enabled = false;
+			}
 			
 			button_creator_build = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 250, 450, 100, "Create level", 45, 0x000000, "GameFont"));
 			button_creator_theme = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 50, 450, 100, "Theme: Sky", 45, 0x000000, "GameFont"));
