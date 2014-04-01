@@ -166,6 +166,7 @@ package myth.world
 		//tick
 		public function checkHit():int {
 			//pointTest();
+			RemoveEnemyExitScreen();
 			RemoveBulletExitScreen();
 			checkBulletHitEnemy();
 			var damage:int = checkPlayerEnemyHit();
@@ -187,6 +188,19 @@ package myth.world
 			}else {
 				Main.world.debugShape2.graphics.lineStyle(10, 0xff0000, 0.7);
 				Main.world.debugShape2.graphics.drawCircle(point.x, point.y, 10);
+			}
+		}
+		
+		private function RemoveEnemyExitScreen():void {
+			for (i = 0; i < enemyList.length; i++) {
+				if (enemyList[i].x < -400) {
+					removeEnemy(enemyList[i], i);
+				}
+			}
+			for (i = 0; i < stoneList.length; i++) {
+				if (stoneList[i].x < -400) {
+					removeStone(stoneList[i], i);
+				}
 			}
 		}
 		
@@ -241,9 +255,10 @@ package myth.world
 			for (i = 0; i < stoneList.length; i++) {
 				hit = stoneList[i].collider.intersect(player.collider);
 				if (hit) {
-					if(!stoneList[i].onGround){
+					if (!stoneList[i].onGround) {
+						//trace("stoneHit");
 						removeStone(stoneList[i], i);
-						Main.world.player.pushBack();
+						Main.world.player.pushBackRock();
 					}
 				}
 			}

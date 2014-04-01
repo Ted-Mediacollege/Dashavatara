@@ -63,6 +63,11 @@ package myth.entity.player
 			}
 		}
 		
+		override public function pushBackRock():void {
+			clip.play("knockback");
+			super.pushBackRock();
+		}
+		
 		override public function tick():void {
 			super.tick();
 			//Animation

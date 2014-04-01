@@ -1,0 +1,39 @@
+{
+	"name":"level_4",
+	"next_level_name":"level_1",
+	"id":0,
+	"speed":4.5,
+	"theme":0,
+	"zones":[
+		{"type":0,"xPos":1000,"deltaSpeed":6,"zonewidth":10}
+	],
+	"enemies":[
+		{"type":2,"spawnX":1250,"spawnY":250},
+		{"type":2,"spawnX":2000,"spawnY":250},
+		{"type":2,"spawnX":3050,"spawnY":40},
+		{"type":2,"spawnX":4000,"spawnY":150}
+	],
+	"background_props":[
+		{"type":0,"depth":1,"x":0,"y":0},
+		{"type":0,"depth":2,"x":0,"y":0}
+	],
+	"objects":[
+		{"type":0,"x":8280,"y":1050},
+		{"type":0,"x":8400,"y":900},
+		{"type":2,"x":8700,"y":768},
+		{"type":0,"x":8000,"y":1280},
+		{"type":0,"x":8200,"y":0},
+		{"type":2,"x":8280,"y":0}
+	],
+	"tiles":[
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}, 
+		{"type":0}, {"type":1}, {"type":0}, {"type":1}, {"type":0}, {"type":1}
+	]
+}

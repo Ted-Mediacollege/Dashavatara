@@ -36,7 +36,15 @@ package myth.entity.enemy
 		}
 		
 		private function rotateToPlayer():void {
-			this.rotation = MathHelper.pointToRadian(this.x, Main.world.player.x, this.y, Main.world.player.y);
+			if(this.x>Main.world.player.x){
+				this.rotation = MathHelper.pointToRadian(this.x, Main.world.player.x, this.y, Main.world.player.y);
+			}else {
+				if(this.rotation > (-Math.PI/2+.25)){
+					this.rotation = this.rotation - 0.05;
+				}else if (this.rotation < (-Math.PI/2-.25)) {
+					this.rotation = this.rotation + 0.05;
+				}
+			}
 		}
 		
 		private function moveToPlayer():void {
