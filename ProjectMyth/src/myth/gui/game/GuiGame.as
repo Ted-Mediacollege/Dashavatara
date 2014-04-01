@@ -189,6 +189,7 @@ package myth.gui.game
 		
 		override public function tick():void
 		{	
+			super.tick();
 			if (help_fade > 0 && !help_visible)
 			{
 				help_fade--;

@@ -46,7 +46,8 @@ package myth.gui.game
 		}
 		
 		override public function tick():void 
-		{ 				
+		{ 		
+			super.tick();
 			filler.graphics.clear();
 			filler.graphics.lineStyle(0, 0x8890D3);
 			filler.graphics.beginFill(0x8890D3);

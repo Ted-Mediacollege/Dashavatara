@@ -43,6 +43,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
+			super.tick();
 			background.tick();
 		}
 		

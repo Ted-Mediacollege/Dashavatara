@@ -85,6 +85,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
+			super.tick();
 		}
 		
 		override public function action(b:GuiButton):void 

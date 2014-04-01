@@ -20,7 +20,9 @@ package myth.gui
 		public function init():void { }
 		
 		//called every enter frame
-		public function tick():void { }
+		public function tick():void { 
+			//trace("gui");
+		}
 		
 		//called by touch input
 		//type.click = startX, startY, endX, endY

@@ -115,6 +115,7 @@ package myth.gui.game
 		
 		override public function tick():void 
 		{ 
+			super.tick();
 			if (inEditor)
 			{
 				editor.tick();
