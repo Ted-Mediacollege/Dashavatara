@@ -137,7 +137,7 @@ package myth.editor.field
 		
 		public function addBackground(tex:String, t:int, px:Number, py:Number, pz:Number, r:Number, sx:Number, sy:Number):void
 		{
-			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy, r);
+			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy);
 			b.x = b.posX / b.z;
 			b.visible = false;
 			

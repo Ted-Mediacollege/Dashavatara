@@ -173,7 +173,7 @@ package myth.editor
 								item = FIELD_BACKGROUND.getBackgroundAt(data[0], data[1]);
 								if (item != null)
 								{
-									CONSTRUCTOR.construct(item.item_name, 1, item.type, item.x, item.y, item.rotation);
+									CONSTRUCTOR.construct(item.item_name, 1, item.type, item.x, item.y, item.z, item.rotation);
 									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1);
 									return;
 								}

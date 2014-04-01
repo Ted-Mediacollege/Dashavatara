@@ -22,6 +22,7 @@ package myth.editor.component
 		public var cat:int;
 		public var type:int;
 		public var item_name:String;
+		public var depth:int;
 		
 		private var holder:Sprite;
 		public var toolholder:Sprite;
@@ -54,6 +55,7 @@ package myth.editor.component
 			button_scale = new Image(TextureList.assets.getTexture("editor_option_scale"));
 			button_rotate = new Image(TextureList.assets.getTexture("editor_option_rotate"));
 			button_depth = new Image(TextureList.assets.getTexture("editor_option_depth"));
+			button_rotate.color = 0x777777;
 						
 			button_done.y = 0;
 			button_delete.y = 70;
@@ -68,7 +70,7 @@ package myth.editor.component
 			holder.addChild(button_depth);
 		}	
 		
-		public function construct(tex:String, c:int, t:int, px:Number = 200, py:Number = 200, r:Number = 0, sx:Number = 1, sy:Number = 1):void
+		public function construct(tex:String, c:int, t:int, px:Number = 200, py:Number = 200, z:Number = 1, r:Number = 0, sx:Number = 1, sy:Number = 1):void
 		{
 			visible = true;
 			active = true;
@@ -77,8 +79,6 @@ package myth.editor.component
 			item = new Image(TextureList.assets.getTexture(tex));
 			item.x = px;
 			item.y = py;
-			item.pivotX = item.width / 2;
-			item.pivotY = item.height / 2;
 			item.rotation = r;
 			addChild(item);
 			frame = new Shape();
@@ -88,6 +88,7 @@ package myth.editor.component
 			cat = c;
 			type = t;
 			item_name = tex;
+			depth = z;
 			
 			if (cat != EditorSelector.CAT_BACKGROUND)
 			{
@@ -106,8 +107,8 @@ package myth.editor.component
 		
 		public function updateFrame():void
 		{
-			frame.x = item.x - item.width / 2;
-			frame.y = item.y - item.height / 2;
+			frame.x = item.x;
+			frame.y = item.y;
 			frame.graphics.clear();
 			frame.graphics.lineStyle(4, 0xE3A601);
 			frame.graphics.drawRect(0, 0, item.width, item.height);
@@ -139,7 +140,7 @@ package myth.editor.component
 		
 		public function tryMove(px:int, py:int):void
 		{
-			if (px > item.x - item.width / 2 && py > item.y - item.height / 2 && px < item.x + item.width / 2 && py < item.y + item.height / 2)
+			if (px > item.x && py > item.y && px < item.x + item.width && py < item.y + item.height)
 			{
 				moveposX = px - item.x;
 				moveposY = py - item.y;
@@ -160,7 +161,7 @@ package myth.editor.component
 		{
 			var w:Number = toolholder.width / 2;
 			var h:Number = toolholder.height / 2;
-			if (px > toolholder.x - w && py > toolholder.y - h && px < toolholder.x + w && py < toolholder.y + h)
+			if (px > toolholder.x && py > toolholder.y && px < toolholder.x + toolholder.width && py <  toolholder.y + toolholder.height)
 			{
 				tool.swipeAction(px, py);
 				return true;
@@ -217,18 +218,19 @@ package myth.editor.component
 				}
 				else if (menuY > 210 && menuY < 266 && cat == EditorSelector.CAT_BACKGROUND) //ROTATE
 				{
-					tool = new EditorRotater(this, item.rotation);
+					//tool = new EditorRotater(this, item.rotation);
 				}
 				else if (menuY > 280 && menuY < 336 && cat == EditorSelector.CAT_BACKGROUND) //DEPTH
 				{
+					tool = new EditorDepther(this, depth);
 				}
 			}
 		}
 		
 		public function moveHolder():void
 		{
-			holder.x = item.x + item.width / 2 + 20;
-			holder.y = item.y - item.height / 2;
+			holder.x = item.x + item.width + 20;
+			holder.y = item.y;
 			
 			if (holder.x < 5)
 			{

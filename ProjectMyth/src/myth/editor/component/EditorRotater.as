@@ -8,6 +8,17 @@ package myth.editor.component
 
 	public class EditorRotater extends EditorTool
 	{
+		/* =====================================
+		 * 
+		 * 
+		 * NOT USED, DO NOT ENABLE
+		 * MIGHT CRASH HORIBLY
+		 * 
+		 * 
+		 * =====================================
+		 */
+		
+		/*
 		private var constructor:EditorConstructor;
 		private var image:Image;
 		
@@ -45,5 +56,7 @@ package myth.editor.component
 		{
 			constructor.toolholder.removeChild(image);
 		}
+		
+		*/
 	}
 }
