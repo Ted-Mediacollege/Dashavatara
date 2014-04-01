@@ -87,7 +87,7 @@ package myth.editor.field
 			var bgNames:Vector.<String> = EditorFiles.getBackgroundNames(t);
 			for (var i:int = 0; i < arrayLength; i++ )
 			{
-				addBackground(bgNames[a[i].type], a[i].type, a[i].x, a[i].y, a[i].depth, 1, 1);
+				addBackground(bgNames[a[i].type], a[i].type, a[i].x, a[i].y, a[i].depth, 0, 1, 1);
 			}
 		}
 		
@@ -135,9 +135,9 @@ package myth.editor.field
 			}
 		}
 		
-		public function addBackground(tex:String, t:int, px:Number, py:Number, pz:Number, sx:Number, sy:Number):void
+		public function addBackground(tex:String, t:int, px:Number, py:Number, pz:Number, r:Number, sx:Number, sy:Number):void
 		{
-			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy);
+			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy, r);
 			b.x = b.posX / b.z;
 			b.visible = false;
 			
@@ -172,7 +172,7 @@ package myth.editor.field
 		{
 			for (var i:int = BACKGROUND_CREATED.length - 1; i > -1; i-- )
 			{
-				if (px > BACKGROUND_CREATED[i].x && px < BACKGROUND_CREATED[i].x + BACKGROUND_CREATED[i].width && py > BACKGROUND_CREATED[i].y && py < BACKGROUND_CREATED[i].y + BACKGROUND_CREATED[i].height)
+				if (px > BACKGROUND_CREATED[i].x - BACKGROUND_CREATED[i].width / 2 && px < BACKGROUND_CREATED[i].x + BACKGROUND_CREATED[i].width / 2 && py > BACKGROUND_CREATED[i].y - BACKGROUND_CREATED[i].height / 2 && py < BACKGROUND_CREATED[i].y + BACKGROUND_CREATED[i].height / 2)
 				{
 					var back:EditorItem = BACKGROUND_CREATED[i];
 					removeChild(BACKGROUND_CREATED[i]);

@@ -173,7 +173,7 @@ package myth.editor
 								item = FIELD_BACKGROUND.getBackgroundAt(data[0], data[1]);
 								if (item != null)
 								{
-									CONSTRUCTOR.construct(item.item_name, 1, item.type, item.x, item.y);
+									CONSTRUCTOR.construct(item.item_name, 1, item.type, item.x, item.y, item.rotation);
 									addChildAt(CONSTRUCTOR, getChildIndex(FIELD_BACKGROUND) + 1);
 									return;
 								}
@@ -327,7 +327,7 @@ package myth.editor
 				{ 
 					if (CONSTRUCTOR.type == EditorSelector.CAT_BACKGROUND)
 					{
-						FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.type, (CONSTRUCTOR.item.x + (camX / 2)) * 2, CONSTRUCTOR.item.y, 2, 1, 1);
+						FIELD_BACKGROUND.addBackground(CONSTRUCTOR.item_name, CONSTRUCTOR.type, (CONSTRUCTOR.item.x + (camX / 2)) * 2, CONSTRUCTOR.item.y, 2, CONSTRUCTOR.item.rotation, 1, 1);
 					}
 					else if (CONSTRUCTOR.type == EditorSelector.CAT_OBJECTS)
 					{

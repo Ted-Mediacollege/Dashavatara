@@ -9,17 +9,16 @@ package myth.editor.component
 	public class EditorRotater extends EditorTool
 	{
 		private var constructor:EditorConstructor;
-		public var rotate:Number = 0;
 		private var image:Image;
 		
 		public function EditorRotater(cons:EditorConstructor, r:Number = 0) 
 		{
 			constructor = cons;
-			rotate = r;
 			
 			image = new Image(TextureList.assets.getTexture("editor_tool_rotator"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;
+			image.rotation = r;
 			
 			constructor.toolholder.addChild(image);
 			constructor.toolholder.visible = true;
@@ -32,12 +31,14 @@ package myth.editor.component
 			var rot:Number = MathHelper.pointToRadian(constructor.toolholder.x, px, constructor.toolholder.y, py);
 			image.rotation = rot;
 			constructor.item.rotation = rot;
-			constructor.frame.rotation = rot;
+			constructor.updateFrame();
+			constructor.moveHolder();
 		}
 		
 		override public function action(px:int, py:int):void
 		{
 			image.rotation = MathHelper.pointToRadian(constructor.toolholder.x, px, constructor.toolholder.y, py);
+			constructor.moveHolder();
 		}
 		
 		override public function destroy():void

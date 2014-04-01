@@ -118,7 +118,7 @@ package myth.editor.field
 		{
 			for (var i:int = OBJECTS.length - 1; i > -1; i-- )
 			{
-				if (px > OBJECTS[i].x && px < OBJECTS[i].x + OBJECTS[i].width && py > OBJECTS[i].y && py < OBJECTS[i].y + OBJECTS[i].height)
+				if (px > OBJECTS[i].x - OBJECTS[i].width / 2 && px < OBJECTS[i].x + OBJECTS[i].width / 2 && py > OBJECTS[i].y - OBJECTS[i].height / 2 && py < OBJECTS[i].y + OBJECTS[i].height / 2)
 				{
 					var ob:EditorItem = OBJECTS[i];
 					removeChild(OBJECTS[i]);
