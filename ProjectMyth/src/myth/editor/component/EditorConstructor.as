@@ -68,7 +68,7 @@ package myth.editor.component
 			holder.addChild(button_depth);
 		}	
 		
-		public function construct(tex:String, c:int, t:int, px:Number = 50, py:Number = 50):void
+		public function construct(tex:String, c:int, t:int, px:Number = 200, py:Number = 200, r:Number = 0, sx:Number = 1, sy:Number = 1):void
 		{
 			visible = true;
 			active = true;
@@ -77,20 +77,40 @@ package myth.editor.component
 			item = new Image(TextureList.assets.getTexture(tex));
 			item.x = px;
 			item.y = py;
+			item.pivotX = item.width / 2;
+			item.pivotY = item.height / 2;
+			item.rotation = r;
 			addChild(item);
 			frame = new Shape();
-			frame.x = px;
-			frame.y = py;
 			addChild(frame);
-			frame.graphics.lineStyle(4, 0xE3A601);
-			frame.graphics.drawRect(0, 0, item.width, item.height);
+			updateFrame();
 			
 			cat = c;
 			type = t;
 			item_name = tex;
 			
+			if (cat != EditorSelector.CAT_BACKGROUND)
+			{
+				button_scale.visible = false;
+				button_rotate.visible = false;
+				button_depth.visible = false;
+				
+				holder.removeChild(button_scale);
+				holder.removeChild(button_rotate);
+				holder.removeChild(button_depth);
+			}
+
 			holder.visible = true;
 			moveHolder();
+		}
+		
+		public function updateFrame():void
+		{
+			frame.x = item.x - item.width / 2;
+			frame.y = item.y - item.height / 2;
+			frame.graphics.clear();
+			frame.graphics.lineStyle(4, 0xE3A601);
+			frame.graphics.drawRect(0, 0, item.width, item.height);
 		}
 		
 		public function destory(del:Boolean):void
@@ -104,15 +124,27 @@ package myth.editor.component
 			removeChild(item);
 			item = null;
 			holder.visible = false;
+			
+			if (cat != EditorSelector.CAT_BACKGROUND)
+			{
+				button_scale.visible = true;
+				button_rotate.visible = true;
+				button_depth.visible = true;
+				
+				holder.addChild(button_scale);
+				holder.addChild(button_rotate);
+				holder.addChild(button_depth);
+			}
 		}
 		
 		public function tryMove(px:int, py:int):void
 		{
-			if (px > item.x && py > item.y && px < item.x + item.width && py < item.y + item.height)
+			if (px > item.x - item.width / 2 && py > item.y - item.height / 2 && px < item.x + item.width / 2 && py < item.y + item.height / 2)
 			{
 				moveposX = px - item.x;
 				moveposY = py - item.y;
 				moving = true;
+				updateFrame();
 			}
 		}
 		
@@ -120,9 +152,7 @@ package myth.editor.component
 		{
 			item.x = px - moveposX;
 			item.y = py - moveposY;
-			frame.x = px - moveposX;
-			frame.y = py - moveposY;
-			
+			updateFrame();
 			moveHolder();
 		}
 		
@@ -162,34 +192,34 @@ package myth.editor.component
 				
 				if (menuY > 0 && menuY < 56)
 				{
-					if (editor.CONSTRUCTOR.cat == EditorSelector.CAT_BACKGROUND)
+					if (cat == EditorSelector.CAT_BACKGROUND)
 					{
-						editor.FIELD_BACKGROUND.addBackground(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, (editor.CONSTRUCTOR.item.x + (Editor.camX / 2)) * 2, editor.CONSTRUCTOR.item.y, 2, 1, 1);
+						editor.FIELD_BACKGROUND.addBackground(item_name, type, (item.x + (Editor.camX / 2)) * 2, item.y, 2, item.rotation, 1, 1);
 					}
-					else if (editor.CONSTRUCTOR.cat == EditorSelector.CAT_OBJECTS)
+					else if (cat == EditorSelector.CAT_OBJECTS)
 					{
-						editor.FIELD_OBJECTS.addObject(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
+						editor.FIELD_OBJECTS.addObject(item_name, type, item.x + Editor.camX, item.y);
 					}
-					else if (editor.CONSTRUCTOR.cat == EditorSelector.CAT_ENEMY)
+					else if (cat == EditorSelector.CAT_ENEMY)
 					{
-						editor.FIELD_ENEMIES.addEnemies(editor.CONSTRUCTOR.item_name, editor.CONSTRUCTOR.type, editor.CONSTRUCTOR.item.x + Editor.camX, editor.CONSTRUCTOR.item.y);
+						editor.FIELD_ENEMIES.addEnemies(item_name, type, item.x + Editor.camX, item.y);
 					}
 					destory(false);
-					editor.removeChild(editor.CONSTRUCTOR);
+					editor.removeChild(this);
 				}
 				else if (menuY > 70 && menuY < 126)
 				{
 					destory(true);
-					editor.removeChild(editor.CONSTRUCTOR);
+					editor.removeChild(this);
 				}
-				else if (menuY > 140 && menuY < 196) //SCALE
+				else if (menuY > 140 && menuY < 196 && cat == EditorSelector.CAT_BACKGROUND) //SCALE
 				{
 				}
-				else if (menuY > 210 && menuY < 266) //ROTATE
+				else if (menuY > 210 && menuY < 266 && cat == EditorSelector.CAT_BACKGROUND) //ROTATE
 				{
-					tool = new EditorRotater(this);
+					tool = new EditorRotater(this, item.rotation);
 				}
-				else if (menuY > 280 && menuY < 336) //DEPTH
+				else if (menuY > 280 && menuY < 336 && cat == EditorSelector.CAT_BACKGROUND) //DEPTH
 				{
 				}
 			}
@@ -197,8 +227,8 @@ package myth.editor.component
 		
 		public function moveHolder():void
 		{
-			holder.x = item.x + item.width + 20;
-			holder.y = item.y;
+			holder.x = item.x + item.width / 2 + 20;
+			holder.y = item.y - item.height / 2;
 			
 			if (holder.x < 5)
 			{

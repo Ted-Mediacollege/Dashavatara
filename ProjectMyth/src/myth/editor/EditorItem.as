@@ -10,9 +10,9 @@ package myth.editor
 		public var type:int;
 		public var item_name:String;
 		
-		public function EditorItem(t:Texture, n:String, ty:int, px:Number, py:Number, pz:Number, sx:Number, sy:Number) 
+		public function EditorItem(t:Texture, n:String, ty:int, px:Number, py:Number, pz:Number, sx:Number, sy:Number, r:Number = 0) 
 		{
-			super(t, px, py, pz, sx, sy);
+			super(t, px, py, pz, sx, sy, r);
 			
 			item_name = n;
 			type = ty;
