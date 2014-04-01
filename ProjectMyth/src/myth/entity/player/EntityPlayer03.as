@@ -21,7 +21,7 @@ package myth.entity.player
 		
 		public function EntityPlayer03() 
 		{
-			super(false,300,PlayerType.Fluit,TextureList.assets.getTexture("gui_icon1"));
+			super(false,300,PlayerType.Fluit,TextureList.assets.getTexture("gui_icon3"),TextureList.assets.getTexture("gui_icon3_d"));
 			
 			image = TextureList.spriterLoader.getSpriterClip("animFlute");
 			image.playbackSpeed = 1;

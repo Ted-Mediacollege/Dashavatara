@@ -9,6 +9,7 @@ package myth.gui.game
 	import flash.geom.Rectangle;
 	import flash.display.BitmapDataChannel;
 	import myth.gui.components.GuiButton;
+	import myth.gui.components.GuiButtonToggle;
 	import myth.gui.components.GuiText;
 	import myth.gui.GuiScreen;
 	import myth.Main;
@@ -40,9 +41,9 @@ package myth.gui.game
 		private var pause:Boolean = false;
 		private var pauseScreen:Boolean = false;
 		
-		private var b1:GuiButton;
-		private var b2:GuiButton;
-		private var b3:GuiButton;
+		private var b1:GuiButtonToggle;
+		private var b2:GuiButtonToggle;
+		private var b3:GuiButtonToggle;
 		private var pauseb1:GuiButton;
 		private var pauseb2:GuiButton;
 		
@@ -145,54 +146,13 @@ package myth.gui.game
 					main.switchGui(new GuiEditor(editorString));
 					return;
 				}
-				
-				//trace(pause + " " +pauseScreen);
 				if (pauseScreen)
 				{
-					if(pauseScreen){
-						
-					}else {
-						//pauseScreen = true;
-					}
-					//Main.world.unflatten();
-					//Main.world.filter = null;
 					pauseScreen = false;
 					removePauseButtons();
 				}
 				else if(pauseScreenImage==null)
 				{
-					/*pauseScreen = false;
-					pause = false;
-					//game screen to 1280X768 image
-					pauseScreenTexture = new RenderTexture(ScaleHelper.phoneX, ScaleHelper.phoneY);
-					var drawMatrix:Matrix = new Matrix();
-					drawMatrix.scale(ScaleHelper.scaleX, ScaleHelper.scaleY);
-					pauseScreenTexture.draw(gameScreen,drawMatrix);
-					
-					//pauseScreenTexture.draw(Main.world);
-					pauseScreenImage = new Image(pauseScreenTexture);
-					//pauseScreenImage.blendMode = BlendMode.MULTIPLY;
-					pauseScreenImage.width = 1280;
-					pauseScreenImage.height = 768;
-					//pauseScreenImage.filter = pauseFilter;
-					//pauseFilter.mode = FragmentFilterMode.ABOVE;
-					pauseFilter.cache();
-					
-					pauseScreenImage2 = new Image(pauseScreenTexture);
-					//pauseScreenImage2.blendMode = BlendMode.NONE;
-					pauseScreenImage2.width = 1280;
-					pauseScreenImage2.height = 768;
-					
-					//pauseFilter2.mode = FragmentFilterMode.ABOVE;
-					//pauseScreenImage2.filter = pauseFilter2;
-					//pauseFilter2.cache();
-					gameScreen.addChild(pauseScreenImage2);
-					gameScreen.addChild(pauseScreenImage);
-					
-					Display.layerVisible(false,LayerID.GameLevel);
-					Display.layerVisible(false,LayerID.GameGui);
-					
-					*/
 					createPauseButtons();
 					pauseScreen = true;
 				}
@@ -203,6 +163,16 @@ package myth.gui.game
 			}
 			else if (button.buttonID > 9 && !pause)
 			{
+				if (button.buttonID == 10) {
+					b2.setState(false);
+					b3.setState(false);
+				}else if (button.buttonID == 11) {
+					b1.setState(false);
+					b3.setState(false);
+				}else if (button.buttonID == 12) {
+					b1.setState(false);
+					b2.setState(false);
+				}
 				Main.world.playerHolder.switchAvatar(button.buttonID - 10);
 				
 				help_visible = true;
@@ -225,41 +195,34 @@ package myth.gui.game
 				help_text_temp.alpha = Number(help_fade) / 100.0;
 			}
 			
-			//trace(pauseFade);
 			if (!pauseScreen)
 			{
-				/*if (pauseFade >= 0.01) {
-					pauseFade-= 0.01;
-					//pauseFilter.blurX = pauseFade * 20;
-					//pauseFilter.blurY = pauseFade * 20;
-					//pauseFilter.resolution =  0.2;
-					//pauseFilter.cache();
-					if (pauseFade <= 0.02 || pauseScreen) {
-						
-					}
-					unPause();
-				}else {
-					
-				}*/
 				Main.world.tick();
-			}else {
-				/*if (pauseFade <= 0.49) {
-					//pauseFade+= 0.01;
-					//pauseFilter.blurX = pauseFade * 20;
-					//pauseFilter.blurY = pauseFade * 20;
-					//pauseFilter.resolution = 0.2;
-					//pauseFilter.cache();
-					if (pauseFade >= 0.49) {
-						pause = true;
-					}
-				}*/
 			}
 		}
 		
-		public function build():void {
-			b1 = addButton(new GuiButton(10, Main.world.playerHolder.players[0].playerTexture, 100, 80, 194, 142, ""),false);
-			b2 = addButton(new GuiButton(11, Main.world.playerHolder.players[1].playerTexture, 300, 80, 194, 142, ""),false);
-			b3 = addButton(new GuiButton(12, Main.world.playerHolder.players[2].playerTexture, 500, 80, 194, 142, ""),false);
+		public function build():void 
+		{
+			b1 = new GuiButtonToggle(
+				10,
+				Main.world.playerHolder.players[0].playerTexture,
+				Main.world.playerHolder.players[0].playerTextureDown,
+				100, 80, 194, 142, "", false
+			);
+			addButton(b1, false);
+			
+			b2 = new GuiButtonToggle(
+				11, Main.world.playerHolder.players[1].playerTexture,
+				Main.world.playerHolder.players[1].playerTextureDown,
+				300, 80, 194, 142, "", false
+			);
+			addButton(b2,false);
+			b3 = new GuiButtonToggle(
+				12, Main.world.playerHolder.players[2].playerTexture,
+				Main.world.playerHolder.players[2].playerTextureDown,
+				500, 80, 194, 142, "", false
+			)
+			addButton(b3,false);
 			Display.add(b1,LayerID.GameGui);
 			Display.add(b2,LayerID.GameGui);
 			Display.add(b3,LayerID.GameGui);

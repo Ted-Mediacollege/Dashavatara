@@ -30,11 +30,13 @@ package myth.entity.player
 		
 		private var privatePlayerType:int;
 		private var privatePlayerTex:Texture;
+		private var privatePlayerTexDown:Texture;
 		
-		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int,_playerType:int,_playerTex:Texture)
+		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int,_playerType:int,_playerTex:Texture,_playerTexDown:Texture)
 		{
 			super(100, 180, -50, -180);
 			privatePlayerTex = _playerTex;
+			privatePlayerTexDown = _playerTexDown;
 			privatePlayerType = _playerType;
 			art = new Sprite();
 			addChild(art);
@@ -149,5 +151,7 @@ package myth.entity.player
 		
 		public function get playerTexture():Texture {return privatePlayerTex};
 		//public function set playerTexture(tex:Texture):void {privatePlayerTex = tex;};
+		
+		public function get playerTextureDown():Texture {return privatePlayerTexDown};
 	}
 }

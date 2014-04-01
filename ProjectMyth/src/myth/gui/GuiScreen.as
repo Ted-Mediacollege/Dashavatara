@@ -104,6 +104,7 @@ package myth.gui
 						)
 					{
 						action(buttonList[i]);
+						buttonList[i].click();
 						buttonTouched = true;
 						break;
 					}
