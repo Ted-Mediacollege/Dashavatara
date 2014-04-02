@@ -38,7 +38,6 @@ package myth.gui.game
 	{
 		private var bg:Image;
 		private var levelName:String;
-		private var pause:Boolean = false;
 		private var pauseScreen:Boolean = false;
 		
 		private var puaseButton:GuiButtonToggle;
@@ -51,15 +50,7 @@ package myth.gui.game
 		private var help_text_temp:GuiText;
 		private var help_fade:int;
 		private var help_visible:Boolean;
-		private var pauseFilter:BlurFilter;
-		private var pauseFilter2:ColorMatrixFilter;
 		private var gameLayer:Sprite;
-		private var pauseScreenTexture:RenderTexture;
-		private var pauseScreenImage:Image;
-		private var pauseScreenImage2:Image;
-		private var pauseBitmapData:BitmapData;
-		private var pauseBitmap:Bitmap;
-		private var pauseFade:Number = 0;
 		
 		private var editorTesting:Boolean = false;
 		public static var editorString:String = "";
@@ -111,12 +102,6 @@ package myth.gui.game
 			help_visible = true;
 			help_fade = 100;
 			help_text_temp.alpha = 1;
-			
-			pauseFilter = new BlurFilter(0, 0, 0);
-			pauseFilter2 = new ColorMatrixFilter();
-			//pauseFilter2.adjustHue(1.0);
-			//pauseFilter2.adjustSaturation(2.0);
-			//pauseFilter2.adjustContrast(0.8);
 		}
 		
 		private function createPauseButtons():void 
@@ -131,18 +116,6 @@ package myth.gui.game
 			removeButton(pauseb2);
 		}
 		
-		private function unPause():void {
-			Display.layerVisible(true,LayerID.GameLevel);
-			Display.layerVisible(true,LayerID.GameGui);
-			gameScreen.removeChild(pauseScreenImage);
-			gameScreen.removeChild(pauseScreenImage2);
-			//pauseScreenTexture.dispose();
-			pauseScreenTexture = null;
-			pauseScreenImage = null;
-			pauseScreenImage2 = null;
-			pause = false;
-			removePauseButtons();
-		}
 		override public function action(button:GuiButton):void
 		{
 			if (button.buttonID == 13 ||button.buttonID == 0) 
@@ -158,7 +131,7 @@ package myth.gui.game
 					pauseScreen = false;
 					removePauseButtons();
 				}
-				else if(pauseScreenImage==null)
+				else
 				{
 					puaseButton.setState(true);
 					createPauseButtons();
@@ -169,7 +142,7 @@ package myth.gui.game
 			{
 				main.switchGui(new GuiMainMenu(), true);
 			}
-			else if (button.buttonID > 9 && !pause)
+			else if (button.buttonID > 9)
 			{
 				if (button.buttonID == 10) {
 					b2.setState(false);
