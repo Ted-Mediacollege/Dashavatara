@@ -105,8 +105,8 @@ package myth.gui
 						data[3] < buttonList[i].posY + buttonList[i].posHeight / 2
 						)
 					{
-						action(buttonList[i]);
 						buttonList[i].click();
+						action(buttonList[i]);
 						buttonTouched = true;
 						break;
 					}

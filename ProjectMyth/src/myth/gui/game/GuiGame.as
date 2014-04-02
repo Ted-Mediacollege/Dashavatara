@@ -41,6 +41,7 @@ package myth.gui.game
 		private var pause:Boolean = false;
 		private var pauseScreen:Boolean = false;
 		
+		private var puaseButton:GuiButtonToggle;
 		private var b1:GuiButtonToggle;
 		private var b2:GuiButtonToggle;
 		private var b3:GuiButtonToggle;
@@ -98,7 +99,12 @@ package myth.gui.game
 			Main.world.init();
 			//Display.add(Main.world,LayerID.GameLevel);
 			
-			addButton(new GuiButton(13, TextureList.assets.getTexture("gui_button_pause"), 1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, ""));
+			puaseButton = new GuiButtonToggle(
+				13, TextureList.assets.getTexture("gui_button_pause"),
+				TextureList.assets.getTexture("gui_button_pause_d"),
+				1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, "",false
+			);
+			addButton(puaseButton);
 			
 			help_text_temp = new GuiText(40, 700, 1200, 100, "left", "top", "Swipe to slash", 40, 0x000000, "Arial");
 			addChild(help_text_temp);
@@ -148,11 +154,13 @@ package myth.gui.game
 				}
 				if (pauseScreen)
 				{
+					puaseButton.setState(false);
 					pauseScreen = false;
 					removePauseButtons();
 				}
 				else if(pauseScreenImage==null)
 				{
+					puaseButton.setState(true);
 					createPauseButtons();
 					pauseScreen = true;
 				}
@@ -215,7 +223,7 @@ package myth.gui.game
 			b2 = new GuiButtonToggle(
 				11, Main.world.playerHolder.players[1].playerTexture,
 				Main.world.playerHolder.players[1].playerTextureDown,
-				300, 80, 194, 142, "", false
+				300, 80, 194, 142, "", true
 			);
 			addButton(b2,false);
 			b3 = new GuiButtonToggle(

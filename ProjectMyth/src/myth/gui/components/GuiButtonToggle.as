@@ -27,7 +27,7 @@ package myth.gui.components
 			texOff = a;
 			toggle = ac;
 			if (toggle) {
-				image.texture = texOff;
+				image.texture = texOn;
 			}
 		}
 		
