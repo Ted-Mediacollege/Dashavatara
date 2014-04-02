@@ -158,9 +158,9 @@ package myth.gui.game
 				var s:int = 0;
 				switch(size_selected)
 				{
-					case 0: s = 70; break;
-					case 1: s = 100; break;
-					case 2: s = 130; break;
+					case 0: s = 90; break;
+					case 1: s = 145; break;
+					case 2: s = 200; break;
 				}
 				
 				create_menu(false);
