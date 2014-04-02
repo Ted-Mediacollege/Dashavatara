@@ -172,7 +172,7 @@ package myth.editor.field
 		{
 			for (var i:int = BACKGROUND_CREATED.length - 1; i > -1; i-- )
 			{
-				if (px > BACKGROUND_CREATED[i].x - BACKGROUND_CREATED[i].width / 2 && px < BACKGROUND_CREATED[i].x + BACKGROUND_CREATED[i].width / 2 && py > BACKGROUND_CREATED[i].y - BACKGROUND_CREATED[i].height / 2 && py < BACKGROUND_CREATED[i].y + BACKGROUND_CREATED[i].height / 2)
+				if (px > BACKGROUND_CREATED[i].x && px < BACKGROUND_CREATED[i].x + BACKGROUND_CREATED[i].width && py > BACKGROUND_CREATED[i].y && py < BACKGROUND_CREATED[i].y + BACKGROUND_CREATED[i].height)
 				{
 					var back:EditorItem = BACKGROUND_CREATED[i];
 					removeChild(BACKGROUND_CREATED[i]);

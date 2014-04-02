@@ -62,24 +62,29 @@ package myth.gui.game
 			addChild(editor);
 			editor.init();
 				
-			button_editor_new = addButton(new GuiButton(10, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 55, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.new"), 28)); button_editor_new.enabled = false;
-			button_editor_menu = addButton(new GuiButton(11, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 55, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.menu"), 28)); button_editor_menu.enabled = false;
-			button_editor_load = addButton(new GuiButton(12, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.load"), 28)); button_editor_load.enabled = false;
-			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 28)); button_editor_save.enabled = false;
-			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 28)); button_editor_settings.enabled = false;
-			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 28)); button_editor_test.enabled = false;
+			button_editor_new = addButton(new GuiButton(10, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.new"), 28)); button_editor_new.enabled = false;
+			button_editor_menu = addButton(new GuiButton(11, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.menu"), 28)); button_editor_menu.enabled = false;
+			button_editor_load = addButton(new GuiButton(12, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.load"), 28)); button_editor_load.enabled = false;
+			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 28)); button_editor_save.enabled = false;
+			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 28)); button_editor_settings.enabled = false;
+			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 28)); button_editor_test.enabled = false;
 			button_editor_export = addButton(new GuiButton(16, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 28)); button_editor_export.enabled = false;
 			button_editor_import = addButton(new GuiButton(17, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.import"), 28)); button_editor_import.enabled = false;
+			
+			button_editor_load.visible = false;
+			button_editor_save.visible = false;
+			button_editor_load.enabled = false;
+			button_editor_save.enabled = false;
 			if (!GameData.ISCOMPUTER)
 			{
 				button_editor_export.visible = false;
 				button_editor_import.visible = false;
 			}
 			
-			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 280, 60, 60, "")); button_cat_left.enabled = false;
-			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 280, 60, 60, "")); button_cat_right.enabled = false;
-			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 310, screenHeight - 80, 60, 60, "")); button_item_left.enabled = false;
-			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 40, screenHeight - 80, 60, 60, "")); button_item_right.enabled = false;
+			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 300, screenHeight - 280, 60, 60, "")); button_cat_left.enabled = false;
+			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 50, screenHeight - 280, 60, 60, "")); button_cat_right.enabled = false;
+			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 300, screenHeight - 80, 60, 60, "")); button_item_left.enabled = false;
+			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 50, screenHeight - 80, 60, 60, "")); button_item_right.enabled = false;
 			
 			grey_screen = new Shape();
 			grey_screen.graphics.lineStyle(0, 0x555555, 0.8);
@@ -91,6 +96,9 @@ package myth.gui.game
 			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 180, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 45, 0x000000, "GameFont"));
 			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 45, 0x000000, "GameFont"));
 			button_import = addButton(new GuiButton(9, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.import"), 45, 0x000000, "GameFont"));
+			
+			button_load.visible = false;
+			button_load.enabled = false;
 			if (!GameData.ISCOMPUTER)
 			{
 				button_import.visible = false;
@@ -198,6 +206,9 @@ package myth.gui.game
 			button_create.visible = e;
 			button_load.visible = e;
 			button_import.visible = e;
+			
+			button_load.visible = false;
+			button_load.enabled = false;
 		}
 		
 		public function create_menu(e:Boolean):void
@@ -223,6 +234,11 @@ package myth.gui.game
 			button_editor_save.enabled = e;
 			button_editor_settings.enabled = e;
 			button_editor_test.enabled = e;
+			
+			button_editor_load.visible = false;
+			button_editor_save.visible = false;
+			button_editor_load.enabled = false;
+			button_editor_save.enabled = false;
 			
 			if (GameData.ISCOMPUTER)
 			{

@@ -6,18 +6,12 @@ package myth.gui.components
 		import myth.graphics.TextureList;
 		
 		public var file_name:String;
-		public var level_name:String;
-		public var level_description:String;
-		public var level_difficulty:String;
 		
-		public function GuiButtonLevel(id:int, px:int, py:int, fn:String, ln:String, ld:String, lf:String) 
+		public function GuiButtonLevel(id:int, px:int, py:int, fn:String) 
 		{
-			super(100 + id, TextureList.assets.getTexture("map_button_a"), px, py, 138, 139, "" + (id + 1), 80, 0xFFFFFF, "Arial");
+			super(100 + id, TextureList.assets.getTexture("l" + (id + 1) + "a"), px, py, 138, 139, "", 80, 0xFFFFFF, "Arial");
 			
 			file_name = fn;
-			level_name = ln;
-			level_description = ld;
-			level_difficulty = lf;
 		}
 	}
 }

@@ -78,7 +78,7 @@ package myth.editor
 		public function build(t:int, s:int):void
 		{
 			theme = t;
-			var levelSize:int = 25; //s
+			var levelSize:int = s;
 			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();

@@ -4,7 +4,7 @@
 		<t name="loading.tap">Tap to continue</t>
 		
 		<t name="main.play">Play</t>
-		<t name="main.editor">Editor</t>
+		<t name="main.editor">Level Creator</t>
 		<t name="main.options">Options</t>
 		<t name="main.credits">Credits</t>
 		<t name="main.version">Version</t>
