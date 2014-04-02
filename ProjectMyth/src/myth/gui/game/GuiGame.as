@@ -145,14 +145,17 @@ package myth.gui.game
 			else if (button.buttonID > 9)
 			{
 				if (button.buttonID == 10) {
+					b1.setState(true);
 					b2.setState(false);
 					b3.setState(false);
 				}else if (button.buttonID == 11) {
 					b1.setState(false);
+					b2.setState(true);
 					b3.setState(false);
 				}else if (button.buttonID == 12) {
 					b1.setState(false);
 					b2.setState(false);
+					b3.setState(true);
 				}
 				Main.world.playerHolder.switchAvatar(button.buttonID - 10);
 				
