@@ -177,7 +177,7 @@ package myth.world
 					if (levelData.nextLvlName == "editor") {
 						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
 					} else {
-						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName));
+						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName), true);
 					}
 				}
 				
