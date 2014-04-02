@@ -2,7 +2,7 @@ package myth.entity.player
 {
 	import starling.display.MovieClip;
 	import starling.core.Starling;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.input.TouchType;
 	import starling.events.TouchEvent;
 	//fish
@@ -14,7 +14,7 @@ package myth.entity.player
 		{
 			super(true,200);
 			
-			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("FishAvatar"), 30);
+			animationWalk = new MovieClip(AssetList.atlas_fish.getTextures("FishAvatar"), 30);
 			animationWalk.x = 0;
 			animationWalk.y = 0;
 			animationWalk.loop = true;

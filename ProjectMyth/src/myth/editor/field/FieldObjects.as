@@ -2,7 +2,7 @@ package myth.editor.field
 {
 	import starling.display.Sprite;
 	import myth.background.Background;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.editor.EditorItem;
 	import myth.editor.EditorFiles;
 	
@@ -104,7 +104,7 @@ package myth.editor.field
 		
 		public function addObject(tex:String, t:int, px:Number, py:Number, pivotFix:Boolean = false):void
 		{
-			var ob:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
+			var ob:EditorItem = new EditorItem(AssetList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
 			if (pivotFix)
 			{
 				ob.y -= ob.height;

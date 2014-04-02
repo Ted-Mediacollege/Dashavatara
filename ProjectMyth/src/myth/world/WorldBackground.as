@@ -2,7 +2,7 @@ package myth.world
 {
 	import myth.background.Background;
 	import starling.display.Sprite;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.util.TimeHelper;
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
@@ -29,13 +29,13 @@ package myth.world
 		
 		public function build(data:Vector.<Vector.<int>>, camX:Number, size:int, theme:int):void
 		{
-			var bg:Image = new Image(TextureList.assets.getTexture(textures_lucht[theme]));
+			var bg:Image = new Image(AssetList.assets.getTexture(textures_lucht[theme]));
 			bg.blendMode = BlendMode.NONE;
 			addChild(bg);
 
 			if (theme == Theme.SKY)
 			{
-				var clouds:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
+				var clouds:Vector.<Texture> = AssetList.assets.getTextures("common_wolk");
 				var cloudslength:int = clouds.length;
 				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
 				for (var j:int = 0; j < cloudiness; j++ )
@@ -50,7 +50,7 @@ package myth.world
 			}
 			else if (theme == Theme.EARTH)
 			{
-				var mountain:Texture = TextureList.assets.getTexture("earth_bergen");
+				var mountain:Texture = AssetList.assets.getTexture("earth_bergen");
 				var amount:int = int(Math.ceil((size / 1280) / 4)) + 1;
 				for (var m:int = 0; m < amount; m++ )
 				{
@@ -66,7 +66,7 @@ package myth.world
 			var dataLength:int = data.length;
 			for (var k:int = 0; k < dataLength; k++ )
 			{
-				var b5:Background = new Background(TextureList.assets.getTexture(textureNames[data[k][0]]), data[k][2], data[k][3], data[k][1], 1, 1);
+				var b5:Background = new Background(AssetList.assets.getTexture(textureNames[data[k][0]]), data[k][2], data[k][3], data[k][1], 1, 1);
 				b5.x = b5.posX / b5.z;
 				b5.visible = false;
 				Backgrounds.push(b5);

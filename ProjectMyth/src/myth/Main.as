@@ -9,7 +9,6 @@ package myth
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import myth.input.TouchInput;
-	import myth.graphics.TextureList;
 	import starling.events.EnterFrameEvent;
 	import starling.events.KeyboardEvent;
 	import starling.events.Touch;
@@ -17,6 +16,8 @@ package myth
 	import myth.util.TimeHelper;
 	import myth.util.ScaleHelper;
 	import starling.textures.Texture;
+	import myth.sound.SoundPlayer;
+	import myth.graphics.AssetList;
 	
 	public class Main extends Sprite
 	{
@@ -55,7 +56,8 @@ package myth
 			this.scaleX = ScaleHelper.scaleX;
 			this.scaleY = ScaleHelper.scaleY;
 			
-			TextureList.load();
+			SoundPlayer.init();
+			AssetList.load();
 			
 			input = new TouchInput();
 			addEventListener(TouchEvent.TOUCH, input.onMouse);

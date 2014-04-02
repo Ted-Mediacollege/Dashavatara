@@ -4,7 +4,7 @@ package myth.gui.game
 	import myth.gui.components.GuiButton;
 	import myth.input.TouchType;
 	import myth.gui.components.GuiText;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.gui.background.GuiBackground;
 	import myth.util.Debug;
 	import myth.lang.Lang;
@@ -20,7 +20,7 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
-			var b:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
+			var b:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
 			
 			/*var b1:GuiButton = addButton(new GuiButton(10, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 110, 450, 100, "DEBUG1: " + Debug.USER[0], 25, 0x000000));
 			var b2:GuiButton = addButton(new GuiButton(11, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, 220, 450, 100, "DEBUG2: " + Debug.USER[1], 25, 0x000000));

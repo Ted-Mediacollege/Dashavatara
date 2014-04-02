@@ -5,7 +5,7 @@ package myth.gui.game
 	import myth.input.TouchType;
 	import myth.gui.components.GuiText;
 	import myth.gui.background.GuiBackground;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 
 	public class GuiWin extends GuiScreen
 	{
@@ -22,9 +22,9 @@ package myth.gui.game
 			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiWin", 25, 0x000000);
 			addChild(t);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 25, 0x000000));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Next Level", 25, 0x000000));
-			var b3:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 180, 450, 100, "Main Menu", 25, 0x000000));
+			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 25, 0x000000));
+			var b2:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Next Level", 25, 0x000000));
+			var b3:GuiButton = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 180, 450, 100, "Main Menu", 25, 0x000000));
 		
 		}
 		

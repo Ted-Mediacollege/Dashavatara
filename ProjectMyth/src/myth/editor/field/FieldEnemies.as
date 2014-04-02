@@ -3,7 +3,7 @@ package myth.editor.field
 	import starling.display.Sprite;
 	import myth.background.Background;
 	import myth.editor.EditorItem;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.editor.EditorFiles;
 	
 	public class FieldEnemies extends Sprite
@@ -101,7 +101,7 @@ package myth.editor.field
 		
 		public function addEnemies(tex:String, t:int, px:Number, py:Number, pivotFix:Boolean = false):void
 		{
-			var en:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
+			var en:EditorItem = new EditorItem(AssetList.assets.getTexture(tex), tex, t, px, py, 1, 1, 1);
 			if (pivotFix)
 			{
 				en.y -= en.height;

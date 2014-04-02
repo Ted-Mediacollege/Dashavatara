@@ -5,7 +5,7 @@ package myth.editor.component
 	import starling.display.Image;
 	import myth.editor.EditorFiles;
 	import myth.editor.Editor;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.lang.Lang;
 
 	public class EditorSelector extends Sprite
@@ -65,7 +65,7 @@ package myth.editor.component
 				removeChild(item_art);
 			}
 			
-			item_art = new Image(TextureList.assets.getTexture(current_items[ITEM]));
+			item_art = new Image(AssetList.assets.getTexture(current_items[ITEM]));
 			addChild(item_art);
 			
 			item_art.pivotX = item_art.width / 2;

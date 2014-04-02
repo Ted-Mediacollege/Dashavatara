@@ -1,7 +1,7 @@
 package myth.editor.component 
 {
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	
 	public class EditorDepther extends EditorTool
 	{	
@@ -14,11 +14,11 @@ package myth.editor.component
 		{
 			constructor = cons;
 			
-			image = new Image(TextureList.assets.getTexture("editor_tool_depth"));
+			image = new Image(AssetList.assets.getTexture("editor_tool_depth"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;
 			
-			button = new Image(TextureList.assets.getTexture("editor_tool_slider"));
+			button = new Image(AssetList.assets.getTexture("editor_tool_slider"));
 			button.pivotX = button.width / 2;
 			button.pivotY = button.height / 2;
 			button.y = 16;

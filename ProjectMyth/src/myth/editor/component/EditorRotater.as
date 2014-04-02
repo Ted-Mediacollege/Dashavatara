@@ -1,7 +1,7 @@
 package myth.editor.component 
 {
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Sprite;
 	import starling.utils.deg2rad;
 	import myth.util.MathHelper;

@@ -4,7 +4,7 @@ package myth.entity.enemy
 	import starling.display.MovieClip;
 	import starling.display.Shape;
 	import flash.geom.Rectangle;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import myth.Main;
 	import myth.util.MathHelper;
@@ -20,7 +20,7 @@ package myth.entity.enemy
 		
 		public function EntityEnemyStone() {
 			super(120, 120, -60, -60);
-			image = new Image(TextureList.assets.getTexture("rock_fallingdown"));
+			image = new Image(AssetList.assets.getTexture("rock_fallingdown"));
 			artLayer.addChild(image);
 			
 			image.pivotX = image.width / 2;
@@ -41,7 +41,7 @@ package myth.entity.enemy
 				}else {
 					if (!onGround) {
 						onGround = true;
-						image.texture = TextureList.assets.getTexture("rock_down");
+						image.texture = AssetList.assets.getTexture("rock_down");
 						image.readjustSize();
 						image.pivotX = image.width / 2;
 						image.pivotY = image.height / 2;

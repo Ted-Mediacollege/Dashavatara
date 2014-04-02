@@ -20,7 +20,7 @@ package myth.editor
 	import myth.gui.game.GuiMainMenu;
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.events.TouchEvent;
 	import myth.input.TouchType;
 	import myth.util.ScaleHelper;
@@ -68,7 +68,7 @@ package myth.editor
 			SCROLL = new EditorScroll();
 			addChild(SCROLL);
 			
-			var a1:Image = new Image(TextureList.assets.getTexture("editor_panel_main"));
+			var a1:Image = new Image(AssetList.assets.getTexture("editor_panel_main"));
 			a1.x = 1280 - 350;
 			addChild(a1);
 			

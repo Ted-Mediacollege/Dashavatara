@@ -3,7 +3,7 @@ package myth.editor.component
 	import myth.gui.components.GuiText;
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	
 	public class EditorAlert extends Sprite
 	{
@@ -17,7 +17,7 @@ package myth.editor.component
 		
 		public function EditorAlert(id:int, titleString:String, mainString:String, yesString:String, noString:String) 
 		{
-			image = new Image(TextureList.assets.getTexture("editor_alert"));
+			image = new Image(AssetList.assets.getTexture("editor_alert"));
 			addChild(image);
 			
 			x = 640;

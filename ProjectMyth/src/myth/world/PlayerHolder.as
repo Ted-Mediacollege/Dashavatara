@@ -9,7 +9,7 @@ package myth.world
 	import myth.Main;
 	import starling.display.Image;
 	import treefortress.spriter.SpriterClip;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	
 	public class PlayerHolder 
 	{
@@ -35,8 +35,8 @@ package myth.world
 			Display.add(Main.world.player, LayerID.GamePlayer);
 			
 			////////////
-			animTransform = TextureList.spriterLoader.getSpriterClip("transAnim");
-			animTransform2 = TextureList.spriterLoader.getSpriterClip("transAnim");
+			animTransform = AssetList.spriterLoader.getSpriterClip("transAnim");
+			animTransform2 = AssetList.spriterLoader.getSpriterClip("transAnim");
 			animTransform.playbackSpeed = 1.5;
 			animTransform2.playbackSpeed = 1.5;
 			Display.add(animTransform,LayerID.GamePlayerFront);
@@ -56,7 +56,7 @@ package myth.world
 				}
 			);
 			
-			transformCircle = new Image(TextureList.assets.getTexture("common_tadaa"));
+			transformCircle = new Image(AssetList.assets.getTexture("common_tadaa"));
 			transformCircle.pivotX = 102;
 			transformCircle.pivotY = 100;
 			

@@ -25,7 +25,7 @@ package myth.world
 	import starling.display.QuadBatch;
 	import starling.display.Shape;
 	import starling.display.Sprite;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.events.TouchEvent;
 	import starling.text.TextField;
 	import myth.util.TimeHelper;
@@ -95,7 +95,7 @@ package myth.world
 		}
 		
 		public function init():void {
-			TextureList.loadLevelAssets(0,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
+			AssetList.loadLevelAssets(0,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
 		}
 		
 		public function build():void {

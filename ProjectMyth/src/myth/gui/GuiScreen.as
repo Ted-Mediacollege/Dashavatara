@@ -6,6 +6,7 @@ package myth.gui
 	import myth.Main;
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
+	import myth.sound.SoundPlayer;
 	
 	public class GuiScreen extends Sprite
 	{
@@ -106,6 +107,7 @@ package myth.gui
 						)
 					{
 						buttonList[i].click();
+						SoundPlayer.common.playSound("button");
 						action(buttonList[i]);
 						buttonTouched = true;
 						break;

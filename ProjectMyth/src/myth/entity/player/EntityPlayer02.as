@@ -1,6 +1,6 @@
 package myth.entity.player 
 {
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
@@ -20,12 +20,12 @@ package myth.entity.player
 			//super(true, false, true,128,200,-64,-200 );
 			super(false);
 			
-			image = new Image(TextureList.atlas_player.getTexture("player_2"));
+			image = new Image(AssetList.atlas_player.getTexture("player_2"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height / 2;
 			addChild(image);
 			
-			animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
+			animationWalk = new MovieClip(AssetList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
 			animationWalk.pivotY = 378;
 			animationWalk.pivotX = 127;
 			animationWalk.loop = true;

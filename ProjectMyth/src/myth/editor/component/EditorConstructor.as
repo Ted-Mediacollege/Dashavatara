@@ -2,7 +2,7 @@ package myth.editor.component
 {
 	import myth.editor.Editor;
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	
@@ -50,11 +50,11 @@ package myth.editor.component
 			toolholder.y = 374;
 			toolholder.visible = false;
 			
-			button_done = new Image(TextureList.assets.getTexture("editor_option_done"));
-			button_delete = new Image(TextureList.assets.getTexture("editor_option_delete"));
-			button_scale = new Image(TextureList.assets.getTexture("editor_option_scale"));
-			button_rotate = new Image(TextureList.assets.getTexture("editor_option_rotate"));
-			button_depth = new Image(TextureList.assets.getTexture("editor_option_depth"));
+			button_done = new Image(AssetList.assets.getTexture("editor_option_done"));
+			button_delete = new Image(AssetList.assets.getTexture("editor_option_delete"));
+			button_scale = new Image(AssetList.assets.getTexture("editor_option_scale"));
+			button_rotate = new Image(AssetList.assets.getTexture("editor_option_rotate"));
+			button_depth = new Image(AssetList.assets.getTexture("editor_option_depth"));
 			button_rotate.color = 0x777777;
 						
 			button_done.y = 0;
@@ -76,7 +76,7 @@ package myth.editor.component
 			active = true;
 			toolActive = false;
 			
-			item = new Image(TextureList.assets.getTexture(tex));
+			item = new Image(AssetList.assets.getTexture(tex));
 			item.x = px;
 			item.y = py;
 			item.rotation = r;

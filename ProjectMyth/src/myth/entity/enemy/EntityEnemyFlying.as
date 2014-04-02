@@ -3,7 +3,7 @@ package myth.entity.enemy
 	import starling.display.MovieClip;
 	import starling.display.Shape;
 	import flash.geom.Rectangle;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import myth.Main;
 	import myth.util.MathHelper;
@@ -16,7 +16,7 @@ package myth.entity.enemy
 		{
 			super(EnemyType.Flying_01);
 			health = 50;
-			animationClip = new MovieClip(TextureList.assets.getTextures("FlyingEnemy"), 30);
+			animationClip = new MovieClip(AssetList.assets.getTextures("FlyingEnemy"), 30);
 			animationClip.x = 0;
 			animationClip.y = 0;
 			animationClip.loop = true;

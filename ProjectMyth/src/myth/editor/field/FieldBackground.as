@@ -4,7 +4,7 @@ package myth.editor.field
 	import myth.data.Theme;
 	import starling.display.Sprite;
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.BlendMode;
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
@@ -28,13 +28,13 @@ package myth.editor.field
 			BACKGROUND_RANDOM = new Vector.<Background>();
 			BACKGROUND_CREATED = new Vector.<EditorItem>();
 		
-			var bg:Image = new Image(TextureList.assets.getTexture(EditorFiles.getLuchtName(t)));
+			var bg:Image = new Image(AssetList.assets.getTexture(EditorFiles.getLuchtName(t)));
 			bg.blendMode = BlendMode.NONE;
 			addChild(bg);
 				
 			if (t == Theme.SKY)
 			{
-				var clouds:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
+				var clouds:Vector.<Texture> = AssetList.assets.getTextures("common_wolk");
 				var cloudslength:int = clouds.length;
 				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
 				for (var j:int = 0; j < cloudiness; j++ )
@@ -49,7 +49,7 @@ package myth.editor.field
 			}
 			else if (t == Theme.EARTH)
 			{
-				var mountain:Texture = TextureList.assets.getTexture("earth_bergen");
+				var mountain:Texture = AssetList.assets.getTexture("earth_bergen");
 				var amount:int = int(Math.ceil((size / 1280) / 4));
 				for (var k:int = 0; k < amount; k++ )
 				{
@@ -61,13 +61,13 @@ package myth.editor.field
 				}
 			}
 				
-			var PLAYER_SPAWN:Background = new Background(TextureList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
+			var PLAYER_SPAWN:Background = new Background(AssetList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
 			PLAYER_SPAWN.visible = false;
 			BACKGROUND_RANDOM.push(PLAYER_SPAWN);
 			addChild(PLAYER_SPAWN);
 			BACKGROUND_SPAWN = PLAYER_SPAWN;
 				
-			var PLAYER_END:Background = new Background(TextureList.assets.getTexture("editor_gate"), size - 800, 221, 1, 1, 1);
+			var PLAYER_END:Background = new Background(AssetList.assets.getTexture("editor_gate"), size - 800, 221, 1, 1, 1);
 			PLAYER_END.visible = false;
 			BACKGROUND_RANDOM.push(PLAYER_END);
 			addChild(PLAYER_END);
@@ -137,7 +137,7 @@ package myth.editor.field
 		
 		public function addBackground(tex:String, t:int, px:Number, py:Number, pz:Number, r:Number, sx:Number, sy:Number):void
 		{
-			var b:EditorItem = new EditorItem(TextureList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy);
+			var b:EditorItem = new EditorItem(AssetList.assets.getTexture(tex), tex, t, px, py, pz, sx, sy);
 			b.x = b.posX / b.z;
 			b.visible = false;
 			

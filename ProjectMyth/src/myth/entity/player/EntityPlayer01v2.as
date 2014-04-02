@@ -1,7 +1,7 @@
 package myth.entity.player 
 {
 	import flash.geom.Point;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.events.TouchEvent;
@@ -26,7 +26,7 @@ package myth.entity.player
 			//super(true, false, true,128,200,-64,-200 );
 			super(false,300);
 			
-			image = TextureList.spriterLoader.getSpriterClip("animLion");
+			image = AssetList.spriterLoader.getSpriterClip("animLion");
 			image.playbackSpeed = 1;
 			image.scaleX = 0.7;
 			image.scaleY = 0.7;

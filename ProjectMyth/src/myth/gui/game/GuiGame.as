@@ -14,7 +14,7 @@ package myth.gui.game
 	import myth.gui.GuiScreen;
 	import myth.Main;
 	import myth.world.World;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.gui.background.GuiBackground;
 	import myth.util.ScaleHelper;
 	import starling.core.RenderSupport;
@@ -100,8 +100,8 @@ package myth.gui.game
 			//Display.add(Main.world,LayerID.GameLevel);
 			
 			puaseButton = new GuiButtonToggle(
-				13, TextureList.assets.getTexture("gui_button_pause"),
-				TextureList.assets.getTexture("gui_button_pause_d"),
+				13, AssetList.assets.getTexture("gui_button_pause"),
+				AssetList.assets.getTexture("gui_button_pause_d"),
 				1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, "",false
 			);
 			addButton(puaseButton);
@@ -121,8 +121,8 @@ package myth.gui.game
 		
 		private function createPauseButtons():void 
 		{
-			pauseb1 = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
-			pauseb2 = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
+			pauseb1 = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
+			pauseb2 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
 		}
 		
 		private function removePauseButtons():void

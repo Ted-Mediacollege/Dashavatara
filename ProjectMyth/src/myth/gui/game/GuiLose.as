@@ -5,7 +5,7 @@ package myth.gui.game
 	import myth.input.TouchType;
 	import myth.gui.components.GuiText;
 	import myth.gui.background.GuiBackground;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 
 	public class GuiLose extends GuiScreen
@@ -19,11 +19,11 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			var bg:Image = new Image(TextureList.assets.getTexture("gui_lose"));
+			var bg:Image = new Image(AssetList.assets.getTexture("gui_lose"));
 			addChild(bg);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 45, 0x000000, "GameFont"));
-			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Main Menu", 45, 0x000000, "GameFont"));
+			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 45, 0x000000, "GameFont"));
+			var b2:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Main Menu", 45, 0x000000, "GameFont"));
 		}
 		
 		override public function tick():void 

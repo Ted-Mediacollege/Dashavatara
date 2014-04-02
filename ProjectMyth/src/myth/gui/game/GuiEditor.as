@@ -5,7 +5,7 @@ package myth.gui.game
 	import myth.gui.components.GuiButton;
 	import myth.input.TouchType;
 	import myth.gui.components.GuiText;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.gui.background.GuiBackground;
 	import myth.gui.game.GuiMainMenu;
 	import myth.editor.EditorFiles;
@@ -62,14 +62,14 @@ package myth.gui.game
 			addChild(editor);
 			editor.init();
 				
-			button_editor_new = addButton(new GuiButton(10, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.new"), 28)); button_editor_new.enabled = false;
-			button_editor_menu = addButton(new GuiButton(11, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.menu"), 28)); button_editor_menu.enabled = false;
-			button_editor_load = addButton(new GuiButton(12, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.load"), 28)); button_editor_load.enabled = false;
-			button_editor_save = addButton(new GuiButton(13, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 28)); button_editor_save.enabled = false;
-			button_editor_settings = addButton(new GuiButton(14, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 28)); button_editor_settings.enabled = false;
-			button_editor_test = addButton(new GuiButton(15, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 28)); button_editor_test.enabled = false;
-			button_editor_export = addButton(new GuiButton(16, TextureList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 28)); button_editor_export.enabled = false;
-			button_editor_import = addButton(new GuiButton(17, TextureList.assets.getTexture("editor_button_small"), screenWidth - 93, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.import"), 28)); button_editor_import.enabled = false;
+			button_editor_new = addButton(new GuiButton(10, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.new"), 28)); button_editor_new.enabled = false;
+			button_editor_menu = addButton(new GuiButton(11, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.menu"), 28)); button_editor_menu.enabled = false;
+			button_editor_load = addButton(new GuiButton(12, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.load"), 28)); button_editor_load.enabled = false;
+			button_editor_save = addButton(new GuiButton(13, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 28)); button_editor_save.enabled = false;
+			button_editor_settings = addButton(new GuiButton(14, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 28)); button_editor_settings.enabled = false;
+			button_editor_test = addButton(new GuiButton(15, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 28)); button_editor_test.enabled = false;
+			button_editor_export = addButton(new GuiButton(16, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 28)); button_editor_export.enabled = false;
+			button_editor_import = addButton(new GuiButton(17, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.import"), 28)); button_editor_import.enabled = false;
 			
 			button_editor_load.visible = false;
 			button_editor_save.visible = false;
@@ -81,10 +81,10 @@ package myth.gui.game
 				button_editor_import.visible = false;
 			}
 			
-			button_cat_left = addButton(new GuiButton(20, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 300, screenHeight - 280, 60, 60, "")); button_cat_left.enabled = false;
-			button_cat_right = addButton(new GuiButton(21, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 50, screenHeight - 280, 60, 60, "")); button_cat_right.enabled = false;
-			button_item_left = addButton(new GuiButton(22, TextureList.assets.getTexture("editor_arrow_left"), screenWidth - 300, screenHeight - 80, 60, 60, "")); button_item_left.enabled = false;
-			button_item_right = addButton(new GuiButton(23, TextureList.assets.getTexture("editor_arrow_right"), screenWidth - 50, screenHeight - 80, 60, 60, "")); button_item_right.enabled = false;
+			button_cat_left = addButton(new GuiButton(20, AssetList.assets.getTexture("editor_arrow_left"), screenWidth - 300, screenHeight - 280, 60, 60, "")); button_cat_left.enabled = false;
+			button_cat_right = addButton(new GuiButton(21, AssetList.assets.getTexture("editor_arrow_right"), screenWidth - 50, screenHeight - 280, 60, 60, "")); button_cat_right.enabled = false;
+			button_item_left = addButton(new GuiButton(22, AssetList.assets.getTexture("editor_arrow_left"), screenWidth - 300, screenHeight - 80, 60, 60, "")); button_item_left.enabled = false;
+			button_item_right = addButton(new GuiButton(23, AssetList.assets.getTexture("editor_arrow_right"), screenWidth - 50, screenHeight - 80, 60, 60, "")); button_item_right.enabled = false;
 			
 			grey_screen = new Shape();
 			grey_screen.graphics.lineStyle(0, 0x555555, 0.8);
@@ -92,10 +92,10 @@ package myth.gui.game
 			grey_screen.graphics.drawRect(0, 0, 1280, 768);
 			addChild(grey_screen);
 			
-			button_menu = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
-			button_create = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 180, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 45, 0x000000, "GameFont"));
-			button_load = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 45, 0x000000, "GameFont"));
-			button_import = addButton(new GuiButton(9, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.import"), 45, 0x000000, "GameFont"));
+			button_menu = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
+			button_create = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 180, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 45, 0x000000, "GameFont"));
+			button_load = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 45, 0x000000, "GameFont"));
+			button_import = addButton(new GuiButton(9, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.import"), 45, 0x000000, "GameFont"));
 			
 			button_load.visible = false;
 			button_load.enabled = false;
@@ -105,9 +105,9 @@ package myth.gui.game
 				button_import.enabled = false;
 			}
 			
-			button_creator_build = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 250, 450, 100, "Create level", 45, 0x000000, "GameFont"));
-			button_creator_theme = addButton(new GuiButton(4, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 50, 450, 100, "Theme: Sky", 45, 0x000000, "GameFont"));
-			button_creator_size = addButton(new GuiButton(5, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 70, 450, 100, "Size: Small", 45, 0x000000, "GameFont"));
+			button_creator_build = addButton(new GuiButton(3, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 250, 450, 100, "Create level", 45, 0x000000, "GameFont"));
+			button_creator_theme = addButton(new GuiButton(4, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 50, 450, 100, "Theme: Sky", 45, 0x000000, "GameFont"));
+			button_creator_size = addButton(new GuiButton(5, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 70, 450, 100, "Size: Small", 45, 0x000000, "GameFont"));
 			
 			create_menu(false);
 			

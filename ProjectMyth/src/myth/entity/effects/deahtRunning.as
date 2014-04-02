@@ -3,7 +3,7 @@ package myth.entity.effects
 	import myth.entity.SimpleEntity
 	import starling.display.Sprite;
 	import treefortress.spriter.SpriterClip;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.core.Starling;
 	import myth.Main
 	public class deahtRunning extends SimpleEntity
@@ -12,7 +12,7 @@ package myth.entity.effects
 		public function deahtRunning() 
 		{
 			//player art
-			image = TextureList.spriterLoader.getSpriterClip("enemydeaths");
+			image = AssetList.spriterLoader.getSpriterClip("enemydeaths");
 			image.playbackSpeed = 1;
 			//image.scaleX = 0.7;
 			//image.scaleY = 0.7;

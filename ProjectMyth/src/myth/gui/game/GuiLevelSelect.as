@@ -4,7 +4,7 @@ package myth.gui.game
 	import myth.gui.components.GuiButton;
 	import myth.input.TouchType;
 	import myth.gui.components.GuiText;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.gui.background.GuiBackground;
 	import starling.display.Image;
 	import myth.lang.Lang;
@@ -26,14 +26,14 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			levelList = TextureList.assets.getXml("level_list");
+			levelList = AssetList.assets.getXml("level_list");
 			levelListLength = levelList.children().length();
 			
-			map = new Image(TextureList.assets.getTexture("map"));
+			map = new Image(AssetList.assets.getTexture("map"));
 			map.blendMode = BlendMode.NONE;
 			addChild(map);
 			
-			addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
+			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
 
 			for (var i:int = 0; i < levelListLength; i++ )
 			{

@@ -1,7 +1,7 @@
 package myth.entity.objects 
 {
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	/**
 	 * ...
 	 * @author Kit van de Bunt
@@ -13,7 +13,7 @@ package myth.entity.objects
 		public function EntityObjectEndPort() 
 		{
 			super(171, 425, 0, -425);
-			image = new Image(TextureList.assets.getTexture("sky_gate_p1"));
+			image = new Image(AssetList.assets.getTexture("sky_gate_p1"));
 			//image.color = 0x00ffff;
 			image.pivotY = image.height;
 			artLayer.addChild(image);

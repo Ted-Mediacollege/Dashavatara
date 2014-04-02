@@ -7,7 +7,7 @@ package myth.world
 	import myth.util.ScaleHelper;
 	import myth.tile.Tile;
 	import myth.tile.TileDefault;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 
 	public class WorldTiles extends Sprite
 	{		
@@ -25,8 +25,8 @@ package myth.world
 		{
 			TILES = new Vector.<Tile>();
 			
-			waterTiles = TextureList.atlas_background.getTextures("water");
-			textures = TextureList.atlas_background.getTextures("ground");
+			waterTiles = AssetList.atlas_background.getTextures("water");
+			textures = AssetList.atlas_background.getTextures("ground");
 			data = d;
 			datalength = data.length;
 		}

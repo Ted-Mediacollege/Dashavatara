@@ -2,7 +2,7 @@ package myth.entity.effects
 {
 	import myth.entity.SimpleEntity;
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.Main;
 	import myth.util.TimeHelper;
 	
@@ -13,7 +13,7 @@ package myth.entity.effects
 		private var scale:Number = 0;
 		public function StoneWarning() 
 		{
-			image = new Image(TextureList.assets.getTexture("warning icon"));
+			image = new Image(AssetList.assets.getTexture("warning icon"));
 			artLayer.addChild(image);
 			
 			image.pivotX = image.width / 2;

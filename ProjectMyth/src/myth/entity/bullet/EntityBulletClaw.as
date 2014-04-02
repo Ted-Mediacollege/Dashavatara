@@ -1,7 +1,7 @@
 package myth.entity.bullet 
 {
 	import starling.display.Image;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.util.MathHelper;
 	import myth.util.TimeHelper;
 	/**
@@ -14,7 +14,7 @@ package myth.entity.bullet
 		public function EntityBulletClaw() 
 		{
 			super(25);
-			image = new Image(TextureList.atlas_player.getTexture("bullet_1"));
+			image = new Image(AssetList.atlas_player.getTexture("bullet_1"));
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height/2;
 			image.rotation = -Math.PI/2;

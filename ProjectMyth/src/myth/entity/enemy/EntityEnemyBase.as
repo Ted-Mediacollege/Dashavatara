@@ -5,7 +5,7 @@ package myth.entity.enemy
 	import myth.entity.Entity;
 	import starling.display.Image;
 	import starling.display.Shape;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	
 	
 	public class EntityEnemyBase extends Entity

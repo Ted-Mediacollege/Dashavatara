@@ -7,7 +7,7 @@ package myth.world
 	import myth.util.ScaleHelper;
 	import myth.tile.Tile;
 	import myth.tile.TileDefault;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.data.Theme;
 
 	public class WorldTiles2 extends Sprite
@@ -34,7 +34,7 @@ package myth.world
 			var tileLength:int = d.length;
 			for (var i:int = 0; i < tileLength; i++ )
 			{
-				var t:Tile = new TileDefault(TextureList.assets.getTexture(textureNames[d[i]]), i * textureSize, 768 - 128, i);
+				var t:Tile = new TileDefault(AssetList.assets.getTexture(textureNames[d[i]]), i * textureSize, 768 - 128, i);
 				t.visible = false;
 				TILES.push(t);
 				addChild(t);

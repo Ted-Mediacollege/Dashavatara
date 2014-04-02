@@ -4,7 +4,7 @@ package myth.entity.player
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import nape.geom.Vec2;
 	import starling.display.Image;
 	import starling.display.QuadBatch;
@@ -33,10 +33,10 @@ package myth.entity.player
 		public function EntityPlayerBoar() 
 		{
 			//super(true, false, true,128,200,-64,-200 );
-			super(false,100,PlayerType.Boar,TextureList.assets.getTexture("gui_icon2"),TextureList.assets.getTexture("gui_icon2_d"));
+			super(false,100,PlayerType.Boar,AssetList.assets.getTexture("gui_icon2"),AssetList.assets.getTexture("gui_icon2_d"));
 			startXpos = 100;
 			//player art
-			clip = TextureList.spriterLoader.getSpriterClip("animSwine");
+			clip = AssetList.spriterLoader.getSpriterClip("animSwine");
 			clip.playbackSpeed = 1;
 			clip.scaleX = 0.7;
 			clip.scaleY = 0.7;

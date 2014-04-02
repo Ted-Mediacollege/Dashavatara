@@ -1,6 +1,6 @@
 package myth.entity.player 
 {
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import nape.geom.Vec2;
 	import starling.display.Image;
 	import starling.display.MovieClip;
@@ -21,9 +21,9 @@ package myth.entity.player
 		
 		public function EntityPlayer03() 
 		{
-			super(false,300,PlayerType.Fluit,TextureList.assets.getTexture("gui_icon3"),TextureList.assets.getTexture("gui_icon3_d"));
+			super(false,300,PlayerType.Fluit,AssetList.assets.getTexture("gui_icon3"),AssetList.assets.getTexture("gui_icon3_d"));
 			
-			image = TextureList.spriterLoader.getSpriterClip("animFlute");
+			image = AssetList.spriterLoader.getSpriterClip("animFlute");
 			image.playbackSpeed = 1;
 			image.scaleX = 1;
 			image.scaleY = 1;

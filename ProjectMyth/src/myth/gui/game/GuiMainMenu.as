@@ -5,7 +5,7 @@ package myth.gui.game
 	import myth.gui.GuiScreen;
 	import myth.gui.components.GuiButton;
 	import myth.input.TouchType;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import myth.data.GameData;
 	import myth.lang.Lang;
@@ -29,16 +29,16 @@ package myth.gui.game
 				addChild(dev);
 			}
 			
-			var logo:Image = new Image(TextureList.assets.getTexture("gui_logo"));
+			var logo:Image = new Image(AssetList.assets.getTexture("gui_logo"));
 			logo.pivotX = logo.width / 2;
 			logo.x = 630;
 			logo.y = 5;
 			addChild(logo);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "main.play"), 45, 0x000000, "GameFont"));
-			var b3:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "main.editor"), 45, 0x000000, "GameFont"));
-			var b4:GuiButton = addButton(new GuiButton(2, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 220, 450, 100, Lang.trans(Lang.MENU, "main.options"), 45, 0x000000, "GameFont"));
-			var b5:GuiButton = addButton(new GuiButton(3, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.credits"), 45, 0x000000, "GameFont"));
+			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "main.play"), 45, 0x000000, "GameFont"));
+			var b3:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "main.editor"), 45, 0x000000, "GameFont"));
+			var b4:GuiButton = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 220, 450, 100, Lang.trans(Lang.MENU, "main.options"), 45, 0x000000, "GameFont"));
+			var b5:GuiButton = addButton(new GuiButton(3, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.credits"), 45, 0x000000, "GameFont"));
 		}
 		
 		override public function tick():void 

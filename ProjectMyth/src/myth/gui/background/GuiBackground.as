@@ -3,7 +3,7 @@ package myth.gui.background
 	import starling.display.Sprite;
 	import starling.display.Image;
 	import myth.util.ScaleHelper;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.textures.Texture;
 	import myth.util.MathHelper;
 	import myth.data.Theme;
@@ -26,16 +26,16 @@ package myth.gui.background
 			var bg:Image;
 			switch(theme)
 			{
-				case Theme.SKY: bg = new Image(TextureList.assets.getTexture("sky_lucht")); break;
-				case Theme.EARTH: bg = new Image(TextureList.assets.getTexture("earth_lucht")); break;
-				case Theme.HELL: bg = new Image(TextureList.assets.getTexture("hell_lucht")); break;
+				case Theme.SKY: bg = new Image(AssetList.assets.getTexture("sky_lucht")); break;
+				case Theme.EARTH: bg = new Image(AssetList.assets.getTexture("earth_lucht")); break;
+				case Theme.HELL: bg = new Image(AssetList.assets.getTexture("hell_lucht")); break;
 			}
 			addChild(bg);
 			
 			if (theme == Theme.SKY)
 			{
 				clouds = new Vector.<Image>();
-				var textures:Vector.<Texture> = TextureList.assets.getTextures("common_wolk");
+				var textures:Vector.<Texture> = AssetList.assets.getTextures("common_wolk");
 				for (var i:int = 0; i < 15; i++ )
 				{
 					var c:Image = new Image(textures[MathHelper.nextInt(3)]);
@@ -50,7 +50,7 @@ package myth.gui.background
 				earth = new Vector.<Image>();
 				for (var j:int = 0; j < 2; j++ )
 				{
-					var m:Image = new Image(TextureList.assets.getTexture("earth_bergen"));
+					var m:Image = new Image(AssetList.assets.getTexture("earth_bergen"));
 					m.x = (j * 1280) - 600;
 					addChild(m);
 					earth.push(m);

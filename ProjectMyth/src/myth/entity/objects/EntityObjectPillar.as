@@ -1,6 +1,6 @@
 package myth.entity.objects 
 {
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import myth.Main;
 	import myth.data.Theme;
@@ -23,7 +23,7 @@ package myth.entity.objects
 				case Theme.HELL: currentObjects = hell_objects; break;
 			}
 			
-			image = new Image(TextureList.assets.getTexture(currentObjects[id]));
+			image = new Image(AssetList.assets.getTexture(currentObjects[id]));
 			image.pivotY = image.height;
 			artLayer.addChild(image);
 		}

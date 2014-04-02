@@ -8,7 +8,7 @@ package myth.gui.game
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.events.TouchEvent;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.Main;
 	import myth.PreLoader;
 	import myth.util.ScaleHelper;
@@ -42,7 +42,7 @@ package myth.gui.game
 			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 70, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
-			TextureList.preLoad();
+			AssetList.preLoad();
 		}
 		
 		override public function tick():void 

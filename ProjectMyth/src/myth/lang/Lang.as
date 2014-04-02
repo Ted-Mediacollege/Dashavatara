@@ -1,6 +1,6 @@
 package myth.lang 
 {
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.data.GameData;
 	
 	public class Lang 
@@ -28,9 +28,9 @@ package myth.lang
 			
 			switch(id)
 			{
-				case 1: language = new Language(TextureList.assets.getXml("lang_NL")); break;
-				case 99: language = new Language(TextureList.assets.getXml("lang_YOLO")); break;
-				default: language = new Language(TextureList.assets.getXml("lang_ENG")); break;
+				case 1: language = new Language(AssetList.assets.getXml("lang_NL")); break;
+				case 99: language = new Language(AssetList.assets.getXml("lang_YOLO")); break;
+				default: language = new Language(AssetList.assets.getXml("lang_ENG")); break;
 			}
 		}
 		

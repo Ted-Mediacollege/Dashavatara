@@ -1,7 +1,7 @@
 package myth.entity.player 
 {
 	import flash.geom.Point;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import nape.geom.Vec2;
 	import starling.display.Image;
 	import starling.display.Shape;
@@ -24,7 +24,7 @@ package myth.entity.player
 			//super(true, false, true,128,200,-64,-200 );
 			super(false,300);
 			
-			image = new Image(TextureList.atlas_player.getTexture("player_3"));
+			image = new Image(AssetList.atlas_player.getTexture("player_3"));
 			image.scaleX = -1;
 			image.pivotX = image.width / 2;
 			image.pivotY = image.height;

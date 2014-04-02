@@ -6,7 +6,7 @@ package myth.editor.field
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import myth.util.MathHelper;
 	import myth.editor.EditorFiles;
 	
@@ -30,7 +30,7 @@ package myth.editor.field
 			tile_textures = new Vector.<Texture>();
 			for (var i:int = 0; i < tile_names.length; i++ )
 			{
-				tile_textures.push(TextureList.assets.getTexture(tile_names[i]));
+				tile_textures.push(AssetList.assets.getTexture(tile_names[i]));
 			}
 		}
 		

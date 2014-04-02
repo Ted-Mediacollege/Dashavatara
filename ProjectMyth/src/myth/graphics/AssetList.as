@@ -12,7 +12,7 @@ package myth.graphics
 	import treefortress.spriter.SpriterClip;
 	import myth.lang.Lang;
 	
-	public class TextureList 
+	public class AssetList 
 	{
 		//textures
 		[Embed(source="../../../lib/textures/player.png")]

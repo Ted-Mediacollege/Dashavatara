@@ -4,7 +4,7 @@ package myth.entity.player
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
-	import myth.graphics.TextureList;
+	import myth.graphics.AssetList;
 	import nape.geom.Vec2;
 	import starling.display.Image;
 	import starling.display.QuadBatch;
@@ -41,7 +41,7 @@ package myth.entity.player
 		{
 			//line
 			//super(true, false, true,128,200,-64,-200 );
-			super(false,300,PlayerType.Lion,TextureList.assets.getTexture("gui_icon2"));
+			super(false,300,PlayerType.Lion,AssetList.assets.getTexture("gui_icon2"));
 			line_textures = Texture.fromBitmap(new LineTex());
 			line_image = new Image(line_textures);
 			line_image.x = 640;
@@ -49,7 +49,7 @@ package myth.entity.player
 			Main.world.attackShape.addChild(lineBatch);
 			
 			//player art
-			image = TextureList.spriterLoader.getSpriterClip("animLion");
+			image = AssetList.spriterLoader.getSpriterClip("animLion");
 			image.playbackSpeed = 1;
 			image.scaleX = 0.7;
 			image.scaleY = 0.7;
