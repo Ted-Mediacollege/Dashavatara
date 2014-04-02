@@ -56,7 +56,6 @@ package myth
 			this.scaleX = ScaleHelper.scaleX;
 			this.scaleY = ScaleHelper.scaleY;
 			
-			SoundPlayer.init();
 			AssetList.load();
 			
 			input = new TouchInput();

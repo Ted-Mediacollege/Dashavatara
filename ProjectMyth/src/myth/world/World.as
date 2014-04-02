@@ -95,10 +95,13 @@ package myth.world
 		}
 		
 		public function init():void {
-			AssetList.loadLevelAssets(0,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
+			AssetList.loadLevelAssets(levelData.theme,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
 		}
 		
 		public function build():void {
+			//AssetList.soundLevel.setGlobalVolume(0);
+			AssetList.soundLevel.playSound("levelMusic");
+			
 			physicsWorld = new PhysicsWorld();
 			
 			//player
@@ -136,6 +139,7 @@ package myth.world
 		}
 		
 		public function onRemove():void {
+			AssetList.soundLevel.stopAllSounds();
 			myth.util.Debug.test(function():void { 
 				Starling.current.nativeOverlay.removeChild(physicsWorld.shape);
 			}, myth.util.Debug.DrawArracks);
@@ -143,8 +147,9 @@ package myth.world
 		
 		public function tick():void
 		{
-			gameJuggler.advanceTime(TimeHelper.deltaTime);
 			if (worldBuild) {
+				gameJuggler.advanceTime(TimeHelper.deltaTime);
+				
 				if(!levelComplete){
 					if (distance > endPointPosition-500) {
 						player.levelDone();
@@ -180,7 +185,6 @@ package myth.world
 						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName), true);
 					}
 				}
-				
 			}
 		}
 		

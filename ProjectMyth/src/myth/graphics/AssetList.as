@@ -2,6 +2,8 @@ package myth.graphics
 {
 	import myth.entity.player.PlayerType;
 	import myth.gui.components.GuiButton;
+	import myth.sound.SoundHolder;
+	import starling.extensions.SoundManager;
 	import starling.textures.TextureAtlas;
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
@@ -11,9 +13,11 @@ package myth.graphics
 	import treefortress.spriter.SpriterLoader;
 	import treefortress.spriter.SpriterClip;
 	import myth.lang.Lang;
+	import myth.data.Theme;
 	
 	public class AssetList 
 	{
+		private static var appDir:File;
 		//textures
 		[Embed(source="../../../lib/textures/player.png")]
 		public static var player_textures:Class;
@@ -39,14 +43,26 @@ package myth.graphics
 		public static var assets:AssetManager;
 		public static var spriterLoader:SpriterLoader;
 		
-		public static var currentWorldType:int = -1;
-		public static var currentPlayers:Vector.<int> = new Vector.<int>;
+		private static var currentWorldType:int = -1;
+		private static var currentPlayers:Vector.<int> = new Vector.<int>;
 		//private static var tileData:Vector.<int>;
+		
+		//sound
+		public static var soundCommon:SoundManager;
+		public static var soundLevel:SoundManager;
+		
+		private static var commonList:Vector.<SoundHolder>;
+		private static var thema1List:Vector.<SoundHolder>;
+		private static var thema2List:Vector.<SoundHolder>;
+		private static var thema3List:Vector.<SoundHolder>;
+		private static var i:int;
 		
 		public static function preLoad():void
 		{
+			appDir = File.applicationDirectory;
 			assets = new AssetManager();
 			
+			//load spriter animations
 			spriterLoader = new SpriterLoader();
 			spriterLoader.completed.addOnce(onSpriterLoaded);
 			spriterLoader.load([
@@ -56,8 +72,8 @@ package myth.graphics
 				"spriteranims/player4/animSwine.scml", 
 				"spriteranims/enemydeath/enemydeaths.scml"
 			]);
-
-			var appDir:File = File.applicationDirectory;
+			
+			//set path common texture
 			assets.enqueue(appDir.resolvePath("tex/background"));
 			assets.enqueue(appDir.resolvePath("tex/gui"));
 			assets.enqueue(appDir.resolvePath("tex/editor"));
@@ -65,12 +81,19 @@ package myth.graphics
 			assets.enqueue(appDir.resolvePath("mapData"));
 			assets.enqueue(appDir.resolvePath("tex/map"));
 			assets.enqueue(appDir.resolvePath("tex/anim"));
-				
+			initSound();
+			
+			//load common assets	
 			assets.loadQueue(function(ratio:Number):void {
 				GuiLoading.progress = ratio;
 				if (ratio == 1.0) {
 					Lang.init();
 					GuiLoading.ready++;
+					//init common sound manager
+					soundCommon = new SoundManager();
+					for (var i:int = 0; i < commonList.length; i++) {
+						soundCommon.addSound(commonList[i].name, assets.getSound(commonList[i].file) );
+					}
 				}
 			});
 		}
@@ -91,12 +114,11 @@ package myth.graphics
 		public static function loadLevelAssets(worldType:int,player1Type:int,player2Type:int,player3Type:int):void
 		{
 			var load:Boolean = false;
-			var appDir:File = File.applicationDirectory;
 			
 			if (currentWorldType != worldType) {
 				load = true;
 			}
-			trace("currentPlayers L:"+currentPlayers.length)
+			//trace("currentPlayers L:"+currentPlayers.length)
 			for (var i:int = 0; i < 3; i++) 
 			{
 				if(currentPlayers.length > 0){
@@ -108,19 +130,21 @@ package myth.graphics
 					}
 				}
 			}
-			currentWorldType = worldType;
-			currentPlayers[0] = player1Type;
-			currentPlayers[1] = player2Type;
-			currentPlayers[2] = player3Type;
+			
 			
 			if (load) {
+				//unload unneaded assets
+				unloadCurrentSounds(currentWorldType);
 				//hier moeten alleen de assets voor een level geladen worden
-				assets.enqueue(appDir.resolvePath("tex/anim"));
-				
+				//assets.enqueue(appDir.resolvePath("tex/anim"));
+				enQueueLevel(worldType);
+				assets.verbose = true;
 				assets.loadQueue(function(ratio:Number):void{
-					trace("Loading assets, progress:", ratio);
+					//trace("Loading assets, progress:", ratio);
 					if (ratio == 1.0) {
 						trace("Loading assets done");
+						soundLevel = new SoundManager();
+						addLevelAssets(worldType);
 						Main.world.build();
 					}
 				});
@@ -128,6 +152,79 @@ package myth.graphics
 				Main.world.build();
 				trace("no reload needed");
 			}
+			
+			currentWorldType = worldType;
+			currentPlayers[0] = player1Type;
+			currentPlayers[1] = player2Type;
+			currentPlayers[2] = player3Type;
 		}
+		
+		public static function initSound():void {
+			commonList = new Vector.<SoundHolder>();
+			thema1List = new Vector.<SoundHolder>();
+			thema2List = new Vector.<SoundHolder>();
+			thema3List = new Vector.<SoundHolder>();
+			commonList[0] =	new SoundHolder("button"			, "sound/common/", "jump17" 							, ".mp3");
+			commonList[1] =	new SoundHolder("jump"				, "sound/common/", "jump12 -" 							, ".wav");
+			commonList[2] =	new SoundHolder("enemyFlyHit"		, "sound/common/", "geluid-eerste-pijn-vliegende -" 	, ".mp3");
+			commonList[3] =	new SoundHolder("EnemyWalkLaugh"	, "sound/common/", "geluid-lach-lopende-enemie" 		, ".mp3");
+			thema1List[0] = new SoundHolder("levelMusic"		, "sound/thema1/", "hemel_level_muziek"					, ".mp3");
+			thema2List[0] = new SoundHolder("levelMusic"		, "sound/thema2/", "aarde_level_muziek"					, ".mp3");
+			thema3List[0] = new SoundHolder("levelMusic"		, "sound/thema3/", "hel_level_muziek"					, ".mp3");
+			//enqueue common sound
+			for (var i:int = 0; i < commonList.length; i++) {
+				assets.enqueue(appDir.resolvePath(commonList[i].dir+commonList[i].file+commonList[i].extension));
+			}
+			
+		}
+		
+		private static function addLevelAssets(thema:int):void {
+			if(thema==Theme.SKY){
+				for (i = 0; i < thema1List.length; i++) {
+					soundLevel.addSound(thema1List[i].name, assets.getSound(thema1List[i].file) );
+				}
+			}else if(thema==Theme.EARTH){
+				for (i = 0; i < thema2List.length; i++) {
+					soundLevel.addSound(thema2List[i].name, assets.getSound(thema2List[i].file) );
+				}
+			}else if(thema==Theme.HELL){
+				for (i = 0; i < thema3List.length; i++) {
+					soundLevel.addSound(thema3List[i].name, assets.getSound(thema3List[i].file) );
+				}
+			}
+		}
+		
+		private static function unloadCurrentSounds(current:int):void {
+			if(current==Theme.SKY){
+				for (i = 0; i < thema1List.length; i++) {
+					assets.removeSound(thema1List[i].name);
+				}
+			}else if(current==Theme.EARTH){
+				for (i = 0; i < thema2List.length; i++) {
+					assets.removeSound(thema2List[i].name);
+				}
+			}else if(current==Theme.HELL){
+				for (i = 0; i < thema3List.length; i++) {
+					assets.removeSound(thema3List[i].name);
+				}
+			}
+		}
+		private static function enQueueLevel(thema:int):void {
+			soundLevel = new SoundManager();
+			if(thema==Theme.SKY){
+				for (i = 0; i < thema1List.length; i++) {
+					assets.enqueue(appDir.resolvePath(thema1List[i].dir+thema1List[i].file+thema1List[i].extension));
+				}
+			}else if(thema==Theme.EARTH){
+				for (i = 0; i < thema2List.length; i++) {
+					assets.enqueue(appDir.resolvePath(thema2List[i].dir+thema2List[i].file+thema2List[i].extension));
+				}
+			}else if(thema==Theme.HELL){
+				for (i = 0; i < thema3List.length; i++) {
+					assets.enqueue(appDir.resolvePath(thema3List[i].dir+thema3List[i].file+thema3List[i].extension));
+				}
+			}
+		}
+		
 	}
 }
