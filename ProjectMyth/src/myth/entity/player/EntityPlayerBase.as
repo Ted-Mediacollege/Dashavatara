@@ -49,16 +49,15 @@ package myth.entity.player
 			//collider = new RectCollider(art.x, art.y, art.width, art.height, art.rotation, art.pivotX, art.pivotY);
 		}
 		
-		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
-		{
-			
-		}
+		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void { }
 		
-		private static var levelComplete:Boolean = false;
+		protected static var levelComplete:Boolean = false;
 		
 		public function levelDone():void {
 			levelComplete = true;
 		}
+		
+		public function switchPlayer():void { }
 		
 		public static function levelStart():void {
 			levelComplete = false;

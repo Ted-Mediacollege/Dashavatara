@@ -40,7 +40,6 @@ package myth.entity.player
 		public function EntityPlayer01v5() 
 		{
 			//line
-			//super(true, false, true,128,200,-64,-200 );
 			super(false,300,PlayerType.Lion,AssetList.assets.getTexture("gui_icon1"),AssetList.assets.getTexture("gui_icon1_d"));
 			line_textures = Texture.fromBitmap(new LineTex());
 			line_image = new Image(line_textures);
@@ -176,63 +175,65 @@ package myth.entity.player
 				if (!secondRegister) {
 					secondRegister = true;
 				}
-				//var  vec:Vec2 = Vec2.weak(0, 0);
 				delta = previousPos.subtract(thisPos);
 				previousAngle = MathHelper.pointToRadian(0, delta.x, 0, delta.y);
 				previousPos = thisPos;
 			}
 		}
+		override public function switchPlayer():void {
+			lineBatch.reset();
+		}
 		
 		private var rot:Number;
 		private var smoothParts:Vector.<slashPart>;
 		override public function tick():void {
-			//line.
 			super.tick();
-			//Main.world.attackShape.graphics.clear();
-			//trace(parts.length);
-			smoothParts = FindSmoothPathBetweenNodes.getArrayOfPoints(parts,false,20);
-			//var smoothParts:Vector.<slashPart> = parts;
-			
 			lineBatch.reset();
-			
-			for (i = 0; i < smoothParts.length; i++) {
-				//lineBatch
-				//line_image = new Image(line_textures);
-				//trace(smoothParts[i].x + "," + smoothParts[i].y + ","+ smoothParts[i].t);
-				line_image.x = smoothParts[i].x;
-				line_image.y = smoothParts[i].y;
-				line_image.pivotX = line_image.width / 2;;
-				line_image.pivotY = line_image.height / 2;;
-				line_image.scaleX = smoothParts[i].t/10;
-				line_image.scaleY = 12/ 10;
-				if (i == smoothParts.length - 1) {
-					line_image.rotation = rotation+Math.PI/2;
-				}else {
-					angleVec.x = smoothParts[i].x;
-					angleVec.y = smoothParts[i].y;
-					angleVec2.x = smoothParts[i + 1].x;
-					angleVec2.y = smoothParts[i + 1].y;
-					rot = angleVec.sub(angleVec2).angle;
-					//var delta:Point = smoothParts[i].subtract(smoothParts[i + 1]);
-					//trace("new:"+MathHelper.pointToRadian(0, delta.x, 0, delta.y- Math.PI / 2));
-					//trace("old:" + rotation + Math.PI / 2);
-					
-					//line_image.rotation = MathHelper.pointToRadian(0,delta.x,0, delta.y)+Math.PI/2;
-					line_image.rotation = rot+Math.PI/2;
-				}
-				lineBatch.addImage(line_image);
+			if(!levelComplete){
+				//Main.world.attackShape.graphics.clear();
+				//trace(parts.length);
+				smoothParts = FindSmoothPathBetweenNodes.getArrayOfPoints(parts,false,20);
+				//var smoothParts:Vector.<slashPart> = parts;
 				
-			}
-			
-			for (i = 0; i < parts.length; i++) 
-			{	
-				//Main.world.attackShape.graphics.drawCircle(parts[i].x, parts[i].y, parts[i].t);
-				parts[i].t -= 1.1;
-				if (parts[i].t < 0) {
-					parts.splice(i, 1);
+				
+				
+				for (i = 0; i < smoothParts.length; i++) {
+					//lineBatch
+					//line_image = new Image(line_textures);
+					//trace(smoothParts[i].x + "," + smoothParts[i].y + ","+ smoothParts[i].t);
+					line_image.x = smoothParts[i].x;
+					line_image.y = smoothParts[i].y;
+					line_image.pivotX = line_image.width / 2;;
+					line_image.pivotY = line_image.height / 2;;
+					line_image.scaleX = smoothParts[i].t/10;
+					line_image.scaleY = 12/ 10;
+					if (i == smoothParts.length - 1) {
+						line_image.rotation = rotation+Math.PI/2;
+					}else {
+						angleVec.x = smoothParts[i].x;
+						angleVec.y = smoothParts[i].y;
+						angleVec2.x = smoothParts[i + 1].x;
+						angleVec2.y = smoothParts[i + 1].y;
+						rot = angleVec.sub(angleVec2).angle;
+						//var delta:Point = smoothParts[i].subtract(smoothParts[i + 1]);
+						//trace("new:"+MathHelper.pointToRadian(0, delta.x, 0, delta.y- Math.PI / 2));
+						//trace("old:" + rotation + Math.PI / 2);
+						
+						//line_image.rotation = MathHelper.pointToRadian(0,delta.x,0, delta.y)+Math.PI/2;
+						line_image.rotation = rot+Math.PI/2;
+					}
+					lineBatch.addImage(line_image);
+				}
+				for (i = 0; i < parts.length; i++) 
+				{	
+					//Main.world.attackShape.graphics.drawCircle(parts[i].x, parts[i].y, parts[i].t);
+					parts[i].t -= 1.1;
+					if (parts[i].t < 0) {
+						parts.splice(i, 1);
+					}
 				}
 			}
-			
 		}
+		
 	}
 }

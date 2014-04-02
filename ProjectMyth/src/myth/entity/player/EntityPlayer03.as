@@ -62,17 +62,20 @@ package myth.entity.player
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
 			
 			//data vector = posX, posY, movedX, movedY
-			if (e.touches[0].phase == TouchPhase.BEGAN) {
-				
-			}else if (e.touches[0].phase == TouchPhase.ENDED) {
-				if (isOnFeet())
-				{
-					//trace("jump");
-					Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(0, -18000));
-					onfeet = false;
-					image.play("jump");
-					jumping = true;
-					cooldownFix = 20;
+			if(!levelComplete){
+				if (e.touches[0].phase == TouchPhase.BEGAN) {
+					
+				}else if (e.touches[0].phase == TouchPhase.ENDED) {
+					if (isOnFeet())
+					{
+						//jump
+						AssetList.soundCommon.playSound("jump");
+						Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(0, -18000));
+						onfeet = false;
+						image.play("jump");
+						jumping = true;
+						cooldownFix = 20;
+					}
 				}
 			}
 		}

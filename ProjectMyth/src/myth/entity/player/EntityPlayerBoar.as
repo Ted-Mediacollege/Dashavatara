@@ -70,28 +70,30 @@ package myth.entity.player
 		
 		override public function tick():void {
 			super.tick();
-			//Animation
-			if (sprintTimer > 0) {
-				sprintTimer -= TimeHelper.deltaTime;
-			}else if (clip.animation.name == "sprint") {
-				clip.play("Run");
-			}
-			
-			//Displaysment
-			//trace("displ: "+xDisplacment);
-			//trace("xpos : "+Xpos);
-			if (xDisplacment > 0) {
-				xDisplacment -= 20;
-				if (xDisplacment < 0) {
-					xDisplacment = 0;
+			if(!levelComplete){
+				//Animation
+				if (sprintTimer > 0) {
+					sprintTimer -= TimeHelper.deltaTime;
+				}else if (clip.animation.name == "sprint") {
+					clip.play("Run");
 				}
-			}else if (xDisplacment < 0){
-				xDisplacment += 20;
+				
+				//Displaysment
+				//trace("displ: "+xDisplacment);
+				//trace("xpos : "+Xpos);
 				if (xDisplacment > 0) {
-					xDisplacment = 0;
+					xDisplacment -= 20;
+					if (xDisplacment < 0) {
+						xDisplacment = 0;
+					}
+				}else if (xDisplacment < 0){
+					xDisplacment += 20;
+					if (xDisplacment > 0) {
+						xDisplacment = 0;
+					}
 				}
+				Xpos = startXpos + xDisplacment;
 			}
-			Xpos = startXpos + xDisplacment;
 		}
 		
 	}

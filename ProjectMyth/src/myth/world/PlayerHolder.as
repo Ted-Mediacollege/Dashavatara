@@ -81,6 +81,7 @@ package myth.world
 			if(id !=currentPlayer){
 				var playerPosX:int = Main.world.player.x;
 				var playerPosY:int = Main.world.player.y;
+				Main.world.player.switchPlayer();
 				Main.world.player.removeFromParent();
 				if (id==0) {
 					Main.world.player = players[0];

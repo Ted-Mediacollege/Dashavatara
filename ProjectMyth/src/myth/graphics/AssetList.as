@@ -35,7 +35,6 @@ package myth.graphics
 		public static var atlas_fish:TextureAtlas;
 		
 		//font
-		
 		[Embed(source="../../../lib/font/Connie-Regular.ttf", embedAsCFF="false", fontFamily="GameFont")]
 		private static const gameFont:Class;
 		
@@ -57,11 +56,33 @@ package myth.graphics
 		private static var thema3List:Vector.<SoundHolder>;
 		private static var i:int;
 		
+		public static function initSound():void {
+			commonList = new Vector.<SoundHolder>();
+			thema1List = new Vector.<SoundHolder>();
+			thema2List = new Vector.<SoundHolder>();
+			thema3List = new Vector.<SoundHolder>();
+			//common sounds
+			commonList[0] =	new SoundHolder("button"			, "sound/common/", "jump17" 							, ".mp3");
+			commonList[1] =	new SoundHolder("jump"				, "sound/common/", "jump12 -" 							, ".mp3");
+			commonList[2] =	new SoundHolder("enemyFlyHit"		, "sound/common/", "geluid-eerste-pijn-vliegende -" 	, ".mp3");
+			commonList[3] =	new SoundHolder("EnemyWalkLaugh"	, "sound/common/", "geluid-lach-lopende-enemie" 		, ".mp3");
+			//thema1 sounds
+			thema1List[0] = new SoundHolder("levelMusic"		, "sound/thema1/", "hemel_level_muziek"					, ".mp3");
+			//thema2 sounds
+			thema2List[0] = new SoundHolder("levelMusic"		, "sound/thema2/", "aarde_level_muziek"					, ".mp3");
+			//thema3 sounds
+			thema3List[0] = new SoundHolder("levelMusic"		, "sound/thema3/", "hel_level_muziek"					, ".mp3");
+			//enqueue common sound
+			for (var i:int = 0; i < commonList.length; i++) {
+				assets.enqueue(appDir.resolvePath(commonList[i].dir+commonList[i].file+commonList[i].extension));
+			}
+		}
+		
 		public static function preLoad():void
 		{
 			appDir = File.applicationDirectory;
 			assets = new AssetManager();
-			
+			//assets.verbose = true;
 			//load spriter animations
 			spriterLoader = new SpriterLoader();
 			spriterLoader.completed.addOnce(onSpriterLoaded);
@@ -157,25 +178,6 @@ package myth.graphics
 			currentPlayers[0] = player1Type;
 			currentPlayers[1] = player2Type;
 			currentPlayers[2] = player3Type;
-		}
-		
-		public static function initSound():void {
-			commonList = new Vector.<SoundHolder>();
-			thema1List = new Vector.<SoundHolder>();
-			thema2List = new Vector.<SoundHolder>();
-			thema3List = new Vector.<SoundHolder>();
-			commonList[0] =	new SoundHolder("button"			, "sound/common/", "jump17" 							, ".mp3");
-			commonList[1] =	new SoundHolder("jump"				, "sound/common/", "jump12 -" 							, ".wav");
-			commonList[2] =	new SoundHolder("enemyFlyHit"		, "sound/common/", "geluid-eerste-pijn-vliegende -" 	, ".mp3");
-			commonList[3] =	new SoundHolder("EnemyWalkLaugh"	, "sound/common/", "geluid-lach-lopende-enemie" 		, ".mp3");
-			thema1List[0] = new SoundHolder("levelMusic"		, "sound/thema1/", "hemel_level_muziek"					, ".mp3");
-			thema2List[0] = new SoundHolder("levelMusic"		, "sound/thema2/", "aarde_level_muziek"					, ".mp3");
-			thema3List[0] = new SoundHolder("levelMusic"		, "sound/thema3/", "hel_level_muziek"					, ".mp3");
-			//enqueue common sound
-			for (var i:int = 0; i < commonList.length; i++) {
-				assets.enqueue(appDir.resolvePath(commonList[i].dir+commonList[i].file+commonList[i].extension));
-			}
-			
 		}
 		
 		private static function addLevelAssets(thema:int):void {
