@@ -19,8 +19,7 @@ package myth.gui.game
 		
 		override public function init():void 
 		{ 
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiWin", 25, 0x000000);
-			addChild(t);
+			addChild(background);
 			
 			var b1:GuiButton = addButton(new GuiButton(0, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, "Restart", 25, 0x000000));
 			var b2:GuiButton = addButton(new GuiButton(1, TextureList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, "Next Level", 25, 0x000000));
@@ -31,6 +30,8 @@ package myth.gui.game
 		override public function tick():void 
 		{ 
 			super.tick();
+			
+			background.tick();
 		}
 		
 		override public function action(b:GuiButton):void 
