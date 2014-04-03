@@ -47,6 +47,7 @@ package myth.gui.game
 		private var b3:GuiButtonToggle;
 		private var pauseb1:GuiButton;
 		private var pauseb2:GuiButton;
+		private var pauseb3:GuiButton;
 		
 		private var help_text_temp:GuiText;
 		private var help_fade:int;
@@ -109,19 +110,21 @@ package myth.gui.game
 		
 		private function createPauseButtons():void 
 		{
-			pauseb1 = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, Lang.trans(Lang.INGAME, "menu.resume"), 45, 0xf1d195, "GameFont"));
-			pauseb2 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
+			pauseb2 = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -90, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
+			pauseb3 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 +30, 450, 100, Lang.trans(Lang.INGAME, "menu.restart"), 45, 0xf1d195, "GameFont"));
+			pauseb1 = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 +150, 450, 100, Lang.trans(Lang.INGAME, "menu.resume"), 45, 0xf1d195, "GameFont"));
 		}
 		
 		private function removePauseButtons():void
 		{
 			removeButton(pauseb1);
 			removeButton(pauseb2);
+			removeButton(pauseb3);
 		}
 		
 		override public function action(button:GuiButton):void
 		{
-			if (button.buttonID == 13 ||button.buttonID == 0) 
+			if (button.buttonID == 13 ||button.buttonID == 2) 
 			{
 				if (button.buttonID == 13 && editorTesting)
 				{
@@ -142,6 +145,18 @@ package myth.gui.game
 				}
 			}
 			else if (button.buttonID == 1)
+			{
+				
+				if (editorTesting)
+				{
+					main.switchGui(new GuiGame(levelName, levelID, editorString));
+				}
+				else
+				{
+					main.switchGui(new GuiGame(levelName, levelID));
+				}
+			}
+			else if (button.buttonID == 0)
 			{
 				main.switchGui(new GuiMainMenu(), true);
 			}
