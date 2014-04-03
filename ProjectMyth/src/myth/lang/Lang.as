@@ -5,7 +5,7 @@ package myth.lang
 	
 	public class Lang 
 	{
-		public static var language_list:Vector.<String> = new <String>["English", "Nederlands"];
+		public static var language_list:Vector.<String> = new <String>["English"];
 		
 		public static var language:Language;
 		public static var currentLang:int = -1;
@@ -16,7 +16,7 @@ package myth.lang
 		
 		public static function init():void
 		{
-			setLanguage(0);//GameData.SYSTEM_LANG_ID);
+			setLanguage(GameData.LANG);
 		}
 		
 		public static function setLanguage(id:int):void
@@ -26,9 +26,11 @@ package myth.lang
 				return;
 			}
 			
+			currentLang = id;
+			
 			switch(id)
 			{
-				case 1: language = new Language(AssetList.assets.getXml("lang_NL")); break;
+				case 1: language = new Language(AssetList.assets.getXml("lang_TEST")); break;
 				case 99: language = new Language(AssetList.assets.getXml("lang_YOLO")); break;
 				default: language = new Language(AssetList.assets.getXml("lang_ENG")); break;
 			}

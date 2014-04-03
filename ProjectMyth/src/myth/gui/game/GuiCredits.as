@@ -44,7 +44,7 @@ package myth.gui.game
 			text_list.push(credits3);
 			//text_list.push(credits4);
 
-			var b:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 250, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
+			var b:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 250, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 

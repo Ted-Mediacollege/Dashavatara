@@ -120,9 +120,7 @@ package myth.gui.background
 			else if (theme == 2)
 			{
 				pos++;
-				var c:int = 255 - 20 + int(perlin.noise1(pos / 10) * 30);
-				
-				trace(c);
+				var c:int = 255 - 20 + int(perlin.noise1(pos / 10) * 40);
 				
 				if (c > 255) { c = 255; }
 				

@@ -33,13 +33,17 @@ package myth.gui.game
 			map.blendMode = BlendMode.NONE;
 			addChild(map);
 			
-			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0x000000, "GameFont"));
+			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
 
 			for (var i:int = 0; i < levelListLength; i++ )
 			{
-				if (levelList.level[i].@id <= GameData.levelsUnlocked)
+				if (levelList.level[i].@id == GameData.levelsUnlocked)
 				{
-					addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y, levelList.level[i].@file));
+					addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y, levelList.level[i].@file, false));
+				}
+				if (levelList.level[i].@id < GameData.levelsUnlocked)
+				{
+					addButton(new GuiButtonLevel(levelList.level[i].@id, levelList.level[i].@x, levelList.level[i].@y, levelList.level[i].@file, true));
 				}
 			}
 		}
@@ -55,7 +59,7 @@ package myth.gui.game
 			{
 				var lb:GuiButtonLevel = (b as GuiButtonLevel);
 				//main.switchGui(new GuiLevelInfo(chapter, lb.file_name, lb.level_name, lb.level_description, lb.level_difficulty));
-				main.switchGui(new GuiGame(lb.file_name));
+				main.switchGui(new GuiGame(lb.file_name, lb.levelID));
 			}
 			else if (b.buttonID == 0)
 			{

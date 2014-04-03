@@ -40,8 +40,8 @@ package myth.gui.game
 			var t:GuiText = new GuiText(100, 100, 700, 400, "left", "top", "File: " + file_name + "\nName: " + level_name + "\nDescription: " + level_desc + "\nDifficulty: " + level_diff, 35, 0x000000);
 			addChild(t);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 190, 450, 100, "Play", 45, 0x000000, "GameFont"));
-			var b2:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Back To Level Select", 45, 0x000000, "GameFont"));
+			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 190, 450, 100, "Play", 45, 0xf1d195, "GameFont"));
+			var b2:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, "Back To Level Select", 45, 0xf1d195, "GameFont"));
 		}
 		
 		override public function tick():void 

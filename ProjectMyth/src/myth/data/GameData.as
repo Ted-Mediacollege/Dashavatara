@@ -8,6 +8,9 @@ package myth.data
 		public static var SYSTEM_LANG_ID:int = 0;
 		public static var ISCOMPUTER:Boolean = false;
 		
-		public static var levelsUnlocked:int = 99;
+		public static var levelsUnlocked:int = 0;
+		public static var LANG:int = 0;
+		public static var SOUND:Boolean = true;
+		public static var MUSIC:Boolean = true;
 	}
 }

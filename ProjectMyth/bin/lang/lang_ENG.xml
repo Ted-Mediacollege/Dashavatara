@@ -14,12 +14,27 @@
 		<t name="credits.pro">Programmers</t>
 		<t name="credits.art">Artists</t>
 		<t name="credits.man">Media Managers</t>
+		
+		<t name="option.music">Music</t>
+		<t name="option.sound">Sound</t>
+		<t name="option.language">Language</t>
+		<t name="option.on">on</t>
+		<t name="option.off">off</t>
 	</menu>
 	
 	<editor>
 		<t name="menu.create">Create Level</t>
 		<t name="menu.load">Load level</t>
 		<t name="menu.import">Import level</t>
+		<t name="menu.theme">Theme</t>
+		<t name="menu.size">Size</t>
+		
+		<t name="settings.sky">Sky</t>
+		<t name="settings.earth">Earth</t>
+		<t name="settings.hell">Hell</t>
+		<t name="settings.small">Small</t>
+		<t name="settings.normal">Normal</t>
+		<t name="settings.large">Large</t>
 		
 		<t name="side_menu.new">New</t>
 		<t name="side_menu.menu">Menu</t>
@@ -44,6 +59,8 @@
 	</editor>
 	
 	<game>
-		<t name="game1">game2</t>
+		<t name="menu.next">Next Level</t>
+		<t name="menu.restart">Restart Level</t>
+		<t name="menu.resume">Resume</t>
 	</game>
 </data>

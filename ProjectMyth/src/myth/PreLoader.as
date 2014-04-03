@@ -15,6 +15,8 @@ package myth
 	import flash.system.Capabilities;
 	import myth.data.GameData;
 	import flash.display.StageQuality;
+	import myth.data.SaveData;
+	import myth.lang.Lang;
 	
 	public class PreLoader extends Sprite
 	{
@@ -28,6 +30,8 @@ package myth
 		{		
 			GameData.ISCOMPUTER = isOperatorComputer();
 			GameData.SYSTEM_LANG_ID = getLanguageID();
+
+			SaveData.init();
 			
 			stage.quality = StageQuality.LOW;
 			screen = new texture_screen();
@@ -55,6 +59,8 @@ package myth
 		private function deactivate(e:flash.events.Event):void 
 		{
 			Main.onDeactivate(e);
+			SaveData.save();
+			
 			if (!GameData.ISCOMPUTER)
 			{
 				NativeApplication.nativeApplication.exit();

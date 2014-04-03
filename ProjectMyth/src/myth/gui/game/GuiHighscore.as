@@ -18,7 +18,7 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
-			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiHighscore", 25, 0x000000);
+			var t:GuiText = new GuiText(50, 50, 400, 60, "left", "top", "GuiHighscore", 25, 0xf1d195);
 			addChild(t);
 		}
 		

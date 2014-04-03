@@ -341,7 +341,7 @@ package myth.editor
 					removeChild(CONSTRUCTOR);
 				}
 								
-				guiEditor.main.switchGui(new GuiGame("test", createJSONstring()));
+				guiEditor.main.switchGui(new GuiGame("test", -1, createJSONstring()));
 			}
 			else if (id == 16) //EXPORT
 			{

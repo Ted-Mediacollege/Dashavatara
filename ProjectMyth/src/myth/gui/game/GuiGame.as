@@ -33,6 +33,7 @@ package myth.gui.game
 	import myth.graphics.LayerID;
 	import myth.PreLoader;
 	import myth.data.GameData;
+	import myth.lang.Lang;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -54,12 +55,14 @@ package myth.gui.game
 		
 		private var editorTesting:Boolean = false;
 		public static var editorString:String = "";
+		public static var levelID:int;
 		
-		public function GuiGame(_levelName:String, _editorString:String = null) 
+		public function GuiGame(_levelName:String, _levelid:int, _editorString:String = null) 
 		{
 			levelName = _levelName;
 			editorTesting = false;
 			editorString = "";
+			levelID = _levelid;
 			
 			if (_editorString != null)
 			{
@@ -106,8 +109,8 @@ package myth.gui.game
 		
 		private function createPauseButtons():void 
 		{
-			pauseb1 = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, "Resume", 25, 0x000000));
-			pauseb2 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, "Menu", 25, 0x000000));
+			pauseb1 = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -50, 450, 100, Lang.trans(Lang.INGAME, "menu.resume"), 45, 0xf1d195, "GameFont"));
+			pauseb2 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2	+60, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
 		}
 		
 		private function removePauseButtons():void

@@ -176,13 +176,13 @@ package myth.world
 					if (levelData.nextLvlName == "editor") {
 						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
 					} else {
-						gui.main.switchGui(new GuiLose(lvlName));
+						gui.main.switchGui(new GuiLose(lvlName, GuiGame.levelID));
 					}
 				}else if (player.x > 1480 || levelComplete) {
 					if (levelData.nextLvlName == "editor") {
 						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
 					} else {
-						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName), true);
+						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName, GuiGame.levelID), true);
 					}
 				}
 			}

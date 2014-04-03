@@ -13,6 +13,7 @@ package myth.gui.game
 	import myth.PreLoader;
 	import myth.util.ScaleHelper;
 	import myth.lang.Lang;
+	import myth.data.GameData;
 	
 	public class GuiLoading extends GuiScreen
 	{
@@ -55,7 +56,11 @@ package myth.gui.game
 			
 			if (ready < 2)
 			{
-				KevinIsEenRareEngeVampier.text.text = "Loading Textures...";
+				switch(GameData.LANG)
+				{
+					case 0: KevinIsEenRareEngeVampier.text.text = "Loading Textures...";
+					case 1: KevinIsEenRareEngeVampier.text.text = "Loading Textures...";
+				}
 			}
 			else
 			{

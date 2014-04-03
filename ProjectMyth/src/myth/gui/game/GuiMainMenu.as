@@ -35,10 +35,10 @@ package myth.gui.game
 			logo.y = 5;
 			addChild(logo);
 			
-			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "main.play"), 45, 0x000000, "GameFont"));
-			var b3:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "main.editor"), 45, 0x000000, "GameFont"));
-			var b4:GuiButton = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 220, 450, 100, Lang.trans(Lang.MENU, "main.options"), 45, 0x000000, "GameFont"));
-			var b5:GuiButton = addButton(new GuiButton(3, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.credits"), 45, 0x000000, "GameFont"));
+			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "main.play"), 45, 0xf1d195, "GameFont"));
+			var b3:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "main.editor"), 45, 0xf1d195, "GameFont"));
+			var b4:GuiButton = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 220, 450, 100, Lang.trans(Lang.MENU, "main.options"), 45, 0xf1d195, "GameFont"));
+			var b5:GuiButton = addButton(new GuiButton(3, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.credits"), 45, 0xf1d195, "GameFont"));
 		}
 		
 		override public function tick():void 

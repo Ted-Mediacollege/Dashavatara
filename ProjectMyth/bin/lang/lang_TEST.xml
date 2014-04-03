@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<menu>
+		<t name="loading.tap">translated</t>
+		
+		<t name="main.play">translated</t>
+		<t name="main.editor">translated</t>
+		<t name="main.options">translated</t>
+		<t name="main.credits">translated</t>
+		<t name="main.version">translated</t>
+		
+		<t name="main.back">translated</t>
+		
+		<t name="credits.pro">translated</t>
+		<t name="credits.art">translated</t>
+		<t name="credits.man">translated</t>
+		
+		<t name="option.music">translated</t>
+		<t name="option.sound">translated</t>
+		<t name="option.language">translated</t>
+		<t name="option.on">translated</t>
+		<t name="option.off">translated</t>
+	</menu>
+	
+	<editor>
+		<t name="menu.create">translated</t>
+		<t name="menu.load">translated</t>
+		<t name="menu.import">translated</t>
+		<t name="menu.theme">translated</t>
+		<t name="menu.size">translated</t>
+		
+		<t name="settings.sky">translated</t>
+		<t name="settings.earth">translated</t>
+		<t name="settings.hell">translated</t>
+		<t name="settings.small">translated</t>
+		<t name="settings.normal">translated</t>
+		<t name="settings.large">translated</t>
+		
+		<t name="side_menu.new">translated</t>
+		<t name="side_menu.menu">translated</t>
+		<t name="side_menu.load">translated</t>
+		<t name="side_menu.save">translated</t>
+		<t name="side_menu.settings">translated</t>
+		<t name="side_menu.test">translated</t>
+		<t name="side_menu.export">translated</t>
+		<t name="side_menu.import">translated</t>
+		
+		<t name="item_cat.objects">translated</t>
+		<t name="item_cat.background">translated</t>
+		<t name="item_cat.enemie">translated</t>
+		
+		<t name="alert.warning">translated</t>
+		<t name="alert.yes">translated</t>
+		<t name="alert.no">translated</t>
+		<t name="alert.save_new">translated</t>
+		<t name="alert.save_menu">translated</t>
+		<t name="alert.save_load">translated</t>
+		<t name="alert.save_import">translated</t>
+	</editor>
+	
+	<game>
+		<t name="menu.next">translated</t>
+		<t name="menu.restart">translated</t>
+		<t name="menu.resume">translated</t>
+	</game>
+</data>

@@ -34,7 +34,7 @@ package myth.gui.components
 		 * f = font name 
 		 */
 		
-		public function GuiButton(id:int, a:Texture, px:Number, py:Number, pw:Number, ph:Number, t:String, s:int = 15, c:uint = 0x000000, f:String = "Arial") 
+		public function GuiButton(id:int, a:Texture, px:Number, py:Number, pw:Number, ph:Number, t:String, s:int = 15, c:uint = 0xf1d195, f:String = "Arial") 
 		{
 			x = px;
 			y = py;
