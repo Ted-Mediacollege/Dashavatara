@@ -1,5 +1,7 @@
 package myth.gui.background 
 {
+	import myth.util.PerlinNoise;
+	import myth.util.RGB;
 	import starling.display.Sprite;
 	import starling.display.Image;
 	import myth.util.ScaleHelper;
@@ -13,6 +15,10 @@ package myth.gui.background
 		public var theme:int;
 		public var clouds:Vector.<Image>;
 		public var earth:Vector.<Image>;
+		public var hell:Vector.<Image>;
+	
+		private var perlin:PerlinNoise;
+		private var pos:int;
 		
 		public function GuiBackground() 
 		{
@@ -56,6 +62,35 @@ package myth.gui.background
 					earth.push(m);
 				}
 			}
+			else if (theme == Theme.HELL)
+			{
+				hell = new Vector.<Image>();
+				perlin = new PerlinNoise(123);
+				
+				var stalagPos:int = 0;
+				for (var k:int = 0; k < 8; k++ )
+				{
+					stalagPos += MathHelper.nextInt(230) + 70;
+					var h:Image = new Image(AssetList.assets.getTexture("hell_bg_stalag"));
+					h.x = stalagPos; 
+					h.y -= MathHelper.nextInt(200);
+					addChild(h);
+					hell.push(h);
+				}
+				
+				stalagPos = 0;
+				var list:Vector.<String> = new <String>["hell_bg_rock1", "hell_bg_rock2", "hell_bg_rock3", "hell_bg_rock4"];
+				for (var p:int = 0; p < 4; p++ )
+				{
+					stalagPos += MathHelper.nextInt(200) + 200 * p;
+					var n:Image = new Image(AssetList.assets.getTexture(list[p]));
+					n.pivotY = n.height;
+					n.y = 768 + MathHelper.nextInt(100);
+					n.x = stalagPos;
+					addChild(n);
+					hell.push(n);
+				}
+			}
 		}
 		
 		public function tick():void
@@ -80,6 +115,25 @@ package myth.gui.background
 						earth[j].x += 1280;
 					}
 					earth[j].x -= 1;
+				}
+			}
+			else if (theme == 2)
+			{
+				pos++;
+				var c:int = 255 - 20 + int(perlin.noise1(pos / 10) * 30);
+				
+				trace(c);
+				
+				if (c > 255) { c = 255; }
+				
+				for (var k:int = hell.length - 1; k > -1; k-- )
+				{
+					hell[k].x -= 1;
+					hell[k].color = RGB.rgbToHex(new RGB(c, c * 2, c * 2));
+					if (hell[k].x + hell[k].width < 0)
+					{
+						hell[k].x += 1280 + hell[k].width;
+					}
 				}
 			}
 		}
