@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<menu>
+		<t name="loading.tap">Tap om door te gaan</t>
+		
+		<t name="main.play">Spelen</t>
+		<t name="main.editor">Level maken</t>
+		<t name="main.options">Instellingen</t>
+		<t name="main.credits">Credits</t>
+		<t name="main.version">Versie</t>
+		
+		<t name="main.back">Hoofd menu</t>
+		
+		<t name="credits.pro">Programmeurs</t>
+		<t name="credits.art">Artists</t>
+		<t name="credits.man">Media Managers</t>
+		
+		<t name="option.music">Muziek</t>
+		<t name="option.sound">Sound Effects</t>
+		<t name="option.language">Taal</t>
+		<t name="option.on">aan</t>
+		<t name="option.off">uit</t>
+	</menu>
+	
+	<editor>
+		<t name="menu.create">Level maken</t>
+		<t name="menu.load">Level laden</t>
+		<t name="menu.import">Level importeren</t>
+		<t name="menu.theme">Thema</t>
+		<t name="menu.size">Grote</t>
+		
+		<t name="settings.sky">Hemel</t>
+		<t name="settings.earth">Aarde</t>
+		<t name="settings.hell">Hel</t>
+		<t name="settings.small">Klein</t>
+		<t name="settings.normal">Normaal</t>
+		<t name="settings.large">Groot</t>
+		
+		<t name="side_menu.new">Nieuw</t>
+		<t name="side_menu.menu">Menu</t>
+		<t name="side_menu.load">Laden</t>
+		<t name="side_menu.save">Opslaan</t>
+		<t name="side_menu.settings">Instellingen</t>
+		<t name="side_menu.test">Testen</t>
+		<t name="side_menu.export">Export</t>
+		<t name="side_menu.import">Import</t>
+		
+		<t name="item_cat.objects">Objecten</t>
+		<t name="item_cat.background">Achtergronden</t>
+		<t name="item_cat.enemie">Vijanden</t>
+		
+		<t name="alert.warning">Waarschuwing!</t>
+		<t name="alert.yes">Ja</t>
+		<t name="alert.no">Nee</t>
+		<t name="alert.save_new">Weet je zeker dat je niet eerst wilt opslaan voordat je een nieuw level maakt?</t>
+		<t name="alert.save_menu">Weet je zeker dat je niet eerst wilt opslaan voordat je naar het menu gaat?</t>
+		<t name="alert.save_load">Weet je zeker dat je niet eerst wilt opslaan voordat je een ander level laad?</t>
+		<t name="alert.save_import">Weet je zeker dat je niet eerst wilt opslaan voordat je een ander level laad?</t>
+	</editor>
+	
+	<game>
+		<t name="menu.next">Volgende Level</t>
+		<t name="menu.restart">Opnieuw spelen</t>
+		<t name="menu.resume">Verder spelen</t>
+	</game>
+</data>

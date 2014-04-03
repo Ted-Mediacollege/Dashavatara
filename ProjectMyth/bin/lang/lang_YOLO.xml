@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<menu>
-		<t name="loading.tap">Swag yolo 420</t>
+		<t name="loading.tap">Tap to 420</t>
 		
-		<t name="main.play">1v1 arena</t>
-		<t name="main.editor">420 swagator</t>
-		<t name="main.options">smoke weed</t>
-		<t name="main.credits">MLG Clan</t>
-		<t name="main.version">Weed</t>
+		<t name="main.play">pl@y gam</t>
+		<t name="main.editor">create ur weed</t>
+		<t name="main.options">edit ur weed</t>
+		<t name="main.credits">Faze clan</t>
+		<t name="main.version">to pro</t>
+		<t name="main.back">l2 quickscope</t>
 		
-		<t name="main.back">Smoke weed 420</t>
+		<t name="credits.pro">1337 Pro snipars</t>
+		<t name="credits.art">noscopers</t>
+		<t name="credits.man">Campers</t>
 		
-		<t name="credits.pro">Trick Shots</t>
-		<t name="credits.art">No Scopers</t>
-		<t name="credits.man">Hard Scopers</t>
+		<t name="option.music">Hit markers</t>
+		<t name="option.sound">No scoping</t>
+		<t name="option.language">change ur 420</t>
+		<t name="option.on">swag</t>
+		<t name="option.off">yolo</t>
 	</menu>
 	
 	<editor>
-		<t name="menu.menu">Main Menu</t>
-		<t name="menu.create">Create Level</t>
-		<t name="menu.load">Load level</t>
+		<t name="menu.create">Aids Level</t>
+		<t name="menu.load">Bitch level</t>
+		<t name="menu.import">GekkeHarry</t>
+		<t name="menu.theme">#Only90kids</t>
+		<t name="menu.size">UrMom</t>
 		
-		<t name="side_menu.new">New</t>
-		<t name="side_menu.menu">Menu</t>
-		<t name="side_menu.load">Load</t>
-		<t name="side_menu.save">Save</t>
-		<t name="side_menu.settings">Settings</t>
-		<t name="side_menu.test">Test</t>
+		<t name="settings.sky">Lufthanza</t>
+		<t name="settings.earth">Modder</t>
+		<t name="settings.hell">Hete shit</t>
+		<t name="settings.small">Kapot klein</t>
+		<t name="settings.normal">Tyfus normaal</t>
+		<t name="settings.large">Je moeder groot</t>
 		
-		<t name="item_cat.objects">Objects</t>
-		<t name="item_cat.background">Backgrounds</t>
-		<t name="item_cat.enemie">Gangsters</t>
+		<t name="side_menu.new">slet</t>
+		<t name="side_menu.menu">cunt</t>
+		<t name="side_menu.load">niga</t>
+		<t name="side_menu.save">darky</t>
+		<t name="side_menu.settings">yo mama</t>
+		<t name="side_menu.test">is</t>
+		<t name="side_menu.export">so fat</t>
+		<t name="side_menu.import">it doesnt fi</t>
 		
-		<t name="alert.warning">Warning!</t>
+		<t name="item_cat.objects">Weed</t>
+		<t name="item_cat.background">gayshit</t>
+		<t name="item_cat.enemie">Cumbuckets</t>
+		
+		<t name="alert.warning">PoepPiemel!</t>
 		<t name="alert.yes">Yes</t>
-		<t name="alert.no">No</t>
-		<t name="alert.save_new">Are you sure you want to create a new level?</t>
-		<t name="alert.save_menu">Are you sure you want to go to the main menu without saving?</t>
-		<t name="alert.save_load">Are you sure you don't want to save this level first?</t>
+		<t name="alert.no">Nein!</t>
+		<t name="alert.save_new">Are you sure you want suck niggar C0ck??</t>
+		<t name="alert.save_menu">Are you sure you want to go to into your mother’s womb?</t>
+		<t name="alert.save_load">y u no save diz lvl</t>
+		<t name="alert.save_import">Fuck you go back</t>
 	</editor>
 	
 	<game>
-		<t name="game1">game2</t>
+		<t name="menu.next">you’re gay</t>
+		<t name="menu.restart">wanna go again fag</t>
+		<t name="menu.resume">BitchNiggha</t>
 	</game>
 </data>
