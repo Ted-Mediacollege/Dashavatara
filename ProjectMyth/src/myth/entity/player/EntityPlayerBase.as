@@ -12,6 +12,7 @@ package myth.entity.player
 	import myth.Main;
 	import myth.util.TimeHelper;
 	import starling.textures.Texture;
+	import myth.graphics.AssetList;
 	
 	public class EntityPlayerBase extends Entity
 	{
@@ -32,9 +33,12 @@ package myth.entity.player
 		private var privatePlayerTex:Texture;
 		private var privatePlayerTexDown:Texture;
 		
-		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int,_playerType:int,_playerTex:Texture,_playerTexDown:Texture)
+		private var hitSoundID:String;
+		
+		public function EntityPlayerBase(_swimmer:Boolean,_XPos:int,_playerType:int,_playerTex:Texture,_playerTexDown:Texture,_hitSoundID:String)
 		{
 			super(100, 180, -50, -180);
+			hitSoundID = _hitSoundID;
 			privatePlayerTex = _playerTex;
 			privatePlayerTexDown = _playerTexDown;
 			privatePlayerType = _playerType;
@@ -112,10 +116,12 @@ package myth.entity.player
 		public function pushBack():void {
 			//trace("push "+Main.world.deltaSpeed);
 			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*2*Main.world.physicsWorld.playerBody.mass, -200*Main.world.physicsWorld.playerBody.mass));
+			AssetList.soundCommon.playSound(hitSoundID);
 		}
 		
 		public function pushBackRock():void {
 			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*6 *Main.world.physicsWorld.playerBody.mass, -500*Main.world.physicsWorld.playerBody.mass));
+			AssetList.soundCommon.playSound(hitSoundID);
 		}
 		
 		public function isOnFeet():Boolean

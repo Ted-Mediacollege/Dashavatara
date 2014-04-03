@@ -33,7 +33,7 @@ package myth.entity.player
 		public function EntityPlayerBoar() 
 		{
 			//super(true, false, true,128,200,-64,-200 );
-			super(false,100,PlayerType.Boar,AssetList.assets.getTexture("gui_icon2"),AssetList.assets.getTexture("gui_icon2_d"));
+			super(false,100,PlayerType.Boar,AssetList.assets.getTexture("gui_icon2"),AssetList.assets.getTexture("gui_icon2_d"),"playerHitBoar");
 			startXpos = 100;
 			//player art
 			clip = AssetList.spriterLoader.getSpriterClip("animSwine");

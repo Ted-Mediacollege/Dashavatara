@@ -19,20 +19,20 @@ package myth.graphics
 	{
 		private static var appDir:File;
 		//textures
-		[Embed(source="../../../lib/textures/player.png")]
-		public static var player_textures:Class;
-		[Embed(source="../../../lib/textures/fish.png")]
-		public static var fish_textures:Class;
+		//[Embed(source="../../../lib/textures/player.png")]
+		//public static var player_textures:Class;
+		//[Embed(source="../../../lib/textures/fish.png")]
+		//public static var fish_textures:Class;
 		
 		//xml files
-		[Embed(source="../../../lib/textures/player.xml", mimeType = "application/octet-stream")]
-		public static var player_xml:Class;
-		[Embed(source="../../../lib/textures/fish.xml", mimeType = "application/octet-stream")]
-		public static var fish_xml:Class;
+		//[Embed(source="../../../lib/textures/player.xml", mimeType = "application/octet-stream")]
+		//public static var player_xml:Class;
+		//[Embed(source="../../../lib/textures/fish.xml", mimeType = "application/octet-stream")]
+		//public static var fish_xml:Class;
 		
 		//texture atlas
-		public static var atlas_player:TextureAtlas;
-		public static var atlas_fish:TextureAtlas;
+		//public static var atlas_player:TextureAtlas;
+		//public static var atlas_fish:TextureAtlas;
 		
 		//font
 		[Embed(source="../../../lib/font/Connie-Regular.ttf", embedAsCFF="false", fontFamily="GameFont")]
@@ -62,10 +62,14 @@ package myth.graphics
 			thema2List = new Vector.<SoundHolder>();
 			thema3List = new Vector.<SoundHolder>();
 			//common sounds
-			commonList[0] =	new SoundHolder("button"			, "sound/common/", "jump17" 							, ".mp3");
+			commonList[0] =	new SoundHolder("button"			, "sound/common/", "button1" 							, ".mp3");
 			commonList[1] =	new SoundHolder("jump"				, "sound/common/", "jump12 -" 							, ".mp3");
 			commonList[2] =	new SoundHolder("enemyFlyHit"		, "sound/common/", "geluid-eerste-pijn-vliegende -" 	, ".mp3");
-			commonList[3] =	new SoundHolder("EnemyWalkLaugh"	, "sound/common/", "geluid-lach-lopende-enemie" 		, ".mp3");
+			commonList[3] =	new SoundHolder("enemyWalkLaugh"	, "sound/common/", "geluid-lach-lopende-enemie" 		, ".mp3");
+			commonList[4] =	new SoundHolder("playerHitFluit"	, "sound/common/", "geluid-pijn-blokfluitman" 			, ".mp3");
+			commonList[5] =	new SoundHolder("playerHitLion"		, "sound/common/", "geluid-pijn-Leeuw" 					, ".mp3");
+			commonList[6] =	new SoundHolder("playerHitBoar"		, "sound/common/", "geluid-pijn-zwijn" 					, ".mp3");
+			
 			//thema1 sounds
 			thema1List[0] = new SoundHolder("levelMusic"		, "sound/thema1/", "hemel_level_muziek"					, ".mp3");
 			//thema2 sounds
@@ -126,8 +130,8 @@ package myth.graphics
 		
 		public static function load():void
 		{
-			atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
-			atlas_fish = new TextureAtlas(Texture.fromBitmap(new fish_textures()), XML(new fish_xml()));
+			//atlas_player = new TextureAtlas(Texture.fromBitmap(new player_textures()), XML(new player_xml()));
+			//atlas_fish = new TextureAtlas(Texture.fromBitmap(new fish_textures()), XML(new fish_xml()));
 			//atlas_enemyRunning = new TextureAtlas(Texture.fromBitmap(new enemyRunning_textures()), XML(new enemyRunning_xml()));
 			//atlas_enemy = new TextureAtlas(Texture.fromBitmap(new enemy_textures()), XML(new enemy_xml()));
 		}
