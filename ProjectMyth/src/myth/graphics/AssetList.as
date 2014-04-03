@@ -69,6 +69,7 @@ package myth.graphics
 			commonList[4] =	new SoundHolder("playerHitFluit"	, "sound/common/", "geluid-pijn-blokfluitman" 			, ".mp3");
 			commonList[5] =	new SoundHolder("playerHitLion"		, "sound/common/", "geluid-pijn-Leeuw" 					, ".mp3");
 			commonList[6] =	new SoundHolder("playerHitBoar"		, "sound/common/", "geluid-pijn-zwijn" 					, ".mp3");
+			commonList[7] =	new SoundHolder("winSound"			, "sound/common/", "Winning_sfx" 						, ".mp3");
 			
 			//thema1 sounds
 			thema1List[0] = new SoundHolder("levelMusic"		, "sound/thema1/", "hemel_level_muziek"					, ".mp3");
