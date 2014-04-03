@@ -65,14 +65,14 @@ package myth.gui.game
 			themes = new < String > [Lang.trans(Lang.EDITOR, "settings.sky"), Lang.trans(Lang.EDITOR, "settings.earth"), Lang.trans(Lang.EDITOR, "settings.hell")];
 			sizes = new < String > [Lang.trans(Lang.EDITOR, "settings.small"), Lang.trans(Lang.EDITOR, "settings.normal"), Lang.trans(Lang.EDITOR, "settings.large")];
 
-			button_editor_new = addButton(new GuiButton(10, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.new"), 28)); button_editor_new.enabled = false;
-			button_editor_menu = addButton(new GuiButton(11, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.menu"), 28)); button_editor_menu.enabled = false;
-			button_editor_load = addButton(new GuiButton(12, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.load"), 28)); button_editor_load.enabled = false;
-			button_editor_save = addButton(new GuiButton(13, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 28)); button_editor_save.enabled = false;
-			button_editor_settings = addButton(new GuiButton(14, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 28)); button_editor_settings.enabled = false;
-			button_editor_test = addButton(new GuiButton(15, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 28)); button_editor_test.enabled = false;
-			button_editor_export = addButton(new GuiButton(16, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 28)); button_editor_export.enabled = false;
-			button_editor_import = addButton(new GuiButton(17, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.import"), 28)); button_editor_import.enabled = false;
+			button_editor_new = addButton(new GuiButton(10, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.new"), 35, 0xf1d195, "GameFont")); button_editor_new.enabled = false;
+			button_editor_menu = addButton(new GuiButton(11, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 65, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.menu"), 35, 0xf1d195, "GameFont")); button_editor_menu.enabled = false;
+			button_editor_load = addButton(new GuiButton(12, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.load"), 35, 0xf1d195, "GameFont")); button_editor_load.enabled = false;
+			button_editor_save = addButton(new GuiButton(13, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 255, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.save"), 35, 0xf1d195, "GameFont")); button_editor_save.enabled = false;
+			button_editor_settings = addButton(new GuiButton(14, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.settings"), 35, 0xf1d195, "GameFont")); button_editor_settings.enabled = false;
+			button_editor_test = addButton(new GuiButton(15, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 35, 0xf1d195, "GameFont")); button_editor_test.enabled = false;
+			button_editor_export = addButton(new GuiButton(16, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 35, 0xf1d195, "GameFont")); button_editor_export.enabled = false;
+			button_editor_import = addButton(new GuiButton(17, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.import"), 35, 0xf1d195, "GameFont")); button_editor_import.enabled = false;
 			
 			button_editor_load.visible = false;
 			button_editor_save.visible = false;

@@ -27,10 +27,10 @@ package myth.editor.component
 			
 			actionID = id;
 			
-			tileText = new GuiText(0, -140, 440, 50, "center", "center", titleString, 32, 0x000000, "Arial");
-			mainText = new GuiText(0, -100, 440, 170, "center", "center", mainString, 25, 0x000000, "Arial");
-			yesText = new GuiText(-110, 70, 220, 80, "center", "center", yesString, 25, 0x000000, "Arial");
-			noText = new GuiText(110, 70, 220, 80, "center", "center", noString, 25, 0x000000, "Arial");
+			tileText = new GuiText(0, -140, 440, 50, "center", "center", titleString, 40, 0xf1d195, "GameFont");
+			mainText = new GuiText(0, -100, 440, 170, "center", "center", mainString, 28, 0xf1d195, "GameFont");
+			yesText = new GuiText(-110, 70, 220, 80, "center", "center", yesString, 32, 0x000000, "GameFont");
+			noText = new GuiText(110, 70, 220, 80, "center", "center", noString, 32, 0x000000, "GameFont");
 			
 			addChild(tileText);
 			addChild(mainText);

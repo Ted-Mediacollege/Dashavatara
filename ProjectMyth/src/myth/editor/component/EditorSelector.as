@@ -29,7 +29,7 @@ package myth.editor.component
 		
 		public function build(t:int):void
 		{
-			cat_text = new GuiText(1105, 425, 200, 50, "center", "center", "CAT_CAT_CAT", 30, 0x000000, "Arial");
+			cat_text = new GuiText(1105, 425, 400, 50, "center", "center", "CAT_CAT_CAT", 35, 0xf1d195, "GameFont");
 			addChild(cat_text);
 			
 			CAT = 0;

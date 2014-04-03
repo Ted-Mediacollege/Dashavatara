@@ -81,6 +81,11 @@ package myth
 		{
 			var os:String = Capabilities.os;
 			
+			if (os == null)
+			{
+				return false;
+			}
+			
 			if (os.indexOf("Windows") > -1)
 			{
 				if (os == "Windows Mobile" || os == "Windows SmartPhone" || os == "Windows PocketPC" || os == "Windows CEPC")
