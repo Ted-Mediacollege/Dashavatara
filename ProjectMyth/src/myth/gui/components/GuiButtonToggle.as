@@ -6,6 +6,7 @@ package myth.gui.components
 		public var toggle:Boolean;
 		private var texOn:Texture;
 		private var texOff:Texture;
+		public var freez:Boolean = false;
 		/**
 		 * Toggle Button
 		 * @param id = button id (id voor action func in guiScreen)
@@ -41,12 +42,14 @@ package myth.gui.components
 		}
 		
 		private function toggleButton():void {
-			if(toggle){
-				image.texture = texOff;
-				toggle = false;
-			}else {
-				image.texture = texOn;
-				toggle = true;
+			if(!freez){
+				if(toggle){
+					image.texture = texOff;
+					toggle = false;
+				}else {
+					image.texture = texOn;
+					toggle = true;
+				}
 			}
 		}
 	}
