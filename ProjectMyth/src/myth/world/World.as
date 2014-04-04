@@ -7,6 +7,7 @@ package myth.world
 	import myth.entity.player.EntityPlayer01v2;
 	import myth.entity.player.EntityPlayer01v4;
 	import myth.entity.player.EntityPlayer02v2;
+	import myth.gamemode.GameMode;
 	import myth.gui.game.GuiEditor;
 	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiLose;
@@ -45,6 +46,8 @@ package myth.world
 	
 	public class World
 	{
+		public var gamemode:GameMode;
+		
 		private var lvlName:String;
 		
 		private var worldBuild:Boolean;
