@@ -51,7 +51,8 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiLevelSelect());
+				//main.switchGui(new GuiLevelSelect());
+				main.switchGui(new GuiGameSelect(), true);
 			}
 			else if (b.buttonID == 1)
 			{
