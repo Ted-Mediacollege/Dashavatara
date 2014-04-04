@@ -7,6 +7,7 @@ package myth.world
 	import myth.entity.player.EntityPlayer03;
 	import myth.entity.player.EntityPlayerBoar;
 	import myth.Main;
+	import nape.geom.Vec2;
 	import starling.display.Image;
 	import treefortress.spriter.SpriterClip;
 	import myth.graphics.AssetList;
@@ -32,6 +33,7 @@ package myth.world
 			Main.world.player = players[1];
 			currentPlayer = 1;
 			Main.world.physicsWorld.playerBody.userData.graphic = Main.world.player;
+			Main.world.physicsWorld.playerBody.velocity = new Vec2(Main.world.levelData.startSpeed*60, 0);
 			Display.add(Main.world.player, LayerID.GamePlayer);
 			
 			////////////
