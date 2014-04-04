@@ -75,6 +75,7 @@ package myth.editor.component
 			visible = true;
 			active = true;
 			toolActive = false;
+			editor.saved = false;
 			
 			item = new Image(AssetList.assets.getTexture(tex));
 			item.x = px;

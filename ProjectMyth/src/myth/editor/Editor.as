@@ -33,6 +33,7 @@ package myth.editor
 	import flash.net.FileReference;
 	import flash.events.Event;
 	import flash.display.LoaderInfo;
+	import myth.data.GameData;
 	
 	public class Editor extends Sprite
 	{		
@@ -316,7 +317,16 @@ package myth.editor
 			}
 			else if (id == 13) //SAVE
 			{
-				guiEditor.main.switchGui(new GuiEditorSave(createJSONstring()));
+				if (guiEditor.saveFileID > -1)
+				{
+					GameData.levelnames[guiEditor.saveFileID] = "TestLevel - " + getDateString();
+					GameData.levelList[guiEditor.saveFileID] = createJSONstring();
+					trace("[SAVED-DATA]: Level saved!");
+				}
+				else
+				{
+					guiEditor.main.switchGui(new GuiEditorSave(createJSONstring()));
+				}
 				saved = true;
 			}
 			else if (id == 14) //SETTINGS
@@ -343,7 +353,7 @@ package myth.editor
 					removeChild(CONSTRUCTOR);
 				}
 								
-				guiEditor.main.switchGui(new GuiGame("test", -1, createJSONstring()));
+				guiEditor.main.switchGui(new GuiGame("test", -1, createJSONstring(), guiEditor.saveFileID));
 			}
 			else if (id == 16) //EXPORT
 			{
@@ -410,7 +420,7 @@ package myth.editor
 		}
 		
 		public function load(levelString:String, fromTesting:Boolean = false):void
-		{
+		{		
 			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
 			
 			theme = saveFile.theme;
@@ -441,7 +451,12 @@ package myth.editor
 			FIELD_OBJECTS.buildFile(saveFile.objects, theme);
 			FIELD_ENEMIES.buildFile(saveFile.enemies);
 			
-			saved = !fromTesting;
+			saved = !fromTesting;	
+			
+			if (guiEditor.saveFileID > -1)
+			{
+				saved = true;
+			}
 		}
 		
 		public function export(s:String):void
@@ -518,5 +533,37 @@ package myth.editor
 			guiEditor.grey_screen.visible = false;
 			saved = true;
         }
+		
+		public function getDateString():String
+		{
+			var d:Date = new Date();
+			var s:String = "";
+			
+			s += "" + d.getDate();
+			s += "-" + d.getMonth();
+			s += "-" + d.getFullYear();
+			
+			var h:int = d.getHours();
+			if (h < 10)
+			{
+				s += " 0" + h;
+			}
+			else
+			{
+				s += " " + h;
+			}
+			
+			var m:int = d.getMinutes();
+			if (m < 10)
+			{
+				s += ":0" + m;
+			}
+			else
+			{
+				s += ":" + m;
+			}
+			
+			return s;
+		}
 	}
 }

@@ -30,7 +30,7 @@ package myth.gui.game
 				GameData.levelnames.unshift("TestLevel - " + getDateString());
 				GameData.levelList.unshift(levelString);
 				
-				main.switchGui(new GuiEditor());
+				main.switchGui(new GuiEditor(levelString, 0));
 			}
 		}
 		

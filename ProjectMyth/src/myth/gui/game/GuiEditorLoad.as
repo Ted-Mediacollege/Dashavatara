@@ -51,7 +51,7 @@ package myth.gui.game
 			var le:int = GameData.levelnames.length;
 			for (var i:int = 0; i < le; i++ )
 			{
-				var b:GuiButtonPress = new GuiButtonPress(i + 10, AssetList.assets.getTexture("gui_button_levela"), screenWidth / 2 - 35, 60 + i * 100, 1180, 85, GameData.levelnames[i], 35, 0xf1d195, "GameFont"); 
+				var b:GuiButtonPress = new GuiButtonPress(i + 10, AssetList.assets.getTexture("gui_button_levela"), screenWidth / 2 - 35, 50 + i * 100, 1180, 85, GameData.levelnames[i], 35, 0xf1d195, "GameFont"); 
 				listfield.addChild(b);
 				buttonList.push(b);
 				levelButtonsList.push(b);
@@ -66,7 +66,7 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 1)
 			{
-				main.switchGui(new GuiEditor(GameData.levelList[levelSelected]));
+				main.switchGui(new GuiEditor(GameData.levelList[levelSelected], levelSelected));
 			}
 			else if (b.buttonID == 2)
 			{

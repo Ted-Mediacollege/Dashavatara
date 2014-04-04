@@ -50,10 +50,12 @@ package myth.gui.game
 		public var inEditor:Boolean = false;
 		
 		private var levelString:String;
+		public var saveFileID:int;
 		
-		public function GuiEditor(_levelString:String = null) 
+		public function GuiEditor(_levelString:String = null, saveID:int = -1) 
 		{
 			levelString = _levelString;
+			saveFileID = saveID;
 		}
 		
 		override public function init():void 

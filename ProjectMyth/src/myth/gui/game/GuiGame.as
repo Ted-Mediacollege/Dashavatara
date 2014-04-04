@@ -56,9 +56,10 @@ package myth.gui.game
 		
 		private var editorTesting:Boolean = false;
 		public static var editorString:String = "";
+		public static var editorsaveID:int = -1;
 		public static var levelID:int;
 		
-		public function GuiGame(_levelName:String, _levelid:int, _editorString:String = null) 
+		public function GuiGame(_levelName:String, _levelid:int, _editorString:String = null, _editorsaveID:int = -1) 
 		{
 			levelName = _levelName;
 			editorTesting = false;
@@ -69,6 +70,7 @@ package myth.gui.game
 			{
 				editorTesting = true;
 				editorString = _editorString;
+				editorsaveID = _editorsaveID;
 			}
 		}	
 		
@@ -128,7 +130,7 @@ package myth.gui.game
 			{
 				if (button.buttonID == 13 && editorTesting)
 				{
-					main.switchGui(new GuiEditor(editorString));
+					main.switchGui(new GuiEditor(editorString, GuiGame.editorsaveID));
 					return;
 				}
 				if (pauseScreen)
@@ -149,7 +151,7 @@ package myth.gui.game
 				
 				if (editorTesting)
 				{
-					main.switchGui(new GuiGame(levelName, levelID, editorString));
+					main.switchGui(new GuiGame(levelName, levelID, editorString, GuiGame.editorsaveID));
 				}
 				else
 				{
