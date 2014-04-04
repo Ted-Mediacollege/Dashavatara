@@ -27,7 +27,7 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				GameData.levelnames.unshift("TestLevel - " + getDateString());
+				GameData.levelnames.unshift("Unnamed - " + getDateString());
 				GameData.levelList.unshift(levelString);
 				
 				main.switchGui(new GuiEditor(levelString, 0));
