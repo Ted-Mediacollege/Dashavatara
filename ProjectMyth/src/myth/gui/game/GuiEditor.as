@@ -50,10 +50,12 @@ package myth.gui.game
 		public var inEditor:Boolean = false;
 		
 		private var levelString:String;
+		public var saveFileID:int;
 		
-		public function GuiEditor(_levelString:String = null) 
+		public function GuiEditor(_levelString:String = null, saveID:int = -1) 
 		{
 			levelString = _levelString;
+			saveFileID = saveID;
 		}
 		
 		override public function init():void 
@@ -73,11 +75,7 @@ package myth.gui.game
 			button_editor_test = addButton(new GuiButton(15, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 155, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.test"), 35, 0xf1d195, "GameFont")); button_editor_test.enabled = false;
 			button_editor_export = addButton(new GuiButton(16, AssetList.assets.getTexture("editor_button_small"), screenWidth - 255, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.export"), 35, 0xf1d195, "GameFont")); button_editor_export.enabled = false;
 			button_editor_import = addButton(new GuiButton(17, AssetList.assets.getTexture("editor_button_small"), screenWidth - 93, 355, 147, 85, Lang.trans(Lang.EDITOR, "side_menu.import"), 35, 0xf1d195, "GameFont")); button_editor_import.enabled = false;
-			
-			button_editor_load.visible = false;
-			button_editor_save.visible = false;
-			button_editor_load.enabled = false;
-			button_editor_save.enabled = false;
+
 			if (!GameData.ISCOMPUTER)
 			{
 				button_editor_export.visible = false;
@@ -99,9 +97,7 @@ package myth.gui.game
 			button_create = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 180, 450, 100, Lang.trans(Lang.EDITOR, "menu.create"), 45, 0xf1d195, "GameFont"));
 			button_load = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.load"), 45, 0xf1d195, "GameFont"));
 			button_import = addButton(new GuiButton(9, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 60, 450, 100, Lang.trans(Lang.EDITOR, "menu.import"), 45, 0xf1d195, "GameFont"));
-			
-			button_load.visible = false;
-			button_load.enabled = false;
+
 			if (!GameData.ISCOMPUTER)
 			{
 				button_import.visible = false;
@@ -152,9 +148,11 @@ package myth.gui.game
 				menu_main(false);
 				create_menu(true);
 				grey_screen.visible = true;
+				saveFileID = -1;
 			}
 			else if (b.buttonID == 2) //LOAD 
 			{
+				main.switchGui(new GuiEditorLoad());
 			}
 			else if (b.buttonID == 3) //BUILD EDITOR
 			{
@@ -171,6 +169,7 @@ package myth.gui.game
 				editor.build(theme_selected, s);
 				inEditor = true;
 				grey_screen.visible = false;
+				saveFileID = -1;
 			}
 			else if (b.buttonID == 4) //THEME
 			{
@@ -209,9 +208,6 @@ package myth.gui.game
 			button_create.visible = e;
 			button_load.visible = e;
 			button_import.visible = e;
-			
-			button_load.visible = false;
-			button_load.enabled = false;
 		}
 		
 		public function create_menu(e:Boolean):void
@@ -237,11 +233,6 @@ package myth.gui.game
 			button_editor_save.enabled = e;
 			button_editor_settings.enabled = e;
 			button_editor_test.enabled = e;
-			
-			button_editor_load.visible = false;
-			button_editor_save.visible = false;
-			button_editor_load.enabled = false;
-			button_editor_save.enabled = false;
 			
 			if (GameData.ISCOMPUTER)
 			{

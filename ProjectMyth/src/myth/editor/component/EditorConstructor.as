@@ -75,6 +75,7 @@ package myth.editor.component
 			visible = true;
 			active = true;
 			toolActive = false;
+			editor.saved = false;
 			
 			item = new Image(AssetList.assets.getTexture(tex));
 			item.x = px;
@@ -90,8 +91,8 @@ package myth.editor.component
 			item_name = tex;
 			depth = z;
 			
-			if (cat != EditorSelector.CAT_BACKGROUND)
-			{
+			//if (cat != EditorSelector.CAT_BACKGROUND)
+			//{
 				button_scale.visible = false;
 				button_rotate.visible = false;
 				button_depth.visible = false;
@@ -99,7 +100,7 @@ package myth.editor.component
 				holder.removeChild(button_scale);
 				holder.removeChild(button_rotate);
 				holder.removeChild(button_depth);
-			}
+			//}
 
 			holder.visible = true;
 			moveHolder();

@@ -174,13 +174,13 @@ package myth.world
 				if (player.x < -200)
 				{
 					if (levelData.nextLvlName == "editor") {
-						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
+						gui.main.switchGui(new GuiEditor(GuiGame.editorString, GuiGame.editorsaveID));
 					} else {
 						gui.main.switchGui(new GuiLose(lvlName, GuiGame.levelID));
 					}
 				}else if (player.x > 1480 || levelComplete) {
 					if (levelData.nextLvlName == "editor") {
-						gui.main.switchGui(new GuiEditor(GuiGame.editorString));
+						gui.main.switchGui(new GuiEditor(GuiGame.editorString, GuiGame.editorsaveID));
 					} else {
 						AssetList.soundCommon.playSound("winSound");
 						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName, GuiGame.levelID), true);

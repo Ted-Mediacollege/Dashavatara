@@ -2,11 +2,11 @@
 <application xmlns="http://ns.adobe.com/air/application/3.9">
 	
 	<id>air.ProjectMyth</id>
-	<versionNumber>0.1</versionNumber>
+	<versionNumber>1.0.1</versionNumber>
 	<supportedProfiles>mobileDevice</supportedProfiles>
 	<filename>ProjectMyth</filename>
 	
-	<name>ProjectMyth</name>
+	<name>Dashavatara</name>
 	<description></description>
 	<copyright></copyright>
 	
@@ -46,7 +46,7 @@
     </iPhone> 
 	
 	<initialWindow>
-		<title>ProjectMyth</title>
+		<title>Dashavatara</title>
 		<content>ProjectMyth.swf</content>
 		<visible>true</visible>
 		<fullScreen>true</fullScreen>

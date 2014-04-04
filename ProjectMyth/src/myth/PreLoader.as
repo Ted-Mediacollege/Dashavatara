@@ -61,10 +61,10 @@ package myth
 			Main.onDeactivate(e);
 			SaveData.save();
 			
-			if (!GameData.ISCOMPUTER)
-			{
+			//if (!GameData.ISCOMPUTER)
+			//{
 				NativeApplication.nativeApplication.exit();
-			}
+			//}
 		}
 		
 		public function getLanguageID():int
@@ -79,6 +79,8 @@ package myth
 		
 		public function isOperatorComputer():Boolean
 		{
+			return false;
+			/*
 			var os:String = Capabilities.os;
 			
 			if (os == null)
@@ -86,7 +88,7 @@ package myth
 				return false;
 			}
 			
-			if (os.indexOf("Windows") > -1)
+			if (os.indexOf("Windows") >= 0)
 			{
 				if (os == "Windows Mobile" || os == "Windows SmartPhone" || os == "Windows PocketPC" || os == "Windows CEPC")
 				{
@@ -94,14 +96,14 @@ package myth
 				}
 				return true;
 			}
-			else if (os.indexOf("Mac OS") > -1 || os.indexOf("Linux") > -1)
+			else if (os.indexOf("Mac OS") >= 0 || os.indexOf("Linux") >=h)
 			{
 				return true;
 			}
 			else
 			{
 				return false;
-			}
+			}*/
 		}
 	}
 }
