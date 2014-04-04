@@ -22,8 +22,18 @@ package myth.gui.game
 		
 		private var levelSelected:int = -1;
 		
-		public function GuiEditorLoad() 
+		private var editorString:String = "";
+		private var editorSaveID:int = -1;
+		private var fromEditing:Boolean = false;
+		
+		public function GuiEditorLoad(_editorString:String = null, _editorSaveID:int = -1) 
 		{
+			if (_editorString != null)
+			{
+				fromEditing = true;
+				editorString = _editorString;
+				editorSaveID = _editorSaveID;
+			}
 		}	
 		
 		override public function init():void
@@ -62,7 +72,14 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiEditor());
+				if (fromEditing)
+				{
+					main.switchGui(new GuiEditor(editorString, editorSaveID));
+				}
+				else
+				{
+					main.switchGui(new GuiEditor());
+				}
 			}
 			else if (b.buttonID == 1)
 			{
@@ -76,8 +93,17 @@ package myth.gui.game
 				buttonList.splice(buttonList.indexOf(levelButtonsList[levelSelected]), 1);
 				levelButtonsList.splice(levelSelected, 1);
 				
+				if (levelSelected == editorSaveID)
+				{
+					editorSaveID = -1;
+				}
+				
 				for (var j:int = levelSelected; j < levelButtonsList.length; j++ )
 				{
+					if (j == editorSaveID)
+					{
+						editorSaveID--;	
+					}
 					levelButtonsList[j].y -= 100;
 					levelButtonsList[j].posY -= 100;
 					levelButtonsList[j].buttonID -= 1;

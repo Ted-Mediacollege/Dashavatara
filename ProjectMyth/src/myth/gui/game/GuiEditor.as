@@ -148,6 +148,7 @@ package myth.gui.game
 				menu_main(false);
 				create_menu(true);
 				grey_screen.visible = true;
+				saveFileID = -1;
 			}
 			else if (b.buttonID == 2) //LOAD 
 			{
@@ -168,6 +169,7 @@ package myth.gui.game
 				editor.build(theme_selected, s);
 				inEditor = true;
 				grey_screen.visible = false;
+				saveFileID = -1;
 			}
 			else if (b.buttonID == 4) //THEME
 			{

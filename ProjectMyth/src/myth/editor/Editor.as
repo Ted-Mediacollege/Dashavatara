@@ -313,7 +313,7 @@ package myth.editor
 			}
 			else if (id == 12) //LOAD
 			{
-				guiEditor.main.switchGui(new GuiEditorLoad());
+				guiEditor.main.switchGui(new GuiEditorLoad(createJSONstring(), guiEditor.saveFileID));
 			}
 			else if (id == 13) //SAVE
 			{
@@ -531,7 +531,7 @@ package myth.editor
 			guiEditor.editor_menu(true);
 			guiEditor.inEditor = true;
 			guiEditor.grey_screen.visible = false;
-			saved = true;
+			guiEditor.saveFileID = -1;
         }
 		
 		public function getDateString():String
