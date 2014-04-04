@@ -1,7 +1,6 @@
 package myth.editor.field 
 {
 	import myth.data.Theme;
-	import myth.tile.Tile;
 	import starling.display.Image;
 	import starling.display.Shape;
 	import starling.display.Sprite;

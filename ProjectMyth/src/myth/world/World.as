@@ -53,7 +53,7 @@ package myth.world
 		private var worldBuild:Boolean;
 		public var gui:GuiGame;
 		
-		public var tiles:WorldTiles2;
+		public var tiles:WorldTiles;
 		public var background:WorldBackground;
 		
 		public var distance:Number = 0;
@@ -101,6 +101,10 @@ package myth.world
 			AssetList.loadLevelAssets(levelData.theme,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
 		}
 		
+		public function preBuild():void {
+			
+		}
+		
 		public function build():void {
 			//AssetList.soundLevel.setGlobalVolume(0);
 			AssetList.soundLevel.playSound("levelMusic");
@@ -114,7 +118,7 @@ package myth.world
 			//entityManager
 			entityManager = new WorldEntityManager(levelData.enemyData);
 			//tiles
-			tiles = new WorldTiles2();
+			tiles = new WorldTiles();
 			tiles.build(0, levelData.tileData, levelData.theme);
 			//background asser manager
 			//backgroundAssetData
