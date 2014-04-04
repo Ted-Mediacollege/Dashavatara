@@ -72,14 +72,14 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				if (fromEditing)
+				/*if (fromEditing)
 				{
 					main.switchGui(new GuiEditor(editorString, editorSaveID));
 				}
 				else
-				{
+				{*/
 					main.switchGui(new GuiEditor());
-				}
+				//}
 			}
 			else if (b.buttonID == 1)
 			{
