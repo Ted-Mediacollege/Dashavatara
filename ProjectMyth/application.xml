@@ -6,7 +6,7 @@
 	<supportedProfiles>mobileDevice</supportedProfiles>
 	<filename>ProjectMyth</filename>
 	
-	<name>ProjectMyth</name>
+	<name>Dashavatara</name>
 	<description></description>
 	<copyright></copyright>
 	
@@ -46,7 +46,7 @@
     </iPhone> 
 	
 	<initialWindow>
-		<title>ProjectMyth</title>
+		<title>Dashavatara</title>
 		<content>ProjectMyth.swf</content>
 		<visible>true</visible>
 		<fullScreen>true</fullScreen>

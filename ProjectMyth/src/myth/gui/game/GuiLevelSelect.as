@@ -33,6 +33,9 @@ package myth.gui.game
 			map.blendMode = BlendMode.NONE;
 			addChild(map);
 			
+			var text:GuiText = new GuiText(1000, 150, 500, 100, "center", "center", "Coming soon!", 55, 0xFF0000, "GameFont");
+			addChild(text);
+			
 			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 245, screenHeight - 30, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
 
 			for (var i:int = 0; i < levelListLength; i++ )
