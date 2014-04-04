@@ -138,12 +138,18 @@ package myth.gui.game
 					puaseButton.setState(false);
 					pauseScreen = false;
 					removePauseButtons();
+					b1.freez = false;
+					b2.freez = false;
+					b3.freez = false;
 				}
 				else
 				{
 					puaseButton.setState(true);
 					createPauseButtons();
 					pauseScreen = true;
+					b1.freez = true;
+					b2.freez = true;
+					b3.freez = true;
 				}
 			}
 			else if (button.buttonID == 1)
@@ -164,30 +170,35 @@ package myth.gui.game
 			}
 			else if (button.buttonID > 9)
 			{
-				if (button.buttonID == 10) {
-					b1.setState(true);
-					b2.setState(false);
-					b3.setState(false);
-				}else if (button.buttonID == 11) {
-					b1.setState(false);
-					b2.setState(true);
-					b3.setState(false);
-				}else if (button.buttonID == 12) {
-					b1.setState(false);
-					b2.setState(false);
-					b3.setState(true);
-				}
-				Main.world.playerHolder.switchAvatar(button.buttonID - 10);
-				
-				help_visible = true;
-				help_fade = 100;
-				help_text_temp.alpha = 1;
-				switch(button.buttonID - 10)
+				if (!pauseScreen)
 				{
-					case 0: help_text_temp.text.text = "Tap to Jump."; break;
-					case 1: help_text_temp.text.text = "Swipe to slash"; break;
-					case 2: help_text_temp.text.text = "Tap repeatedly to sprint."; break;
+					if (button.buttonID == 10) {
+						b1.setState(true);
+						b2.setState(false);
+						b3.setState(false);
+					}else if (button.buttonID == 11) {
+						b1.setState(false);
+						b2.setState(true);
+						b3.setState(false);
+					}else if (button.buttonID == 12) {
+						b1.setState(false);
+						b2.setState(false);
+						b3.setState(true);
+					}
+					Main.world.playerHolder.switchAvatar(button.buttonID - 10);
+					
+					help_visible = true;
+					help_fade = 100;
+					help_text_temp.alpha = 1;
+					switch(button.buttonID - 10)
+					{
+						case 0: help_text_temp.text.text = "Tap to Jump."; break;
+						case 1: help_text_temp.text.text = "Swipe to slash"; break;
+						case 2: help_text_temp.text.text = "Tap repeatedly to sprint."; break;
+					}
 				}
+				
+				
 			}
 		}
 		
@@ -235,8 +246,10 @@ package myth.gui.game
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
-			Main.world.input(type, data, e);
-			
+			if (!pauseScreen)
+			{
+				Main.world.input(type, data, e);
+			}
 			if (help_visible)
 			{
 				help_visible = false;
