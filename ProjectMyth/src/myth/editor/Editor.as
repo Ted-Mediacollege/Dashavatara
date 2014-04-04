@@ -16,6 +16,8 @@ package myth.editor
 	import myth.gui.components.GuiButton;
 	import myth.gui.components.GuiText;
 	import myth.gui.game.GuiEditor;
+	import myth.gui.game.GuiEditorLoad;
+	import myth.gui.game.GuiEditorSave;
 	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiMainMenu;
 	import starling.display.Image;
@@ -310,11 +312,11 @@ package myth.editor
 			}
 			else if (id == 12) //LOAD
 			{
-				
+				guiEditor.main.switchGui(new GuiEditorLoad());
 			}
 			else if (id == 13) //SAVE
 			{
-				trace(createJSONstring());
+				guiEditor.main.switchGui(new GuiEditorSave(createJSONstring()));
 				saved = true;
 			}
 			else if (id == 14) //SETTINGS
