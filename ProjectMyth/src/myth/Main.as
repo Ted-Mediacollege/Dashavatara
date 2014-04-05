@@ -43,6 +43,7 @@ package myth
 		{
 			fadeImg = new Image(Texture.fromColor(5,3,0xff000000));
 			fade = new Sprite();
+			fade.touchable = false;
 			fade.addChild(fadeImg);
 			fadeImg.scaleX = 256;
 			fadeImg.scaleY = 256;

@@ -9,19 +9,19 @@ package myth.graphics
 		private static var layers:Vector.<DisplayLayer>;
 		public static function InitGameLayers(parent:Sprite):void{
 			layers = new Vector.<DisplayLayer>;
-			layers.push(new DisplayLayer(LayerID.GameLevelBack));
-			layers.push(new DisplayLayer(LayerID.GamePlayerBack));
-			layers.push(new DisplayLayer(LayerID.GamePlayer));
-			layers.push(new DisplayLayer(LayerID.GameLevel));
-			layers.push(new DisplayLayer(LayerID.GameLevel2));
-			layers.push(new DisplayLayer(LayerID.GamePlayerFront));
-			layers.push(new DisplayLayer(LayerID.GameLevelFront));
-			layers.push(new DisplayLayer(LayerID.GameGui));
+			layers.push(new DisplayLayer(LayerID.GameLevelBack		,true));
+			layers.push(new DisplayLayer(LayerID.GamePlayerBack		,false));
+			layers.push(new DisplayLayer(LayerID.GamePlayer			,false));
+			layers.push(new DisplayLayer(LayerID.GameLevel			,false));
+			layers.push(new DisplayLayer(LayerID.GameLevel2			,false));
+			layers.push(new DisplayLayer(LayerID.GamePlayerFront	,false));
+			layers.push(new DisplayLayer(LayerID.GameLevelFront		,false));
+			layers.push(new DisplayLayer(LayerID.GameGui			,false));
 			
-			layers.push(new DisplayLayer(LayerID.PauseImage));
-			layers.push(new DisplayLayer(LayerID.PauseGui));
+			layers.push(new DisplayLayer(LayerID.PauseImage			,false));
+			layers.push(new DisplayLayer(LayerID.PauseGui			,false));
 			
-			layers.push(new DisplayLayer(LayerID.DebugLayer));
+			layers.push(new DisplayLayer(LayerID.DebugLayer			,false));
 			
 			for (var i:int = 0; i < layers.length; i++) {
 				parent.addChild(layers[i]);
