@@ -97,9 +97,6 @@ package myth.world
 		private var graphic:starling.display.Sprite;
 		private var graphics:Vector.<EntityObjectBase>;
 		private function removeObject(number:int):void {
-			GuiGame.gamemode.tutorialOnObjectDestroy();
-			trace("HELLO?");
-			
 			graphic = objectList[number].userData.graphic;
 			graphics = objectList[number].userData.graphics;
 			if(graphic!=null){

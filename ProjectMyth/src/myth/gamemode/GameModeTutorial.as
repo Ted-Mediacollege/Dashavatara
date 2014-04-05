@@ -35,6 +35,7 @@ package myth.gamemode
 		
 		public var tutorial_begin:int;
 		public var tutorial_jumper:int;
+		public var tutorial_attacker:int;
 		
 		public var start:int = 0;
 		
@@ -44,6 +45,7 @@ package myth.gamemode
 			
 			tutorial_begin = 0;
 			tutorial_jumper = tutorial_begin + 5;
+			tutorial_attacker = tutorial_jumper + 10;
 		}
 		
 		override public function init():void
@@ -129,6 +131,7 @@ package myth.gamemode
 			else if (state == tutorial_jumper + 0)
 			{
 				world.playerHolder.switchAvatar(0);
+				setActiveButton(0);
 				world.gui.b2.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
 				setPanel("This is the jump character.\n\nYou can jump by tapping on the screen.");
@@ -161,6 +164,7 @@ package myth.gamemode
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
 				world.playerHolder.switchAvatar(0);
+				setActiveButton(0);
 				checkpointState = state;
 			}
 			else if (state == tutorial_jumper + 5)
@@ -168,10 +172,12 @@ package myth.gamemode
 				world.inputEnabled = true;
 				removePanel();
 				world.objectManager.makeObject(0, world.distance + 1400, 950);
+				timer = 4.8;
 			}
 			else if (state == tutorial_jumper + 6)
 			{
 				world.inputEnabled = false;
+				(world.player as EntityPlayer03).canjump = false;
 				setPanel("Great!");
 			}
 			else if (state == tutorial_jumper + 7)
@@ -187,6 +193,7 @@ package myth.gamemode
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
 				world.playerHolder.switchAvatar(0);
+				setActiveButton(0);
 				checkpointState = state;
 			}
 			else if (state == tutorial_jumper + 8)
@@ -194,7 +201,27 @@ package myth.gamemode
 				world.inputEnabled = true;
 				removePanel();
 				world.objectManager.makeObject(0, world.distance + 1400, 950);
+				world.objectManager.makeObject(0, world.distance + 1700, 850);
+				world.objectManager.makeObject(0, world.distance + 2000, 750);
+				timer = 6.5;
 			}
+			else if (state == tutorial_jumper + 9)
+			{
+				world.inputEnabled = false;
+				(world.player as EntityPlayer03).canjump = false;
+				setPanel("Amazing!");
+			}
+			else if (state == 15)
+			{
+				setPanel("nu moet het gedeelte over attack guy komen.");
+			}
+		}
+		
+		public function setActiveButton(id:int):void
+		{
+			world.gui.b1.setState(id == 0 ? true : false);
+			world.gui.b2.setState(id == 1 ? true : false);
+			world.gui.b3.setState(id == 2 ? true : false);
 		}
 		
 		public function setPanel(text:String):void
@@ -252,6 +279,14 @@ package myth.gamemode
 			{
 				setState(tutorial_jumper + 2);
 			}
+			else if (tutorialState == tutorial_jumper + 5)
+			{
+				setState(tutorial_jumper + 6);
+			}
+			else if (tutorialState == tutorial_jumper + 8)
+			{
+				setState(tutorial_jumper + 9);
+			}
 		}
 		
 		public function onButtonFlash():void
@@ -265,15 +300,6 @@ package myth.gamemode
 				world.gui.b1.visible = !world.gui.b1.visible;
 				world.gui.b2.visible = !world.gui.b2.visible;
 				world.gui.b3.visible = !world.gui.b3.visible;
-			}
-		}
-		
-		override public function tutorialOnObjectDestroy(type:int = 0):void
-		{
-			trace("Hello anyone there?");
-			if (tutorialState == tutorial_jumper + 5)
-			{
-				setState(tutorial_jumper + 6);
 			}
 		}
 		

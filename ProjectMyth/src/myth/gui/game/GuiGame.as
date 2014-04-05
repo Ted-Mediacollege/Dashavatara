@@ -53,7 +53,7 @@ package myth.gui.game
 		
 		private var gameLayer:Sprite;
 		
-		public static var gamemode:GameMode;
+		private var gamemode:GameMode;
 		private var gameScreen:Sprite = new Sprite();
 		
 		public static var restartText:String;
@@ -200,8 +200,6 @@ package myth.gui.game
 			
 			Main.world.onRemove();
 			Main.world = null;
-			
-			gamemode = null;
 		}
 		
 		override public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void
