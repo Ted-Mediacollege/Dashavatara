@@ -53,7 +53,7 @@ package myth.gui.game
 		
 		private var gameLayer:Sprite;
 		
-		private var gamemode:GameMode;
+		public static var gamemode:GameMode;
 		private var gameScreen:Sprite = new Sprite();
 		
 		public static var restartText:String;
@@ -198,9 +198,10 @@ package myth.gui.game
 		{
 			PreLoader.starling.showStats = false;
 			
-			//removeChild(Main.world);
 			Main.world.onRemove();
 			Main.world = null;
+			
+			gamemode = null;
 		}
 		
 		override public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void

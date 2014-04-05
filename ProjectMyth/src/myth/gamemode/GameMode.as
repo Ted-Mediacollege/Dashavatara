@@ -47,6 +47,10 @@ package myth.gamemode
 		{
 		}		
 		
+		public function tutorialOnObjectDestroy(type:int = 0):void
+		{
+		}
+		
 		public function onClick(type:int, data:Vector.<Number>):void
 		{
 		}

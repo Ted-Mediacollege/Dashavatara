@@ -14,16 +14,8 @@ package myth.world
 	import myth.Main;
 	import myth.graphics.Display;
 	import myth.graphics.LayerID;
-	/**
-	 * XML File
-	 * "objects":[
-			{
-				"type":0,
-				"x":1000,
-				"y":500
-			}
-		],
-	 */
+	import myth.gui.game.GuiGame;
+
 	public class WorldObjectManager extends WorldManagerBase
 	{
 		private var data:Vector.<Vector.<int>>;
@@ -105,6 +97,9 @@ package myth.world
 		private var graphic:starling.display.Sprite;
 		private var graphics:Vector.<EntityObjectBase>;
 		private function removeObject(number:int):void {
+			GuiGame.gamemode.tutorialOnObjectDestroy();
+			trace("HELLO?");
+			
 			graphic = objectList[number].userData.graphic;
 			graphics = objectList[number].userData.graphics;
 			if(graphic!=null){

@@ -33,16 +33,22 @@ package myth.gamemode
 		public var timer:Number = -10;
 		public var buttonFlash:int = 20;
 		
-		public var tutorial_begin:int = 0;
-		public var tutorial_jumper:int = 5;
+		public var tutorial_begin:int;
+		public var tutorial_jumper:int;
 		
-		public function GameModeTutorial(start:int = 0) 
-		{
+		public var start:int = 0;
+		
+		public function GameModeTutorial(s:int = 0) 
+		{		
+			start = s;
+			
+			tutorial_begin = 0;
+			tutorial_jumper = tutorial_begin + 5;
 		}
 		
 		override public function init():void
 		{
-			tutorialState = 0;
+			tutorialState = start;
 			
 			world.speed = 6;
 			world.endPointPosition = 2000;
@@ -78,7 +84,7 @@ package myth.gamemode
 			panelHolder = new Sprite();
 			Display.add(panelHolder, LayerID.GameLevelBack);
 			
-			setState(0);
+			setState(tutorialState);
 			
 			world.inputEnabled = false;
 		}
@@ -123,7 +129,8 @@ package myth.gamemode
 			else if (state == tutorial_jumper + 0)
 			{
 				world.playerHolder.switchAvatar(0);
-				world.gui.b1.visible = true;
+				world.gui.b2.alpha = 0.2;
+				world.gui.b3.alpha = 0.2;
 				setPanel("This is the jump character.\n\nYou can jump by tapping on the screen.");
 			}
 			else if (state == tutorial_jumper + 1)
@@ -136,6 +143,57 @@ package myth.gamemode
 				world.inputEnabled = false;
 				(world.player as EntityPlayer03).canjump = false;
 				setPanel("Well done!\n\n");
+			}
+			else if (state == tutorial_jumper + 3)
+			{
+				setPanel("Er zijn obstakels blablabla tekst hier.");
+			}
+			else if (state == tutorial_jumper + 4)
+			{
+				setPanel("Try to jump over a pillar.");
+				world.gui.b1.visible = true;
+				world.gui.b2.visible = true;
+				world.gui.b3.visible = true;
+				world.gui.b1.enabled = false;
+				world.gui.b2.enabled = false;
+				world.gui.b3.enabled = false;
+				world.gui.b2.alpha = 0.2;
+				world.gui.b3.alpha = 0.2;
+				world.inputEnabled = false;
+				world.playerHolder.switchAvatar(0);
+				checkpointState = state;
+			}
+			else if (state == tutorial_jumper + 5)
+			{
+				world.inputEnabled = true;
+				removePanel();
+				world.objectManager.makeObject(0, world.distance + 1400, 950);
+			}
+			else if (state == tutorial_jumper + 6)
+			{
+				world.inputEnabled = false;
+				setPanel("Great!");
+			}
+			else if (state == tutorial_jumper + 7)
+			{
+				setPanel("Now try to jump over 3 pillars.");
+				world.gui.b1.visible = true;
+				world.gui.b2.visible = true;
+				world.gui.b3.visible = true;
+				world.gui.b1.enabled = false;
+				world.gui.b2.enabled = false;
+				world.gui.b3.enabled = false;
+				world.gui.b2.alpha = 0.2;
+				world.gui.b3.alpha = 0.2;
+				world.inputEnabled = false;
+				world.playerHolder.switchAvatar(0);
+				checkpointState = state;
+			}
+			else if (state == tutorial_jumper + 8)
+			{
+				world.inputEnabled = true;
+				removePanel();
+				world.objectManager.makeObject(0, world.distance + 1400, 950);
 			}
 		}
 		
@@ -175,8 +233,7 @@ package myth.gamemode
 			{
 				setState(tutorialState + 1);
 			}
-			
-			if (tutorialState == tutorial_jumper + 1)
+			else if (tutorialState == tutorial_jumper + 1)
 			{
 				if (timer < 0)
 				{
@@ -189,12 +246,6 @@ package myth.gamemode
 		{
 			if (tutorialState == tutorial_begin + 3)
 			{
-				world.gui.b1.visible = false;
-				world.gui.b2.visible = false;
-				world.gui.b3.visible = false;
-				world.gui.b1.enabled = false;
-				world.gui.b2.enabled = false;
-				world.gui.b3.enabled = false;
 				setState(tutorial_begin + 4);
 			}
 			else if (tutorialState == tutorial_jumper + 1)
@@ -214,6 +265,15 @@ package myth.gamemode
 				world.gui.b1.visible = !world.gui.b1.visible;
 				world.gui.b2.visible = !world.gui.b2.visible;
 				world.gui.b3.visible = !world.gui.b3.visible;
+			}
+		}
+		
+		override public function tutorialOnObjectDestroy(type:int = 0):void
+		{
+			trace("Hello anyone there?");
+			if (tutorialState == tutorial_jumper + 5)
+			{
+				setState(tutorial_jumper + 6);
 			}
 		}
 		

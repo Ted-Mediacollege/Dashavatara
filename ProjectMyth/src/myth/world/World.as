@@ -156,8 +156,6 @@ package myth.world
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{	
-			gamemode.onClick(type, data);
-			
 			if (inputEnabled)
 			{
 				player.input(type, data, e);
@@ -171,6 +169,11 @@ package myth.world
 					debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.gui).x,e.touches[0].getLocation(Main.gui).y,20);
 					debugShape.graphics.endFill();
 				}, myth.util.Debug.DrawArracks);
+			}
+			
+			if (type == TouchType.CLICK)
+			{
+				gamemode.onClick(type, data);
 			}
 		}
 	}
