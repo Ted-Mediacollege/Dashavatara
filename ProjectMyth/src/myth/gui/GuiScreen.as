@@ -7,6 +7,7 @@ package myth.gui
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
 	import myth.graphics.AssetList;
+	import starling.events.TouchPhase;
 	
 	public class GuiScreen extends Sprite
 	{
@@ -16,6 +17,7 @@ package myth.gui
 		public var main:Main;
 		public var buttonList:Vector.<GuiButton>;
 		public static var background:GuiBackground;
+		private static var buttonTouched:Boolean = false;
 		
 		//called when gui contructed
 		public function init():void { }
@@ -90,10 +92,10 @@ package myth.gui
 		//called by touch input
 		public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{
-			var buttonTouched:Boolean = false;
+			var i:int = 0;
 			if (type == TouchType.CLICK)
 			{
-				for (var i:int = 0; i < buttonList.length; i++ )
+				for (i = 0; i < buttonList.length; i++ )
 				{
 					if (buttonList[i].enabled &&
 						data[0] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
@@ -109,10 +111,29 @@ package myth.gui
 						buttonList[i].click();
 						AssetList.soundCommon.playSound("button");
 						action(buttonList[i]);
+						break;
+					}
+				}
+			}
+			if (e.touches[0].phase == TouchPhase.BEGAN) 
+			{
+				for (i = 0; i < buttonList.length; i++ )
+				{
+					if (buttonList[i].enabled &&
+						e.touches[0].getLocation(Main.gui).x > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+						e.touches[0].getLocation(Main.gui).y > buttonList[i].posY - buttonList[i].posHeight / 2 && 
+						e.touches[0].getLocation(Main.gui).x < buttonList[i].posX + buttonList[i].posWidth / 2 && 
+						e.touches[0].getLocation(Main.gui).y < buttonList[i].posY + buttonList[i].posHeight / 2
+						)
+					{
 						buttonTouched = true;
 						break;
 					}
 				}
+			}
+			if (e.touches[0].phase == TouchPhase.ENDED) 
+			{
+				buttonTouched = false;
 			}
 			if (!buttonTouched)
 			{

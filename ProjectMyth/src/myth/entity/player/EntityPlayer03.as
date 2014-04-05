@@ -10,6 +10,7 @@ package myth.entity.player
 	import starling.events.TouchPhase;
 	import myth.Main;
 	import treefortress.spriter.SpriterClip;
+	import myth.util.TimeHelper;
 	
 	//fluit
 	public class EntityPlayer03 extends EntityPlayerBase
@@ -18,6 +19,7 @@ package myth.entity.player
 		public var animationWalk:MovieClip;
 		public var jumping:Boolean;
 		public var cooldownFix:int;
+		private var canjump:Boolean = false;
 		
 		public function EntityPlayer03() 
 		{
@@ -31,20 +33,6 @@ package myth.entity.player
 			addChild(image);
 			Main.world.gameJuggler.add(image);
 			jumping = false;
-			
-			/*image = new Image(TextureList.atlas_player.getTexture("player_4"));
-			image.scaleX = -1;
-			image.pivotX = image.width / 2;
-			image.pivotY = image.height;
-			art.addChild(image);*/
-			
-			//animationWalk = new MovieClip(TextureList.atlas_fish.getTextures("vis bouncing and jumping"), 30);
-			//animationWalk.pivotY = 378;
-			//animationWalk.pivotX = 127;
-			//animationWalk.loop = true;
-			//animationWalk.play();
-			//Starling.juggler.add(animationWalk);
-			//addChild(animationWalk);
 		}
 		
 		override public function tick():void
@@ -57,26 +45,38 @@ package myth.entity.player
 				jumping = false;
 				image.play("running1");
 			}
+			if(canjump) {
+				jump();
+			}
+		}
+		private function jump():void {
+			if (Main.world.physicsWorld.playerBody.velocity.y > -10 && isOnFeet()){
+				AssetList.soundCommon.playSound("jump");
+				Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(0, -18000));
+				onfeet = false;
+				image.play("jump");
+				jumping = true;
+				cooldownFix = 20;
+			}
+		}
+		
+		override public function switchPlayer():void {
+			super.switchPlayer();
+			canjump = false;
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void {
-			
 			//data vector = posX, posY, movedX, movedY
-			if(!levelComplete){
-				if (e.touches[0].phase == TouchPhase.BEGAN) {
-					
-				}else if (e.touches[0].phase == TouchPhase.ENDED) {
-					if (isOnFeet())
-					{
-						//jump
-						AssetList.soundCommon.playSound("jump");
-						Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(0, -18000));
-						onfeet = false;
-						image.play("jump");
-						jumping = true;
-						cooldownFix = 20;
-					}
+			
+			if (!levelComplete) {
+				if (e.touches[0].phase == TouchPhase.ENDED) {
+					canjump = false;
 				}
+				if (e.touches[0].phase == TouchPhase.BEGAN || e.touches[0].phase == TouchPhase.MOVED || e.touches[0].phase == TouchPhase.STATIONARY) {
+					canjump = true;
+				}
+			}else {
+				canjump = false;
 			}
 		}
 	}
