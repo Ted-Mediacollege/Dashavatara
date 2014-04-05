@@ -1,5 +1,6 @@
 package myth.gui.game 
 {
+	import flash.events.GameInputEvent;
 	import myth.gui.GuiScreen;
 	import myth.gui.components.GuiButton;
 	import myth.input.TouchType;
@@ -11,7 +12,8 @@ package myth.gui.game
 	import myth.gui.components.GuiButtonLevel;
 	import starling.display.BlendMode;
 	import myth.data.GameData;
-
+	import myth.gamemode.GameModeStory;
+	
 	public class GuiLevelSelect extends GuiScreen
 	{
 		public var map:Image;
@@ -61,8 +63,7 @@ package myth.gui.game
 			if (b.buttonID > 99)
 			{
 				var lb:GuiButtonLevel = (b as GuiButtonLevel);
-				//main.switchGui(new GuiLevelInfo(chapter, lb.file_name, lb.level_name, lb.level_description, lb.level_difficulty));
-				//main.switchGui(new GuiGame(lb.file_name, lb.levelID));
+				main.switchGui(new GuiGame(new GameModeStory(lb.file_name, lb.levelID)));
 			}
 			else if (b.buttonID == 0)
 			{

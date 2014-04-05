@@ -61,10 +61,10 @@ package myth
 			Main.onDeactivate(e);
 			SaveData.save();
 			
-			//if (!GameData.ISCOMPUTER)
-			//{
+			if (!GameData.ISCOMPUTER)
+			{
 				NativeApplication.nativeApplication.exit();
-			//}
+			}
 		}
 		
 		public function getLanguageID():int
@@ -79,7 +79,7 @@ package myth
 		
 		public function isOperatorComputer():Boolean
 		{
-			return false;
+			return true;
 			/*
 			var os:String = Capabilities.os;
 			

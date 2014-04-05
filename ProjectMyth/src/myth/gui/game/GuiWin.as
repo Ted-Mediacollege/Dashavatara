@@ -8,6 +8,7 @@ package myth.gui.game
 	import myth.graphics.AssetList;
 	import myth.lang.Lang;
 	import myth.data.GameData;
+	import myth.gamemode.GameModeStory;
 
 	public class GuiWin extends GuiScreen
 	{
@@ -51,11 +52,11 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiGame(currentLevel, levelID));
+				main.switchGui(new GuiGame(new GameModeStory(currentLevel, levelID)));
 			}
 			else if (b.buttonID == 1)
 			{
-				main.switchGui(new GuiGame(nextLevel, levelID + 1));
+				main.switchGui(new GuiGame(new GameModeStory(nextLevel, levelID + 1)));
 			}
 			else if (b.buttonID == 2)
 			{

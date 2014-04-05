@@ -39,7 +39,6 @@ package myth.gui.game
 	public class GuiGame extends GuiScreen 
 	{
 		private var bg:Image;
-		private var levelName:String;
 		private var pauseScreen:Boolean = false;
 		
 		private var puaseButton:GuiButtonToggle;
@@ -55,17 +54,11 @@ package myth.gui.game
 		private var help_visible:Boolean;
 		private var gameLayer:Sprite;
 		
-		private var editorTesting:Boolean = false;
-		public static var levelID:int;
-		
 		private var gamemode:GameMode;
 		private var gameScreen:Sprite = new Sprite();
 		
-		public function GuiGame(_levelName:String, _levelid:int, gm:GameMode) 
+		public function GuiGame(gm:GameMode) 
 		{
-			levelName = _levelName;
-			levelID = _levelid;
-			
 			gamemode = gm;
 		}	
 		

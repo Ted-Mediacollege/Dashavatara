@@ -61,7 +61,7 @@ package myth.gamemode
 		
 		override public function onRestart():void
 		{
-			world.gui.main.switchGui(new GuiGame("test", -1, new GameModeEditor(editor_string, editor_saveID)));
+			world.gui.main.switchGui(new GuiGame(new GameModeEditor(editor_string, editor_saveID)));
 		}
 		
 		override public function onPause():void

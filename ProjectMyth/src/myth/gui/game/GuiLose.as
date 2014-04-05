@@ -8,6 +8,7 @@ package myth.gui.game
 	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import myth.lang.Lang;
+	import myth.gamemode.GameModeStory;
 
 	public class GuiLose extends GuiScreen
 	{
@@ -39,7 +40,7 @@ package myth.gui.game
 		{ 
 			if (b.buttonID == 0)
 			{
-				main.switchGui(new GuiGame(levelName, levelID));
+				main.switchGui(new GuiGame(new GameModeStory(levelName, levelID)));
 			}
 			else
 			{
