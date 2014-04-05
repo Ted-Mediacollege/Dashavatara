@@ -1,20 +1,37 @@
 package myth.gamemode 
 {
+	import myth.world.World;
+	
 	public class GameMode 
 	{
+		public var world:World;
+		
 		public function GameMode() 
 		{
 		}
 		
-		public function preInit():void
+		public function preInit(w:World):void
 		{
+			world = w;
 		}
 		
 		public function init():void
 		{
 		}
 		
+		public function build():void
+		{
+		}
+		
 		public function tick():void
+		{
+		}
+		
+		public function onRestart():void
+		{
+		}
+		
+		public function onPause():void
 		{
 		}
 		

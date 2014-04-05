@@ -8,6 +8,7 @@ package myth.gui.game
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.display.BitmapDataChannel;
+	import myth.gamemode.GameMode;
 	import myth.gui.components.GuiButton;
 	import myth.gui.components.GuiButtonToggle;
 	import myth.gui.components.GuiText;
@@ -55,26 +56,19 @@ package myth.gui.game
 		private var gameLayer:Sprite;
 		
 		private var editorTesting:Boolean = false;
-		public static var editorString:String = "";
-		public static var editorsaveID:int = -1;
 		public static var levelID:int;
 		
-		public function GuiGame(_levelName:String, _levelid:int, _editorString:String = null, _editorsaveID:int = -1) 
+		private var gamemode:GameMode;
+		private var gameScreen:Sprite = new Sprite();
+		
+		public function GuiGame(_levelName:String, _levelid:int, gm:GameMode) 
 		{
 			levelName = _levelName;
-			editorTesting = false;
-			editorString = "";
 			levelID = _levelid;
 			
-			if (_editorString != null)
-			{
-				editorTesting = true;
-				editorString = _editorString;
-				editorsaveID = _editorsaveID;
-			}
+			gamemode = gm;
 		}	
 		
-		private var gameScreen:Sprite = new Sprite();
 		override public function init():void
 		{
 			if (GameData.DEVELOPMENT)
@@ -85,16 +79,8 @@ package myth.gui.game
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
 			
-			if (editorTesting)
-			{
-				Main.world = new World(this, levelName, editorTesting, editorString);
-			}
-			else
-			{
-				Main.world = new World(this, levelName);
-			}
+			Main.world = new World(this, gamemode);
 			Main.world.init();
-			//Display.add(Main.world,LayerID.GameLevel);
 			
 			puaseButton = new GuiButtonToggle(
 				13, AssetList.assets.getTexture("gui_button_pause"),
@@ -128,41 +114,33 @@ package myth.gui.game
 		{
 			if (button.buttonID == 13 ||button.buttonID == 2) 
 			{
-				if (button.buttonID == 13 && editorTesting)
+				gamemode.onPause();
+				
+				if (!Main.inTransision)
 				{
-					main.switchGui(new GuiEditor(editorString, GuiGame.editorsaveID));
-					return;
-				}
-				if (pauseScreen)
-				{
-					puaseButton.setState(false);
-					pauseScreen = false;
-					removePauseButtons();
-					b1.freez = false;
-					b2.freez = false;
-					b3.freez = false;
-				}
-				else
-				{
-					puaseButton.setState(true);
-					createPauseButtons();
-					pauseScreen = true;
-					b1.freez = true;
-					b2.freez = true;
-					b3.freez = true;
+					if (pauseScreen)
+					{
+						puaseButton.setState(false);
+						pauseScreen = false;
+						removePauseButtons();
+						b1.freez = false;
+						b2.freez = false;
+						b3.freez = false;
+					}
+					else
+					{
+						puaseButton.setState(true);
+						createPauseButtons();
+						pauseScreen = true;
+						b1.freez = true;
+						b2.freez = true;
+						b3.freez = true;
+					}
 				}
 			}
 			else if (button.buttonID == 1)
 			{
-				
-				if (editorTesting)
-				{
-					main.switchGui(new GuiGame(levelName, levelID, editorString, GuiGame.editorsaveID));
-				}
-				else
-				{
-					main.switchGui(new GuiGame(levelName, levelID));
-				}
+				gamemode.onRestart();
 			}
 			else if (button.buttonID == 0)
 			{

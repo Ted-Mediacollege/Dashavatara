@@ -13,6 +13,7 @@ package myth.editor
 	import myth.editor.field.FieldEnemies;
 	import myth.editor.field.FieldObjects;
 	import myth.editor.field.FieldTiles;
+	import myth.gamemode.GameModeEditor;
 	import myth.gui.components.GuiButton;
 	import myth.gui.components.GuiText;
 	import myth.gui.game.GuiEditor;
@@ -60,6 +61,8 @@ package myth.editor
 		
 		public var fileref:FileReference;
 		public var fileLoader:Loader;
+		
+		public var levelLength:int;
 
 		public function Editor(gui:GuiEditor) 
 		{
@@ -81,7 +84,7 @@ package myth.editor
 		public function build(t:int, s:int):void
 		{
 			theme = t;
-			var levelSize:int = 200;
+			levelLength = s;
 			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();
@@ -89,7 +92,7 @@ package myth.editor
 			SELECTOR.build(theme);
 			
 			camX = 0;
-			maxX = levelSize * 127 - 1000;
+			maxX = levelLength * 127 - 1000;
 			
 			FIELD_BACKGROUND = new FieldBackground();
 			FIELD_TILES = new FieldTiles();
@@ -101,13 +104,53 @@ package myth.editor
 			addChildAt(FIELD_TILES, 2);
 			addChildAt(FIELD_ENEMIES, 3);
 			
-			FIELD_BACKGROUND.buildNew(levelSize * 127, theme);
+			FIELD_BACKGROUND.buildNew(levelLength * 127, theme);
 			FIELD_TILES.build(theme);
 			FIELD_OBJECTS.buildNew();
 			FIELD_ENEMIES.buildNew();
 			
 			CONSTRUCTOR = new EditorConstructor(this);
 			saved = true;
+		}
+		
+		public function load(levelString:String, fromTesting:Boolean = false):void
+		{		
+			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
+			levelLength = saveFile.size;
+			
+			theme = saveFile.theme;
+			Theme.MENU_THEME = theme;
+			
+			SELECTOR = new EditorSelector();
+			addChild(SELECTOR);
+			SELECTOR.build(theme);
+			
+			camX = 0;
+			maxX = levelLength * 127 - 1000;
+			
+			FIELD_BACKGROUND = new FieldBackground();
+			FIELD_TILES = new FieldTiles();
+			FIELD_OBJECTS = new FieldObjects();
+			FIELD_ENEMIES = new FieldEnemies();
+			
+			addChildAt(FIELD_BACKGROUND, 0);
+			addChildAt(FIELD_OBJECTS, 1);
+			addChildAt(FIELD_TILES, 2);
+			addChildAt(FIELD_ENEMIES, 3);
+			
+			CONSTRUCTOR = new EditorConstructor(this);
+			
+			FIELD_BACKGROUND.buildFile(saveFile.background_props, levelLength * 127, theme);
+			FIELD_TILES.build(theme);
+			FIELD_OBJECTS.buildFile(saveFile.objects, theme);
+			FIELD_ENEMIES.buildFile(saveFile.enemies);
+			
+			saved = !fromTesting;	
+			
+			if (guiEditor.saveFileID > -1)
+			{
+				saved = true;
+			}
 		}
 		
 		public function alert(actionID:int, title_string:String, text_string:String, yes_string:String, no_string:String):void
@@ -331,7 +374,7 @@ package myth.editor
 			}
 			else if (id == 14) //SETTINGS
 			{
-				
+				trace(createJSONstring());
 			}
 			else if (id == 15) //TEST
 			{
@@ -353,7 +396,7 @@ package myth.editor
 					removeChild(CONSTRUCTOR);
 				}
 								
-				guiEditor.main.switchGui(new GuiGame("test", -1, createJSONstring(), guiEditor.saveFileID));
+				guiEditor.main.switchGui(new GuiGame("test", -1, new GameModeEditor(createJSONstring(), guiEditor.saveFileID)));
 			}
 			else if (id == 16) //EXPORT
 			{
@@ -392,6 +435,7 @@ package myth.editor
 			saveFile.id = 0;
 			saveFile.speed = speed;
 			saveFile.theme = theme;
+			saveFile.size = levelLength;
 			
 			//ZONES
 			saveFile.zones = new Array();
@@ -414,45 +458,6 @@ package myth.editor
 			saveFile.objects.push(gate);
 			
 			return com.adobe.serialization.json.JSON.encode(saveFile);
-		}
-		
-		public function load(levelString:String, fromTesting:Boolean = false):void
-		{		
-			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
-			
-			theme = saveFile.theme;
-			Theme.MENU_THEME = theme;
-			
-			SELECTOR = new EditorSelector();
-			addChild(SELECTOR);
-			SELECTOR.build(theme);
-			
-			camX = 0;
-			maxX = 200 * 127 - 1000;
-			
-			FIELD_BACKGROUND = new FieldBackground();
-			FIELD_TILES = new FieldTiles();
-			FIELD_OBJECTS = new FieldObjects();
-			FIELD_ENEMIES = new FieldEnemies();
-			
-			addChildAt(FIELD_BACKGROUND, 0);
-			addChildAt(FIELD_OBJECTS, 1);
-			addChildAt(FIELD_TILES, 2);
-			addChildAt(FIELD_ENEMIES, 3);
-			
-			CONSTRUCTOR = new EditorConstructor(this);
-			
-			FIELD_BACKGROUND.buildFile(saveFile.background_props, 40 * 127, theme);
-			FIELD_TILES.build(theme);
-			FIELD_OBJECTS.buildFile(saveFile.objects, theme);
-			FIELD_ENEMIES.buildFile(saveFile.enemies);
-			
-			saved = !fromTesting;	
-			
-			if (guiEditor.saveFileID > -1)
-			{
-				saved = true;
-			}
 		}
 		
 		public function export(s:String):void

@@ -62,17 +62,11 @@ package myth.editor.field
 				}
 			}
 				
-			var PLAYER_SPAWN:Background = new Background(AssetList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
-			PLAYER_SPAWN.visible = false;
-			BACKGROUND_RANDOM.push(PLAYER_SPAWN);
-			addChild(PLAYER_SPAWN);
-			BACKGROUND_SPAWN = PLAYER_SPAWN;
+			BACKGROUND_SPAWN = new Background(AssetList.assets.getTexture("editor_player"), 200, 470, 1, 1, 1);
+			addChild(BACKGROUND_SPAWN);
 				
-			var PLAYER_END:Background = new Background(AssetList.assets.getTexture("editor_gate"), size - 800, 221, 1, 1, 1);
-			PLAYER_END.visible = false;
-			BACKGROUND_RANDOM.push(PLAYER_END);
-			addChild(PLAYER_END);
-			BACKGROUND_END = PLAYER_END;
+			BACKGROUND_END = new Background(AssetList.assets.getTexture("editor_gate"), size - 800, 221, 1, 1, 1);
+			addChild(BACKGROUND_END);
 		}
 		
 		public function buildNew(size:int, t:int):void
@@ -109,6 +103,9 @@ package myth.editor.field
 		
 		public function tick(camX:Number):void
 		{
+			BACKGROUND_SPAWN.x = (BACKGROUND_SPAWN.posX + -camX) / BACKGROUND_SPAWN.z;
+			BACKGROUND_END.x = (BACKGROUND_END.posX + -camX) / BACKGROUND_END.z;
+			
 			if (theme == 0)
 			{
 				for (var k:int = BACKGROUND_RANDOM.length - 1; k > -1; k--)

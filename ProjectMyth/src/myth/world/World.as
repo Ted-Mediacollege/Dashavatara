@@ -8,6 +8,7 @@ package myth.world
 	import myth.entity.player.EntityPlayer01v4;
 	import myth.entity.player.EntityPlayer02v2;
 	import myth.gamemode.GameMode;
+	import myth.gamemode.GameModeEditor;
 	import myth.gui.game.GuiEditor;
 	import myth.gui.game.GuiGame;
 	import myth.gui.game.GuiLose;
@@ -48,8 +49,6 @@ package myth.world
 	{
 		public var gamemode:GameMode;
 		
-		private var lvlName:String;
-		
 		private var worldBuild:Boolean;
 		public var gui:GuiGame;
 		
@@ -64,7 +63,7 @@ package myth.world
 		
 		public var entityManager:WorldEntityManager;
 		public var objectManager:WorldObjectManager;
-		private var zoneManager:WorldZoneManager;
+		public var zoneManager:WorldZoneManager;
 		public var playerHolder:PlayerHolder;
 		
 		private var debugShape:Shape = new Shape();
@@ -73,71 +72,34 @@ package myth.world
 		
 		public var physicsWorld:PhysicsWorld;
 		
-		public var levelData:LevelData;
 		public var gameJuggler:Juggler;
 		
 		public var player:EntityPlayerBase;
 		
 		public var backgroundBatch:QuadBatch = new QuadBatch;
 		
-		public function World(g:GuiGame ,levelName:String = "level_1", _editorTesting:Boolean = false, _editorString:String = null) 
+		public function World(g:GuiGame, gm:GameMode) 
 		{
+			gamemode = gm;
+			gamemode.preInit(this);
+			
 			gameJuggler = new Juggler();
 			EntityPlayerBase.levelStart();
 			gui = g;
-			lvlName = levelName;
-			levelData = new LevelData();
-			if (_editorTesting) {
-				levelData.loadFromString(_editorString, levelName);
-			}
-			else {
-				levelData.loadFile(levelName);
-			}
-			speed = levelData.startSpeed;
-			endPointPosition = levelData.endPointPosition;
 		}
 		
 		public function init():void {
-			AssetList.loadLevelAssets(levelData.theme,PlayerType.Fish,PlayerType.Fluit,PlayerType.Lion);
-		}
-		
-		public function preBuild():void {
-			
+			gamemode.init();
 		}
 		
 		public function build():void {
-			//AssetList.soundLevel.setGlobalVolume(0);
-			AssetList.soundLevel.playSound("levelMusic");
-			
-			physicsWorld = new PhysicsWorld();
-			
-			//player
-			playerHolder = new PlayerHolder();
-			
+			gamemode.build();
 			gui.build();
-			//entityManager
-			entityManager = new WorldEntityManager(levelData.enemyData);
-			//tiles
-			tiles = new WorldTiles();
-			tiles.build(0, levelData.theme);
-			//background asser manager
-			//backgroundAssetData
-			background = new WorldBackground(levelData.backgroundAssetData, 200 * 127, levelData.theme); //MOET ACHTER TILES GELADEN WORDEN
 			
-			//object manager
-			objectManager = new WorldObjectManager(levelData.ObjectData);
-			//zoneManager
-			zoneManager = new WorldZoneManager(levelData.zoneData);
-			
-			//add childs
 			Display.add(background,LayerID.GameLevelBack);
-			
-			
-			
 			Display.add(entityManager,LayerID.GamePlayer);
 			Display.add(objectManager,LayerID.GamePlayerFront);
 			Display.add(tiles,LayerID.GameLevel2);
-			//debug
 			Display.add(debugShape,LayerID.DebugLayer);
 			Display.add(debugShape2,LayerID.DebugLayer);
 			Display.add(attackShape,LayerID.DebugLayer);
@@ -154,6 +116,8 @@ package myth.world
 		
 		public function tick():void
 		{
+			gamemode.tick();
+			
 			if (worldBuild) {
 				gameJuggler.advanceTime(TimeHelper.deltaTime);
 				
@@ -165,6 +129,7 @@ package myth.world
 						distance += deltaSpeed;
 					}
 				}
+				
 				physicsWorld.tick();
 				zoneManager.tick();
 				player.tick();
@@ -173,25 +138,12 @@ package myth.world
 				tiles.tick(distance);
 				background.tick(distance);
 				entityManager.tick(deltaSpeed,distance);
-				objectManager.tick(deltaSpeed,distance);
-				///trace("damage "+damage);
-				//player1.x += speed;
-				//trace("distance: "+ distance+" DetaTime: " +  TimeHelper.deltatime);
+				objectManager.tick(deltaSpeed, distance);
 				
-				if (player.x < -200)
-				{
-					if (levelData.nextLvlName == "editor") {
-						gui.main.switchGui(new GuiEditor(GuiGame.editorString, GuiGame.editorsaveID));
-					} else {
-						gui.main.switchGui(new GuiLose(lvlName, GuiGame.levelID));
-					}
+				if (player.x < -200) {
+					gamemode.onDeath();
 				}else if (player.x > 1480 || levelComplete) {
-					if (levelData.nextLvlName == "editor") {
-						gui.main.switchGui(new GuiEditor(GuiGame.editorString, GuiGame.editorsaveID));
-					} else {
-						AssetList.soundCommon.playSound("winSound");
-						gui.main.switchGui(new GuiWin(lvlName,levelData.nextLvlName, GuiGame.levelID), true);
-					}
+					gamemode.onWin();
 				}
 			}
 		}

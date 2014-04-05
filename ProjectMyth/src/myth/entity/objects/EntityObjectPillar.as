@@ -13,10 +13,10 @@ package myth.entity.objects
 		
 		public var image:Image;
 		
-		public function EntityObjectPillar(id:int) 
+		public function EntityObjectPillar(id:int, theme:int) 
 		{
 			var currentObjects:Vector.<String>;
-			switch(Main.world.levelData.theme)
+			switch(theme)
 			{
 				case Theme.SKY: currentObjects = sky_objects; break;
 				case Theme.EARTH: currentObjects = earth_objects; break;

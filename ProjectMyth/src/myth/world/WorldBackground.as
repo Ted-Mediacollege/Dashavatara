@@ -26,15 +26,10 @@ package myth.world
 		public var theme:int;
 		public var textureNames:Vector.<String>;
 		
-		public function WorldBackground(data:Vector.<Vector.<int>>, length:int, theme:int) 
+		public function WorldBackground(data:Vector.<Vector.<int>>, t:int) 
 		{
 			queue = data;
 			
-			build(0, length, theme);
-		}
-		
-		public function build(camX:Number, size:int, t:int):void
-		{
 			Backgrounds_created = new Vector.<Background>();
 			Backgrounds_random = new Vector.<Background>();
 			

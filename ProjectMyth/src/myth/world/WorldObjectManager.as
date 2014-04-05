@@ -30,11 +30,13 @@ package myth.world
 		public var objectList:Vector.<Body> = new Vector.<Body>;
 		private var spawnPos:int = 1400;
 		private var groundMaterial:Material;
+		private var theme:int;
 		
-		public function WorldObjectManager(_data:Vector.<Vector.<int>> = null):void 
+		public function WorldObjectManager(t:int, _data:Vector.<Vector.<int>> = null):void 
 		{
 			data = _data;
 			groundMaterial = new Material(0, 0, 0, 1, 0);
+			theme = t;
 			build();
 		}
 		
@@ -64,7 +66,7 @@ package myth.world
 			}
 			else
 			{
-				object = new EntityObjectPillar(type);
+				object = new EntityObjectPillar(type, theme);
 			}
 			
 			if (type == ObjectType.Pillar || type == ObjectType.pillar2) {

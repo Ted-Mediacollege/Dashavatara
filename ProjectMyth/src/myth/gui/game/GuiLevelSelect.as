@@ -62,7 +62,7 @@ package myth.gui.game
 			{
 				var lb:GuiButtonLevel = (b as GuiButtonLevel);
 				//main.switchGui(new GuiLevelInfo(chapter, lb.file_name, lb.level_name, lb.level_description, lb.level_difficulty));
-				main.switchGui(new GuiGame(lb.file_name, lb.levelID));
+				//main.switchGui(new GuiGame(lb.file_name, lb.levelID));
 			}
 			else if (b.buttonID == 0)
 			{

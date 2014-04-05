@@ -37,7 +37,7 @@ package myth
 		private static var newGui:GuiScreen;
 		private static var bg:Boolean;
 		private static var menuState:int = 0;
-		private static var inTransision:Boolean = false;
+		public static var inTransision:Boolean = false;
 		
 		public function Main() 
 		{

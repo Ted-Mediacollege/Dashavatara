@@ -20,13 +20,10 @@ package myth.world
 		public var changed:Boolean = true;
 		public var textureSize:Number = 127;
 		
-		public function WorldTiles() 
+		public function WorldTiles(camX:Number, theme:int) 
 		{
 			TILES = new Vector.<Image>();
-		}
-		
-		public function build(camX:Number, theme:int):void
-		{
+
 			x = -camX;
 			
 			var textureNames:Vector.<String> = getTexturesForTheme(theme);
