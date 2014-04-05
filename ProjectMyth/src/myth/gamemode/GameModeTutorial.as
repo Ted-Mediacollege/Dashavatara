@@ -2,6 +2,7 @@ package myth.gamemode
 {
 	import myth.entity.player.EntityPlayer03;
 	import myth.graphics.AssetList;
+	import myth.gui.game.GuiMainMenu;
 	import myth.tutorial.TutorialPanel;
 	import myth.world.WorldBackground;
 	import myth.world.WorldEntityManager;
@@ -36,6 +37,7 @@ package myth.gamemode
 		public var tutorial_begin:int;
 		public var tutorial_jumper:int;
 		public var tutorial_attacker:int;
+		public var tutorial_sprinter:int;
 		
 		public var start:int = 0;
 		
@@ -46,6 +48,7 @@ package myth.gamemode
 			tutorial_begin = 0;
 			tutorial_jumper = tutorial_begin + 5;
 			tutorial_attacker = tutorial_jumper + 10;
+			tutorial_sprinter = tutorial_attacker + 12;
 		}
 		
 		override public function init():void
@@ -149,7 +152,8 @@ package myth.gamemode
 			}
 			else if (state == tutorial_jumper + 3)
 			{
-				setPanel("Er zijn obstakels blablabla tekst hier.");
+				//setPanel("Er zijn obstakels blablabla tekst hier.");
+				setState(tutorial_jumper + 4);
 			}
 			else if (state == tutorial_jumper + 4)
 			{
@@ -160,6 +164,7 @@ package myth.gamemode
 				world.gui.b1.enabled = false;
 				world.gui.b2.enabled = false;
 				world.gui.b3.enabled = false;
+				world.gui.b2.alpha = 1;
 				world.gui.b2.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
@@ -189,6 +194,7 @@ package myth.gamemode
 				world.gui.b1.enabled = false;
 				world.gui.b2.enabled = false;
 				world.gui.b3.enabled = false;
+				world.gui.b2.alpha = 1;
 				world.gui.b2.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
@@ -211,9 +217,150 @@ package myth.gamemode
 				(world.player as EntityPlayer03).canjump = false;
 				setPanel("Amazing!");
 			}
-			else if (state == 15)
+			else if (state == tutorial_attacker + 0)
 			{
-				setPanel("nu moet het gedeelte over attack guy komen.");
+				world.playerHolder.switchAvatar(1);
+				setActiveButton(1);
+				world.gui.b1.alpha = 0.2;
+				world.gui.b2.alpha = 1;
+				world.gui.b3.alpha = 0.2;
+				setPanel("This is the attack character.\n\nYou can attack by swiping over the screen");
+			}
+			else if (state == tutorial_attacker + 1)
+			{
+				world.inputEnabled = true;
+				removePanel();
+			}
+			else if (state == tutorial_attacker + 2)
+			{
+				world.inputEnabled = false;
+				setPanel("Fantastic!");
+			}
+			else if (state == tutorial_attacker + 3)
+			{
+				setPanel("Try to kill an enemy by swiping over it!");
+				world.gui.b1.visible = true;
+				world.gui.b2.visible = true;
+				world.gui.b3.visible = true;
+				world.gui.b1.enabled = false;
+				world.gui.b2.enabled = false;
+				world.gui.b3.enabled = false;
+				world.gui.b1.alpha = 0.2;
+				world.gui.b2.alpha = 1;
+				world.gui.b3.alpha = 0.2;
+				world.inputEnabled = false;
+				world.playerHolder.switchAvatar(1);
+				setActiveButton(1);
+				checkpointState = state;
+			}
+			else if (state == tutorial_attacker + 4)
+			{
+				world.inputEnabled = true;
+				removePanel();
+				world.entityManager.makeEnemy(0, 1400, 650);
+			}
+			else if (state == tutorial_attacker + 5)
+			{
+				world.inputEnabled = false;
+				setPanel("Nice Job!");
+			}
+			else if (state == tutorial_attacker + 6)
+			{
+				setPanel("Try to kill some more enemies");
+				world.gui.b1.visible = true;
+				world.gui.b2.visible = true;
+				world.gui.b3.visible = true;
+				world.gui.b1.enabled = false;
+				world.gui.b2.enabled = false;
+				world.gui.b3.enabled = false;
+				world.gui.b1.alpha = 0.2;
+				world.gui.b2.alpha = 1;
+				world.gui.b3.alpha = 0.2;
+				world.inputEnabled = false;
+				world.playerHolder.switchAvatar(1);
+				setActiveButton(1);
+				checkpointState = state;
+			}
+			else if (state == tutorial_attacker + 7)
+			{
+				world.inputEnabled = true;
+				removePanel();
+				world.entityManager.makeEnemy(0, 1400, 650);
+				world.entityManager.makeEnemy(0, 1700, 650);
+				world.entityManager.makeEnemy(0, 2000, 650);
+				world.entityManager.makeEnemy(2, 2300, 200);
+			}
+			else if (state == tutorial_attacker + 11)
+			{
+				setPanel("Well done!");
+			}
+			else if (state == tutorial_sprinter + 0)
+			{
+				world.playerHolder.switchAvatar(2);
+				setActiveButton(2);
+				world.gui.b1.alpha = 0.2;
+				world.gui.b2.alpha = 0.2;
+				world.gui.b3.alpha = 1;
+				setPanel("This is the sprint character.\n\nYou can sprint by repeatedly tapping on the screen");
+			}
+			else if (state == tutorial_sprinter + 1)
+			{
+				world.inputEnabled = true;
+				removePanel();
+			}
+			else if (state == tutorial_sprinter + 2)
+			{
+				world.inputEnabled = false;
+				setPanel("Amazing!");
+			}
+			else if (state == tutorial_sprinter + 3)
+			{
+				setPanel("The tutorial is now over!");
+			}
+			else if (state == tutorial_sprinter + 4)
+			{
+				setPanel("Good luck!");
+			}
+			else if (state == tutorial_sprinter + 5)
+			{
+				world.gui.main.switchGui(new GuiMainMenu(), true);
+			}
+		}
+		
+		override public function tutorialEnemyRemoved(killed:Boolean):void
+		{
+			if (tutorialState == tutorial_attacker + 4)
+			{
+				if (killed)
+				{
+					setState(tutorial_attacker + 5);
+				}
+				else
+				{
+					world.gui.main.switchGui(new GuiGame(new GameModeTutorial(checkpointState)));
+				}
+			}
+			else if (tutorialState > tutorial_attacker + 6 && tutorialState < tutorial_attacker + 10)
+			{
+				if (killed)
+				{
+					tutorialState++;
+				}
+				else
+				{
+					world.gui.main.switchGui(new GuiGame(new GameModeTutorial(checkpointState)));
+				}
+			}
+			else if (tutorialState == tutorial_attacker + 10)
+			{
+				if (killed)
+				{
+					setState(tutorial_attacker + 11);
+				}
+				else
+				{
+					world.gui.main.switchGui(new GuiGame(new GameModeTutorial(checkpointState)));
+				}
 			}
 		}
 		
@@ -267,6 +414,20 @@ package myth.gamemode
 					timer = 4;
 				}
 			}
+			else if (tutorialState == tutorial_attacker + 1)
+			{
+				if (timer < 0)
+				{
+					timer = 3;
+				}
+			}
+			else if (tutorialState == tutorial_sprinter + 1)
+			{
+				if (timer < 0)
+				{
+					timer = 3;
+				}
+			}
 		}
 		
 		public function timerEnded():void
@@ -286,6 +447,14 @@ package myth.gamemode
 			else if (tutorialState == tutorial_jumper + 8)
 			{
 				setState(tutorial_jumper + 9);
+			}
+			else if (tutorialState == tutorial_attacker + 1)
+			{
+				setState(tutorial_attacker + 2);
+			}
+			else if (tutorialState == tutorial_sprinter + 1)
+			{
+				setState(tutorial_sprinter + 2);
 			}
 		}
 		

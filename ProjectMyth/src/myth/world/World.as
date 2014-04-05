@@ -177,5 +177,10 @@ package myth.world
 				gamemode.onClick(type, data);
 			}
 		}
+		
+		public function tutorial_enemyremove(killed:Boolean):void
+		{
+			gamemode.tutorialEnemyRemoved(killed);
+		}
 	}
 }

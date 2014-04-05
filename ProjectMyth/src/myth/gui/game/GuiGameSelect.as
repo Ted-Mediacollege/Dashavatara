@@ -41,7 +41,7 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 2)
 			{
-				main.switchGui(new GuiGame(new GameModeTutorial(0)));
+				main.switchGui(new GuiGame(new GameModeTutorial(18)));
 			}
 			else if (b.buttonID == 3)
 			{

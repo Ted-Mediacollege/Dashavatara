@@ -47,6 +47,10 @@ package myth.gamemode
 		{
 		}		
 		
+		public function tutorialEnemyRemoved(killed:Boolean):void
+		{
+		}
+		
 		public function onClick(type:int, data:Vector.<Number>):void
 		{
 		}

@@ -19,10 +19,8 @@ package myth.world
 	import myth.util.MathHelper;
 	import myth.entity.bullet.BulletType;
 	import myth.Main;
-	/**
-	 * ...
-	 * @author Kit van de Bunt
-	 */
+	import myth.gui.game.GuiGame;
+	
 	public class WorldEntityManager extends WorldManagerBase
 	{
 		private var data:Vector.<Vector.<int>>;
@@ -87,11 +85,13 @@ package myth.world
 			removeChild(e);
 			enemyList.splice(enemyList.indexOf(e) , 1);
 			makeDeathPart(e.x, e.y,e.enemyType);
+			Main.world.tutorial_enemyremove(true);
 		}
 		
 		private function removeEnemy(e:EntityEnemyBase,number:int):void {
 			removeChild(enemyList[number]);
 			enemyList.splice(number , 1);
+			Main.world.tutorial_enemyremove(false);
 		}
 		
 		private function removeStone(e:EntityEnemyStone,number:int):void {
