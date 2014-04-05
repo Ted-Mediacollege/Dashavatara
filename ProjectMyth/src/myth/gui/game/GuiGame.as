@@ -42,9 +42,9 @@ package myth.gui.game
 		private var pauseScreen:Boolean = false;
 		
 		private var puaseButton:GuiButtonToggle;
-		private var b1:GuiButtonToggle;
-		private var b2:GuiButtonToggle;
-		private var b3:GuiButtonToggle;
+		public var b1:GuiButtonToggle;
+		public var b2:GuiButtonToggle;
+		public var b3:GuiButtonToggle;
 		private var pauseb1:GuiButton;
 		private var pauseb2:GuiButton;
 		private var pauseb3:GuiButton;
@@ -138,19 +138,10 @@ package myth.gui.game
 			{
 				if (!pauseScreen)
 				{
-					if (button.buttonID == 10) {
-						b1.setState(true);
-						b2.setState(false);
-						b3.setState(false);
-					}else if (button.buttonID == 11) {
-						b1.setState(false);
-						b2.setState(true);
-						b3.setState(false);
-					}else if (button.buttonID == 12) {
-						b1.setState(false);
-						b2.setState(false);
-						b3.setState(true);
-					}
+					b1.setState(button.buttonID == 10 ? true : false);
+					b2.setState(button.buttonID == 11 ? true : false);
+					b3.setState(button.buttonID == 12 ? true : false);
+
 					Main.world.playerHolder.switchAvatar(button.buttonID - 10);
 				}
 			}

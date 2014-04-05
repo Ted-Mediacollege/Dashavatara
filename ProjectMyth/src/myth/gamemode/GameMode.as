@@ -42,5 +42,9 @@ package myth.gamemode
 		public function onWin():void
 		{
 		}
+		
+		public function tutorialBuild():void
+		{
+		}
 	}
 }

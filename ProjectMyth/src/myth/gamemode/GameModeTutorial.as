@@ -47,6 +47,16 @@ package myth.gamemode
 			world.zoneManager = new WorldZoneManager(new Vector.<Vector.<int>>());
 		}
 		
+		override public function tutorialBuild():void
+		{
+			world.gui.b1.visible = false;
+			world.gui.b2.visible = false;
+			world.gui.b3.visible = false;
+			world.gui.b1.enabled = false;
+			world.gui.b2.enabled = false;
+			world.gui.b3.enabled = false;
+		}
+		
 		override public function tick():void
 		{
 			world.endPointPosition = world.distance + 2000;

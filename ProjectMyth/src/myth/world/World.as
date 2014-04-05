@@ -95,6 +95,7 @@ package myth.world
 		public function build():void {
 			gamemode.build();
 			gui.build();
+			gamemode.tutorialBuild();
 			
 			Display.add(background,LayerID.GameLevelBack);
 			Display.add(entityManager,LayerID.GamePlayer);

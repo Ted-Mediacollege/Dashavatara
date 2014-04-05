@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="tutorial.png">
+	<SubTexture name="tutorial_field"	x="0"	y="0"	width="880"	height="400" frameX="-0" frameY="-0" frameWidth="880" frameHeight="400"/>
+</TextureAtlas>
