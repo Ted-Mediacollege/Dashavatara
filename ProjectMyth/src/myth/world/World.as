@@ -95,15 +95,17 @@ package myth.world
 		public function build():void {
 			gamemode.build();
 			gui.build();
-			gamemode.tutorialBuild();
 			
+			Display.add(background,LayerID.GameLevelBack);
 			Display.add(background,LayerID.GameLevelBack);
 			Display.add(entityManager,LayerID.GamePlayer);
 			Display.add(objectManager,LayerID.GamePlayerFront);
 			Display.add(tiles,LayerID.GameLevel2);
 			Display.add(debugShape,LayerID.DebugLayer);
 			Display.add(debugShape2,LayerID.DebugLayer);
-			Display.add(attackShape,LayerID.DebugLayer);
+			Display.add(attackShape, LayerID.DebugLayer);
+			
+			gamemode.tutorialBuild();
 			
 			worldBuild = true;
 		}

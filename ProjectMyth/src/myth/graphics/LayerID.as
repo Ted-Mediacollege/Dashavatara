@@ -13,7 +13,6 @@ package myth.graphics
 		public static const GamePlayerFront:int = 7 ;
 		public static const GamePlayerBack:int = 8 ;
 		public static const GameLevelFront:int = 9 ;
-		public static const Tutorial:int = 10;
 		
 		public static const MenuGui:int = 100 ;
 		public static const MenuGuiBack:int = 101 ;

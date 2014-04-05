@@ -1,6 +1,7 @@
 package myth.gamemode 
 {
 	import myth.graphics.AssetList;
+	import myth.tutorial.TutorialPanel;
 	import myth.world.WorldBackground;
 	import myth.world.WorldEntityManager;
 	import myth.world.WorldManagerBase;
@@ -12,12 +13,20 @@ package myth.gamemode
 	import myth.entity.player.PlayerType;
 	import myth.gui.game.GuiGame;
 	import myth.lang.Lang;
+	import starling.display.Image;
+	import starling.display.Sprite;
+	import myth.graphics.Display;
+	import myth.graphics.LayerID;
 	
 	public class GameModeTutorial extends GameMode
 	{
+		public var checkpointState:int;
 		public var tutorialState:int;
 		
-		public function GameModeTutorial() 
+		public var panelHolder:Sprite;
+		public var panel:TutorialPanel;
+		
+		public function GameModeTutorial(start:int = 0) 
 		{
 		}
 		
@@ -55,6 +64,12 @@ package myth.gamemode
 			world.gui.b1.enabled = false;
 			world.gui.b2.enabled = false;
 			world.gui.b3.enabled = false;
+			
+			panelHolder = new Sprite();
+			Display.add(panelHolder, LayerID.GameLevelBack);
+			
+			panel = new TutorialPanel("Welcome to the tutorial\n\nYou can acces the pause menu at any time bij pressing the pause button on the top right corner of the screen");
+			panelHolder.addChild(panel)
 		}
 		
 		override public function tick():void
@@ -64,12 +79,12 @@ package myth.gamemode
 		
 		override public function onRestart():void
 		{
-			world.gui.main.switchGui(new GuiGame(new GameModeTutorial()));
+			world.gui.main.switchGui(new GuiGame(new GameModeTutorial(0)));
 		}
 		
 		override public function onDeath():void
 		{
-			world.gui.main.switchGui(new GuiGame(new GameModeTutorial()));
+			world.gui.main.switchGui(new GuiGame(new GameModeTutorial(checkpointState)));
 		}
 	}
 }
