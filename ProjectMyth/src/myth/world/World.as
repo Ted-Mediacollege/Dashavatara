@@ -119,10 +119,10 @@ package myth.world
 			entityManager = new WorldEntityManager(levelData.enemyData);
 			//tiles
 			tiles = new WorldTiles();
-			tiles.build(0, levelData.tileData, levelData.theme);
+			tiles.build(0, levelData.theme);
 			//background asser manager
 			//backgroundAssetData
-			background = new WorldBackground(levelData.backgroundAssetData, levelData.levelLength * 127, levelData.theme); //MOET ACHTER TILES GELADEN WORDEN
+			background = new WorldBackground(levelData.backgroundAssetData, 200 * 127, levelData.theme); //MOET ACHTER TILES GELADEN WORDEN
 			
 			//object manager
 			objectManager = new WorldObjectManager(levelData.ObjectData);

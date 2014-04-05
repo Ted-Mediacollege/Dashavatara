@@ -60,14 +60,14 @@ package myth.data
 			}
 			
 			//set tile data in vector
-			tileData = new Vector.<int>(levelData.tiles.length);
-			for (i = 0; i < levelData.tiles.length; i++) 
-			{
-				tileData[i] = levelData.tiles[i].type as int;
-			}
+			//tileData = new Vector.<int>(levelData.tiles.length);
+			//for (i = 0; i < levelData.tiles.length; i++) 
+			//{
+			//	tileData[i] = levelData.tiles[i].type as int;
+			//}
 			
 			//level length
-			levelLength = levelData.tiles.length;
+			//levelLength = levelData.tiles.length;
 			
 			//set layer data in vector
 			backgroundAssetData = new Vector.<Vector.<int>> (levelData.background_props.length);

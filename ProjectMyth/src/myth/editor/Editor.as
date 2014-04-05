@@ -81,7 +81,7 @@ package myth.editor
 		public function build(t:int, s:int):void
 		{
 			theme = t;
-			var levelSize:int = s;
+			var levelSize:int = 200;
 			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();
@@ -102,7 +102,7 @@ package myth.editor
 			addChildAt(FIELD_ENEMIES, 3);
 			
 			FIELD_BACKGROUND.buildNew(levelSize * 127, theme);
-			FIELD_TILES.buildNew(levelSize, theme);
+			FIELD_TILES.build(theme);
 			FIELD_OBJECTS.buildNew();
 			FIELD_ENEMIES.buildNew();
 			
@@ -413,9 +413,6 @@ package myth.editor
 			gate.y = 670;
 			saveFile.objects.push(gate);
 			
-			//TILES
-			FIELD_TILES.saveData(saveFile);
-			
 			return com.adobe.serialization.json.JSON.encode(saveFile);
 		}
 		
@@ -424,7 +421,6 @@ package myth.editor
 			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
 			
 			theme = saveFile.theme;
-			var levelSize:int = saveFile.tiles.length;
 			Theme.MENU_THEME = theme;
 			
 			SELECTOR = new EditorSelector();
@@ -432,7 +428,7 @@ package myth.editor
 			SELECTOR.build(theme);
 			
 			camX = 0;
-			maxX = levelSize * 127 - 1000;
+			maxX = 200 * 127 - 1000;
 			
 			FIELD_BACKGROUND = new FieldBackground();
 			FIELD_TILES = new FieldTiles();
@@ -446,8 +442,8 @@ package myth.editor
 			
 			CONSTRUCTOR = new EditorConstructor(this);
 			
-			FIELD_BACKGROUND.buildFile(saveFile.background_props, levelSize * 127, theme);
-			FIELD_TILES.buildFile(saveFile.tiles, theme);
+			FIELD_BACKGROUND.buildFile(saveFile.background_props, 40 * 127, theme);
+			FIELD_TILES.build(theme);
 			FIELD_OBJECTS.buildFile(saveFile.objects, theme);
 			FIELD_ENEMIES.buildFile(saveFile.enemies);
 			

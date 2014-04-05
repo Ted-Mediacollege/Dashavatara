@@ -7,7 +7,8 @@ package myth.world
 	import myth.graphics.AssetList;
 	import myth.data.Theme;
 	import starling.display.Image;
-
+	import myth.util.MathHelper;
+	
 	public class WorldTiles extends Sprite
 	{				
 		//NEED TO BE THE SAME IN EditorFiles.as
@@ -24,15 +25,15 @@ package myth.world
 			TILES = new Vector.<Image>();
 		}
 		
-		public function build(camX:Number, d:Vector.<int>, theme:int):void
+		public function build(camX:Number, theme:int):void
 		{
 			x = -camX;
 			
 			var textureNames:Vector.<String> = getTexturesForTheme(theme);
-			var tileLength:int = d.length;
-			for (var i:int = 0; i < 12; i++ )
+			var maxRand:int = textureNames.length;
+			for (var i:int = 0; i < 13; i++ )
 			{
-				var t:Image = new Image(AssetList.assets.getTexture(textureNames[d[i]]));
+				var t:Image = new Image(AssetList.assets.getTexture(textureNames[MathHelper.nextInt(maxRand)]));
 				t.x = i * textureSize;
 				t.y = 768 - 128;
 				TILES.push(t);

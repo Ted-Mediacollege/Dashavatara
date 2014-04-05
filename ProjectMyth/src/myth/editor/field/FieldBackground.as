@@ -18,6 +18,7 @@ package myth.editor.field
 		public var BACKGROUND_SPAWN:Background;
 		public var BACKGROUND_END:Background;
 		
+		
 		public function FieldBackground() 
 		{
 			
@@ -151,7 +152,7 @@ package myth.editor.field
 			{
 				for (var i:int = 0; i < l; i++ )
 				{
-					if (BACKGROUND_CREATED[i].z >= b.z)
+					if (BACKGROUND_CREATED[i].posX / BACKGROUND_CREATED[i].z >= b.posX / b.z)
 					{
 						addChildAt(b, getChildIndex(BACKGROUND_CREATED[i]));
 						BACKGROUND_CREATED.splice(i, 0, b);
