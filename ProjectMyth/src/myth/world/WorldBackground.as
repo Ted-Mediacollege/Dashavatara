@@ -103,8 +103,6 @@ package myth.world
 		
 		public function tick(camX:Number):void
 		{
-			trace(Backgrounds_created.length);
-			
 			for (var i:int = Backgrounds_created.length - 1; i > -1; i-- )
 			{
 				Backgrounds_created[i].x = (Backgrounds_created[i].posX + -camX) / Backgrounds_created[i].z;

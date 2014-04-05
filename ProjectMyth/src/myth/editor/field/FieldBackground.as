@@ -18,6 +18,7 @@ package myth.editor.field
 		public var BACKGROUND_SPAWN:Background;
 		public var BACKGROUND_END:Background;
 		
+		public var theme:int;
 		
 		public function FieldBackground() 
 		{
@@ -29,21 +30,21 @@ package myth.editor.field
 			BACKGROUND_RANDOM = new Vector.<Background>();
 			BACKGROUND_CREATED = new Vector.<EditorItem>();
 		
+			theme = t;
+			
 			var bg:Image = new Image(AssetList.assets.getTexture(EditorFiles.getLuchtName(t)));
 			bg.blendMode = BlendMode.NONE;
 			addChild(bg);
 				
 			if (t == Theme.SKY)
 			{
-				var clouds:Vector.<Texture> = AssetList.assets.getTextures("common_wolk");
-				var cloudslength:int = clouds.length;
-				var cloudiness:int = int(Math.ceil(size / 127 * 0.35));
-				for (var j:int = 0; j < cloudiness; j++ )
+				var textures:Vector.<Texture> = AssetList.assets.getTextures("common_wolk");
+				var texturesLength:int = textures.length;
+				for (var j:int = 0; j < 25; j++ )
 				{
-					var randomHeight:int = MathHelper.nextInt(380);
-					var b2:Background = new Background(clouds[MathHelper.nextInt(cloudslength)], MathHelper.nextInt(size + 2500) - 500, randomHeight - 50, 4 + (randomHeight / 100), 1 - (randomHeight / 800), 1 - (randomHeight / 800));
+					var depth:Number = (MathHelper.nextInt(380) / 100) + 3;
+					var b2:Background = new Background(textures[MathHelper.nextInt(texturesLength)], MathHelper.nextInt(1480 * depth), (depth * 90) - 300, depth, 1 - (depth / 20), 1 - (depth / 20));
 					b2.x = b2.posX / b2.z;
-					b2.visible = false;
 					BACKGROUND_RANDOM.push(b2);
 					addChild(b2);
 				}
@@ -56,7 +57,6 @@ package myth.editor.field
 				{
 					var b3:Background = new Background(mountain, (k * 1280) * 4, 0, 4, 1, 1);
 					b3.x = b3.posX / b3.z;
-					b3.visible = false;
 					BACKGROUND_RANDOM.push(b3);
 					addChild(b3);
 				}
@@ -109,16 +109,43 @@ package myth.editor.field
 		
 		public function tick(camX:Number):void
 		{
-			for (var i:int = BACKGROUND_RANDOM.length - 1; i > -1; i-- )
+			if (theme == 0)
 			{
-				BACKGROUND_RANDOM[i].x = (BACKGROUND_RANDOM[i].posX + -camX) / BACKGROUND_RANDOM[i].z;
-				if (BACKGROUND_RANDOM[i].x < -BACKGROUND_RANDOM[i].width || BACKGROUND_RANDOM[i].x > 1080)
+				for (var k:int = BACKGROUND_RANDOM.length - 1; k > -1; k--)
 				{
-					BACKGROUND_RANDOM[i].visible = false;
+					BACKGROUND_RANDOM[k].x = (BACKGROUND_RANDOM[k].posX + -camX) / BACKGROUND_RANDOM[k].z;
+					if (BACKGROUND_RANDOM[k].x + BACKGROUND_RANDOM[k].width < 0)
+					{
+						BACKGROUND_RANDOM[k].posX += (1280 * BACKGROUND_RANDOM[k].z) + (BACKGROUND_RANDOM[k].width * BACKGROUND_RANDOM[k].z);
+					}
+					else if (BACKGROUND_RANDOM[k].x > 1280)
+					{
+						BACKGROUND_RANDOM[k].posX -= (1280 * BACKGROUND_RANDOM[k].z) + (BACKGROUND_RANDOM[k].width * BACKGROUND_RANDOM[k].z);
+					}
 				}
-				else
+			}
+			else if (theme == 1)
+			{
+				if (BACKGROUND_RANDOM[0].x + BACKGROUND_RANDOM[0].width < 0)
 				{
-					BACKGROUND_RANDOM[i].visible = true;
+					for (var kr1:int = BACKGROUND_RANDOM.length - 1; kr1 > -1; kr1--)
+					{
+						BACKGROUND_RANDOM[kr1].posX += 1280 * 4;
+					}
+				}
+				else if (BACKGROUND_RANDOM[1].x > 1280)
+				{
+					for (var kr2:int = BACKGROUND_RANDOM.length - 1; kr2 > -1; kr2--)
+					{
+						BACKGROUND_RANDOM[kr2].posX -= 1280 * 4;
+					}
+				}
+				
+				trace(BACKGROUND_RANDOM[0].x, BACKGROUND_RANDOM[1].x);
+				
+				for (var m:int = BACKGROUND_RANDOM.length - 1; m > -1; m--)
+				{
+					BACKGROUND_RANDOM[m].x = (BACKGROUND_RANDOM[m].posX + -camX) / BACKGROUND_RANDOM[m].z;
 				}
 			}
 			
