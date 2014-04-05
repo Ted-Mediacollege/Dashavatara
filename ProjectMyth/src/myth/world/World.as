@@ -116,9 +116,8 @@ package myth.world
 		
 		public function tick():void
 		{
-			gamemode.tick();
-			
 			if (worldBuild) {
+				gamemode.tick();
 				gameJuggler.advanceTime(TimeHelper.deltaTime);
 				
 				if(!levelComplete){
