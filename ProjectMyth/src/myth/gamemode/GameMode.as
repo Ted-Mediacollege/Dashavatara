@@ -45,6 +45,14 @@ package myth.gamemode
 		
 		public function tutorialBuild():void
 		{
+		}		
+		
+		public function onClick(type:int, data:Vector.<Number>):void
+		{
+		}
+		
+		public function onButtonPress(buttonID:int):void
+		{
 		}
 	}
 }

@@ -17,7 +17,7 @@ package myth.gui
 		public var main:Main;
 		public var buttonList:Vector.<GuiButton>;
 		public static var background:GuiBackground;
-		private static var buttonTouched:Boolean = false;
+		public static var buttonTouched:Boolean = false;
 		
 		//called when gui contructed
 		public function init():void { }

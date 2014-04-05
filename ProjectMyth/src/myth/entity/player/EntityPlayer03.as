@@ -19,7 +19,7 @@ package myth.entity.player
 		public var animationWalk:MovieClip;
 		public var jumping:Boolean;
 		public var cooldownFix:int;
-		private var canjump:Boolean = false;
+		public var canjump:Boolean = false;
 		
 		public function EntityPlayer03() 
 		{

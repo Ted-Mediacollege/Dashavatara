@@ -47,6 +47,8 @@ package myth.world
 	
 	public class World
 	{
+		public var inputEnabled:Boolean;
+		
 		public var gamemode:GameMode;
 		
 		private var worldBuild:Boolean;
@@ -86,6 +88,8 @@ package myth.world
 			gameJuggler = new Juggler();
 			EntityPlayerBase.levelStart();
 			gui = g;
+			
+			inputEnabled = true;
 		}
 		
 		public function init():void {
@@ -152,17 +156,22 @@ package myth.world
 		
 		public function input(type:int, data:Vector.<Number>, e:TouchEvent):void
 		{	
-			player.input(type, data, e);
+			gamemode.onClick(type, data);
 			
-			var touchCount:int =  e.touches.length;
-			//draw point
-			myth.util.Debug.test(function():void { 
-				debugShape.graphics.clear();
-				debugShape.graphics.beginFill(0x000000, 0.2);
-				debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
-				debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.gui).x,e.touches[0].getLocation(Main.gui).y,20);
-				debugShape.graphics.endFill();
-			}, myth.util.Debug.DrawArracks);
+			if (inputEnabled)
+			{
+				player.input(type, data, e);
+				
+				var touchCount:int =  e.touches.length;
+				//draw point
+				myth.util.Debug.test(function():void { 
+					debugShape.graphics.clear();
+					debugShape.graphics.beginFill(0x000000, 0.2);
+					debugShape.graphics.lineStyle(2, 0x00ff00, 0.7);
+					debugShape.graphics.drawCircle(e.touches[0].getLocation(Main.gui).x,e.touches[0].getLocation(Main.gui).y,20);
+					debugShape.graphics.endFill();
+				}, myth.util.Debug.DrawArracks);
+			}
 		}
 	}
 }

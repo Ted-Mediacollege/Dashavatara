@@ -35,13 +35,15 @@ package myth.gui.game
 	import myth.PreLoader;
 	import myth.data.GameData;
 	import myth.lang.Lang;
+	import myth.input.TouchType;
+	import starling.events.TouchPhase;
 	
 	public class GuiGame extends GuiScreen 
 	{
 		private var bg:Image;
 		private var pauseScreen:Boolean = false;
 		
-		private var puaseButton:GuiButtonToggle;
+		public var puaseButton:GuiButtonToggle;
 		public var b1:GuiButtonToggle;
 		public var b2:GuiButtonToggle;
 		public var b3:GuiButtonToggle;
@@ -199,6 +201,58 @@ package myth.gui.game
 			//removeChild(Main.world);
 			Main.world.onRemove();
 			Main.world = null;
+		}
+		
+		override public function touch(type:int, data:Vector.<Number>, e:TouchEvent):void
+		{
+			var i:int = 0;
+			if (type == TouchType.CLICK)
+			{
+				for (i = 0; i < buttonList.length; i++ )
+				{
+					if (buttonList[i].enabled &&
+						data[0] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+						data[1] > buttonList[i].posY - buttonList[i].posHeight / 2 && 
+						data[2] > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+						data[3] > buttonList[i].posY - buttonList[i].posHeight / 2 && 
+						data[0] < buttonList[i].posX + buttonList[i].posWidth / 2 && 
+						data[1] < buttonList[i].posY + buttonList[i].posHeight / 2 &&
+						data[2] < buttonList[i].posX + buttonList[i].posWidth / 2 && 
+						data[3] < buttonList[i].posY + buttonList[i].posHeight / 2
+						)
+					{
+						gamemode.onButtonPress(buttonList[i].buttonID);
+						buttonList[i].click();
+						AssetList.soundCommon.playSound("button");
+						action(buttonList[i]);
+						break;
+					}
+				}
+			}
+			if (e.touches[0].phase == TouchPhase.BEGAN) 
+			{
+				for (i = 0; i < buttonList.length; i++ )
+				{
+					if (buttonList[i].enabled &&
+						e.touches[0].getLocation(Main.gui).x > buttonList[i].posX - buttonList[i].posWidth / 2 && 
+						e.touches[0].getLocation(Main.gui).y > buttonList[i].posY - buttonList[i].posHeight / 2 && 
+						e.touches[0].getLocation(Main.gui).x < buttonList[i].posX + buttonList[i].posWidth / 2 && 
+						e.touches[0].getLocation(Main.gui).y < buttonList[i].posY + buttonList[i].posHeight / 2
+						)
+					{
+						buttonTouched = true;
+						break;
+					}
+				}
+			}
+			if (e.touches[0].phase == TouchPhase.ENDED) 
+			{
+				buttonTouched = false;
+			}
+			if (!buttonTouched)
+			{
+				input(type, data, e);
+			}
 		}
 	}
 }
