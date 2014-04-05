@@ -1,6 +1,7 @@
 package myth.gui.game 
 {
 	import myth.gamemode.GameModeEndless;
+	import myth.gamemode.GameModeTutorial;
 	import myth.gui.GuiScreen;
 	import myth.gui.components.GuiButton;
 	import myth.graphics.AssetList;
@@ -40,7 +41,7 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 2)
 			{
-				
+				main.switchGui(new GuiGame(new GameModeTutorial()));
 			}
 			else if (b.buttonID == 3)
 			{

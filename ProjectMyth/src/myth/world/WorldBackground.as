@@ -96,6 +96,12 @@ package myth.world
 			}
 		}
 		
+		public function addToQueue(ty:int, pz:int, px:int, py:int):void
+		{
+			var d:Vector.<int> = new <int>[ty, pz, px, py];
+			queue.push(d);
+		}
+		
 		public function tick(camX:Number):void
 		{
 			for (var i:int = Backgrounds_created.length - 1; i > -1; i-- )

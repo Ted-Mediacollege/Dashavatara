@@ -15,6 +15,7 @@ package myth.gamemode
 	public class GameModeEndless extends GameMode
 	{
 		public var theme:int;
+		public var timer:Number;
 		
 		public function GameModeEndless(t:int) 
 		{
@@ -25,6 +26,8 @@ package myth.gamemode
 		{
 			world.speed = 6;
 			world.endPointPosition = 2000;
+			
+			timer = 600;
 			
 			AssetList.loadLevelAssets(theme, PlayerType.Fish, PlayerType.Fluit, PlayerType.Lion);
 		}
@@ -45,9 +48,21 @@ package myth.gamemode
 		
 		override public function tick():void
 		{
+			if (!isNaN(world.deltaSpeed))
+			{
+				timer += world.deltaSpeed;
+			}
+				
+			if (timer > 700)
+			{
+				timer = 0;
+				
+				world.background.addToQueue(0, 2, world.distance + (1300 * 2), 260);
+			}
+			
 			world.endPointPosition = world.distance + 2000;
 			
-			trace("Distance: " + (world.distance / 127));
+			//trace("Distance: " + (world.distance / 127));
 		}
 		
 		override public function onRestart():void
