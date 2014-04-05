@@ -31,7 +31,7 @@ package myth.gamemode
 		
 		override public function build():void
 		{
-			AssetList.soundLevel.playSound("levelMusic");
+			//AssetList.soundLevel.playSound("levelMusic");
 			
 			world.physicsWorld = new PhysicsWorld();
 			world.playerHolder = new PlayerHolder();			
@@ -46,6 +46,8 @@ package myth.gamemode
 		override public function tick():void
 		{
 			world.endPointPosition = world.distance + 2000;
+			
+			trace("Distance: " + (world.distance / 127));
 		}
 		
 		override public function onRestart():void
@@ -56,11 +58,6 @@ package myth.gamemode
 		override public function onDeath():void
 		{
 			world.gui.main.switchGui(new GuiGame(new GameModeEndless(theme)));
-		}
-		
-		override public function onWin():void
-		{
-			//NOT POSSIBLE
 		}
 	}
 }
