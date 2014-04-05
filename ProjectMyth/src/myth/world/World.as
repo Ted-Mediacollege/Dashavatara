@@ -148,7 +148,8 @@ package myth.world
 				
 				if (player.x < -200) {
 					gamemode.onDeath();
-				}else if (player.x > 1480 || levelComplete) {
+				}else if (player.x > 1480 && !levelComplete) {
+					levelComplete = true;
 					gamemode.onWin();
 				}
 			}
