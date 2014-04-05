@@ -49,13 +49,12 @@ package myth.gui.game
 		private var pauseb2:GuiButton;
 		private var pauseb3:GuiButton;
 		
-		private var help_text_temp:GuiText;
-		private var help_fade:int;
-		private var help_visible:Boolean;
 		private var gameLayer:Sprite;
 		
 		private var gamemode:GameMode;
 		private var gameScreen:Sprite = new Sprite();
+		
+		public static var restartText:String;
 		
 		public function GuiGame(gm:GameMode) 
 		{
@@ -69,6 +68,8 @@ package myth.gui.game
 				PreLoader.starling.showStats = true;
 			}
 			
+			restartText = Lang.trans(Lang.INGAME, "menu.restart");
+			
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
 			
@@ -81,18 +82,12 @@ package myth.gui.game
 				1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, "",false
 			);
 			addButton(puaseButton);
-			
-			help_text_temp = new GuiText(40, 700, 1200, 100, "left", "top", "Swipe to slash", 40, 0x000000, "Arial");
-			addChild(help_text_temp);
-			help_visible = true;
-			help_fade = 100;
-			help_text_temp.alpha = 1;
 		}
 		
 		private function createPauseButtons():void 
 		{
 			pauseb2 = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 -90, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
-			pauseb3 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 +30, 450, 100, Lang.trans(Lang.INGAME, "menu.restart"), 45, 0xf1d195, "GameFont"));
+			pauseb3 = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 +30, 450, 100, restartText, 45, 0xf1d195, "GameFont"));
 			pauseb1 = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 +150, 450, 100, Lang.trans(Lang.INGAME, "menu.resume"), 45, 0xf1d195, "GameFont"));
 		}
 		
@@ -157,30 +152,13 @@ package myth.gui.game
 						b3.setState(true);
 					}
 					Main.world.playerHolder.switchAvatar(button.buttonID - 10);
-					
-					help_visible = true;
-					help_fade = 100;
-					help_text_temp.alpha = 1;
-					switch(button.buttonID - 10)
-					{
-						case 0: help_text_temp.text.text = "Tap to Jump."; break;
-						case 1: help_text_temp.text.text = "Swipe to slash"; break;
-						case 2: help_text_temp.text.text = "Tap repeatedly to sprint."; break;
-					}
 				}
-				
-				
 			}
 		}
 		
 		override public function tick():void
 		{	
 			super.tick();
-			if (help_fade > 0 && !help_visible)
-			{
-				help_fade--;
-				help_text_temp.alpha = Number(help_fade) / 100.0;
-			}
 			
 			if (!pauseScreen)
 			{
@@ -220,11 +198,6 @@ package myth.gui.game
 			if (!pauseScreen)
 			{
 				Main.world.input(type, data, e);
-			}
-			if (help_visible)
-			{
-				help_visible = false;
-				help_fade = 100;
 			}
 		}
 		

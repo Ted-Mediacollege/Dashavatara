@@ -11,19 +11,26 @@ package myth.gamemode
 	import myth.world.PlayerHolder;
 	import myth.entity.player.PlayerType;
 	import myth.gui.game.GuiGame;
+	import myth.lang.Lang;
 	
 	public class GameModeTutorial extends GameMode
 	{
+		public var tutorialState:int;
+		
 		public function GameModeTutorial() 
 		{
 		}
 		
 		override public function init():void
 		{
+			tutorialState = 0;
+			
 			world.speed = 6;
 			world.endPointPosition = 2000;
 			
 			AssetList.loadLevelAssets(0, PlayerType.Fish, PlayerType.Fluit, PlayerType.Lion);
+			
+			GuiGame.restartText = "Restart Tutorial";
 		}
 		
 		override public function build():void

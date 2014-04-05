@@ -53,7 +53,7 @@ package myth.gamemode
 				timer += world.deltaSpeed;
 			}
 				
-			if (timer > 700)
+			if (timer > 900)
 			{
 				timer = 0;
 				
