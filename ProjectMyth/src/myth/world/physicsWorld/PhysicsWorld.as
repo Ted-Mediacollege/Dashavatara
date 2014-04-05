@@ -55,7 +55,7 @@ package myth.world.physicsWorld
 			//player physics body
 			playerBody = new Body(BodyType.DYNAMIC,new Vec2(200,200) );
 			playerBody.shapes.add(new Polygon(Polygon.box(100,180)));
-			playerBody.position.setxy(200,639);
+			playerBody.position.setxy(300,639);
 			playerBody.space = physicsSpace;
 			playerBody.userData.Pivot = new Vec2(0, -90);
 			playerBody.userData.name = "player";

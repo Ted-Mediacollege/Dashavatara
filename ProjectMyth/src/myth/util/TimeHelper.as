@@ -18,7 +18,14 @@ package myth.util
 			oldTime = newTime;
 			newTime = CurrentDateTime.time;
 			deltaTime = (newTime -oldTime)/1000;
-			deltaTimeScale = (newTime -oldTime)*0.06;
+			deltaTimeScale = (newTime -oldTime) * 0.06;
+			if (deltaTimeScale > 3) {
+				deltaTimeScale = 3;
+				deltaTime = 3 * 0.001;
+			}else if (deltaTimeScale < 0) {
+				deltaTimeScale = 0;
+				deltaTime = 0;
+			}
 		}
 		
 	}
