@@ -20,12 +20,14 @@ package myth.entity.player
 		public var jumping:Boolean;
 		public var cooldownFix:int;
 		public var canjump:Boolean = false;
+		import treefortress.spriter.AnimationSet;
 		
 		public function EntityPlayer03() 
 		{
 			super(false,300,PlayerType.Fluit,AssetList.assets.getTexture("gui_icon3"),AssetList.assets.getTexture("gui_icon3_d"),"playerHitFluit");
 			
-			image = AssetList.spriterLoader.getSpriterClip("animFlute");
+			//image = AssetList.spriterLoader.getSpriterClip("animFlute");
+			image = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animFlute")), AssetList.assets.getTextureAtlas("common"));
 			image.playbackSpeed = 1;
 			image.scaleX = 1;
 			image.scaleY = 1;

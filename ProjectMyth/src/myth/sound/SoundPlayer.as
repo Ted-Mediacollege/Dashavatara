@@ -5,7 +5,7 @@ package myth.sound
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.media.SoundTransform;
-	import myth.sound.SoundHolder;
+	import myth.asset.Asset;
 	import starling.extensions.SoundManager;
 	import starling.utils.AssetManager;
 	

@@ -156,20 +156,7 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 3) //BUILD EDITOR
 			{
-				var s:int = 0;
-				switch(size_selected)
-				{
-					case 0: s = 90; break;
-					case 1: s = 145; break;
-					case 2: s = 200; break;
-				}
-				
-				create_menu(false);
-				editor_menu(true);
-				editor.build(theme_selected, s);
-				inEditor = true;
-				grey_screen.visible = false;
-				saveFileID = -1;
+				AssetList.loadLevelAssets(theme_selected, false, "guiEditor");
 			}
 			else if (b.buttonID == 4) //THEME
 			{
@@ -192,6 +179,29 @@ package myth.gui.game
 			{
 				editor.action(b.buttonID);
 			}
+		}
+		
+		//called by AssetList
+		public function build(from:String):void 
+		{
+			if(from == "guiEditor"){
+				var s:int = 0;
+				switch(size_selected)
+				{
+					case 0: s = 90; break;
+					case 1: s = 145; break;
+					case 2: s = 200; break;
+				}
+				create_menu(false);
+				editor_menu(true);
+				editor.build(theme_selected, s);
+				inEditor = true;
+				grey_screen.visible = false;
+				saveFileID = -1;
+			}else if (from == "editor") {
+				editor.postLoad();
+			}
+			//editor.build(theme_selected, s);
 		}
 		
 		override public function destroy():void 

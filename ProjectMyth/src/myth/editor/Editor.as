@@ -63,6 +63,8 @@ package myth.editor
 		public var fileLoader:Loader;
 		
 		public var levelLength:int;
+		private var loadedSaveFile:Object;
+		private var loadingDone:Boolean = false;
 
 		public function Editor(gui:GuiEditor) 
 		{
@@ -83,6 +85,7 @@ package myth.editor
 		
 		public function build(t:int, s:int):void
 		{
+			loadingDone = true;
 			theme = t;
 			levelLength = s;
 			Theme.MENU_THEME = theme;
@@ -115,12 +118,21 @@ package myth.editor
 		
 		public function load(levelString:String, fromTesting:Boolean = false):void
 		{		
-			var saveFile:Object = com.adobe.serialization.json.JSON.decode(levelString);
-			levelLength = saveFile.size;
+			loadedSaveFile = com.adobe.serialization.json.JSON.decode(levelString);
+			levelLength = loadedSaveFile.size;
 			
-			theme = saveFile.theme;
+			theme = loadedSaveFile.theme;
 			Theme.MENU_THEME = theme;
 			
+			AssetList.loadLevelAssets(theme, false, "editor");
+			
+			saved = !fromTesting;
+		}
+		
+		//called by AssetList
+		public function postLoad():void 
+		{
+			loadingDone = true;
 			SELECTOR = new EditorSelector();
 			addChild(SELECTOR);
 			SELECTOR.build(theme);
@@ -140,12 +152,11 @@ package myth.editor
 			
 			CONSTRUCTOR = new EditorConstructor(this);
 			
-			FIELD_BACKGROUND.buildFile(saveFile.background_props, levelLength * 127, theme);
+			FIELD_BACKGROUND.buildFile(loadedSaveFile.background_props, levelLength * 127, theme);
 			FIELD_TILES.build(theme);
-			FIELD_OBJECTS.buildFile(saveFile.objects, theme);
-			FIELD_ENEMIES.buildFile(saveFile.enemies);
+			FIELD_OBJECTS.buildFile(loadedSaveFile.objects, theme);
+			FIELD_ENEMIES.buildFile(loadedSaveFile.enemies);
 			
-			saved = !fromTesting;	
 			
 			if (guiEditor.saveFileID > -1)
 			{
@@ -314,12 +325,15 @@ package myth.editor
 		
 		public function tick():void
 		{
-			SCROLL.tick();
-			
-			FIELD_TILES.tick(camX);
-			FIELD_BACKGROUND.tick(camX);
-			FIELD_OBJECTS.tick(camX);
-			FIELD_ENEMIES.tick(camX);
+			if (loadingDone)
+			{
+				SCROLL.tick();
+				
+				FIELD_TILES.tick(camX);
+				FIELD_BACKGROUND.tick(camX);
+				FIELD_OBJECTS.tick(camX);
+				FIELD_ENEMIES.tick(camX);
+			}
 		}
 		
 		public function action(id:int, fromAlert:Boolean = false):void

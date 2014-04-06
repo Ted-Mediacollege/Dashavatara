@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="common.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="FlyingEnemy0001"	x="405"	y="320"	width="113"	height="124" frameX="-3" frameY="-13" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0002"	x="405"	y="320"	width="113"	height="124" frameX="-3" frameY="-13" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0003"	x="279"	y="327"	width="125"	height="119" frameX="-3" frameY="-14" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0004"	x="279"	y="327"	width="125"	height="119" frameX="-3" frameY="-14" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0005"	x="334"	y="819"	width="119"	height="118" frameX="-7" frameY="-2" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0006"	x="334"	y="819"	width="119"	height="118" frameX="-7" frameY="-2" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0007"	x="334"	y="712"	width="120"	height="106" frameX="-11" frameY="-0" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0008"	x="334"	y="712"	width="120"	height="106" frameX="-11" frameY="-0" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0009"	x="500"	y="174"	width="102"	height="103" frameX="-26" frameY="-0" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0010"	x="500"	y="174"	width="102"	height="103" frameX="-26" frameY="-0" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0011"	x="201"	y="542"	width="125"	height="111" frameX="-5" frameY="-0" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0012"	x="201"	y="542"	width="125"	height="111" frameX="-5" frameY="-0" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0013"	x="327"	y="447"	width="122"	height="112" frameX="-0" frameY="-5" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0014"	x="327"	y="447"	width="122"	height="112" frameX="-0" frameY="-5" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0015"	x="454"	y="819"	width="107"	height="117" frameX="-2" frameY="-11" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="FlyingEnemy0016"	x="454"	y="819"	width="107"	height="117" frameX="-2" frameY="-11" frameWidth="131" frameHeight="137"/>
+	<SubTexture name="L_bovenarm"	x="402"	y="938"	width="37"	height="46" frameX="-0" frameY="-0" frameWidth="37" frameHeight="46"/>
+	<SubTexture name="L_bovenbeen"	x="519"	y="327"	width="29"	height="41" frameX="-0" frameY="-0" frameWidth="29" frameHeight="41"/>
+	<SubTexture name="L_onderarm"	x="513"	y="956"	width="30"	height="48" frameX="-0" frameY="-0" frameWidth="30" frameHeight="48"/>
+	<SubTexture name="L_onderbeen"	x="571"	y="956"	width="26"	height="41" frameX="-0" frameY="-0" frameWidth="26" frameHeight="41"/>
+	<SubTexture name="R_bovenarm"	x="477"	y="937"	width="35"	height="46" frameX="-0" frameY="-0" frameWidth="35" frameHeight="46"/>
+	<SubTexture name="R_bovenbeen"	x="519"	y="369"	width="28"	height="40" frameX="-0" frameY="-0" frameWidth="28" frameHeight="40"/>
+	<SubTexture name="R_onderarm"	x="519"	y="278"	width="30"	height="48" frameX="-0" frameY="-0" frameWidth="30" frameHeight="48"/>
+	<SubTexture name="R_onderbeen"	x="598"	y="956"	width="25"	height="40" frameX="-0" frameY="-0" frameWidth="25" frameHeight="40"/>
+	<SubTexture name="RunningEnemy0001"	x="450"	y="445"	width="110"	height="166" frameX="-9" frameY="-2" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0002"	x="450"	y="445"	width="110"	height="166" frameX="-9" frameY="-2" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0003"	x="455"	y="612"	width="106"	height="166" frameX="-10" frameY="-5" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0004"	x="455"	y="612"	width="106"	height="166" frameX="-10" frameY="-5" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0005"	x="562"	y="616"	width="90"	height="168" frameX="-23" frameY="-8" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0006"	x="562"	y="616"	width="90"	height="168" frameX="-23" frameY="-8" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0007"	x="614"	y="0"	width="81"	height="160" frameX="-34" frameY="-15" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0008"	x="614"	y="0"	width="81"	height="160" frameX="-34" frameY="-15" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0009"	x="653"	y="616"	width="76"	height="163" frameX="-38" frameY="-16" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0010"	x="653"	y="616"	width="76"	height="163" frameX="-38" frameY="-16" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0011"	x="657"	y="273"	width="72"	height="170" frameX="-28" frameY="-10" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0012"	x="657"	y="273"	width="72"	height="170" frameX="-28" frameY="-10" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0013"	x="562"	y="785"	width="87"	height="170" frameX="-15" frameY="-9" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0014"	x="562"	y="785"	width="87"	height="170" frameX="-15" frameY="-9" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0015"	x="512"	y="0"	width="101"	height="167" frameX="-13" frameY="-6" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0016"	x="512"	y="0"	width="101"	height="167" frameX="-13" frameY="-6" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0017"	x="397"	y="0"	width="114"	height="173" frameX="-6" frameY="-0" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0018"	x="397"	y="0"	width="114"	height="173" frameX="-6" frameY="-0" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0019"	x="561"	y="278"	width="95"	height="168" frameX="-14" frameY="-6" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0020"	x="561"	y="278"	width="95"	height="168" frameX="-14" frameY="-6" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0021"	x="656"	y="447"	width="68"	height="162" frameX="-32" frameY="-14" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0022"	x="656"	y="447"	width="68"	height="162" frameX="-32" frameY="-14" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0023"	x="725"	y="444"	width="63"	height="168" frameX="-37" frameY="-11" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0024"	x="725"	y="444"	width="63"	height="168" frameX="-37" frameY="-11" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0025"	x="650"	y="785"	width="76"	height="161" frameX="-38" frameY="-16" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0026"	x="650"	y="785"	width="76"	height="161" frameX="-38" frameY="-16" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0027"	x="562"	y="447"	width="93"	height="168" frameX="-21" frameY="-7" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="RunningEnemy0028"	x="562"	y="447"	width="93"	height="168" frameX="-21" frameY="-7" frameWidth="128" frameHeight="180"/>
+	<SubTexture name="b_been"	x="485"	y="779"	width="29"	height="39" frameX="-0" frameY="-0" frameWidth="29" frameHeight="39"/>
+	<SubTexture name="b_broek"	x="120"	y="963"	width="55"	height="56" frameX="-0" frameY="-0" frameWidth="55" frameHeight="56"/>
+	<SubTexture name="b_hoofd"	x="383"	y="218"	width="116"	height="101" frameX="-0" frameY="-0" frameWidth="116" frameHeight="101"/>
+	<SubTexture name="b_lichaam"	x="195"	y="938"	width="73"	height="63" frameX="-0" frameY="-0" frameWidth="73" frameHeight="63"/>
+	<SubTexture name="b_onderarm"	x="544"	y="956"	width="26"	height="43" frameX="-0" frameY="-0" frameWidth="26" frameHeight="43"/>
+	<SubTexture name="b_schouder"	x="477"	y="984"	width="28"	height="36" frameX="-0" frameY="-0" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="backflap"	x="286"	y="447"	width="39"	height="38" frameX="-0" frameY="-0" frameWidth="39" frameHeight="38"/>
+	<SubTexture name="belt"	x="0"	y="974"	width="62"	height="29" frameX="-0" frameY="-0" frameWidth="62" frameHeight="29"/>
+	<SubTexture name="body"	x="201"	y="654"	width="71"	height="75" frameX="-0" frameY="-0" frameWidth="71" frameHeight="75"/>
+	<SubTexture name="cloud1"	x="318"	y="976"	width="42"	height="39" frameX="-0" frameY="-0" frameWidth="42" frameHeight="39"/>
+	<SubTexture name="cloud2"	x="429"	y="174"	width="31"	height="29" frameX="-0" frameY="-0" frameWidth="31" frameHeight="29"/>
+	<SubTexture name="cloud3"	x="500"	y="278"	width="18"	height="18" frameX="-0" frameY="-0" frameWidth="18" frameHeight="18"/>
+	<SubTexture name="common_easteregg1"	x="0"	y="327"	width="278"	height="95" frameX="-0" frameY="-0" frameWidth="278" frameHeight="95"/>
+	<SubTexture name="common_wolk1"	x="0"	y="218"	width="382"	height="108" frameX="-0" frameY="-0" frameWidth="382" frameHeight="108"/>
+	<SubTexture name="common_wolk2"	x="0"	y="0"	width="396"	height="145" frameX="-0" frameY="-0" frameWidth="396" frameHeight="145"/>
+	<SubTexture name="common_wolk3"	x="0"	y="146"	width="390"	height="71" frameX="-0" frameY="-0" frameWidth="390" frameHeight="71"/>
+	<SubTexture name="f_body"	x="685"	y="204"	width="52"	height="68" frameX="-0" frameY="-0" frameWidth="52" frameHeight="68"/>
+	<SubTexture name="f_fluit"	x="0"	y="963"	width="72"	height="10" frameX="-0" frameY="-0" frameWidth="72" frameHeight="10"/>
+	<SubTexture name="f_hair"	x="223"	y="447"	width="62"	height="79" frameX="-0" frameY="-0" frameWidth="62" frameHeight="79"/>
+	<SubTexture name="f_head"	x="603"	y="168"	width="81"	height="104" frameX="-0" frameY="-0" frameWidth="81" frameHeight="104"/>
+	<SubTexture name="f_knee"	x="0"	y="1004"	width="10"	height="12" frameX="-0" frameY="-0" frameWidth="10" frameHeight="12"/>
+	<SubTexture name="f_l_arm"	x="461"	y="174"	width="29"	height="33" frameX="-0" frameY="-0" frameWidth="29" frameHeight="33"/>
+	<SubTexture name="f_lwrleg"	x="519"	y="410"	width="19"	height="31" frameX="-0" frameY="-0" frameWidth="19" frameHeight="31"/>
+	<SubTexture name="f_noot"	x="321"	y="938"	width="32"	height="34" frameX="-0" frameY="-0" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="f_pants"	x="435"	y="1002"	width="31"	height="21" frameX="-0" frameY="-0" frameWidth="31" frameHeight="21"/>
+	<SubTexture name="f_r_arm"	x="269"	y="976"	width="48"	height="32" frameX="-0" frameY="-0" frameWidth="48" frameHeight="32"/>
+	<SubTexture name="f_sash1"	x="273"	y="654"	width="44"	height="77" frameX="-0" frameY="-0" frameWidth="44" frameHeight="77"/>
+	<SubTexture name="f_sash2"	x="455"	y="785"	width="29"	height="33" frameX="-0" frameY="-0" frameWidth="29" frameHeight="33"/>
+	<SubTexture name="f_sash3"	x="361"	y="956"	width="40"	height="67" frameX="-0" frameY="-0" frameWidth="40" frameHeight="67"/>
+	<SubTexture name="f_test"	x="286"	y="486"	width="38"	height="35" frameX="-0" frameY="-0" frameWidth="38" frameHeight="35"/>
+	<SubTexture name="f_upprleg"	x="176"	y="963"	width="17"	height="21" frameX="-0" frameY="-0" frameWidth="17" frameHeight="21"/>
+	<SubTexture name="hoofd"	x="327"	y="560"	width="121"	height="151" frameX="-0" frameY="-0" frameWidth="121" frameHeight="151"/>
+	<SubTexture name="knee"	x="515"	y="779"	width="20"	height="27" frameX="-0" frameY="-0" frameWidth="20" frameHeight="27"/>
+	<SubTexture name="lotus blad"	x="696"	y="0"	width="69"	height="203" frameX="-6" frameY="-8" frameWidth="100" frameHeight="220"/>
+	<SubTexture name="rock_down"	x="0"	y="423"	width="222"	height="118" frameX="-0" frameY="-0" frameWidth="222" frameHeight="118"/>
+	<SubTexture name="rock_fallingdown"	x="0"	y="743"	width="194"	height="219" frameX="-0" frameY="-0" frameWidth="194" frameHeight="219"/>
+	<SubTexture name="swipe1"	x="63"	y="974"	width="56"	height="30" frameX="-0" frameY="-0" frameWidth="56" frameHeight="30"/>
+	<SubTexture name="swipe2"	x="269"	y="938"	width="51"	height="37" frameX="-0" frameY="-0" frameWidth="51" frameHeight="37"/>
+	<SubTexture name="swipe3"	x="440"	y="938"	width="36"	height="63" frameX="-0" frameY="-0" frameWidth="36" frameHeight="63"/>
+	<SubTexture name="swipe4"	x="402"	y="985"	width="32"	height="38" frameX="-0" frameY="-0" frameWidth="32" frameHeight="38"/>
+	<SubTexture name="tadaa"	x="0"	y="542"	width="200"	height="200" frameX="-0" frameY="-0" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="voorflap"	x="391"	y="174"	width="37"	height="40" frameX="-0" frameY="-0" frameWidth="37" frameHeight="40"/>
+	<SubTexture name="warning icon"	x="195"	y="743"	width="138"	height="186" frameX="-0" frameY="-0" frameWidth="138" frameHeight="186"/>
+</TextureAtlas>

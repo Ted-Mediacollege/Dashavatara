@@ -59,7 +59,7 @@ package myth.gamemode
 			world.speed = 6;
 			world.endPointPosition = 2000;
 			
-			AssetList.loadLevelAssets(0, PlayerType.Fish, PlayerType.Fluit, PlayerType.Lion);
+			AssetList.loadLevelAssets(0);
 			
 			GuiGame.restartText = Lang.trans(Lang.TUTORIAL, "tutorial.restart");
 		}

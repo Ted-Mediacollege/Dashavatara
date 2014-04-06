@@ -19,6 +19,7 @@ package myth.entity.player
 	import pixelpaton.FindSmoothPathBetweenNodes;
 	import com.cartogrammar.drawing.CubicBezier;
 	import starling.textures.Texture;
+	import treefortress.spriter.AnimationSet;
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
 	import myth.util.TimeHelper;
@@ -36,7 +37,8 @@ package myth.entity.player
 			super(false,100,PlayerType.Boar,AssetList.assets.getTexture("gui_icon2"),AssetList.assets.getTexture("gui_icon2_d"),"playerHitBoar");
 			startXpos = 100;
 			//player art
-			clip = AssetList.spriterLoader.getSpriterClip("animSwine");
+			//clip = AssetList.spriterLoader.getSpriterClip("animSwine");
+			clip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animSwine")), AssetList.assets.getTextureAtlas("common"));
 			clip.playbackSpeed = 1;
 			clip.scaleX = 0.7;
 			clip.scaleY = 0.7;

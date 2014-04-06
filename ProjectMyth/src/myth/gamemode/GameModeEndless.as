@@ -31,7 +31,7 @@ package myth.gamemode
 			world.speed = 8;
 			world.endPointPosition = 2000;
 			
-			AssetList.loadLevelAssets(theme, PlayerType.Fish, PlayerType.Fluit, PlayerType.Lion);
+			AssetList.loadLevelAssets(theme);
 		}
 		
 		override public function build():void

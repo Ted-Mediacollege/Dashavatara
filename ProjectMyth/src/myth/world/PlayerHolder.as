@@ -11,6 +11,7 @@ package myth.world
 	import starling.display.Image;
 	import treefortress.spriter.SpriterClip;
 	import myth.graphics.AssetList;
+	import treefortress.spriter.AnimationSet;
 	
 	public class PlayerHolder 
 	{
@@ -20,7 +21,6 @@ package myth.world
 		
 		private var animTransform:SpriterClip;
 		private var animTransform2:SpriterClip;
-		private var transformCircle:Image;
 		
 		public function PlayerHolder() 
 		{
@@ -37,8 +37,10 @@ package myth.world
 			Display.add(Main.world.player, LayerID.GamePlayer);
 			
 			////////////
-			animTransform = AssetList.spriterLoader.getSpriterClip("transAnim");
-			animTransform2 = AssetList.spriterLoader.getSpriterClip("transAnim");
+			//animTransform = AssetList.spriterLoader.getSpriterClip("transAnim");
+			animTransform = new SpriterClip(new AnimationSet(AssetList.assets.getXml("transAnim")), AssetList.assets.getTextureAtlas("common"));
+			//animTransform2 = AssetList.spriterLoader.getSpriterClip("transAnim");
+			animTransform2 = new SpriterClip(new AnimationSet(AssetList.assets.getXml("transAnim")), AssetList.assets.getTextureAtlas("common"));
 			animTransform.playbackSpeed = 1.5;
 			animTransform2.playbackSpeed = 1.5;
 			Display.add(animTransform,LayerID.GamePlayerFront);
@@ -51,20 +53,14 @@ package myth.world
 				{
 					animTransform.visible = false;
 					animTransform.stop();
-					transformCircle.visible = false;
 					
 					animTransform2.visible = false;
 					animTransform2.stop();
 				}
 			);
 			
-			transformCircle = new Image(AssetList.assets.getTexture("common_tadaa"));
-			transformCircle.pivotX = 102;
-			transformCircle.pivotY = 100;
-			
 			animTransform.visible = false;
 			animTransform2.visible = false;
-			transformCircle.visible = false;
 			//Display.add(transformCircle,LayerID.GamePlayerBack);
 			Display.add(animTransform2,LayerID.GamePlayerBack);
 		}
@@ -74,9 +70,6 @@ package myth.world
 			animTransform.y = Main.world.player.y;
 			animTransform2.x = Main.world.player.x;
 			animTransform2.y = Main.world.player.y;
-			transformCircle.x = Main.world.player.x;
-			transformCircle.y = Main.world.player.y - 90;
-			transformCircle.rotation += 0.1;
 		}
 		
 		public function switchAvatar(id:int):void {
@@ -105,7 +98,6 @@ package myth.world
 				animTransform2.play("spinningcircle");
 				animTransform.visible = true;
 				animTransform2.visible = true;
-				transformCircle.visible = true;
 			}
 		}
 	}

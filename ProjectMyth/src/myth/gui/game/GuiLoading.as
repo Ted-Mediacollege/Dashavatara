@@ -14,6 +14,7 @@ package myth.gui.game
 	import myth.util.ScaleHelper;
 	import myth.lang.Lang;
 	import myth.data.GameData;
+	import myth.data.Theme;
 	
 	public class GuiLoading extends GuiScreen
 	{
@@ -43,7 +44,7 @@ package myth.gui.game
 			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 70, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
-			AssetList.preLoad();
+			AssetList.preLoad(Theme.MENU_THEME);
 		}
 		
 		override public function tick():void 

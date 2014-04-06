@@ -4,8 +4,8 @@ package myth.data
 	{
 		public static var MENU_THEME:int = 0;
 		
-		public static var SKY:int = 0;
-		public static var EARTH:int = 1;
-		public static var HELL:int = 2;
+		public static const SKY:int = 0;
+		public static const EARTH:int = 1;
+		public static const HELL:int = 2;
 	}
 }

@@ -57,8 +57,6 @@ package myth
 			this.scaleX = ScaleHelper.scaleX;
 			this.scaleY = ScaleHelper.scaleY;
 			
-			AssetList.load();
-			
 			input = new TouchInput();
 			addEventListener(TouchEvent.TOUCH, input.onMouse);
 			
