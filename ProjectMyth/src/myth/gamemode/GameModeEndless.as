@@ -1,5 +1,8 @@
 package myth.gamemode 
 {
+	import myth.gamemode.event.EventBase;
+	import myth.gamemode.event.EventEnemiesFlying;
+	import myth.gamemode.event.EventPillarShort;
 	import myth.graphics.AssetList;
 	import myth.world.WorldBackground;
 	import myth.world.WorldEntityManager;
@@ -11,11 +14,12 @@ package myth.gamemode
 	import myth.world.PlayerHolder;
 	import myth.entity.player.PlayerType;
 	import myth.gui.game.GuiGame;
+	import myth.util.MathHelper;
 	
 	public class GameModeEndless extends GameMode
 	{
 		public var theme:int;
-		public var timer:Number;
+		public var currentEvent:EventBase;
 		
 		public function GameModeEndless(t:int) 
 		{
@@ -24,10 +28,8 @@ package myth.gamemode
 		
 		override public function init():void
 		{
-			world.speed = 6;
+			world.speed = 8;
 			world.endPointPosition = 2000;
-			
-			timer = 600;
 			
 			AssetList.loadLevelAssets(theme, PlayerType.Fish, PlayerType.Fluit, PlayerType.Lion);
 		}
@@ -44,25 +46,38 @@ package myth.gamemode
 			world.background = new WorldBackground(new Vector.<Vector.<int>>(), theme);
 			world.objectManager = new WorldObjectManager(theme, new Vector.<Vector.<int>>());
 			world.zoneManager = new WorldZoneManager(new Vector.<Vector.<int>>());
+			
+			currentEvent = new EventPillarShort(this);
 		}
 		
 		override public function tick():void
 		{
 			if (!isNaN(world.deltaSpeed))
 			{
-				timer += world.deltaSpeed;
-			}
-				
-			if (timer > 900)
-			{
-				timer = 0;
-				
-				world.background.addToQueue(0, 2, world.distance + (1300 * 2), 260);
+				currentEvent.distLeft -= world.deltaSpeed;
+				currentEvent.tick();
+				if (currentEvent.distLeft < 0)
+				{
+					newEvent();
+				}
 			}
 			
 			world.endPointPosition = world.distance + 2000;
 			
-			//trace("Distance: " + (world.distance / 127));
+			world.speed = 6 + (world.distance / 5000);
+			trace(world.speed);
+		}
+		
+		public function newEvent():void
+		{
+			switch(MathHelper.nextInt(2))
+			{
+				case 0: currentEvent = new EventPillarShort(this); break;
+				case 1: currentEvent = new EventEnemiesFlying(this); break;
+				default: currentEvent = new EventPillarShort(this); break;
+			}
+			
+			currentEvent.init();
 		}
 		
 		override public function onRestart():void
