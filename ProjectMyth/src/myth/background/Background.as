@@ -3,6 +3,7 @@ package myth.background
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 	import starling.display.Image;
+	import starling.textures.TextureSmoothing;
 	
 	public class Background extends Image
 	{	
@@ -17,6 +18,7 @@ package myth.background
 			scaleX = sx;
 			scaleY = sy;
 			touchable = false;
+			smoothing = TextureSmoothing.NONE;
 			
 			z = pz;
 			posX = px;

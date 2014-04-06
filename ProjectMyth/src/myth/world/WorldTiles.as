@@ -8,6 +8,7 @@ package myth.world
 	import myth.data.Theme;
 	import starling.display.Image;
 	import myth.util.MathHelper;
+	import starling.textures.TextureSmoothing;
 	
 	public class WorldTiles extends Sprite
 	{				
@@ -31,6 +32,7 @@ package myth.world
 			for (var i:int = 0; i < 13; i++ )
 			{
 				var t:Image = new Image(AssetList.assets.getTexture(textureNames[MathHelper.nextInt(maxRand)]));
+				t.smoothing = TextureSmoothing.NONE;
 				t.x = i * textureSize;
 				t.y = 768 - 128;
 				TILES.push(t);
