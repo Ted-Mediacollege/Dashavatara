@@ -10,6 +10,7 @@ package myth.gui.game
 	import starling.display.Sprite;
 	import starling.events.TouchEvent;
 	import myth.input.TouchType;
+	import myth.lang.Lang;
 	
 	public class GuiEditorLoad extends GuiScreen
 	{
@@ -43,9 +44,9 @@ package myth.gui.game
 			var bg:Image = new Image(AssetList.assets.getTexture("gui_lose"));
 			addChild(bg);
 			
-			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2 + 480, screenHeight - 20, 250, 85, "Back to editor", 35, 0xf1d195, "GameFont"));
-			button_load = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2 - 480, screenHeight - 20, 250, 85, "Load Level", 35, 0xf1d195, "GameFont"));
-			button_delete = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2 - 180, screenHeight - 20, 250, 85, "Delete Level", 35, 0xf1d195, "GameFont"));
+			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2 + 480, screenHeight - 20, 250, 85, Lang.trans(Lang.EDITOR, "loading.back"), 35, 0xf1d195, "GameFont"));
+			button_load = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2 - 480, screenHeight - 20, 250, 85, Lang.trans(Lang.EDITOR, "loading.load"), 35, 0xf1d195, "GameFont"));
+			button_delete = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2 - 180, screenHeight - 20, 250, 85, Lang.trans(Lang.EDITOR, "loading.delete"), 35, 0xf1d195, "GameFont"));
 			
 			button_load.visible = false;
 			button_delete.visible = false;

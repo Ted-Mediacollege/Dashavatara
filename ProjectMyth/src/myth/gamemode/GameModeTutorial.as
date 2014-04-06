@@ -21,6 +21,7 @@ package myth.gamemode
 	import myth.graphics.LayerID;
 	import myth.input.TouchType;
 	import myth.util.TimeHelper;
+	import myth.lang.Lang;
 	
 	public class GameModeTutorial extends GameMode
 	{
@@ -60,7 +61,7 @@ package myth.gamemode
 			
 			AssetList.loadLevelAssets(0, PlayerType.Fish, PlayerType.Fluit, PlayerType.Lion);
 			
-			GuiGame.restartText = "Restart Tutorial";
+			GuiGame.restartText = Lang.trans(Lang.TUTORIAL, "tutorial.restart");
 		}
 		
 		override public function build():void
@@ -101,18 +102,18 @@ package myth.gamemode
 			if (state == tutorial_begin + 0)
 			{
 				world.inputEnabled = false;
-				setPanel("Welcome to the tutorial!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t01"));
 			}
 			else if (state == tutorial_begin + 1)
 			{
 				world.inputEnabled = false;
-				setPanel("You can acces the pause menu at any time bij pressing the pause button on the top-right corner of your screen.");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t02"));
 			}
 			else if (state == tutorial_begin + 2)
 			{
 				timer = -1;
 				world.gui.puaseButton.visible = true;
-				setPanel("The walking character on your screen is one of the 3 characters. To switch to another character press on one of the 3 buttons in the top-left corner of your screen.");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t03"));
 				world.gui.b1.visible = true;
 				world.gui.b2.visible = true;
 				world.gui.b3.visible = true;
@@ -129,7 +130,7 @@ package myth.gamemode
 			}
 			else if (state == tutorial_begin + 4)
 			{
-				setPanel("Well done!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t04"));
 			}
 			else if (state == tutorial_jumper + 0)
 			{
@@ -137,7 +138,7 @@ package myth.gamemode
 				setActiveButton(0);
 				world.gui.b2.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
-				setPanel("This is the jump character.\n\nYou can jump by tapping on the screen.");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t05"));
 			}
 			else if (state == tutorial_jumper + 1)
 			{
@@ -148,7 +149,7 @@ package myth.gamemode
 			{
 				world.inputEnabled = false;
 				(world.player as EntityPlayer03).canjump = false;
-				setPanel("Well done!\n\n");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t06"));
 			}
 			else if (state == tutorial_jumper + 3)
 			{
@@ -157,7 +158,7 @@ package myth.gamemode
 			}
 			else if (state == tutorial_jumper + 4)
 			{
-				setPanel("Try to jump over a pillar.");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t07"));
 				world.gui.b1.visible = true;
 				world.gui.b2.visible = true;
 				world.gui.b3.visible = true;
@@ -183,11 +184,11 @@ package myth.gamemode
 			{
 				world.inputEnabled = false;
 				(world.player as EntityPlayer03).canjump = false;
-				setPanel("Great!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t08"));
 			}
 			else if (state == tutorial_jumper + 7)
 			{
-				setPanel("Now try to jump over 3 pillars.");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t09"));
 				world.gui.b1.visible = true;
 				world.gui.b2.visible = true;
 				world.gui.b3.visible = true;
@@ -215,7 +216,7 @@ package myth.gamemode
 			{
 				world.inputEnabled = false;
 				(world.player as EntityPlayer03).canjump = false;
-				setPanel("Amazing!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t10"));
 			}
 			else if (state == tutorial_attacker + 0)
 			{
@@ -224,7 +225,7 @@ package myth.gamemode
 				world.gui.b1.alpha = 0.2;
 				world.gui.b2.alpha = 1;
 				world.gui.b3.alpha = 0.2;
-				setPanel("This is the attack character.\n\nYou can attack by swiping over the screen");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t11"));
 			}
 			else if (state == tutorial_attacker + 1)
 			{
@@ -234,11 +235,11 @@ package myth.gamemode
 			else if (state == tutorial_attacker + 2)
 			{
 				world.inputEnabled = false;
-				setPanel("Fantastic!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t12"));
 			}
 			else if (state == tutorial_attacker + 3)
 			{
-				setPanel("Try to kill an enemy by swiping over it!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t13"));
 				world.gui.b1.visible = true;
 				world.gui.b2.visible = true;
 				world.gui.b3.visible = true;
@@ -262,11 +263,11 @@ package myth.gamemode
 			else if (state == tutorial_attacker + 5)
 			{
 				world.inputEnabled = false;
-				setPanel("Nice Job!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t14"));
 			}
 			else if (state == tutorial_attacker + 6)
 			{
-				setPanel("Try to kill some more enemies");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t15"));
 				world.gui.b1.visible = true;
 				world.gui.b2.visible = true;
 				world.gui.b3.visible = true;
@@ -292,7 +293,7 @@ package myth.gamemode
 			}
 			else if (state == tutorial_attacker + 11)
 			{
-				setPanel("Well done!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t16"));
 			}
 			else if (state == tutorial_sprinter + 0)
 			{
@@ -301,7 +302,7 @@ package myth.gamemode
 				world.gui.b1.alpha = 0.2;
 				world.gui.b2.alpha = 0.2;
 				world.gui.b3.alpha = 1;
-				setPanel("This is the sprint character.\n\nYou can sprint by repeatedly tapping on the screen");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t17"));
 			}
 			else if (state == tutorial_sprinter + 1)
 			{
@@ -311,15 +312,15 @@ package myth.gamemode
 			else if (state == tutorial_sprinter + 2)
 			{
 				world.inputEnabled = false;
-				setPanel("Amazing!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t18"));
 			}
 			else if (state == tutorial_sprinter + 3)
 			{
-				setPanel("The tutorial is now over!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t19"));
 			}
 			else if (state == tutorial_sprinter + 4)
 			{
-				setPanel("Good luck!");
+				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t20"));
 			}
 			else if (state == tutorial_sprinter + 5)
 			{

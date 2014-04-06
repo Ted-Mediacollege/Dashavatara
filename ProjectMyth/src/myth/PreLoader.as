@@ -79,8 +79,6 @@ package myth
 		
 		public function isOperatorComputer():Boolean
 		{
-			return true;
-			/*
 			var os:String = Capabilities.os;
 			
 			if (os == null)
@@ -96,14 +94,10 @@ package myth
 				}
 				return true;
 			}
-			else if (os.indexOf("Mac OS") >= 0 || os.indexOf("Linux") >=h)
-			{
-				return true;
-			}
 			else
 			{
 				return false;
-			}*/
+			}
 		}
 	}
 }

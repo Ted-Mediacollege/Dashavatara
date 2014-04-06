@@ -5,6 +5,7 @@ package myth.gui.game
 	import myth.graphics.AssetList;
 	import starling.display.Image;
 	import myth.data.GameData;
+	import myth.lang.Lang;
 
 	public class GuiEditorSave extends GuiScreen
 	{
@@ -20,14 +21,14 @@ package myth.gui.game
 			var bg:Image = new Image(AssetList.assets.getTexture("gui_lose"));
 			addChild(bg);
 			
-			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2, screenHeight / 2, 250, 85, "Save level", 35, 0xf1d195, "GameFont"));
+			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_small"), screenWidth / 2, screenHeight / 2, 250, 85, Lang.trans(Lang.EDITOR, "saving.save"), 35, 0xf1d195, "GameFont"));
 		}
 		
 		override public function action(b:GuiButton):void 
 		{ 
 			if (b.buttonID == 0)
 			{
-				GameData.levelnames.unshift("Unnamed - " + getDateString());
+				GameData.levelnames.unshift(Lang.trans(Lang.EDITOR, "saving.unnamed") + " - " + getDateString());
 				GameData.levelList.unshift(levelString);
 				
 				main.switchGui(new GuiEditor(levelString, 0));

@@ -4,6 +4,7 @@ package myth.tutorial
 	import myth.graphics.AssetList;
 	import starling.display.Sprite;
 	import starling.text.TextField;
+	import myth.lang.Lang;
 	
 	public class TutorialPanel extends Sprite
 	{
@@ -26,7 +27,7 @@ package myth.tutorial
 			text_info.hAlign = "center";
 			addChild(text_info);
 			
-			text_cont = new TextField(880, 100, "Tap here to continue", "GameFont", 45, 0x000000, false);
+			text_cont = new TextField(880, 100, Lang.trans(Lang.TUTORIAL, "tutorial.tapcont"), "GameFont", 45, 0x000000, false);
 			text_cont.y = 300;
 			text_info.vAlign = "center";
 			text_info.hAlign = "center";

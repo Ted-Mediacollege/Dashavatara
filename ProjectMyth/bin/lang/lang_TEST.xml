@@ -20,6 +20,10 @@
 		<t name="option.language">translated</t>
 		<t name="option.on">translated</t>
 		<t name="option.off">translated</t>
+		
+		<t name="mode.story">translated</t>
+		<t name="mode.endless">translated</t>
+		<t name="mode.tutorial">translated</t>
 	</menu>
 	
 	<editor>
@@ -56,6 +60,13 @@
 		<t name="alert.save_menu">translated</t>
 		<t name="alert.save_load">translated</t>
 		<t name="alert.save_import">translated</t>
+		
+		<t name="saving.save">translated</t>
+		<t name="saving.unnamed">translated</t>
+		
+		<t name="loading.back">translated</t>
+		<t name="loading.load">translated</t>
+		<t name="loading.delete">translated</t>
 	</editor>
 	
 	<game>
@@ -63,4 +74,30 @@
 		<t name="menu.restart">translated</t>
 		<t name="menu.resume">translated</t>
 	</game>
+	
+	<tutorial>
+		<t name="tutorial.restart">translated</t>
+		<t name="tutorial.tapcont">translated</t>
+		
+		<t name="tutorial.t01">translated</t>
+		<t name="tutorial.t02">translated</t>
+		<t name="tutorial.t03">translated</t>
+		<t name="tutorial.t04">translated</t>
+		<t name="tutorial.t05">translated</t>
+		<t name="tutorial.t06">translated</t>
+		<t name="tutorial.t07">translated</t>
+		<t name="tutorial.t08">translated</t>
+		<t name="tutorial.t09">translated</t>
+		<t name="tutorial.t10">translated</t>
+		<t name="tutorial.t11">translated</t>
+		<t name="tutorial.t12">translated</t>
+		<t name="tutorial.t13">translated</t>
+		<t name="tutorial.t14">translated</t>
+		<t name="tutorial.t15">translated</t>
+		<t name="tutorial.t16">translated</t>
+		<t name="tutorial.t17">translated</t>
+		<t name="tutorial.t18">translated</t>
+		<t name="tutorial.t19">translated</t>
+		<t name="tutorial.t20">translated</t>
+	</tutorial>
 </data>

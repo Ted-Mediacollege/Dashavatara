@@ -6,7 +6,7 @@ package myth.data
 	public class SaveData 
 	{
 		public static var file:SharedObject;
-		public static var saveVersion:int = 13;
+		public static const saveVersion:int = 14;
 		
 		public static function init():void
 		{
@@ -26,6 +26,7 @@ package myth.data
 				GameData.levelsUnlocked = int(file.data.unlocked);
 				GameData.levelList = file.data.level_list;
 				GameData.levelnames = file.data.level_names;
+				GameData.TUTORIAL = file.data.tutorial;
 				
 				trace("[SAVED-DATA]: Loaded! (version "+saveVersion+")");
 			}
@@ -45,6 +46,7 @@ package myth.data
 			file.data.unlocked = GameData.levelsUnlocked;
 			file.data.level_list = GameData.levelList;
 			file.data.level_names = GameData.levelnames;
+			file.data.tutorial = GameData.TUTORIAL;
 			
 			file.flush();
 			trace("[SAVED-DATA]: saved!");

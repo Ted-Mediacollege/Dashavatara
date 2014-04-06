@@ -12,6 +12,7 @@ package myth.data
 		public static var LANG:int = 0;
 		public static var SOUND:Boolean = true;
 		public static var MUSIC:Boolean = true;
+		public static var TUTORIAL:Boolean = true;
 		
 		public static var levelList:Array = new Array();
 		public static var levelnames:Array = new Array();

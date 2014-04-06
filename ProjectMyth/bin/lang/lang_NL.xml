@@ -19,7 +19,11 @@
 		<t name="option.sound">Sound Effects</t>
 		<t name="option.language">Taal</t>
 		<t name="option.on">aan</t>
-		<t name="option.off">uit</t>
+		<t name="option.off">uit</t>		
+		
+		<t name="mode.story">Verhaal levels</t>
+		<t name="mode.endless">Eindeloos level</t>
+		<t name="mode.tutorial">Tutorial</t>
 	</menu>
 	
 	<editor>
@@ -56,6 +60,13 @@
 		<t name="alert.save_menu">Weet je zeker dat je niet eerst wilt opslaan voordat je naar het menu gaat?</t>
 		<t name="alert.save_load">Weet je zeker dat je niet eerst wilt opslaan voordat je een ander level laad?</t>
 		<t name="alert.save_import">Weet je zeker dat je niet eerst wilt opslaan voordat je een ander level laad?</t>
+		
+		<t name="saving.save">Level opslaan</t>
+		<t name="saving.unnamed">Naamloos</t>
+		
+		<t name="loading.back">Terug</t>
+		<t name="loading.load">Laden</t>
+		<t name="loading.delete">Verwijderen</t>
 	</editor>
 	
 	<game>
@@ -63,4 +74,30 @@
 		<t name="menu.restart">Opnieuw spelen</t>
 		<t name="menu.resume">Verder spelen</t>
 	</game>
+	
+	<tutorial>
+		<t name="tutorial.restart">Opnieuw</t>
+		<t name="tutorial.tapcont">Druk hier om door te gaan</t>
+				
+		<t name="tutorial.t01">Welkom bij de tutorial!</t>
+		<t name="tutorial.t02">Dit is de pauze knop, hiermee kan je naar het pauze menu gaan.</t>
+		<t name="tutorial.t03">Deze loopende karakter is een van de 3 karakters. Om van karakter te veranderen druk op een van de drie knoppen links bovenin.</t>
+		<t name="tutorial.t04">Goedzo!</t>
+		<t name="tutorial.t05">Dit is de spring karakter. Je kunt springen door op het scherm te drukken.</t>
+		<t name="tutorial.t06">Goedzo!</t>
+		<t name="tutorial.t07">Probeer over deze pilaar te springen.</t>
+		<t name="tutorial.t08">Goedzo!</t>
+		<t name="tutorial.t09">Probeer nu over 3 pilaren te springen.</t>
+		<t name="tutorial.t10">Bravo!</t>
+		<t name="tutorial.t11">Dit is de aanval karakter. Je kunt aanvallen door je vinger over het scherm te bewegen.</t>
+		<t name="tutorial.t12">Goedzo!</t>
+		<t name="tutorial.t13">Probeer de vijand te vermoorden door er over heen te gaan met je vinger.</t>
+		<t name="tutorial.t14">Goedzo!</t>
+		<t name="tutorial.t15">Probeer nu 4 vijanden te verslaan.</t>
+		<t name="tutorial.t16">Bravo!</t>
+		<t name="tutorial.t17">Dit is de sprint karakter. Je kunt rennen door heel vaak achter elkaar op het scherm te drukken.</t>
+		<t name="tutorial.t18">Goedzo!</t>
+		<t name="tutorial.t19">De tutorial is nu voorbij!</t>
+		<t name="tutorial.t20">Veel succes!</t>
+	</tutorial>
 </data>
