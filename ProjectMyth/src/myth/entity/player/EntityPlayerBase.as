@@ -69,7 +69,7 @@ package myth.entity.player
 		
 		override public function tick():void {
 			super.tick();
-			var speed:Number = Main.world.speed * TimeHelper.deltaTimeScale;
+			var speed:Number = Main.world.speed;
 			var force:Number = speed * 5;
 			var maxBreakSpeed:Number = speed * 2;
 			var XposT:Number = Xpos + (speed * 60);
