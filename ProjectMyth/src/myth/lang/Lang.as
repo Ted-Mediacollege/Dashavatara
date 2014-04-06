@@ -5,7 +5,7 @@ package myth.lang
 	
 	public class Lang 
 	{
-		public static var language_list:Vector.<String> = new < String > ["English", "Nederlands", "Test"];// , "Yolo"];
+		public static var language_list:Vector.<String> = new < String > ["English", "Nederlands"];//, "Test" , "Yolo"];
 		
 		public static var language:Language;
 		public static var currentLang:int = -1;
