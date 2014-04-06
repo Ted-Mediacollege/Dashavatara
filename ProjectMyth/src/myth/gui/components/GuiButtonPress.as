@@ -28,6 +28,7 @@ package myth.gui.components
 				image.pivotX = image.width / 2;
 				image.pivotY = image.height / 2;
 				addChildAt(image, 0);
+				trace("PRESS");
 			}
 		}
 		
@@ -35,6 +36,7 @@ package myth.gui.components
 		{
 			if (pressed)
 			{
+				trace("UNPRESS");
 				pressed = false;
 				removeChild(image);
 				image = new Image(AssetList.assets.getTexture("gui_button_levela"));

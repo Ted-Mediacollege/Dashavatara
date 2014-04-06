@@ -112,7 +112,7 @@ package myth.gamemode
 			{
 				timer = -1;
 				world.gui.puaseButton.visible = true;
-				setPanel("The walking character on your screen is one of the 3 characters.\n\nTo switch to another character press on one of the 3 buttons in the top-left corner of your screen.");
+				setPanel("The walking character on your screen is one of the 3 characters. To switch to another character press on one of the 3 buttons in the top-left corner of your screen.");
 				world.gui.b1.visible = true;
 				world.gui.b2.visible = true;
 				world.gui.b3.visible = true;
@@ -405,7 +405,17 @@ package myth.gamemode
 		{
 			if (type == TouchType.CLICK && panelActive)
 			{
-				setState(tutorialState + 1);
+				if (data[0] > 400 &&
+					data[0] < 880 &&
+					data[1] > 440 &&
+					data[1] < 620 &&
+					data[2] > 400 &&
+					data[2] < 880 &&
+					data[3] > 440 &&
+					data[3] < 620)
+				{
+					setState(tutorialState + 1);
+				}
 			}
 			else if (tutorialState == tutorial_jumper + 1)
 			{
