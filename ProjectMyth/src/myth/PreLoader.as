@@ -22,8 +22,11 @@ package myth
 	{
 		public static var starling:Starling;
 		
+		[Embed(source="../../lib/embed/loadingscreen.png")]
+		public static var texture_screen1:Class;
 		[Embed(source="../../lib/embed/loadingscreen2.png")]
-		public static var texture_screen:Class;
+		public static var texture_screen2:Class;
+		
 		private var screen:Bitmap;
 		
 		public function PreLoader() 
@@ -34,7 +37,7 @@ package myth
 			SaveData.init();
 			
 			stage.quality = StageQuality.LOW;
-			screen = new texture_screen();
+			screen = new texture_screen1();
 			screen.scaleX = stage.fullScreenWidth / 1280;
 			screen.scaleY = stage.fullScreenHeight / 768;
 			addChild(screen);
