@@ -17,21 +17,21 @@ package myth.world
 	{
 		public var players:Vector.<EntityPlayerBase> = new Vector.<EntityPlayerBase>;
 		
-		private var currentPlayer:int = 1;
+		private var currentPlayer:int = 0;
 		
 		private var animTransform:SpriterClip;
 		private var animTransform2:SpriterClip;
 		
 		public function PlayerHolder() 
 		{
-			players[0] = new EntityPlayer03(); 
+			players[0] = new EntityPlayer01v5(); 
 			//players[1] = new EntityPlayer01v2(); 
-			players[1] = new EntityPlayer01v5();
+			players[1] = new EntityPlayer03();
 			//players[2] = new EntityPlayer02v2(); 
 			players[2] = new EntityPlayerBoar(); 
 			 
-			Main.world.player = players[1];
-			currentPlayer = 1;
+			Main.world.player = players[0];
+			currentPlayer = 0;
 			Main.world.physicsWorld.playerBody.userData.graphic = Main.world.player;
 			Main.world.physicsWorld.playerBody.velocity = new Vec2(Main.world.speed * 60, 0);
 			Display.add(Main.world.player, LayerID.GamePlayer);

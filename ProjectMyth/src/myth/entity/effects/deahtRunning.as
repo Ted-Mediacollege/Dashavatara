@@ -7,6 +7,8 @@ package myth.entity.effects
 	import starling.core.Starling;
 	import myth.Main
 	import treefortress.spriter.AnimationSet;
+	import myth.entity.SpriterClipPool;
+	
 	public class deahtRunning extends SimpleEntity
 	{
 		private var image:SpriterClip;
@@ -14,7 +16,7 @@ package myth.entity.effects
 		{
 			//player art
 			//image = AssetList.spriterLoader.getSpriterClip("");
-			image = new SpriterClip(new AnimationSet(AssetList.assets.getXml("enemydeaths")), AssetList.assets.getTextureAtlas("common"));
+			image = SpriterClipPool.getClip();
 			image.playbackSpeed = 1;
 			//image.scaleX = 0.7;
 			//image.scaleY = 0.7;
@@ -32,6 +34,7 @@ package myth.entity.effects
 		}
 		
 		private function remove():void {
+			SpriterClipPool.returnClip(image);
 			removeFromParent();
 		}
 		

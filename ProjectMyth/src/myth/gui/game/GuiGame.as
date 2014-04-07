@@ -165,14 +165,14 @@ package myth.gui.game
 				10,
 				Main.world.playerHolder.players[0].playerTexture,
 				Main.world.playerHolder.players[0].playerTextureDown,
-				100, 80, 194, 142, "", false
+				100, 80, 194, 142, "", true
 			);
 			addButton(b1, false);
 			
 			b2 = new GuiButtonToggle(
 				11, Main.world.playerHolder.players[1].playerTexture,
 				Main.world.playerHolder.players[1].playerTextureDown,
-				300, 80, 194, 142, "", true
+				300, 80, 194, 142, "", false
 			);
 			addButton(b2,false);
 			b3 = new GuiButtonToggle(

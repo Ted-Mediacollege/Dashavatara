@@ -7,15 +7,13 @@ package myth.entity
 	import starling.display.Sprite;
 	import myth.util.Debug;
 	
-	public class Entity extends Sprite
+	public class Entity extends SimpleEntity
 	{
-		public var artLayer:Sprite = new Sprite();
 		private var debugLayer:Sprite = new Sprite();
 		public var collider:RectCollider;
 		private var colShape:Shape = new Shape();
 		public function Entity(colWidth:Number = 180,colHeight:Number = 180,colPivotX:Number = -90,colPivotY:Number = -90) 
 		{
-			addChild(artLayer);
 			addChild(debugLayer);
 			collider = new RectCollider(this.x, this.y, colWidth, colHeight, this.rotation, colPivotX, colPivotY);
 			Debug.test(function():void{

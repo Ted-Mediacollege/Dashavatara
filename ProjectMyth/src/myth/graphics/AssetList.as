@@ -13,8 +13,10 @@ package myth.graphics
 	import myth.gui.game.GuiLoading;
 	import treefortress.spriter.SpriterLoader;
 	import treefortress.spriter.SpriterClip;
+	import treefortress.spriter.AnimationSet;
 	import myth.lang.Lang;
 	import myth.data.Theme;
+	import myth.entity.SpriterClipPool;
 	
 	public class AssetList 
 	{
@@ -45,6 +47,9 @@ package myth.graphics
 		private static var texList3:Vector.<Asset>;
 		private static var i:int;
 		private static var j:int;
+		
+		public static var clipEnemyExplode:SpriterClip;
+		public static var animationSet:AnimationSet;
 		
 		public static function initTextures():void {
 			texList1 = new Vector.<Asset>();
@@ -128,6 +133,7 @@ package myth.graphics
 					for (var i:int = 0; i < commonSoundList.length; i++) {
 						soundCommon.addSound(commonSoundList[i].name, assets.getSound(commonSoundList[i].file) );
 					}
+					SpriterClipPool.init();
 					addLevelAssets(thema);
 				}
 			});

@@ -29,6 +29,7 @@ package myth.world
 		public function WorldBackground(data:Vector.<Vector.<int>>, t:int) 
 		{
 			queue = data;
+			theme = t;
 			
 			Backgrounds_created = new Vector.<Background>();
 			Backgrounds_random = new Vector.<Background>();
@@ -36,8 +37,6 @@ package myth.world
 			var bg:Image = new Image(AssetList.assets.getTexture(textures_lucht[theme]));
 			bg.blendMode = BlendMode.NONE;
 			addChild(bg);
-			
-			theme = t;
 			
 			if (theme == Theme.SKY)
 			{
