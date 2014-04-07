@@ -138,8 +138,6 @@ package myth.editor.field
 					}
 				}
 				
-				trace(BACKGROUND_RANDOM[0].x, BACKGROUND_RANDOM[1].x);
-				
 				for (var m:int = BACKGROUND_RANDOM.length - 1; m > -1; m--)
 				{
 					BACKGROUND_RANDOM[m].x = (BACKGROUND_RANDOM[m].posX + -camX) / BACKGROUND_RANDOM[m].z;
