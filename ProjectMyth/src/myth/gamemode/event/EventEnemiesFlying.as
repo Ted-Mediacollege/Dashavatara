@@ -7,7 +7,7 @@ package myth.gamemode.event
 	{
 		public function EventEnemiesFlying(gm:GameModeEndless) 
 		{
-			super(gm, 420 * gameMode.world.speed);
+			super(gm, 420 * gm.world.speed);
 		}
 			
 		override public function init():void

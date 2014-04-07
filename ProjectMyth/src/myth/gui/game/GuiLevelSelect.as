@@ -63,7 +63,7 @@ package myth.gui.game
 			if (b.buttonID > 99)
 			{
 				var lb:GuiButtonLevel = (b as GuiButtonLevel);
-				main.switchGui(new GuiGame(new GameModeStory(lb.file_name, lb.levelID)));
+				main.switchGui(new GuiGame(new GameModeStory(lb.file_name, lb.levelID)), false, true, false);
 			}
 			else if (b.buttonID == 0)
 			{
