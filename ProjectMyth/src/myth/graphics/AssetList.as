@@ -194,6 +194,7 @@ package myth.graphics
 				trace("no reload needed");
 			}
 			
+			Theme.MENU_THEME = worldType;
 			currentWorldType = worldType;
 		}
 		

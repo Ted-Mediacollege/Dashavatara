@@ -8,6 +8,7 @@ package myth.editor.field
 	import myth.graphics.AssetList;
 	import myth.util.MathHelper;
 	import myth.editor.EditorFiles;
+	import starling.textures.TextureSmoothing;
 	
 	public class FieldTiles extends Sprite
 	{
@@ -37,6 +38,7 @@ package myth.editor.field
 				tile.x = i * textureSize;
 				tile.y = 768 - 128;
 				tile.touchable = false;
+				tile.smoothing = TextureSmoothing.NONE;
 				addChild(tile);
 				TILES.push(tile);
 			}
