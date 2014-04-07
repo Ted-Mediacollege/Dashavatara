@@ -117,8 +117,6 @@ package myth.graphics
 			assets.enqueue(appDir.resolvePath("lang"));
 			assets.enqueue(appDir.resolvePath("mapData"));
 			assets.enqueue(appDir.resolvePath("tex/map"));
-			assets.enqueue(appDir.resolvePath("tex/anim"));
-			assets.enqueue(appDir.resolvePath("tex/anim"));
 			assets.enqueue(appDir.resolvePath("tex/tutorial"));
 			
 			
