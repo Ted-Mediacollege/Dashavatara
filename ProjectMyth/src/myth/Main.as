@@ -75,6 +75,8 @@ package myth
 		
 		public static function startLoadScreen():void
 		{
+			TouchInput.inputEnabled = false;
+			
 			loadSprite = new Sprite();
 			loadImg = new Image(Texture.fromColor(5, 3, 0xff000000));
 			loadImg.scaleX = 256;
@@ -91,6 +93,8 @@ package myth
 			fadeLayer.removeChild(loadSprite);
 			loadSprite = null;
 			loadImg = null;
+			
+			TouchInput.inputEnabled = true;
 		}
 		
 		public function tick(e:EnterFrameEvent):void

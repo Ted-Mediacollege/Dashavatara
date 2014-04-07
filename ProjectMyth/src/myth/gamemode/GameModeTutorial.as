@@ -134,9 +134,9 @@ package myth.gamemode
 			}
 			else if (state == tutorial_jumper + 0)
 			{
-				world.playerHolder.switchAvatar(0);
-				setActiveButton(0);
-				world.gui.b2.alpha = 0.2;
+				world.playerHolder.switchAvatar(1);
+				setActiveButton(1);
+				world.gui.b1.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
 				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t05"));
 			}
@@ -166,11 +166,11 @@ package myth.gamemode
 				world.gui.b2.enabled = false;
 				world.gui.b3.enabled = false;
 				world.gui.b2.alpha = 1;
-				world.gui.b2.alpha = 0.2;
+				world.gui.b1.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
-				world.playerHolder.switchAvatar(0);
-				setActiveButton(0);
+				world.playerHolder.switchAvatar(1);
+				setActiveButton(1);
 				checkpointState = state;
 			}
 			else if (state == tutorial_jumper + 5)
@@ -196,11 +196,11 @@ package myth.gamemode
 				world.gui.b2.enabled = false;
 				world.gui.b3.enabled = false;
 				world.gui.b2.alpha = 1;
-				world.gui.b2.alpha = 0.2;
+				world.gui.b1.alpha = 0.2;
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
-				world.playerHolder.switchAvatar(0);
-				setActiveButton(0);
+				world.playerHolder.switchAvatar(1);
+				setActiveButton(1);
 				checkpointState = state;
 			}
 			else if (state == tutorial_jumper + 8)
@@ -220,10 +220,10 @@ package myth.gamemode
 			}
 			else if (state == tutorial_attacker + 0)
 			{
-				world.playerHolder.switchAvatar(1);
-				setActiveButton(1);
-				world.gui.b1.alpha = 0.2;
-				world.gui.b2.alpha = 1;
+				world.playerHolder.switchAvatar(0);
+				setActiveButton(0);
+				world.gui.b2.alpha = 0.2;
+				world.gui.b1.alpha = 1;
 				world.gui.b3.alpha = 0.2;
 				setPanel(Lang.trans(Lang.TUTORIAL, "tutorial.t11"));
 			}
@@ -246,12 +246,12 @@ package myth.gamemode
 				world.gui.b1.enabled = false;
 				world.gui.b2.enabled = false;
 				world.gui.b3.enabled = false;
-				world.gui.b1.alpha = 0.2;
-				world.gui.b2.alpha = 1;
+				world.gui.b2.alpha = 0.2;
+				world.gui.b1.alpha = 1;
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
-				world.playerHolder.switchAvatar(1);
-				setActiveButton(1);
+				world.playerHolder.switchAvatar(0);
+				setActiveButton(0);
 				checkpointState = state;
 			}
 			else if (state == tutorial_attacker + 4)
@@ -274,12 +274,12 @@ package myth.gamemode
 				world.gui.b1.enabled = false;
 				world.gui.b2.enabled = false;
 				world.gui.b3.enabled = false;
-				world.gui.b1.alpha = 0.2;
-				world.gui.b2.alpha = 1;
+				world.gui.b2.alpha = 0.2;
+				world.gui.b1.alpha = 1;
 				world.gui.b3.alpha = 0.2;
 				world.inputEnabled = false;
-				world.playerHolder.switchAvatar(1);
-				setActiveButton(1);
+				world.playerHolder.switchAvatar(0);
+				setActiveButton(0);
 				checkpointState = state;
 			}
 			else if (state == tutorial_attacker + 7)

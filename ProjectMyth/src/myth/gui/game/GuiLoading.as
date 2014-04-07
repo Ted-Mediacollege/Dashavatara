@@ -24,6 +24,7 @@ package myth.gui.game
 		
 		private var filler:Shape;
 		private var screen:Image;
+		private var screen2:Image;
 		
 		public function GuiLoading() 
 		{
@@ -38,10 +39,18 @@ package myth.gui.game
 			filler = new Shape();
 			addChild(filler);
 			
-			screen = Image.fromBitmap(new PreLoader.texture_screen());
+			screen2 = Image.fromBitmap(new PreLoader.texture_screen2());
+			screen2.x = 362;
+			screen2.y = 498;
+			addChild(screen2);
+			
+			filler = new Shape();
+			addChild(filler);
+			
+			screen = Image.fromBitmap(new PreLoader.texture_screen1());
 			addChild(screen);
 			
-			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 145, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
+			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 90, 500, 200, "center", "center", "Loading Textures...", 55, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
 			AssetList.preLoad(Theme.MENU_THEME);
@@ -51,9 +60,9 @@ package myth.gui.game
 		{ 		
 			super.tick();
 			filler.graphics.clear();
-			filler.graphics.lineStyle(0, 0x8890D3);
-			filler.graphics.beginFill(0x8890D3);
-			filler.graphics.drawRect(370, 540, progress * 525, 130);
+			filler.graphics.lineStyle(0, 0x000000);
+			filler.graphics.beginFill(0x000000);
+			filler.graphics.drawRect(362 + progress * 555, 498, 555 - progress * 555, 130);
 			
 			if (ready < 2)
 			{
@@ -85,9 +94,13 @@ package myth.gui.game
 		
 		override public function destroy():void
 		{
+			
 			removeChild(screen);
 			screen = null;
-			PreLoader.texture_screen = null;
+			removeChild(screen2);
+			screen2 = null;
+			PreLoader.texture_screen1 = null;
+			PreLoader.texture_screen2 = null;
 		}
 	}
 }
