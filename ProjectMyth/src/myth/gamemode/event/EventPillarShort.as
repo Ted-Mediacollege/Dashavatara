@@ -7,7 +7,7 @@ package myth.gamemode.event
 	{
 		public function EventPillarShort(gm:GameModeEndless) 
 		{
-			super(gm, 2000);
+			super(gm, 340 * gameMode.world.speed);
 		}
 			
 		override public function init():void

@@ -111,6 +111,7 @@ package myth.gui
 						buttonList[i].click();
 						AssetList.soundCommon.playSound("button");
 						action(buttonList[i]);
+						trace("TEST");
 						break;
 					}
 				}

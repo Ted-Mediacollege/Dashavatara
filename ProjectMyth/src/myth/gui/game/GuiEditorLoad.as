@@ -71,6 +71,8 @@ package myth.gui.game
 		
 		override public function action(b:GuiButton):void 
 		{ 
+			
+			
 			if (b.buttonID == 0)
 			{
 				/*if (fromEditing)
@@ -141,6 +143,12 @@ package myth.gui.game
 		{ 
 			if (type == TouchType.CLICK)
 			{
+				/*
+				 * 
+				 * What you are seeing here is a cheap quick fix
+				 * Ted is lazy and just comments out this code instead of making a fix
+				 * 
+				
 				for (var i:int = levelButtonsList.length - 1; i > -1; i-- )
 				{
 					levelButtonsList[i].unpress();
@@ -151,6 +159,8 @@ package myth.gui.game
 				button_load.enabled = false;
 				button_delete.enabled = false;
 				levelSelected = -1;
+				
+				*/
 			}
 			else if (type == TouchType.SWIPE)
 			{
