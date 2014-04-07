@@ -20,14 +20,14 @@ package myth.tutorial
 			image = new Image(AssetList.assets.getTexture("tutorial_field"));
 			addChild(image);
 			
-			text_info = new TextField(840, 300, text, "GameFont", 45, 0x000000, false);
+			text_info = new TextField(840, 300, text, "GameFont", 45, 0xf1d195, false);
 			text_info.x = 20;
 			text_info.y = 20;
 			text_info.vAlign = "top";
 			text_info.hAlign = "center";
 			addChild(text_info);
 			
-			text_cont = new TextField(880, 100, Lang.trans(Lang.TUTORIAL, "tutorial.tapcont"), "GameFont", 45, 0x000000, false);
+			text_cont = new TextField(880, 100, Lang.trans(Lang.TUTORIAL, "tutorial.tapcont"), "GameFont", 45, 0xf1d195, false);
 			text_cont.y = 300;
 			text_info.vAlign = "center";
 			text_info.hAlign = "center";

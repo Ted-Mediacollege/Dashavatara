@@ -18,6 +18,7 @@ package myth
 	import starling.textures.Texture;
 	import myth.sound.SoundPlayer;
 	import myth.graphics.AssetList;
+	import myth.gui.components.GuiText;
 	
 	public class Main extends Sprite
 	{
@@ -38,6 +39,9 @@ package myth
 		private static var bg:Boolean;
 		private static var menuState:int = 0;
 		public static var inTransision:Boolean = false;
+		
+		private static var loadSprite:Sprite;
+		private static var loadImg:Image;
 		
 		public function Main() 
 		{
@@ -67,6 +71,26 @@ package myth
 			addEventListener(EnterFrameEvent.ENTER_FRAME, tick);
 			
 			switchGui(new GuiLoading());
+		}
+		
+		public static function startLoadScreen():void
+		{
+			loadSprite = new Sprite();
+			loadImg = new Image(Texture.fromColor(5, 3, 0xff000000));
+			loadImg.scaleX = 256;
+			loadImg.scaleY = 256;
+			loadSprite.addChild(loadImg);
+			fadeLayer.addChild(loadSprite);
+			
+			var text:GuiText = new GuiText(900, 580, 300, 150, "right", "center", "Loading.....", 75, 0xFFFFFF, "GameFont");
+			loadSprite.addChild(text);
+		}
+		
+		public static function endLoadScreen():void
+		{
+			fadeLayer.removeChild(loadSprite);
+			loadSprite = null;
+			loadImg = null;
 		}
 		
 		public function tick(e:EnterFrameEvent):void
