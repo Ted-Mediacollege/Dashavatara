@@ -22,7 +22,7 @@ package myth
 	{
 		public static var starling:Starling;
 		
-		[Embed(source="../../lib/embed/loadingscreen.png")]
+		[Embed(source="../../lib/embed/loadingscreen2.png")]
 		public static var texture_screen:Class;
 		private var screen:Bitmap;
 		

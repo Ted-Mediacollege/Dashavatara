@@ -135,6 +135,7 @@ package myth.graphics
 		
 		public static function loadLevelAssets(worldType:int,onlyQueue:Boolean=false,calFrom:String = "game", from:Object =null):void
 		{
+			trace("----------------------[load]----------------------------");
 			var load:Boolean = false;
 			if (currentWorldType != worldType) {
 				load = true;
@@ -219,15 +220,15 @@ package myth.graphics
 		private static function unloadCurrentTextures(current:int):void {
 			if(current==Theme.SKY){
 				for (i = 0; i < texList1.length; i++) {
-					assets.removeSound(texList1[i].name);
+					assets.removeTextureAtlas(texList1[i].name);
 				}
 			}else if(current==Theme.EARTH){
 				for (i = 0; i < texList2.length; i++) {
-					assets.removeSound(texList2[i].name);
+					assets.removeTextureAtlas(texList2[i].name);
 				}
 			}else if(current==Theme.HELL){
 				for (i = 0; i < texList3.length; i++) {
-					assets.removeSound(texList3[i].name);
+					assets.removeTextureAtlas(texList3[i].name);
 				}
 			}
 		}

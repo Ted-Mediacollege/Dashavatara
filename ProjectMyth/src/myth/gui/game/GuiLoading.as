@@ -35,13 +35,13 @@ package myth.gui.game
 			ready = 0;
 			progress = 0;
 			
-			screen = Image.fromBitmap(new PreLoader.texture_screen());
-			addChild(screen);
-			
 			filler = new Shape();
 			addChild(filler);
 			
-			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 70, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
+			screen = Image.fromBitmap(new PreLoader.texture_screen());
+			addChild(screen);
+			
+			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 145, 400, 200, "center", "center", "Loading Animations...", 45, 0x000000, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
 			AssetList.preLoad(Theme.MENU_THEME);
@@ -53,7 +53,7 @@ package myth.gui.game
 			filler.graphics.clear();
 			filler.graphics.lineStyle(0, 0x8890D3);
 			filler.graphics.beginFill(0x8890D3);
-			filler.graphics.drawRect(425, 480, progress * 450, 100);
+			filler.graphics.drawRect(370, 540, progress * 525, 130);
 			
 			if (ready < 2)
 			{
