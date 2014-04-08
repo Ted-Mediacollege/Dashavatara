@@ -147,11 +147,6 @@ package myth.graphics
 			trace("[AssetList]: "+load +" theme: "+worldType);
 			
 			if (load) {
-				if (!onlyQueue)
-				{
-					Main.startLoadScreen();
-				}
-				
 				//unload unneaded assets
 				unloadCurrentSounds(currentWorldType);
 				unloadCurrentTextures(currentWorldType);
@@ -164,7 +159,6 @@ package myth.graphics
 						//trace("Loading assets, progress:", ratio);
 						if (ratio == 1.0) {
 							trace("Loading assets done");
-							Main.endLoadScreen();
 							soundLevel = new SoundManager();
 							addLevelAssets(worldType);
 							if(calFrom == "game"){

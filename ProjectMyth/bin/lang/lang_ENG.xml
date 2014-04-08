@@ -77,7 +77,7 @@
 	
 	<tutorial>
 		<t name="tutorial.restart">Restart Tutorial</t>
-		<t name="tutorial.tapcont">Tap here to continue</t>
+		<t name="tutorial.tapcont">Tap to continue</t>
 				
 		<t name="tutorial.t01">Welcome to the tutorial!</t>
 		<t name="tutorial.t02">You can acces the pause menu at any time by pressing the pause button on the top-right corner of your screen.</t>

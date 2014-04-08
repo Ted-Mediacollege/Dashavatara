@@ -393,11 +393,11 @@ package myth.gamemode
 		
 		override public function onButtonPress(buttonID:int):void
 		{
-			if (tutorialState == tutorial_begin + 3 && (buttonID == world.gui.b1.buttonID || buttonID == world.gui.b3.buttonID))
+			if (tutorialState == tutorial_begin + 3 && (buttonID == world.gui.b2.buttonID || buttonID == world.gui.b3.buttonID))
 			{
 				if (timer < 0)
 				{
-					timer = 4;
+					timer = 2;
 				}
 			}
 		}
@@ -406,30 +406,20 @@ package myth.gamemode
 		{
 			if (type == TouchType.CLICK && panelActive)
 			{
-				if (data[0] > 400 &&
-					data[0] < 880 &&
-					data[1] > 440 &&
-					data[1] < 620 &&
-					data[2] > 400 &&
-					data[2] < 880 &&
-					data[3] > 440 &&
-					data[3] < 620)
-				{
-					setState(tutorialState + 1);
-				}
+				setState(tutorialState + 1);
 			}
 			else if (tutorialState == tutorial_jumper + 1)
 			{
 				if (timer < 0)
 				{
-					timer = 4;
+					timer = 2;
 				}
 			}
 			else if (tutorialState == tutorial_attacker + 1)
 			{
 				if (timer < 0)
 				{
-					timer = 3;
+					timer = 2;
 				}
 			}
 			else if (tutorialState == tutorial_sprinter + 1)

@@ -37,6 +37,9 @@ package myth.gui.game
 	import myth.lang.Lang;
 	import myth.input.TouchType;
 	import starling.events.TouchPhase;
+	import myth.input.TouchInput;
+	import starling.textures.Texture;
+	import myth.util.MathHelper;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -58,18 +61,28 @@ package myth.gui.game
 		
 		public static var restartText:String;
 		
+		private var loadSprite:Sprite;
+		private var loadImg:Image;
+		public var loading:Boolean;
+		public var waiting:int;
+		private var loadCircle:Image;
+		
 		public function GuiGame(gm:GameMode) 
 		{
 			gamemode = gm;
 		}	
 		
 		override public function init():void
-		{
+		{	
+			loading = true;
+			waiting = -999;
+			
+			
 			restartText = Lang.trans(Lang.INGAME, "menu.restart");
 			
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
-			
+
 			Main.world = new World(this, gamemode);
 			Main.world.init();
 			
@@ -79,6 +92,20 @@ package myth.gui.game
 				1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, "",false
 			);
 			addButton(puaseButton);
+			
+			TouchInput.inputEnabled = false;
+			loadSprite = new Sprite();
+			loadImg = new Image(Texture.fromColor(5, 3, 0xff000000));
+			loadImg.scaleX = 256;
+			loadImg.scaleY = 256;
+			loadSprite.addChild(loadImg);
+			addChild(loadSprite);			
+			loadCircle = new Image(AssetList.assets.getTexture("hoofd"));
+			loadSprite.addChild(loadCircle);
+			loadCircle.x = 1140;
+			loadCircle.y = 640;
+			loadCircle.pivotX = loadCircle.width / 2;
+			loadCircle.pivotY = loadCircle.height / 2;
 		}
 		
 		private function createPauseButtons():void 
@@ -148,7 +175,36 @@ package myth.gui.game
 		{	
 			super.tick();
 			
-			if (!pauseScreen)
+			if (waiting > -50)
+			{
+				waiting--;
+				if (waiting == 0)
+				{
+					loading = false;
+					TouchInput.inputEnabled = true;
+					loadSprite.removeChild(loadCircle);
+				}
+				
+				if (waiting > 0)
+				{
+					loadCircle.rotation += 0.15;
+				}
+				
+				if (waiting < 0)
+				{
+					loadSprite.alpha = (waiting / 50) + 1;
+
+					if (waiting == -50)
+					{
+						waiting = -999;
+						removeChild(loadSprite);
+						loadImg = null;
+						loadSprite = null;
+					}
+				}
+			}
+			
+			if (!pauseScreen && !loading)
 			{
 				Main.world.tick();
 			}
@@ -156,6 +212,8 @@ package myth.gui.game
 		
 		public function build():void 
 		{
+			waiting = 60;
+			
 			b1 = new GuiButtonToggle(
 				10,
 				Main.world.playerHolder.players[0].playerTexture,

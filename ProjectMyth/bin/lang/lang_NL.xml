@@ -77,7 +77,7 @@
 	
 	<tutorial>
 		<t name="tutorial.restart">Opnieuw</t>
-		<t name="tutorial.tapcont">Druk hier om door te gaan</t>
+		<t name="tutorial.tapcont">Druk om door te gaan</t>
 				
 		<t name="tutorial.t01">Welkom bij de tutorial!</t>
 		<t name="tutorial.t02">Dit is de pauze knop, hiermee kan je naar het pauze menu gaan.</t>
