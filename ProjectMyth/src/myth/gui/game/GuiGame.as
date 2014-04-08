@@ -104,8 +104,8 @@ package myth.gui.game
 			loadSprite.addChild(loadCircle);
 			loadCircle.x = 1140;
 			loadCircle.y = 640;
-			loadCircle.pivotX = loadCircle.width / 2;
-			loadCircle.pivotY = loadCircle.height / 2;
+			loadCircle.pivotX = loadCircle.width / 2 + 15;
+			loadCircle.pivotY = loadCircle.height / 2 + 15;
 		}
 		
 		private function createPauseButtons():void 
