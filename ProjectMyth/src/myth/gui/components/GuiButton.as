@@ -50,12 +50,16 @@ package myth.gui.components
 			addChild(image);
 			buttonID = id;
 			
-			buttonText = new TextField(posWidth, posHeight, t, f, s, c);
-			buttonText.hAlign = "center";
-			buttonText.vAlign = "center";
-			buttonText.x = -(image.width / 2);
-			buttonText.y = -(image.height / 2);
-			addChild(buttonText);
+			if (t != "") 
+			{
+				buttonText = new TextField(posWidth, posHeight, t, f, s, c);
+				buttonText.hAlign = "center";
+				buttonText.vAlign = "center";
+				buttonText.x = -(image.width / 2);
+				buttonText.y = -(image.height / 2);
+				addChild(buttonText);
+			}
+			
 		}
 		
 		public function click():void

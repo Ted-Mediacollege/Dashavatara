@@ -1,0 +1,61 @@
+
+
+{
+  "enemies": [
+    { "type": 3, "spawnX": 1200, "spawnY": -936 },
+    { "type": 3, "spawnX": 1200, "spawnY": -736 },
+    { "type": 3, "spawnX": 1200, "spawnY": -536 },
+    { "type": 3, "spawnX": 1201, "spawnY": -1136 },
+	
+    { "type": 3, "spawnX": 2500, "spawnY": -951 },
+    { "type": 3, "spawnX": 2800, "spawnY": -952 },
+    { "type": 3, "spawnX": 3100, "spawnY": -953 },
+	
+    { "type": 3, "spawnX": 3600, "spawnY": -551 },
+    { "type": 3, "spawnX": 3900, "spawnY": -552 },
+    { "type": 3, "spawnX": 4200, "spawnY": -553 }
+  ],
+  "background_props": [
+    {
+      "type": 0,
+      "y": 261,
+      "depth": 2,
+      "x": 1847.6
+    },
+    {
+      "type": 1,
+      "y": 66,
+      "depth": 2,
+      "x": 2571.6
+    },
+    {
+      "type": 2,
+      "y": 477,
+      "depth": 2,
+      "x": 3363.6
+    },
+    {
+      "type": 3,
+      "y": 140,
+      "depth": 2,
+      "x": 4934.8
+    }
+  ],
+  "objects": [
+    {
+      "type": 2,
+      "y": 670,
+      "x": 17615
+    }
+  ],
+  "id": 0,
+  "theme": 2,
+  "size": 145,
+  "speed": 6,
+  "name": "test",
+  "zones": [
+    
+  ],
+  "next_level_name": "editor"
+}
+

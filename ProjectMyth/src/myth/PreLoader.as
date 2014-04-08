@@ -48,6 +48,10 @@ package myth
 			
 			ScaleHelper.init(stage.fullScreenWidth, stage.fullScreenHeight);
 			starling = new Starling(Main, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+			if (GameData.DEVELOPMENT)
+			{
+				starling.showStats = true;
+			}
 			starling.start();
 			
 			starling.addEventListener(starling.events.Event.CONTEXT3D_CREATE, onStarlingLoadComplete);

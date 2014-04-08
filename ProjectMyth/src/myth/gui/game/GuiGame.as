@@ -65,11 +65,6 @@ package myth.gui.game
 		
 		override public function init():void
 		{
-			if (GameData.DEVELOPMENT)
-			{
-				PreLoader.starling.showStats = true;
-			}
-			
 			restartText = Lang.trans(Lang.INGAME, "menu.restart");
 			
 			addChild(gameScreen);
@@ -196,8 +191,6 @@ package myth.gui.game
 		
 		override public function destroy():void
 		{
-			PreLoader.starling.showStats = false;
-			
 			Main.world.onRemove();
 			Main.world = null;
 		}
