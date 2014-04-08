@@ -8,23 +8,23 @@ package myth.gui.game
 	import myth.gui.background.GuiBackground;
 	import myth.graphics.AssetList;
 	import starling.display.Image;
+	import myth.gui.components.GuiText;
 	
 	public class GuiHighscore extends GuiScreen
 	{
+		private var score:int
 		
-		public function GuiHighscore(score:Number = 0) 
+		public function GuiHighscore(s:int = 0) 
 		{
-			
+			score = s;
 		}
 		
 		override public function init():void 
 		{ 
 			addChild(background);
 
-			var image:Image = new Image(AssetList.assets.getTexture("tutorial_field"));
-			image.x = 200;
-			image.y = 75;
-			addChild(image);
+			var text:GuiText = new GuiText(screenWidth / 2, screenHeight / 2 - 200, 400, 100, "center", "center", "Score: " + score, 65, 0x000000, "Arial");
+			addChild(text);
 			
 			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 210, 450, 100, "Restart Level", 45, 0xf1d195, "GameFont"));
 			addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 320, 450, 100, "Back to menu", 45, 0xf1d195, "GameFont"));
@@ -44,7 +44,7 @@ package myth.gui.game
 			}
 			else if (b.buttonID == 1)
 			{
-				main.switchGui(new GuiMainMenu());
+				main.switchGui(new GuiMainMenu(), true);
 			}
 		}
 		

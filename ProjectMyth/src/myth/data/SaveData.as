@@ -6,7 +6,7 @@ package myth.data
 	public class SaveData 
 	{
 		public static var file:SharedObject;
-		public static const saveVersion:int = 14;
+		public static const saveVersion:int = 16;
 		
 		public static function init():void
 		{

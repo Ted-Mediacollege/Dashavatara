@@ -25,8 +25,8 @@ package myth.gui.game
 		{ 
 			addChild(background);
 			
-			addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "mode.story"), 45, 0xf1d195, "GameFont"));
-			addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "mode.endless"), 45, 0xf1d195, "GameFont"));
+			var b1:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2, 450, 100, Lang.trans(Lang.MENU, "mode.story"), 45, 0xf1d195, "GameFont"));
+			var b2:GuiButton = addButton(new GuiButton(1, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 110, 450, 100, Lang.trans(Lang.MENU, "mode.endless"), 45, 0xf1d195, "GameFont"));
 			button_tutorial = addButton(new GuiButton(2, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 - 110, 450, 100, Lang.trans(Lang.MENU, "mode.tutorial"), 45, 0xf1d195, "GameFont"));
 			addButton(new GuiButton(3, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight - 80, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
 			
@@ -35,6 +35,11 @@ package myth.gui.game
 				flashing = true;
 				flashDir = -5;
 				flashPos = 200;
+				
+				b1.enabled = false;
+				b2.enabled = false;
+				b1.image.color = 0x777777;
+				b2.image.color = 0x777777;
 			}
 		}
 		

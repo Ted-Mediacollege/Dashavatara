@@ -28,6 +28,9 @@ package myth
 		[Embed(source="../../lib/embed/loadingscreen2.png")]
 		public static var texture_screen2:Class;
 		
+		[Embed(source = "../../lib/embed/hoofd.png")]
+		public static var hetHoofd:Class;
+		
 		private var screen:Bitmap;
 		
 		public function PreLoader() 

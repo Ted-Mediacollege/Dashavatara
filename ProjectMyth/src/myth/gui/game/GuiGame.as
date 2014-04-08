@@ -100,12 +100,20 @@ package myth.gui.game
 			loadImg.scaleY = 256;
 			loadSprite.addChild(loadImg);
 			addChild(loadSprite);			
-			loadCircle = new Image(AssetList.assets.getTexture("hoofd"));
+			
+			loadCircle = Image.fromBitmap(new PreLoader.hetHoofd());
+			loadSprite.addChild(loadCircle);
+			loadCircle.x = 1140;
+			loadCircle.y = 640;
+			loadCircle.pivotX = loadCircle.width / 2;
+			loadCircle.pivotY = loadCircle.height / 2 - 10;
+			
+			/*loadCircle = new Image(AssetList.assets.getTexture("hoofd"));
 			loadSprite.addChild(loadCircle);
 			loadCircle.x = 1140;
 			loadCircle.y = 640;
 			loadCircle.pivotX = loadCircle.width / 2 + 15;
-			loadCircle.pivotY = loadCircle.height / 2 + 15;
+			loadCircle.pivotY = loadCircle.height / 2 + 15;*/
 		}
 		
 		private function createPauseButtons():void 
