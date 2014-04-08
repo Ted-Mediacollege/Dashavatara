@@ -17,6 +17,7 @@ package myth
 	import flash.display.StageQuality;
 	import myth.data.SaveData;
 	import myth.lang.Lang;
+	import flash.desktop.SystemIdleMode;
 	
 	public class PreLoader extends Sprite
 	{
@@ -31,6 +32,7 @@ package myth
 		
 		public function PreLoader() 
 		{		
+			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE
 			GameData.ISCOMPUTER = isOperatorComputer();
 			GameData.SYSTEM_LANG_ID = getLanguageID();
 
