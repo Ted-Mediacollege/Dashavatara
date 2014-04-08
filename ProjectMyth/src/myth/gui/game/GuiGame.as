@@ -37,6 +37,8 @@ package myth.gui.game
 	import myth.lang.Lang;
 	import myth.input.TouchType;
 	import starling.events.TouchPhase;
+	import myth.input.TouchInput;
+	import starling.textures.Texture;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -58,13 +60,22 @@ package myth.gui.game
 		
 		public static var restartText:String;
 		
+		private var loadSprite:Sprite;
+		private var loadImg:Image;
+		public var loading:Boolean;
+		public var waiting:int;
+		private var loadingText:GuiText;
+		
 		public function GuiGame(gm:GameMode) 
 		{
 			gamemode = gm;
 		}	
 		
 		override public function init():void
-		{
+		{	
+			loading = true;
+			waiting = -999;
+			
 			if (GameData.DEVELOPMENT)
 			{
 				PreLoader.starling.showStats = true;
@@ -74,7 +85,7 @@ package myth.gui.game
 			
 			addChild(gameScreen);
 			Display.InitGameLayers(gameScreen);
-			
+
 			Main.world = new World(this, gamemode);
 			Main.world.init();
 			
@@ -84,6 +95,16 @@ package myth.gui.game
 				1280 - (114 / 2) - 10, 10 + (114 / 2), 114, 114, "",false
 			);
 			addButton(puaseButton);
+			
+			TouchInput.inputEnabled = false;
+			loadSprite = new Sprite();
+			loadImg = new Image(Texture.fromColor(5, 3, 0xff000000));
+			loadImg.scaleX = 256;
+			loadImg.scaleY = 256;
+			loadSprite.addChild(loadImg);
+			addChild(loadSprite);
+			loadingText = new GuiText(900, 580, 300, 150, "right", "center", "Loading.....", 75, 0xFFFFFF, "GameFont");
+			loadSprite.addChild(loadingText);
 		}
 		
 		private function createPauseButtons():void 
@@ -153,7 +174,31 @@ package myth.gui.game
 		{	
 			super.tick();
 			
-			if (!pauseScreen)
+			if (waiting > -50)
+			{
+				waiting--;
+				if (waiting == 0)
+				{
+					loading = false;
+					TouchInput.inputEnabled = true;
+					loadSprite.removeChild(loadingText);
+				}
+				
+				if (waiting < 0)
+				{
+					loadSprite.alpha = (waiting / 50) + 1;
+					
+					if (waiting == -50)
+					{
+						waiting = -999;
+						removeChild(loadSprite);
+						loadImg = null;
+						loadSprite = null;
+					}
+				}
+			}
+			
+			if (!pauseScreen && !loading)
 			{
 				Main.world.tick();
 			}
@@ -161,6 +206,8 @@ package myth.gui.game
 		
 		public function build():void 
 		{
+			waiting = 60;
+			
 			b1 = new GuiButtonToggle(
 				10,
 				Main.world.playerHolder.players[0].playerTexture,

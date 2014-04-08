@@ -19,6 +19,7 @@ package myth
 	import myth.sound.SoundPlayer;
 	import myth.graphics.AssetList;
 	import myth.gui.components.GuiText;
+	import starling.filters.ColorMatrixFilter;
 	
 	public class Main extends Sprite
 	{
@@ -40,8 +41,8 @@ package myth
 		private static var menuState:int = 0;
 		public static var inTransision:Boolean = false;
 		
-		private static var loadSprite:Sprite;
-		private static var loadImg:Image;
+		//private var hue:Number = 0;
+		//private var filt:ColorMatrixFilter;
 		
 		public function Main() 
 		{
@@ -57,6 +58,10 @@ package myth
 			fadeLayer.touchable = false;
 			addChild(gameLayer);
 			addChild(fadeLayer);
+			
+			/*filt = new ColorMatrixFilter();
+			filter = filt;
+			filt.adjustSaturation(1);*/
 			
 			this.scaleX = ScaleHelper.scaleX;
 			this.scaleY = ScaleHelper.scaleY;
@@ -75,7 +80,7 @@ package myth
 		
 		public static function startLoadScreen():void
 		{
-			TouchInput.inputEnabled = false;
+			/*TouchInput.inputEnabled = false;
 			
 			loadSprite = new Sprite();
 			loadImg = new Image(Texture.fromColor(5, 3, 0xff000000));
@@ -85,20 +90,25 @@ package myth
 			fadeLayer.addChild(loadSprite);
 			
 			var text:GuiText = new GuiText(900, 580, 300, 150, "right", "center", "Loading.....", 75, 0xFFFFFF, "GameFont");
-			loadSprite.addChild(text);
+			loadSprite.addChild(text);*/
 		}
 		
 		public static function endLoadScreen():void
 		{
-			fadeLayer.removeChild(loadSprite);
+			/*fadeLayer.removeChild(loadSprite);
 			loadSprite = null;
 			loadImg = null;
 			
-			TouchInput.inputEnabled = true;
+			TouchInput.inputEnabled = true;*/
 		}
 		
 		public function tick(e:EnterFrameEvent):void
 		{
+			/*hue += 0.002;
+			if (hue > 0.10) { hue = 0; filt.reset(); }
+			filt.adjustHue(hue);
+			trace(hue);*/
+			
 			if (gui != null)
 			{
 				//if(fadeNum == 0){

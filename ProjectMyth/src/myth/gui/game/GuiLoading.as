@@ -15,6 +15,9 @@ package myth.gui.game
 	import myth.lang.Lang;
 	import myth.data.GameData;
 	import myth.data.Theme;
+	import starling.display.BlendMode;
+	import starling.filters.ColorMatrixFilter;
+	import starling.filters.FragmentFilter;
 	
 	public class GuiLoading extends GuiScreen
 	{
@@ -50,7 +53,7 @@ package myth.gui.game
 			screen = Image.fromBitmap(new PreLoader.texture_screen1());
 			addChild(screen);
 			
-			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 90, 500, 200, "center", "center", "Loading Textures...", 55, 0x000000, "GameFont");
+			KevinIsEenRareEngeVampier = new GuiText(screenWidth / 2, screenHeight / 2 + 90, 500, 200, "center", "center", "Loading Textures...", 55, 0xFFFFFF, "GameFont");
 			addChild(KevinIsEenRareEngeVampier);
 			
 			AssetList.preLoad(Theme.MENU_THEME);
@@ -66,11 +69,6 @@ package myth.gui.game
 			
 			if (ready < 2)
 			{
-				switch(GameData.LANG)
-				{
-					case 0: KevinIsEenRareEngeVampier.text.text = "Loading Textures...";
-					case 1: KevinIsEenRareEngeVampier.text.text = "Loading Textures...";
-				}
 			}
 			else
 			{
