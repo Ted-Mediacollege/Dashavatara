@@ -4,6 +4,7 @@ package myth.graphics
 	{
 		// this is not the layer order you can set the layer order in the Display class
 		public static const GamePlayer:int = 0;
+		public static const GameEntity:int = 10;
 		public static const GameLevelBack:int = 1;
 		public static const GameLevel:int = 2;
 		public static const GameLevel2:int = 3;

@@ -11,6 +11,7 @@ package myth.entity.player
 	import myth.Main;
 	import treefortress.spriter.SpriterClip;
 	import myth.util.TimeHelper;
+	import myth.entity.SpriterClipPool;
 	
 	//fluit
 	public class EntityPlayer03 extends EntityPlayerBase
@@ -27,7 +28,7 @@ package myth.entity.player
 			super(false,300,PlayerType.Fluit,AssetList.assets.getTexture("gui_icon3"),AssetList.assets.getTexture("gui_icon3_d"),"playerHitFluit");
 			
 			//image = AssetList.spriterLoader.getSpriterClip("animFlute");
-			image = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animFlute")), AssetList.assets.getTextureAtlas("common"));
+			image = SpriterClipPool.fluitClip;
 			image.playbackSpeed = 1;
 			image.scaleX = 1;
 			image.scaleY = 1;

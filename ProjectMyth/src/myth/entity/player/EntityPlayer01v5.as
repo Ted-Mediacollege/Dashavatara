@@ -23,6 +23,7 @@ package myth.entity.player
 	import starling.core.Starling;
 	import myth.util.ScaleHelper;
 	import treefortress.spriter.AnimationSet;
+	import myth.entity.SpriterClipPool;
 	//lion
 	public class EntityPlayer01v5 extends EntityPlayerBase
 	{
@@ -50,7 +51,7 @@ package myth.entity.player
 			
 			//player art
 			//image = AssetList.spriterLoader.getSpriterClip("");
-			image = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animLion")), AssetList.assets.getTextureAtlas("common"));
+			image = SpriterClipPool.lionClip;
 			image.playbackSpeed = 1;
 			image.scaleX = 0.7;
 			image.scaleY = 0.7;

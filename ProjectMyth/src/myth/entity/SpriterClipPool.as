@@ -6,6 +6,11 @@ package myth.entity
 	public class SpriterClipPool 
 	{
 		private static var clipList:Vector.<SpriterClipHolder>;
+		public static var lionClip:SpriterClip;
+		public static var fluitClip:SpriterClip;
+		public static var boarClip:SpriterClip;
+		
+		
 		private static var i:int;
 		public static function init():void 
 		{
@@ -22,7 +27,10 @@ package myth.entity
 			clipList[9] = new SpriterClipHolder(new SpriterClip(new AnimationSet(AssetList.assets.getXml("enemydeaths")), AssetList.assets.getTextureAtlas("common")));
 			clipList[10] = new SpriterClipHolder(new SpriterClip(new AnimationSet(AssetList.assets.getXml("enemydeaths")), AssetList.assets.getTextureAtlas("common")));
 			clipList[11] = new SpriterClipHolder(new SpriterClip(new AnimationSet(AssetList.assets.getXml("enemydeaths")), AssetList.assets.getTextureAtlas("common")));
-			trace(clipList.length);
+			//trace(clipList.length);
+			lionClip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animLion")), AssetList.assets.getTextureAtlas("common"));
+			fluitClip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animFlute")), AssetList.assets.getTextureAtlas("common"));
+			boarClip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animSwine")), AssetList.assets.getTextureAtlas("common"));
 		}
 		
 		public static function getClip():SpriterClip {

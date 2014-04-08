@@ -102,7 +102,7 @@ package myth.world
 			
 			Display.add(background,LayerID.GameLevelBack);
 			Display.add(background,LayerID.GameLevelBack);
-			Display.add(entityManager,LayerID.GamePlayer);
+			Display.add(entityManager,LayerID.GameEntity);
 			Display.add(objectManager,LayerID.GamePlayerFront);
 			Display.add(tiles,LayerID.GameLevel2);
 			Display.add(debugShape,LayerID.DebugLayer);

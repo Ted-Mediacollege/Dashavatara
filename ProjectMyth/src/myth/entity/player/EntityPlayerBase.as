@@ -13,6 +13,8 @@ package myth.entity.player
 	import myth.util.TimeHelper;
 	import starling.textures.Texture;
 	import myth.graphics.AssetList;
+	import myth.graphics.Display;
+	import myth.graphics.LayerID;
 	
 	public class EntityPlayerBase extends Entity
 	{
@@ -120,8 +122,14 @@ package myth.entity.player
 		}
 		
 		public function pushBackRock():void {
-			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*6 *Main.world.physicsWorld.playerBody.mass, -500*Main.world.physicsWorld.playerBody.mass));
+			//Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*6 *Main.world.physicsWorld.playerBody.mass, -500*Main.world.physicsWorld.playerBody.mass));
 			AssetList.soundCommon.playSound(hitSoundID);
+			artLayer.removeFromParent();
+			//Main.world.physicsWorld.playerBody.userData.
+			Main.world.playerHolder.addKnockBackClip(privatePlayerType);
+			Display.layerVisible(false, LayerID.GamePlayer);
+			Display.layerVisible(false, LayerID.GamePlayerFront);
+			Display.layerVisible(false, LayerID.GamePlayerBack);
 		}
 		
 		public function isOnFeet():Boolean

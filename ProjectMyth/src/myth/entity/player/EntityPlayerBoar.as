@@ -23,6 +23,7 @@ package myth.entity.player
 	import treefortress.spriter.SpriterClip;
 	import starling.core.Starling;
 	import myth.util.TimeHelper;
+	import myth.entity.SpriterClipPool;
 	//lion
 	public class EntityPlayerBoar extends EntityPlayerBase
 	{
@@ -38,7 +39,7 @@ package myth.entity.player
 			startXpos = 100;
 			//player art
 			//clip = AssetList.spriterLoader.getSpriterClip("animSwine");
-			clip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animSwine")), AssetList.assets.getTextureAtlas("common"));
+			clip = SpriterClipPool.boarClip;
 			clip.playbackSpeed = 1;
 			clip.scaleX = 0.7;
 			clip.scaleY = 0.7;
@@ -66,7 +67,7 @@ package myth.entity.player
 		}
 		
 		override public function pushBackRock():void {
-			clip.play("knockback");
+			//clip.play("knockback");
 			super.pushBackRock();
 		}
 		

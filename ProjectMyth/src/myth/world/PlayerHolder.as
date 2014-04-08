@@ -12,6 +12,7 @@ package myth.world
 	import treefortress.spriter.SpriterClip;
 	import myth.graphics.AssetList;
 	import treefortress.spriter.AnimationSet;
+	import myth.entity.player.PlayerType;
 	
 	public class PlayerHolder 
 	{
@@ -63,6 +64,16 @@ package myth.world
 			animTransform2.visible = false;
 			//Display.add(transformCircle,LayerID.GamePlayerBack);
 			Display.add(animTransform2,LayerID.GamePlayerBack);
+		}
+		
+		public function addKnockBackClip(playerID:int):void {
+			if (playerID == PlayerType.Boar) {
+				
+			}else if (playerID == PlayerType.Fluit) {
+				
+			}else if (playerID == PlayerType.Lion) {
+				
+			}
 		}
 		
 		public function tick():void {

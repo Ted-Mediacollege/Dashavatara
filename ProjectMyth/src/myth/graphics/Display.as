@@ -11,6 +11,7 @@ package myth.graphics
 			layers = new Vector.<DisplayLayer>;
 			layers.push(new DisplayLayer(LayerID.GameLevelBack		,true));
 			layers.push(new DisplayLayer(LayerID.GamePlayerBack		,false));
+			layers.push(new DisplayLayer(LayerID.GameEntity			,false));
 			layers.push(new DisplayLayer(LayerID.GamePlayer			,false));
 			layers.push(new DisplayLayer(LayerID.GameLevel			,false));
 			layers.push(new DisplayLayer(LayerID.GameLevel2			,false));
