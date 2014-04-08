@@ -41,9 +41,6 @@ package myth
 		private static var menuState:int = 0;
 		public static var inTransision:Boolean = false;
 		
-		//private var hue:Number = 0;
-		//private var filt:ColorMatrixFilter;
-		
 		public function Main() 
 		{
 			fadeImg = new Image(Texture.fromColor(5,3,0xff000000));
@@ -58,10 +55,6 @@ package myth
 			fadeLayer.touchable = false;
 			addChild(gameLayer);
 			addChild(fadeLayer);
-			
-			/*filt = new ColorMatrixFilter();
-			filter = filt;
-			filt.adjustSaturation(1);*/
 			
 			this.scaleX = ScaleHelper.scaleX;
 			this.scaleY = ScaleHelper.scaleY;
@@ -104,11 +97,6 @@ package myth
 		
 		public function tick(e:EnterFrameEvent):void
 		{
-			/*hue += 0.002;
-			if (hue > 0.10) { hue = 0; filt.reset(); }
-			filt.adjustHue(hue);
-			trace(hue);*/
-			
 			if (gui != null)
 			{
 				//if(fadeNum == 0){
