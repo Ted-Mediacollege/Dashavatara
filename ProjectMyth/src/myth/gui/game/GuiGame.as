@@ -39,6 +39,7 @@ package myth.gui.game
 	import starling.events.TouchPhase;
 	import myth.input.TouchInput;
 	import starling.textures.Texture;
+	import myth.util.MathHelper;
 	
 	public class GuiGame extends GuiScreen 
 	{
@@ -64,7 +65,7 @@ package myth.gui.game
 		private var loadImg:Image;
 		public var loading:Boolean;
 		public var waiting:int;
-		private var loadingText:GuiText;
+		private var loadCircle:Image;
 		
 		public function GuiGame(gm:GameMode) 
 		{
@@ -102,9 +103,13 @@ package myth.gui.game
 			loadImg.scaleX = 256;
 			loadImg.scaleY = 256;
 			loadSprite.addChild(loadImg);
-			addChild(loadSprite);
-			loadingText = new GuiText(900, 580, 300, 150, "right", "center", "Loading.....", 75, 0xFFFFFF, "GameFont");
-			loadSprite.addChild(loadingText);
+			addChild(loadSprite);			
+			loadCircle = new Image(AssetList.assets.getTexture("hoofd"));
+			loadSprite.addChild(loadCircle);
+			loadCircle.x = 1140;
+			loadCircle.y = 640;
+			loadCircle.pivotX = loadCircle.width / 2;
+			loadCircle.pivotY = loadCircle.height / 2;
 		}
 		
 		private function createPauseButtons():void 
@@ -181,13 +186,18 @@ package myth.gui.game
 				{
 					loading = false;
 					TouchInput.inputEnabled = true;
-					loadSprite.removeChild(loadingText);
+					loadSprite.removeChild(loadCircle);
+				}
+				
+				if (waiting > 0)
+				{
+					loadCircle.rotation += 0.15;
 				}
 				
 				if (waiting < 0)
 				{
 					loadSprite.alpha = (waiting / 50) + 1;
-					
+
 					if (waiting == -50)
 					{
 						waiting = -999;
