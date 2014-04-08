@@ -53,8 +53,8 @@ package myth.entity.player
 			//image = AssetList.spriterLoader.getSpriterClip("");
 			image = SpriterClipPool.lionClip;
 			image.playbackSpeed = 1;
-			image.scaleX = 0.7;
-			image.scaleY = 0.7;
+			image.scaleX = 0.8;
+			image.scaleY = 0.8;
 			image.play("ren animatie");
 			addChild(image);
 			Main.world.gameJuggler.add(image);

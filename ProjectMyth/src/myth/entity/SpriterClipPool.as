@@ -9,6 +9,9 @@ package myth.entity
 		public static var lionClip:SpriterClip;
 		public static var fluitClip:SpriterClip;
 		public static var boarClip:SpriterClip;
+		public static var lionClip2:SpriterClip;
+		public static var fluitClip2:SpriterClip;
+		public static var boarClip2:SpriterClip;
 		
 		
 		private static var i:int;
@@ -31,6 +34,11 @@ package myth.entity
 			lionClip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animLion")), AssetList.assets.getTextureAtlas("common"));
 			fluitClip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animFlute")), AssetList.assets.getTextureAtlas("common"));
 			boarClip = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animSwine")), AssetList.assets.getTextureAtlas("common"));
+		
+			lionClip2 = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animLion")), AssetList.assets.getTextureAtlas("common"));
+			fluitClip2 = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animFlute")), AssetList.assets.getTextureAtlas("common"));
+			boarClip2 = new SpriterClip(new AnimationSet(AssetList.assets.getXml("animSwine")), AssetList.assets.getTextureAtlas("common"));
+			
 		}
 		
 		public static function getClip():SpriterClip {
@@ -41,7 +49,7 @@ package myth.entity
 					returnClip = clipList[i].clip;
 					clipList[i].inUse = true;
 					bla = true;
-					trace("[spriterclip get]: "+returnClip+" n:"+i+" return:"+bla);
+					//trace("[spriterclip get]: "+returnClip+" n:"+i+" return:"+bla);
 					break;
 				}
 			}
@@ -52,10 +60,10 @@ package myth.entity
 		}
 		
 		public static function returnClip(clipReturnd:SpriterClip):void {
-			trace("call return");
+			//trace("call return");
 			for (var i:int = 0; i < clipList.length; i++) {
 				if (clipList[i].clip == clipReturnd) {
-					trace("return: "+i);
+					//trace("return: "+i);
 					clipList[i].inUse = false;
 				}
 			}

@@ -82,6 +82,10 @@ package myth.world
 		
 		public function World(g:GuiGame, gm:GameMode) 
 		{
+			Display.layerVisible(true, LayerID.GamePlayer);
+			Display.layerVisible(true, LayerID.GamePlayerFront);
+			Display.layerVisible(true, LayerID.GamePlayerBack);
+			
 			gamemode = gm;
 			gamemode.preInit(this);
 			
@@ -146,12 +150,19 @@ package myth.world
 				entityManager.tick(deltaSpeed,distance);
 				objectManager.tick(deltaSpeed, distance);
 				
-				if (player.x < -200) {
-					gamemode.onDeath();
-				}else if (player.x > 1480 && !levelComplete) {
-					levelComplete = true;
-					gamemode.onWin();
+				if (playerHolder.knockBackClip != null) {
+					if (playerHolder.knockBackClip.x<200) {
+						gamemode.onDeath();
+					}
+				}else {
+					if (player.x < -200) {
+						gamemode.onDeath();
+					}else if (player.x > 1480 && !levelComplete) {
+						levelComplete = true;
+						gamemode.onWin();
+					}
 				}
+				
 			}
 		}
 		

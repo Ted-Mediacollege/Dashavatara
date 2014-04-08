@@ -13,6 +13,7 @@ package myth.world
 	import myth.graphics.AssetList;
 	import treefortress.spriter.AnimationSet;
 	import myth.entity.player.PlayerType;
+	import myth.entity.SpriterClipPool;
 	
 	public class PlayerHolder 
 	{
@@ -66,17 +67,34 @@ package myth.world
 			Display.add(animTransform2,LayerID.GamePlayerBack);
 		}
 		
+		public var knockBackClip:SpriterClip;
+		public var stoneHit:Boolean = false;
+		
 		public function addKnockBackClip(playerID:int):void {
+			stoneHit = true;
 			if (playerID == PlayerType.Boar) {
-				
+				knockBackClip = SpriterClipPool.boarClip2;
+				knockBackClip.scaleX = 0.8;
+				knockBackClip.scaleY = 0.8;
 			}else if (playerID == PlayerType.Fluit) {
-				
+				knockBackClip = SpriterClipPool.fluitClip2;
 			}else if (playerID == PlayerType.Lion) {
-				
+				knockBackClip = SpriterClipPool.lionClip2;
+				knockBackClip.scaleX = 0.8;
+				knockBackClip.scaleY = 0.8;
 			}
+			Main.world.gameJuggler.add(knockBackClip);
+			knockBackClip.x = Main.world.player.x;
+			knockBackClip.y = Main.world.player.y;
+			knockBackClip.play("knockback");
+			Display.add(knockBackClip,LayerID.GameEntity)
 		}
 		
 		public function tick():void {
+			if (knockBackClip != null) {
+				knockBackClip.x -= 20;
+				knockBackClip.y -= 5;
+			}
 			animTransform.x = Main.world.player.x;
 			animTransform.y = Main.world.player.y;
 			animTransform2.x = Main.world.player.x;

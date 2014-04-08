@@ -41,8 +41,8 @@ package myth.entity.player
 			//clip = AssetList.spriterLoader.getSpriterClip("animSwine");
 			clip = SpriterClipPool.boarClip;
 			clip.playbackSpeed = 1;
-			clip.scaleX = 0.7;
-			clip.scaleY = 0.7;
+			clip.scaleX = 0.8;
+			clip.scaleY = 0.8;
 			clip.play("Run");
 			//addChild(clip);
 			
