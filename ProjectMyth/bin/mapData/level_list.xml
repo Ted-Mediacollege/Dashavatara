@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
-	<level id="0" x="147" y="263" file="stone_test"/>
-	<level id="1" x="227" y="411" file="stone_test"/>
-	<level id="2" x="435" y="366" file="stone_test"/>
+	<level id="0" x="147" y="263" file="lvl_1"/>
+	<level id="1" x="227" y="411" file="lvl_2"/>
+	<level id="2" x="435" y="366" file="lvl_3"/>
 	
-	<level id="3" x="902" y="196" file="stone_test"/>
-	<level id="4" x="1087" y="161" file="stone_test"/>
-	<level id="5" x="1202" y="351" file="stone_test"/>
-	
-	<level id="6" x="719" y="671" file="stone_test"/>
-	<level id="7" x="514" y="591" file="stone_test"/>
-	<level id="8" x="314" y="665" file="stone_test"/>
+	<level id="3" x="902" y="196" file="lvl_4"/>
+	<level id="4" x="1087" y="161" file="lvl_5"/>
 </data>
