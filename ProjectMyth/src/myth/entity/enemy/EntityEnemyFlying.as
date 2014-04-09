@@ -14,7 +14,7 @@ package myth.entity.enemy
 	{
 		public function EntityEnemyFlying() 
 		{
-			super(EnemyType.Flying_01);
+			super(EnemyType.Flying_01,"enemyFlyHit2");
 			health = 50;
 			animationClip = new MovieClip(AssetList.assets.getTextures("FlyingEnemy"), 30);
 			animationClip.x = 0;
@@ -33,8 +33,6 @@ package myth.entity.enemy
 		
 		override public function knockback():void {
 			super.knockback();
-			AssetList.soundCommon.playSound("enemyFlyHit2");
-			AssetList.setVolume();
 		}
 		
 		override public function tick():void {

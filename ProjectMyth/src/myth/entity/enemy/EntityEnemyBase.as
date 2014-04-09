@@ -22,11 +22,19 @@ package myth.entity.enemy
 		
 		private var colorRGB:RGB;
 		
-		public function EntityEnemyBase(_enemyType:int,_colWidth:int=80,_colHeight:int=80,_pivotX:int=-40,_pivotY:int=-40) 
+		private var deathSoundId:String;
+		
+		public function EntityEnemyBase(_enemyType:int,_deathSoundId:String,_colWidth:int=80,_colHeight:int=80,_pivotX:int=-40,_pivotY:int=-40) 
 		{
 			super(_colWidth, _colHeight, _pivotX, _pivotY);
+			deathSoundId = _deathSoundId;
 			enemyType = _enemyType;
 			colorRGB = new RGB(255, 255, 255);
+		}
+		
+		public function playDeathSound():void {
+			AssetList.soundCommon.playSound(deathSoundId);
+			AssetList.setVolume();
 		}
 		
 		public function hit(change:int):Boolean {

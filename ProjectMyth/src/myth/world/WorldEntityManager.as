@@ -82,6 +82,7 @@ package myth.world
 		}
 		
 		public function killEnemy(e:EntityEnemyBase):void {
+			e.playDeathSound();
 			removeChild(e);
 			enemyList.splice(enemyList.indexOf(e) , 1);
 			makeDeathPart(e.x, e.y,e.enemyType);

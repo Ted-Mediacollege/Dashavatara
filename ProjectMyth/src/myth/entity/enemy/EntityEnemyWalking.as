@@ -15,7 +15,7 @@ package myth.entity.enemy
 	{
 		public function EntityEnemyWalking() 
 		{
-			super(EnemyType.Walking_01, 100, 170, -50, -170);
+			super(EnemyType.Walking_01,"enemyWalkHit", 100, 170, -50, -170);
 			health = 50;
 			animationClip = new MovieClip(AssetList.assets.getTextures("RunningEnemy"), 30);
 			animationClip.x = 0;
@@ -43,8 +43,6 @@ package myth.entity.enemy
 		
 		override public function knockback():void {
 			super.knockback();
-			AssetList.soundCommon.playSound("enemyWalkHit");
-			AssetList.setVolume();
 		}
 		
 		override public function tick():void {
