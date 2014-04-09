@@ -110,6 +110,7 @@ package myth.gui
 					{
 						buttonList[i].click();
 						AssetList.soundCommon.playSound("button");
+						AssetList.setVolume();
 						action(buttonList[i]);
 						break;
 					}

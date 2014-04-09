@@ -119,11 +119,13 @@ package myth.entity.player
 			//trace("push "+Main.world.deltaSpeed);
 			Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*2*Main.world.physicsWorld.playerBody.mass, -200*Main.world.physicsWorld.playerBody.mass));
 			AssetList.soundCommon.playSound(hitSoundID);
+			AssetList.setVolume();
 		}
 		
 		public function pushBackRock():void {
 			//Main.world.physicsWorld.playerBody.applyImpulse(new Vec2(-Main.world.physicsWorld.playerBody.velocity.x*6 *Main.world.physicsWorld.playerBody.mass, -500*Main.world.physicsWorld.playerBody.mass));
 			AssetList.soundCommon.playSound(hitSoundID);
+			AssetList.setVolume();
 			//artLayer.removeFromParent();
 			//Main.world.physicsWorld.playerBody.userData.
 			Main.world.playerHolder.addKnockBackClip(privatePlayerType);

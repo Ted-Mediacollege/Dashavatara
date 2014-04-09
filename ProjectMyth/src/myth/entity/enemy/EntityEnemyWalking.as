@@ -34,14 +34,17 @@ package myth.entity.enemy
 			var ran:int = Math.random() * 2;
 			if(ran ==0){
 				AssetList.soundCommon.playSound("enemyWalkSpawn");
+				AssetList.setVolume();
 			}else {
 				AssetList.soundCommon.playSound("enemyWalkSpawn2");
+				AssetList.setVolume();
 			}
 		}
 		
 		override public function knockback():void {
 			super.knockback();
 			AssetList.soundCommon.playSound("enemyWalkHit");
+			AssetList.setVolume();
 		}
 		
 		override public function tick():void {

@@ -17,6 +17,7 @@ package myth.graphics
 	import myth.lang.Lang;
 	import myth.data.Theme;
 	import myth.entity.SpriterClipPool;
+	import myth.data.GameData;
 	
 	public class AssetList 
 	{
@@ -82,8 +83,8 @@ package myth.graphics
 			commonSoundList[7] =	new Asset("enemyWalkSpawn2"		, "sound/common/", "enemy_walk_spawn2" 		, ".mp3");
 			
 			commonSoundList[8] =	new Asset("playerFluitHit"		, "sound/common/", "player_fluit_hit" 		, ".mp3");
-			commonSoundList[9] =	new Asset("playerLionHit"		, "sound/common/", "player_boar_hit" 		, ".mp3");
-			commonSoundList[10] =	new Asset("playerBoarHit"		, "sound/common/", "player_lion_hit" 		, ".mp3");
+			commonSoundList[9] =	new Asset("playerBoarHit"		, "sound/common/", "player_boar_hit" 		, ".mp3");
+			commonSoundList[10] =	new Asset("playerLionHit"		, "sound/common/", "player_lion_hit" 		, ".mp3");
 			commonSoundList[11] =	new Asset("winSound"			, "sound/common/", "Winning_sfx" 			, ".mp3");
 			
 			//thema1 sounds
@@ -140,6 +141,25 @@ package myth.graphics
 					addLevelAssets(thema);
 				}
 			});
+			setVolume();
+		}
+		
+		public static function setVolume():void {
+			if(soundCommon!=null){
+				if(GameData.SOUND){
+					soundCommon.setGlobalVolume(1);
+				}else {
+					soundCommon.setGlobalVolume(0);
+				}
+			}
+			if(soundLevel!=null){
+				if(GameData.MUSIC){
+					soundLevel.setGlobalVolume(1);
+				}else {
+					soundLevel.setGlobalVolume(0);
+				}
+			}
+			trace("hello");
 		}
 		
 		public static function loadLevelAssets(worldType:int, onlyQueue:Boolean=false,calFrom:String = "game", from:Object =null):void
@@ -193,6 +213,7 @@ package myth.graphics
 			
 			Theme.MENU_THEME = worldType;
 			currentWorldType = worldType;
+			setVolume();
 		}
 		
 		private static function addLevelAssets(thema:int):void {

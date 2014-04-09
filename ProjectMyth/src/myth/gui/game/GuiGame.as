@@ -286,7 +286,6 @@ package myth.gui.game
 					{
 						gamemode.onButtonPress(buttonList[i].buttonID);
 						buttonList[i].click();
-						AssetList.soundCommon.playSound("button");
 						action(buttonList[i]);
 						break;
 					}

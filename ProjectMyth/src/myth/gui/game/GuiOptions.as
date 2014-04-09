@@ -54,11 +54,13 @@ package myth.gui.game
 			{
 				GameData.MUSIC = !GameData.MUSIC;
 				button_music.buttonText.text = GameData.MUSIC == true ? Lang.trans(Lang.MENU, "option.music") + " : " + Lang.trans(Lang.MENU, "option.on") : Lang.trans(Lang.MENU, "option.music") + ": " + Lang.trans(Lang.MENU, "option.off");
+				AssetList.setVolume();
 			}
 			else if (b.buttonID == 11)
 			{
 				GameData.SOUND = !GameData.SOUND;
 				button_sound.buttonText.text = GameData.SOUND == true ? Lang.trans(Lang.MENU, "option.sound") + ": " + Lang.trans(Lang.MENU, "option.on") : Lang.trans(Lang.MENU, "option.sound") + ": " + Lang.trans(Lang.MENU, "option.off");
+				AssetList.setVolume();
 			}
 			else if (b.buttonID == 12)
 			{

@@ -28,11 +28,13 @@ package myth.entity.enemy
 			animationClip.pivotY = animationClip.height / 2;
 			animationClip.rotation = Math.PI / 2;
 			AssetList.soundCommon.playSound("enemyFlyHit");
+			AssetList.setVolume();
 		}
 		
 		override public function knockback():void {
 			super.knockback();
 			AssetList.soundCommon.playSound("enemyFlyHit2");
+			AssetList.setVolume();
 		}
 		
 		override public function tick():void {
