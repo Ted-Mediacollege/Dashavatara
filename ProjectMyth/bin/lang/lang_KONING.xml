@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<menu>
+		<t name="loading.tap">Ted is oppermachtig</t>
+		
+		<t name="main.play">Ted is oppermachtig</t>
+		<t name="main.editor">Ted is oppermachtig</t>
+		<t name="main.options">Ted is oppermachtig</t>
+		<t name="main.credits">Ted is oppermachtig</t>
+		<t name="main.version">Ted is oppermachtig</t>
+		
+		<t name="main.back">Ted is oppermachtig</t>
+		
+		<t name="credits.pro">Ted is oppermachtig</t>
+		<t name="credits.art">Ted is oppermachtig</t>
+		<t name="credits.man">Ted is oppermachtig</t>
+		
+		<t name="option.music">Ted is oppermachtig</t>
+		<t name="option.sound">Ted is oppermachtig</t>
+		<t name="option.language">Ted is oppermachtig</t>
+		<t name="option.on">ted</t>
+		<t name="option.off">ted</t>
+		
+		<t name="mode.story">Ted is oppermachtig</t>
+		<t name="mode.endless">Ted is oppermachtig</t>
+		<t name="mode.tutorial">Ted is oppermachtig</t>
+	</menu>
+	
+	<editor>
+		<t name="menu.create">Ted is oppermachtig</t>
+		<t name="menu.load">Ted is oppermachtig</t>
+		<t name="menu.import">Ted is oppermachtig</t>
+		<t name="menu.theme">ted</t>
+		<t name="menu.size">ted</t>
+		
+		<t name="settings.sky">ted</t>
+		<t name="settings.earth">ted</t>
+		<t name="settings.hell">ted</t>
+		<t name="settings.small">ted</t>
+		<t name="settings.normal">ted</t>
+		<t name="settings.large">ted</t>
+		
+		<t name="side_menu.new">ted</t>
+		<t name="side_menu.menu">ted</t>
+		<t name="side_menu.load">ted</t>
+		<t name="side_menu.save">ted</t>
+		<t name="side_menu.settings">ted</t>
+		<t name="side_menu.test">ted</t>
+		<t name="side_menu.export">ted</t>
+		<t name="side_menu.import">ted</t>
+		
+		<t name="item_cat.objects">Ted is oppermachtig</t>
+		<t name="item_cat.background">Ted is oppermachtig</t>
+		<t name="item_cat.enemie">Ted is oppermachtig</t>
+		
+		<t name="alert.warning">Ted is oppermachtig</t>
+		<t name="alert.yes">ted</t>
+		<t name="alert.no">ted</t>
+		<t name="alert.save_new">Ted is oppermachtig</t>
+		<t name="alert.save_menu">Ted is oppermachtig</t>
+		<t name="alert.save_load">Ted is oppermachtig</t>
+		<t name="alert.save_import">Ted is oppermachtig</t>
+		
+		<t name="saving.save">ted</t>
+		<t name="saving.unnamed">ted</t>
+		
+		<t name="loading.back">ted</t>
+		<t name="loading.load">ted</t>
+		<t name="loading.delete">ted</t>
+	</editor>
+	
+	<game>
+		<t name="menu.next">Ted is oppermachtig</t>
+		<t name="menu.restart">Ted is oppermachtig</t>
+		<t name="menu.resume">Ted is oppermachtig</t>
+	</game>
+	
+	<tutorial>
+		<t name="tutorial.restart">Ted is oppermachtig</t>
+		<t name="tutorial.tapcont">Ted is oppermachtig</t>
+		
+		<t name="tutorial.t01">Ted is oppermachtig</t>
+		<t name="tutorial.t02">Ted is oppermachtig</t>
+		<t name="tutorial.t03">Ted is oppermachtig</t>
+		<t name="tutorial.t04">Ted is oppermachtig</t>
+		<t name="tutorial.t05">Ted is oppermachtig</t>
+		<t name="tutorial.t06">Ted is oppermachtig</t>
+		<t name="tutorial.t07">Ted is oppermachtig</t>
+		<t name="tutorial.t08">Ted is oppermachtig</t>
+		<t name="tutorial.t09">Ted is oppermachtig</t>
+		<t name="tutorial.t10">Ted is oppermachtig</t>
+		<t name="tutorial.t11">Ted is oppermachtig</t>
+		<t name="tutorial.t12">Ted is oppermachtig</t>
+		<t name="tutorial.t13">Ted is oppermachtig</t>
+		<t name="tutorial.t14">Ted is oppermachtig</t>
+		<t name="tutorial.t15">Ted is oppermachtig</t>
+		<t name="tutorial.t16">Ted is oppermachtig</t>
+		<t name="tutorial.t17">Ted is oppermachtig</t>
+		<t name="tutorial.t18">Ted is oppermachtig</t>
+		<t name="tutorial.t19">Ted is oppermachtig</t>
+		<t name="tutorial.t20">Ted is oppermachtig</t>
+	</tutorial>
+</data>

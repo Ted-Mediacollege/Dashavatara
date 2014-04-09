@@ -4,6 +4,7 @@ package myth.gamemode
 	import myth.gamemode.event.EventEnemiesFlying;
 	import myth.gamemode.event.EventPillarShort;
 	import myth.graphics.AssetList;
+	import myth.gui.game.GuiHighscore;
 	import myth.world.WorldBackground;
 	import myth.world.WorldEntityManager;
 	import myth.world.WorldManagerBase;
@@ -65,7 +66,6 @@ package myth.gamemode
 			world.endPointPosition = world.distance + 2000;
 			
 			world.speed = 6 + (world.distance / 5000);
-			trace(world.speed);
 		}
 		
 		public function newEvent():void
@@ -87,7 +87,7 @@ package myth.gamemode
 		
 		override public function onDeath():void
 		{
-			world.gui.main.switchGui(new GuiGame(new GameModeEndless(theme)));
+			world.gui.main.switchGui(new GuiHighscore(int(world.distance / 127)), true);
 		}
 	}
 }

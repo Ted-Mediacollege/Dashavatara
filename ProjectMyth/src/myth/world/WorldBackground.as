@@ -15,14 +15,14 @@ package myth.world
 	{
 		//NEED TO BE THE SAME IN EditorFiles.as
 		private static var textures_sky:Vector.<String> = new <String>["sky_tree", "sky_flower", "common_easteregg1"]; 
-		private static var textures_earth:Vector.<String> = new <String>["earth_tree"];
+		private static var textures_earth:Vector.<String> = new <String>["broken tower", "earth_bush", "earth_grass1", "earth_grass2", "earth_tree", "earth_veg", "earth_venus_flytrap"];
 		private static var textures_hell:Vector.<String> = new <String>["hell_bg_rock1", "hell_bg_rock2", "hell_bg_rock3", "hell_bg_rock4", "hell_bg_stalag"];
 		private static var textures_lucht:Vector.<String> = new <String>["sky_lucht", "earth_lucht", "hell_lucht"];
 		
 		public var Backgrounds_created:Vector.<Background>;
 		public var Backgrounds_random:Vector.<Background>;
 		
-		public var queue:Vector.<Vector.<int>>;
+		public var queue:Vector.<Vector.<int>>;	
 		public var theme:int;
 		public var textureNames:Vector.<String>;
 		
