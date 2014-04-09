@@ -31,6 +31,17 @@ package myth.entity.enemy
 			//artLayer.addChild(image);
 			//image.pivotX = image.width / 2;
 			//image.pivotY = image.height;
+			var ran:int = Math.random() * 2;
+			if(ran ==0){
+				AssetList.soundCommon.playSound("enemyWalkSpawn");
+			}else {
+				AssetList.soundCommon.playSound("enemyWalkSpawn2");
+			}
+		}
+		
+		override public function knockback():void {
+			super.knockback();
+			AssetList.soundCommon.playSound("enemyWalkHit");
 		}
 		
 		override public function tick():void {

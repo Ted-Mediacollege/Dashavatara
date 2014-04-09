@@ -27,6 +27,12 @@ package myth.entity.enemy
 			animationClip.pivotX = animationClip.width / 2;
 			animationClip.pivotY = animationClip.height / 2;
 			animationClip.rotation = Math.PI / 2;
+			AssetList.soundCommon.playSound("enemyFlyHit");
+		}
+		
+		override public function knockback():void {
+			super.knockback();
+			AssetList.soundCommon.playSound("enemyFlyHit2");
 		}
 		
 		override public function tick():void {

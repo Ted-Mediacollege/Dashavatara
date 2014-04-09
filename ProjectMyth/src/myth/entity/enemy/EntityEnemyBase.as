@@ -69,10 +69,6 @@ package myth.entity.enemy
 		
 		public function knockback():void {
 			hitApply = true;
-			//knockColor = 0;
-			//colorRGB.b = knockColor;
-			//colorRGB.g = knockColor;
-			//animationClip.color = RGB.rgbToHex(colorRGB);
 		}
 	}
 

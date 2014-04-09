@@ -42,7 +42,7 @@ package myth.entity.player
 		public function EntityPlayer01v5() 
 		{
 			//line
-			super(false,300,PlayerType.Lion,AssetList.assets.getTexture("gui_icon1"),AssetList.assets.getTexture("gui_icon1_d"),"playerHitLion");
+			super(false,300,PlayerType.Lion,AssetList.assets.getTexture("gui_icon1"),AssetList.assets.getTexture("gui_icon1_d"),"playerLionHit");
 			line_textures = Texture.fromBitmap(new LineTex());
 			line_image = new Image(line_textures);
 			line_image.x = 640;

@@ -72,14 +72,19 @@ package myth.graphics
 			soundList2 = new Vector.<Asset>();
 			soundList3 = new Vector.<Asset>();
 			//common sounds
-			commonSoundList[0] =	new Asset("button"				, "sound/common/", "button1" 							, ".mp3");
-			commonSoundList[1] =	new Asset("jump"				, "sound/common/", "jump12 -" 							, ".mp3");
-			commonSoundList[2] =	new Asset("enemyFlyHit"			, "sound/common/", "geluid-eerste-pijn-vliegende -" 	, ".mp3");
-			commonSoundList[3] =	new Asset("enemyWalkLaugh"		, "sound/common/", "geluid-lach-lopende-enemie" 		, ".mp3");
-			commonSoundList[4] =	new Asset("playerHitFluit"		, "sound/common/", "geluid-pijn-blokfluitman" 			, ".mp3");
-			commonSoundList[5] =	new Asset("playerHitLion"		, "sound/common/", "geluid-pijn-Leeuw" 					, ".mp3");
-			commonSoundList[6] =	new Asset("playerHitBoar"		, "sound/common/", "geluid-pijn-zwijn" 					, ".mp3");
-			commonSoundList[7] =	new Asset("winSound"			, "sound/common/", "Winning_sfx" 						, ".mp3");
+			commonSoundList[0] =	new Asset("button"				, "sound/common/", "button1" 				, ".mp3");
+			commonSoundList[1] =	new Asset("jump"				, "sound/common/", "jump12 -" 				, ".mp3");
+			commonSoundList[2] =	new Asset("enemyFlyHit"			, "sound/common/", "enemy_fly_hit" 			, ".mp3");
+			commonSoundList[3] =	new Asset("enemyFlyHit2"		, "sound/common/", "enemy_fly_hit2" 		, ".mp3");
+			commonSoundList[4] =	new Asset("enemyFlySpawn"		, "sound/common/", "enemy_fly_Spawn" 		, ".mp3");
+			commonSoundList[5] =	new Asset("enemyWalkHit"		, "sound/common/", "enemy_walk_hit" 		, ".mp3");
+			commonSoundList[6] =	new Asset("enemyWalkSpawn"		, "sound/common/", "enemy_walk_spawn" 		, ".mp3");
+			commonSoundList[7] =	new Asset("enemyWalkSpawn2"		, "sound/common/", "enemy_walk_spawn2" 		, ".mp3");
+			
+			commonSoundList[8] =	new Asset("playerFluitHit"		, "sound/common/", "player_fluit_hit" 		, ".mp3");
+			commonSoundList[9] =	new Asset("playerLionHit"		, "sound/common/", "player_boar_hit" 		, ".mp3");
+			commonSoundList[10] =	new Asset("playerBoarHit"		, "sound/common/", "player_lion_hit" 		, ".mp3");
+			commonSoundList[11] =	new Asset("winSound"			, "sound/common/", "Winning_sfx" 			, ".mp3");
 			
 			//thema1 sounds
 			soundList1[0] = new Asset("levelMusic"		, "sound/thema1/", "hemel_level_muziek"					, ".mp3");
