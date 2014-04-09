@@ -9,8 +9,12 @@ package myth.gui.game
 	import myth.util.ScaleHelper;
 	import myth.input.TouchType;
 	import myth.lang.Lang;
+	import starling.display.Image;
 	import starling.events.TouchEvent;
 	import myth.gui.game.GuiCredits;
+	import myth.data.GameData;
+	import myth.PreLoader;
+	import starling.filters.ColorMatrixFilter;
 	
 	public class GuiCredits extends GuiScreen
 	{
@@ -29,10 +33,10 @@ package myth.gui.game
 			
 			text_list = new Vector.<GuiText>();
 			
-			var credits1:GuiText = new GuiText(200, 840, 600, 400, "left", "top", Lang.trans(Lang.MENU, "credits.pro") + ": \nKit van de Bunt \nTed de vos", 45, 0x000000, "GameFont");
-			var credits2:GuiText = new GuiText(200, 400, 600, 400, "left", "top", Lang.trans(Lang.MENU, "credits.art") + ": \nAaron Ligthart \nLieske Timmermans \nIris van der Velde \nSanne Oudshoorn", 45, 0x000000, "GameFont");
-			var credits3:GuiText = new GuiText(200, 1120, 600, 300, "left", "top", Lang.trans(Lang.MENU, "credits.man") + ": \nMerel van der Velde\nPriscilla Schaap \nPim Van Ballegoijen de Jong", 45, 0x000000, "GameFont");
-			var credits4:GuiText = new GuiText(200, 1480, 900, 2000, "left", "top", "Special Thanks: \n", 45, 0x000000, "GameFont");
+			var credits1:GuiText = new GuiText(100, 840, 600, 400, "left", "top", Lang.trans(Lang.MENU, "credits.pro") + ": \nKit van de Bunt \nTed de vos", 45, 0x000000, "GameFont");
+			var credits2:GuiText = new GuiText(100, 400, 600, 400, "left", "top", Lang.trans(Lang.MENU, "credits.art") + ": \nAaron Ligthart \nLieske Timmermans \nIris van der Velde \nSanne Oudshoorn", 45, 0x000000, "GameFont");
+			var credits3:GuiText = new GuiText(100, 1120, 600, 300, "left", "top", Lang.trans(Lang.MENU, "credits.man") + ": \nMerel van der Velde\nPriscilla Schaap \nPim Van Ballegoijen de Jong", 45, 0x000000, "GameFont");
+			var credits4:GuiText = new GuiText(100, 1480, 900, 2000, "left", "top", "Special Thanks: \n", 45, 0x000000, "GameFont");
 			
 			addChild(credits1);
 			addChild(credits2);
@@ -43,24 +47,72 @@ package myth.gui.game
 			text_list.push(credits1);
 			text_list.push(credits3);
 			//text_list.push(credits4);
+			
+			if (GameData.EASTEREGG_MODE)
+			{
+				var hoofd:Image = Image.fromBitmap(new PreLoader.hetHoofd());
+				addChild(hoofd);
+				hoofd.x = 1140;
+				hoofd.y = 100;
+				hoofd.pivotX = hoofd.width / 2;
+				hoofd.pivotY = hoofd.height / 2;
+			}
 
-			var b:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth - 250, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
+			var b:GuiButton = addButton(new GuiButton(0, AssetList.assets.getTexture("gui_button_default"), screenWidth / 2, screenHeight / 2 + 330, 450, 100, Lang.trans(Lang.MENU, "main.back"), 45, 0xf1d195, "GameFont"));
 		}
 		
 		override public function input(type:int, data:Vector.<Number>, e:TouchEvent):void 
 		{
-			/*if (type == TouchType.CLICK)
+			trace(easterEggCount);
+			
+			if (type == TouchType.CLICK)
 			{
-				if (data[0] > 1100 && data[1] < 100)
+				if (easterEggCount == 0 && data[0] < 200 && data[1] < 200)
 				{
 					easterEggCount++;
-					if (easterEggCount > 9)
-					{
-						Lang.setLanguage(99);
-						main.switchGui(new GuiCredits());
-					}
 				}
-			}*/
+				else if (easterEggCount == 1 && data[0] > 1080 && data[1] < 200)
+				{
+					easterEggCount++;
+				}
+				else if (easterEggCount == 2 && data[0] > 1080 && data[1] > 500)
+				{
+					easterEggCount++;
+				}
+				else if (easterEggCount == 3 && data[0] < 200 && data[1] > 500)
+				{
+					easterEggCount++;
+				}
+				else if (easterEggCount == 4 && data[0] < 200 && data[1] < 200)
+				{
+					easterEggCount++;
+				}
+				else if (easterEggCount == 5 && data[0] > 1080 && data[1] < 200)
+				{
+					easterEggCount++;
+				}
+				else if (easterEggCount == 6 && data[0] > 1080 && data[1] > 500)
+				{
+					easterEggCount++;
+				}
+				else if (easterEggCount == 7 && data[0] < 200 && data[1] > 500)
+				{
+					GameData.EASTEREGG_MODE = true;
+					Lang.setLanguage(666);
+					main.switchGui(new GuiCredits(), true);
+					
+					var hoofd:Image = Image.fromBitmap(new PreLoader.hetHoofd());
+					addChild(hoofd);
+					hoofd.x = 1140;
+					hoofd.y = 100;
+					hoofd.pivotX = hoofd.width / 2;
+					hoofd.pivotY = hoofd.height / 2;
+					
+					var f:ColorMatrixFilter = new ColorMatrixFilter();
+					f.invert();
+					main.filter = f;
+				}
+			}
 		}
 		
 		override public function tick():void 

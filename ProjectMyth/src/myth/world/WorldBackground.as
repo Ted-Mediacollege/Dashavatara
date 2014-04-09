@@ -22,7 +22,7 @@ package myth.world
 		public var Backgrounds_created:Vector.<Background>;
 		public var Backgrounds_random:Vector.<Background>;
 		
-		public var queue:Vector.<Vector.<int>>;
+		public var queue:Vector.<Vector.<int>>;	
 		public var theme:int;
 		public var textureNames:Vector.<String>;
 		

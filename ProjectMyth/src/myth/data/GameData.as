@@ -4,6 +4,7 @@ package myth.data
 	{		
 		public static const GAME_VERSION:String = "1.0.2";
 		public static const DEVELOPMENT:Boolean = true;
+		public static var EASTEREGG_MODE:Boolean = false;
 		
 		public static var SYSTEM_LANG_ID:int = 0;
 		public static var ISCOMPUTER:Boolean = false;

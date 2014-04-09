@@ -34,6 +34,7 @@ package myth.lang
 				case 1: language = new Language(AssetList.assets.getXml("lang_NL")); break;
 				case 2: language = new Language(AssetList.assets.getXml("lang_TEST")); break;
 				case 99: language = new Language(AssetList.assets.getXml("lang_YOLO")); break;
+				case 666: language = new Language(AssetList.assets.getXml("lang_KONING")); break;
 				default: language = new Language(AssetList.assets.getXml("lang_ENG")); break;
 			}
 		}
