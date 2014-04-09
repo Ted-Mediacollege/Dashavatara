@@ -37,7 +37,7 @@ package myth.gamemode
 		
 		override public function build():void
 		{
-			//AssetList.soundLevel.playSound("levelMusic");
+			AssetList.soundLevel.playSound("levelMusic");
 			
 			world.physicsWorld = new PhysicsWorld();
 			world.playerHolder = new PlayerHolder();			
