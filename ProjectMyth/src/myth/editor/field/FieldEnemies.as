@@ -28,7 +28,7 @@ package myth.editor.field
 			var enemiesNames:Vector.<String> = EditorFiles.getEnemieNames();
 			for (var i:int = 0; i < arrayLength; i++ )
 			{
-				addEnemies(enemiesNames[a[i].type], a[i].type, a[i].spawnX + 1280, a[i].spawnY, true);
+				addEnemies(enemiesNames[a[i].type], a[i].type, a[i].spawnX + 1280, a[i].type == 3 ? a[i].spawnY + 1280 : a[i].spawnY, true);
 			}
 		}
 		
@@ -41,7 +41,7 @@ package myth.editor.field
 				var enm:Object = new Object();
 				enm.type = ENEMIES[m].type;
 				enm.spawnX = ENEMIES[m].posX - 1280;
-				enm.spawnY = ENEMIES[m].y + ENEMIES[m].height;
+				enm.spawnY = ENEMIES[m].type == 3 ? ENEMIES[m].y + ENEMIES[m].height - 1280 : ENEMIES[m].y + ENEMIES[m].height;
 				saveFile.enemies.push(enm);
 			}
 		}
