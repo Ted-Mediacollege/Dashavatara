@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<level id="0" x="147" y="263" file="lvl_1"/>
-	<level id="1" x="227" y="411" file="lvl_2"/>
-	<level id="2" x="435" y="366" file="lvl_3"/>
-	
-	<level id="3" x="902" y="196" file="lvl_4"/>
-	<level id="4" x="1087" y="161" file="lvl_5"/>
+	 <level id="1" x="227" y="411" file="lvl_2"/>
+	 <level id="2" x="435" y="366" file="lvl_3"/>
+	 
+	 <level id="3" x="902" y="196" file="lvl_4"/>
+	 <level id="4" x="1087" y="161" file="lvl_5"/>
+	 <level id="5" x="1202" y="351" file="lvl_6"/>
+	 
+	 <level id="6" x="719" y="671" file="lvl_7"/>
+	 <level id="7" x="514" y="591" file="lvl_8"/>
+	 <level id="8" x="314" y="665" file="lvl_9"/>
 </data>
